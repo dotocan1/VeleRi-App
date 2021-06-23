@@ -1,10 +1,6 @@
 <template>
   <q-page class="flex flex-center">
-    <img
-      alt="Quasar logo"
-      src="~assets/quasar-logo-vertical.svg"
-      style="width: 200px; height: 200px"
-    >
+
   </q-page>
 </template>
 
@@ -15,3 +11,8 @@ export default defineComponent({
   name: 'PageIndex'
 })
 </script>
+
+<style lang="sass">
+.q-page
+  background: linear-gradient(to left, #373b44, #4286f4)
+</style>
