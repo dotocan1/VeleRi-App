@@ -14,5 +14,5 @@ export default defineComponent({
 
 <style lang="sass">
 .q-page
-  background: linear-gradient(to left, #373b44, #4286f4)
+  background: linear-gradient(to top, #373b44, #4286f4)
 </style>

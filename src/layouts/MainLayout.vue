@@ -10,7 +10,8 @@
         <div><q-toolbar>
         <q-toolbar-title>
           <q-avatar>
-            <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
+            <q-icon name="home" size="lg" />
+            <!-- <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg"> -->
           </q-avatar>
           <div>Home</div>
         </q-toolbar-title>
@@ -19,7 +20,8 @@
      <div> <q-toolbar>
         <q-toolbar-title>
           <q-avatar>
-            <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
+            <q-icon name="qr_code_2" size="lg" />
+            <!-- <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg"> -->
           </q-avatar>
           <div>QR</div>
         </q-toolbar-title>
