@@ -1,0 +1,97 @@
+(self["webpackChunkveleri_app"] = self["webpackChunkveleri_app"] || []).push([[183],{
+
+/***/ 6183:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+// ESM COMPAT FLAG
+__webpack_require__.r(__webpack_exports__);
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  "default": () => (/* binding */ QRCodeScanner)
+});
+
+// EXTERNAL MODULE: ./node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.js
+var runtime_core_esm_bundler = __webpack_require__(3673);
+;// CONCATENATED MODULE: ./node_modules/@quasar/app/lib/webpack/loader.js.transform-quasar-imports.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-2.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@quasar/app/lib/webpack/loader.vue.auto-import-quasar.js??ruleSet[0].use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[1]!./src/pages/QRCodeScanner.vue?vue&type=template&id=4428d8c0&scoped=true
+
+
+const _withId = /*#__PURE__*/(0,runtime_core_esm_bundler/* withScopeId */.HX)("data-v-4428d8c0");
+
+const render = /*#__PURE__*/_withId((_ctx, _cache, $props, $setup, $data, $options) => {
+  const _component_q_page = (0,runtime_core_esm_bundler/* resolveComponent */.up)("q-page");
+
+  return (0,runtime_core_esm_bundler/* openBlock */.wg)(), (0,runtime_core_esm_bundler/* createBlock */.j4)(_component_q_page);
+});
+;// CONCATENATED MODULE: ./node_modules/@quasar/app/lib/webpack/loader.js.transform-quasar-imports.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-2.use[0]!./node_modules/@quasar/app/lib/webpack/loader.vue.auto-import-quasar.js??ruleSet[0].use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[1]!./src/pages/QRCodeScanner.vue?vue&type=script&lang=js
+/* harmony default export */ const QRCodeScannervue_type_script_lang_js = ({
+  setup() {
+    window.QRScanner.prepare(onDone); // show the prompt
+
+    function onDone(err, status) {
+      if (err) {
+        // here we can handle errors and clean up any loose ends.
+        console.error(err);
+      }
+
+      if (status.authorized) {// W00t, you have camera access and the scanner is initialized.
+        // QRscanner.show() should feel very fast.
+      } else if (status.denied) {// The video preview will remain black, and scanning is disabled. We can
+        // try to ask the user to change their mind, but we'll have to send them
+        // to their device settings with `QRScanner.openSettings()`.
+      } else {// we didn't get permission, but we didn't get permanently denied. (On
+          // Android, a denial isn't permanent unless the user checks the "Don't
+          // ask again" box.) We can ask again at the next relevant opportunity.
+        }
+    } // QRSCANNER example goes here
+    // Start a scan. Scanning will continue until something is detected or
+    // `QRScanner.cancelScan()` is called.
+    // alert('1')
+
+
+    window.QRScanner.scan(displayContents);
+
+    function displayContents(err, text) {
+      if (err) {
+        // an error occurred, or the scan was canceled (error code `6`)
+        alert(err);
+      } else {
+        // The scan completed, display the contents of the QR code:
+        // alert(text)
+        this.$router.push('/Home');
+      }
+    } // Make the webview transparent so the video preview is visible behind it.
+
+
+    window.QRScanner.show(); // Be sure to make any opaque HTML elements transparent here to avoid
+    // covering the video.
+  }
+
+});
+;// CONCATENATED MODULE: ./src/pages/QRCodeScanner.vue?vue&type=script&lang=js
+ 
+// EXTERNAL MODULE: ./node_modules/quasar/src/components/page/QPage.js
+var QPage = __webpack_require__(4379);
+// EXTERNAL MODULE: ./node_modules/@quasar/app/lib/webpack/runtime.auto-import.js
+var runtime_auto_import = __webpack_require__(7518);
+var runtime_auto_import_default = /*#__PURE__*/__webpack_require__.n(runtime_auto_import);
+;// CONCATENATED MODULE: ./src/pages/QRCodeScanner.vue
+
+
+
+
+;
+QRCodeScannervue_type_script_lang_js.render = render
+QRCodeScannervue_type_script_lang_js.__scopeId = "data-v-4428d8c0"
+
+/* harmony default export */ const QRCodeScanner = (QRCodeScannervue_type_script_lang_js);
+;
+
+runtime_auto_import_default()(QRCodeScannervue_type_script_lang_js, 'components', {QPage: QPage/* default */.Z});
+
+
+/***/ })
+
+}]);
+//# sourceMappingURL=183.js.map

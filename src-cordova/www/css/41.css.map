@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://veleri-app/./src/pages/WelcomePage.vue"],"names":[],"mappings":"AACA;EACE;AAAF,C","file":"css/41.css","sourcesContent":["\n.q-page\n  background: linear-gradient(to top, #373b44, #4286f4)\n"],"sourceRoot":""}
