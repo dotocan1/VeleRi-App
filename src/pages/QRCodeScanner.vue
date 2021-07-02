@@ -25,5 +25,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-
+q-page
+  background: transparent
 </style>

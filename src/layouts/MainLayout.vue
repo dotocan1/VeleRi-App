@@ -7,6 +7,7 @@
           <q-item
           clickable
             to="/Home"
+            @click="destroyQR"
             >
           <q-avatar>
             <q-icon name="home" size="lg"
@@ -42,8 +43,10 @@
 
 export default {
   methods: {
-    alertMe () {
-      // alert('hey')
+    destroyQR () {
+      window.QRScanner.destroy(function (status) {
+        console.log(status)
+      })
     }
   },
 
