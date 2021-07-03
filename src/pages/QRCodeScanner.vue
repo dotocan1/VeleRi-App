@@ -4,8 +4,10 @@
     </q-page>
 </template>
 <script>
+import { useRouter } from 'vue-router'
 export default {
   setup () {
+    const $router = useRouter()
     // Make the webview transparent so the video preview is visible behind it.
     window.QRScanner.show()
     // Be sure to make any opaque HTML elements transparent here to avoid
@@ -13,9 +15,10 @@ export default {
 
     const callback = function (err, contents) {
       if (err) {
-        console.error(err._message)
+        alert(err._message)
       }
-      alert('The QR Code contains: ' + contents)
+      window.QRScanner.destroy()
+      $router.push('/Home')
     }
 
     window.QRScanner.scan(callback)
@@ -25,6 +28,5 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-q-page
-  background: transparent
+
 </style>
