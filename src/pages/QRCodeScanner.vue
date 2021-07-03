@@ -7,6 +7,9 @@
 import { useRouter } from 'vue-router'
 export default {
   setup () {
+    const destroyQR = async function () {
+      window.QRScanner.destroy()
+    }
     const $router = useRouter()
     // Make the webview transparent so the video preview is visible behind it.
     window.QRScanner.show()
@@ -17,8 +20,10 @@ export default {
       if (err) {
         alert(err._message)
       }
-      window.QRScanner.destroy()
-      $router.push('/Home')
+      // this pushes to scanned content
+      destroyQR().then(function () {
+        $router.push('/Home')
+      })
     }
 
     window.QRScanner.scan(callback)
