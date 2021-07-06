@@ -1,4 +1,4 @@
-// import Vue from 'vue'
+
 import firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/firestore'
@@ -13,9 +13,15 @@ const firebaseConfig = {
   appId: '1:764963646541:web:a366f5508336ccf7e48004',
   measurementId: 'G-ENZGF68S6H'
 }
+
 firebase.initializeApp(firebaseConfig)
-export default ({ Vue }) => {
-  Vue.prototype.$auth = firebase.auth()
-  Vue.prototype.$db = firebase.firestore()
-  Vue.prototype.$storage = firebase.storage()
+
+export const auth = firebase.auth()
+export const db = firebase.auth()
+export const storage = firebase.auth()
+
+export default ({ app }) => {
+  app.config.globalProperties.$auth = auth
+  app.config.globalProperties.$db = db
+  app.config.globalProperties.$storage = storage
 }
