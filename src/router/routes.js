@@ -14,7 +14,8 @@ const routes = [
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/WelcomePage.vue') },
+      { path: '/', component: () => import('pages/Professors/PeroPeric.vue') },
+      // { path: '/', component: () => import('pages/WelcomePage.vue') },
       { path: '/Home', component: () => import('pages/Index.vue') },
       { path: '/QRCodeScanner', component: () => import('pages/QRCodeScanner.vue') }
     ]

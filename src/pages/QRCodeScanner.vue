@@ -1,6 +1,10 @@
 <template>
     <q-page>
-
+      <div class="row window-height window-width justify-center items-center transparent-div">
+        <div class="self-center transparent-div">
+        <img src="../assets/qr-code-scanner-no-qr.png" class="qr-scanner" alt="">
+        </div>
+      </div>
     </q-page>
 </template>
 <script>
@@ -33,5 +37,12 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+.qr-scanner
+    z-index: -1
+    position:relative
+    height: 250px
+    width: 250px
+.transparent-div
+  background-color: transparent
 
 </style>

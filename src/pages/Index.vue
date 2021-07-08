@@ -1,6 +1,7 @@
 <template>
   <q-page class="flex flex-center">
-<h1>This is index page</h1>
+<p>This is index page</p>
+
   </q-page>
 </template>
 
