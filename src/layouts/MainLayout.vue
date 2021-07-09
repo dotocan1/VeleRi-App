@@ -6,7 +6,7 @@
         <q-toolbar-title>
           <q-item
           clickable
-            to="/Home"
+            to="/"
             @click="destroyQR"
             >
           <q-avatar>

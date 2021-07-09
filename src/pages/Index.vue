@@ -1,16 +1,20 @@
 <template>
   <q-page class="flex flex-center">
-<p>This is index page</p>
-
+    <div class="row">
+      <div><p>This is index page</p></div>
+      <div>
+        <q-btn
+          clickable
+          to="/Login">Login</q-btn></div>
+    </div>
   </q-page>
 </template>
 
 <script>
-import { defineComponent } from 'vue'
-export default defineComponent({
-  name: 'PageIndex'
 
-})
+export default {
+
+}
 
 </script>
 
