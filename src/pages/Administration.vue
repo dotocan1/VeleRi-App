@@ -84,9 +84,24 @@ export default {
         .then(this.$router.push('/'))
     },
     consoleLog () {
-      console.log(this.$auth.currentUser)
+      // console.log(this.$auth.currentUser)
+      // const docRef = this.$db.collection('Menu').doc('D6AZT8jGkbZ6CSFItOdc')
+
+      const docRef = this.$db.collection('Menu').doc('D6AZT8jGkbZ6CSFItOdc')
+
+      docRef.get().then((doc) => {
+        if (doc.exists) {
+          console.log('Document data:', doc.data())
+        } else {
+        // doc.data() will be undefined in this case
+          console.log('No such document!')
+        }
+      }).catch((error) => {
+        console.log('Error getting document:', error)
+      })
     }
   }
+
 }
 </script>
 

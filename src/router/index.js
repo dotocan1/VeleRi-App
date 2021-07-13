@@ -1,7 +1,7 @@
 import { route } from 'quasar/wrappers'
 import { createRouter, createMemoryHistory, createWebHistory, createWebHashHistory } from 'vue-router'
 import routes from './routes'
-
+// eslint-disable-next-line
 import { auth } from 'boot/VeleriAppSetup'
 
 // eslint-disable-next-line
