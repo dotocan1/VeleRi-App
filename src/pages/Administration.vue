@@ -13,25 +13,46 @@
       </q-btn>
   </div>
 </div>
+<!-- Konfiguriranje podataka -->
+<div class="row">
+  <div class="col-10">
+      <h4 class="text-h4 q-mt-md">Unesite osobne podatke:</h4>
+  </div>
+  <div class="col-12 q-mb-md">
+    <q-input outlined v-model="email" label="Unesite email" />
+  </div>
+  <div class="col-12 q-mb-md">
+    <q-input outlined v-model="telephone" label="Unesite broj telefona" />
+  </div>
+  <div class="col-12 q-mb-md">
+    <q-input outlined v-model="cabinet" label="Unesite pripadni kabinet" />
+  </div>
+  <div class="col-12 q-mb-md">
+    <q-input outlined v-model="carrier" label="Unesite kolegije gdje je profesor nositelj" />
+  </div>
+  <div class="col-12 q-mb-md">
+    <q-btn>Spremi</q-btn>
+  </div>
+</div>
 <!-- Konfiguriranje vidljivih podataka: -->
 <div class="row">
   <div class="col-10">
-      <h4 class="text-h4 q-mt-md">Choose options for current user</h4>
+      <h4 class="text-h4 q-mt-md">Omogucite vidljivost podataka:</h4>
   </div>
   <div class="col-12">
-    <q-checkbox v-model="email" label="Vidljiv email" />
+    <q-checkbox v-model="emailCB" label="Vidljiv email" />
   </div>
   <div class="col-12">
-    <q-checkbox v-model="telephone" label="Vidljiv broj telefona" />
+    <q-checkbox v-model="telephoneCB" label="Vidljiv broj telefona" />
   </div>
   <div class="col-12">
-   <q-checkbox v-model="cabinet" label="Vidljiv kabinet" />
+   <q-checkbox v-model="cabinetCB" label="Vidljiv kabinet" />
   </div>
   <div class="col-12">
-   <q-checkbox v-model="consultations" label="Vidljivo vrijeme konzultacija" />
+   <q-checkbox v-model="consultationsCB" label="Vidljivo vrijeme konzultacija" />
   </div>
   <div class="col-12">
-   <q-checkbox v-model="carrier" label="Vidljive informacije o nositelju kolegija" />
+   <q-checkbox v-model="carrierCB" label="Vidljive informacije o nositelju kolegija" />
   </div>
 
 </div>
@@ -45,11 +66,16 @@ import { ref } from 'vue'
 export default {
   setup () {
     return {
-      email: ref(false),
-      telephone: ref(false),
-      cabinet: ref(false),
-      consultations: ref(false),
-      carrier: ref(false)
+      emailCB: ref(false),
+      telephoneCB: ref(false),
+      cabinetCB: ref(false),
+      consultationsCB: ref(false),
+      carrierCB: ref(false),
+      email: ref(),
+      telephone: ref(),
+      cabinet: ref(),
+      consultations: ref(),
+      carrier: ref()
     }
   },
   methods: {
