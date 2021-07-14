@@ -85,23 +85,28 @@ export default {
     },
     consoleLog () {
       // console.log(this.$auth.currentUser)
-      // const docRef = this.$db.collection('Menu').doc('D6AZT8jGkbZ6CSFItOdc')
-
-      const docRef = this.$db.collection('Menu').doc('D6AZT8jGkbZ6CSFItOdc')
-
-      docRef.get().then((doc) => {
-        if (doc.exists) {
-          // console.log('Document data:', doc.data())
-          const data = doc.data()
-          console.log(data.isCarrier)
-          // Need to implement reading config from database here, hopefully without if statements
-        } else {
-          console.log('No such document!')
-        }
-      }).catch((error) => {
-        console.log('Error getting document:', error)
-      })
+      // const docRef = this.$db.collection('Menu').doc('D6AZT8jGkbZ6CSFItOdc')s
     }
+  },
+  mounted () {
+    const docRef = this.$db.collection('Menu').doc('D6AZT8jGkbZ6CSFItOdc')
+
+    docRef.get().then((doc) => {
+      if (doc.exists) {
+        // console.log('Document data:', doc.data())
+        const data = doc.data()
+        // console.log(data.isCarrier)
+        this.emailCB = !!(data.isEmail)
+        this.telephoneCB = !!(data.isTelephone)
+        this.cabinetCB = !!(data.isCabinet)
+        this.consultationsCB = !!(data.isConsultations)
+        this.carrierCB = !!(data.isCarrier)
+      } else {
+        console.log('No such document!')
+      }
+    }).catch((error) => {
+      console.log('Error getting document:', error)
+    })
   }
 
 }
