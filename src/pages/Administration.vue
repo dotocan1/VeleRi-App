@@ -91,9 +91,11 @@ export default {
 
       docRef.get().then((doc) => {
         if (doc.exists) {
-          console.log('Document data:', doc.data())
+          // console.log('Document data:', doc.data())
+          const data = doc.data()
+          console.log(data.isCarrier)
+          // Need to implement reading config from database here, hopefully without if statements
         } else {
-        // doc.data() will be undefined in this case
           console.log('No such document!')
         }
       }).catch((error) => {
