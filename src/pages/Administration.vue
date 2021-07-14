@@ -19,19 +19,24 @@
       <h4 class="text-h4 q-mt-md">Unesite osobne podatke:</h4>
   </div>
   <div class="col-12 q-mb-md">
-    <q-input outlined v-model="email" label="Unesite email" />
+    <q-input disable outlined v-model="email" label="Unesite email" />
   </div>
   <div class="col-12 q-mb-md">
-    <q-input outlined v-model="telephone" label="Unesite broj telefona" />
+    <q-input disable outlined v-model="telephone" label="Unesite broj telefona" />
   </div>
   <div class="col-12 q-mb-md">
-    <q-input outlined v-model="cabinet" label="Unesite pripadni kabinet" />
+    <q-input disable outlined v-model="cabinet" label="Unesite pripadni kabinet" />
   </div>
   <div class="col-12 q-mb-md">
-    <q-input outlined v-model="carrier" label="Unesite kolegije gdje je profesor nositelj" />
+    <q-input disable outlined v-model="carrier" label="Unesite kolegije gdje je profesor nositelj" />
   </div>
-  <div class="col-12 q-mb-md">
+  <div class="col-2 q-mb-md">
     <q-btn>Spremi</q-btn>
+  </div>
+  <div class="col-1 q-ml-md">
+    <q-btn
+    @click="editForms"
+    >Izmijeni</q-btn>
   </div>
 </div>
 <!-- Konfiguriranje vidljivih podataka: -->
@@ -71,17 +76,20 @@ export default {
       cabinetCB: ref(false),
       consultationsCB: ref(false),
       carrierCB: ref(false),
-      email: ref(),
-      telephone: ref(),
-      cabinet: ref(),
-      consultations: ref(),
-      carrier: ref()
+      email: '',
+      telephone: '',
+      cabinet: '',
+      consultations: '',
+      carrier: ''
     }
   },
   methods: {
     logout () {
       this.$auth.signOut()
         .then(this.$router.push('/'))
+    },
+    editForms () {
+      // this.email.removeAttribute('disabled')
     },
     consoleLog () {
       // console.log(this.$auth.currentUser)
@@ -95,12 +103,20 @@ export default {
       if (doc.exists) {
         // console.log('Document data:', doc.data())
         const data = doc.data()
-        // console.log(data.isCarrier)
+        // This modifies the checkboxes
         this.emailCB = !!(data.isEmail)
         this.telephoneCB = !!(data.isTelephone)
         this.cabinetCB = !!(data.isCabinet)
         this.consultationsCB = !!(data.isConsultations)
         this.carrierCB = !!(data.isCarrier)
+
+        // This fills in the input forms
+
+        this.email = data.Email
+        this.telephone = data.Telephone
+        this.cabinet = data.Cabinet
+        this.consultations = data.Consultations
+        this.carrier = data.Carrier
       } else {
         console.log('No such document!')
       }
