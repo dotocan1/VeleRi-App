@@ -26,7 +26,8 @@ export default {
       }
       // this pushes to scanned content
       destroyQR().then(function () {
-        $router.push('/Home')
+        // push id data here
+        $router.push('/Professor')
       })
     }
 
