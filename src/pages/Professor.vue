@@ -1,22 +1,20 @@
 <template>
 <q-page>
 <h1>This be Pero</h1>
-<AlertMe>
-</AlertMe>
 </q-page>
 </template>
 
 <script>
-import AlertMe from '../components/AlertMe.vue'
 
 export default {
-  components: {
-    AlertMe
+  mounted () {
+
   }
 }
 
 </script>
 
 <style lang="sass" scoped>
-
+.q-page
+  background: linear-gradient(to top, #373b44, #4286f4)
 </style>

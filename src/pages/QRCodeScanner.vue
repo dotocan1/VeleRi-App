@@ -9,7 +9,9 @@
 </template>
 <script>
 import { useRouter } from 'vue-router'
+
 export default {
+
   setup () {
     const destroyQR = async function () {
       window.QRScanner.destroy()
@@ -26,14 +28,14 @@ export default {
       }
       // this pushes to scanned content
       destroyQR().then(function () {
-        $router.push('/Home')
+        // need to pass the professor id here
+        $router.push('/Professor')
       })
     }
 
     window.QRScanner.scan(callback)
   }
 }
-
 </script>
 
 <style lang="sass" scoped>

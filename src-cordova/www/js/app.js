@@ -2,73 +2,91 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 8980:
+/***/ 9942:
 /***/ ((__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) => {
 
 
-// EXTERNAL MODULE: ../node_modules/core-js/modules/es.regexp.exec.js
-var es_regexp_exec = __webpack_require__(7837);
-// EXTERNAL MODULE: ../node_modules/core-js/modules/es.string.replace.js
-var es_string_replace = __webpack_require__(5900);
-// EXTERNAL MODULE: ../node_modules/core-js/modules/web.dom-collections.iterator.js
-var web_dom_collections_iterator = __webpack_require__(5598);
-// EXTERNAL MODULE: ../node_modules/@vue/runtime-dom/dist/runtime-dom.esm-bundler.js
-var runtime_dom_esm_bundler = __webpack_require__(7000);
-// EXTERNAL MODULE: ../node_modules/quasar/src/vue-plugin.js + 13 modules
-var vue_plugin = __webpack_require__(9393);
-// EXTERNAL MODULE: ../node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.js
-var runtime_core_esm_bundler = __webpack_require__(790);
-;// CONCATENATED MODULE: ../node_modules/@quasar/app/lib/webpack/loader.js.transform-quasar-imports.js!../node_modules/babel-loader/lib/index.js??clonedRuleSet-2.use[0]!../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[3]!../node_modules/@quasar/app/lib/webpack/loader.vue.auto-import-quasar.js??ruleSet[0].use[0]!../node_modules/vue-loader/dist/index.js??ruleSet[0].use[1]!./App.vue?vue&type=template&id=1cacb1d6
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.regexp.exec.js
+var es_regexp_exec = __webpack_require__(7280);
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.replace.js
+var es_string_replace = __webpack_require__(5363);
+// EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom-collections.iterator.js
+var web_dom_collections_iterator = __webpack_require__(71);
+// EXTERNAL MODULE: ./node_modules/@vue/runtime-dom/dist/runtime-dom.esm-bundler.js
+var runtime_dom_esm_bundler = __webpack_require__(8880);
+// EXTERNAL MODULE: ./node_modules/quasar/src/vue-plugin.js + 13 modules
+var vue_plugin = __webpack_require__(4345);
+// EXTERNAL MODULE: ./node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.js
+var runtime_core_esm_bundler = __webpack_require__(3673);
+;// CONCATENATED MODULE: ./node_modules/@quasar/app/lib/webpack/loader.js.transform-quasar-imports.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-2.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@quasar/app/lib/webpack/loader.vue.auto-import-quasar.js??ruleSet[0].use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[1]!./src/App.vue?vue&type=template&id=37c7742a
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_router_view = (0,runtime_core_esm_bundler/* resolveComponent */.up)("router-view");
 
   return (0,runtime_core_esm_bundler/* openBlock */.wg)(), (0,runtime_core_esm_bundler/* createBlock */.j4)(_component_router_view);
 }
-;// CONCATENATED MODULE: ../node_modules/@quasar/app/lib/webpack/loader.js.transform-quasar-imports.js!../node_modules/babel-loader/lib/index.js??clonedRuleSet-2.use[0]!../node_modules/@quasar/app/lib/webpack/loader.vue.auto-import-quasar.js??ruleSet[0].use[0]!../node_modules/vue-loader/dist/index.js??ruleSet[0].use[1]!./App.vue?vue&type=script&lang=js
+;// CONCATENATED MODULE: ./node_modules/@quasar/app/lib/webpack/loader.js.transform-quasar-imports.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-2.use[0]!./node_modules/@quasar/app/lib/webpack/loader.vue.auto-import-quasar.js??ruleSet[0].use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[1]!./src/App.vue?vue&type=script&lang=js
 
-/* harmony default export */ const dist_ruleSet_0_use_1_Appvue_type_script_lang_js = ((0,runtime_core_esm_bundler/* defineComponent */.aZ)({
+/* harmony default export */ const Appvue_type_script_lang_js = ((0,runtime_core_esm_bundler/* defineComponent */.aZ)({
   name: 'App'
 }));
-;// CONCATENATED MODULE: ./App.vue?vue&type=script&lang=js
+;// CONCATENATED MODULE: ./src/App.vue?vue&type=script&lang=js
  
-;// CONCATENATED MODULE: ./App.vue
+;// CONCATENATED MODULE: ./src/App.vue
 
 
 
-dist_ruleSet_0_use_1_Appvue_type_script_lang_js.render = render
+Appvue_type_script_lang_js.render = render
 
-/* harmony default export */ const App = (dist_ruleSet_0_use_1_Appvue_type_script_lang_js);
-// EXTERNAL MODULE: ../node_modules/quasar/wrappers/index.js
-var wrappers = __webpack_require__(1540);
-// EXTERNAL MODULE: ../node_modules/vue-router/dist/vue-router.esm-bundler.js + 3 modules
-var vue_router_esm_bundler = __webpack_require__(5085);
-;// CONCATENATED MODULE: ./router/routes.js
+/* harmony default export */ const App = (Appvue_type_script_lang_js);
+// EXTERNAL MODULE: ./node_modules/quasar/wrappers/index.js
+var wrappers = __webpack_require__(7083);
+// EXTERNAL MODULE: ./node_modules/vue-router/dist/vue-router.esm-bundler.js + 3 modules
+var vue_router_esm_bundler = __webpack_require__(8493);
+;// CONCATENATED MODULE: ./src/router/routes.js
 
 const routes = [{
-  path: '/',
-  component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(307)]).then(__webpack_require__.bind(__webpack_require__, 307)),
+  path: '/Login',
+  component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(171)]).then(__webpack_require__.bind(__webpack_require__, 2171)),
   children: [{
     path: '',
-    component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(193)]).then(__webpack_require__.bind(__webpack_require__, 193))
+    component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(372)]).then(__webpack_require__.bind(__webpack_require__, 4372))
+  }]
+}, {
+  path: '/',
+  component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(714)]).then(__webpack_require__.bind(__webpack_require__, 714)),
+  children: [{
+    path: '/Professor',
+    component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(866)]).then(__webpack_require__.bind(__webpack_require__, 9866))
   }, {
-    path: '/Home',
-    component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(831)]).then(__webpack_require__.bind(__webpack_require__, 1831))
+    path: '/',
+    component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(408)]).then(__webpack_require__.bind(__webpack_require__, 3408))
   }, {
     path: '/QRCodeScanner',
-    component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(213)]).then(__webpack_require__.bind(__webpack_require__, 1213))
+    component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(357)]).then(__webpack_require__.bind(__webpack_require__, 357))
+  }, {
+    path: '/Administration',
+    component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(837)]).then(__webpack_require__.bind(__webpack_require__, 4837))
   }]
 }, // Always leave this as last one,
 // but you can also remove it
 {
   path: '/:catchAll(.*)*',
-  component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(878)]).then(__webpack_require__.bind(__webpack_require__, 3878))
+  component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(193)]).then(__webpack_require__.bind(__webpack_require__, 2193))
 }];
 /* harmony default export */ const router_routes = (routes);
-;// CONCATENATED MODULE: ./router/index.js
+// EXTERNAL MODULE: ./src/boot/VeleriAppSetup.js
+var VeleriAppSetup = __webpack_require__(474);
+;// CONCATENATED MODULE: ./src/router/index.js
 
 
+ // eslint-disable-next-line
 
+ // eslint-disable-next-line
+
+ // eslint-disable-next-line
+
+const app = runtime_dom_esm_bundler/* createApp */.ri({});
 /*
  * If not building with SSR mode, you can
  * directly export the Router instantiation;
@@ -78,7 +96,20 @@ const routes = [{
  * with the Router instance.
  */
 
-/* harmony default export */ const router_0 = ((0,wrappers/* route */.BC)(function ()
+const isUserLoggedIn = () => {
+  return new Promise((resolve, reject) => {
+    const unsubscribeOnAuthStateChanged = VeleriAppSetup.auth.onAuthStateChanged(theUser => {
+      resolve(theUser);
+      unsubscribeOnAuthStateChanged();
+    }, err => {
+      console.error(err);
+      resolve(null);
+      unsubscribeOnAuthStateChanged();
+    });
+  });
+};
+
+/* harmony default export */ const src_router = ((0,wrappers/* route */.BC)(function ()
 /* { store, ssrContext } */
 {
   const createHistory =  false ? 0 :  false ? 0 : vue_router_esm_bundler/* createWebHashHistory */.r5;
@@ -93,9 +124,24 @@ const routes = [{
     // quasar.conf.js -> build -> publicPath
     history: createHistory( false ? 0 : "")
   });
+  Router.beforeEach(async (to, from, next) => {
+    console.log(VeleriAppSetup.auth.currentUser);
+
+    if (to.matched.some(record => record.meta.auth)) {
+      await isUserLoggedIn().then(res => {
+        if (res) {
+          next();
+        } else {
+          next('/');
+        }
+      });
+    } else {
+      next();
+    }
+  });
   return Router;
 }));
-;// CONCATENATED MODULE: ../.quasar/app.js
+;// CONCATENATED MODULE: ./.quasar/app.js
 /**
  * THIS FILE IS GENERATED AUTOMATICALLY.
  * DO NOT EDIT.
@@ -110,9 +156,9 @@ const routes = [{
 ;
 
 
-/* harmony default export */ async function app(createAppFn, quasarUserOptions) {
+/* harmony default export */ async function _quasar_app(createAppFn, quasarUserOptions) {
   // create store and router instances
-  const router = typeof router_0 === 'function' ? await router_0({}) : router_0; // Create the app instance.
+  const router = typeof src_router === 'function' ? await src_router({}) : src_router; // Create the app instance.
   // Here we inject into it the Quasar UI, the router & possibly the store.
 
   const app = createAppFn(App);
@@ -126,7 +172,7 @@ const routes = [{
     router
   };
 }
-;// CONCATENATED MODULE: ../.quasar/quasar-user-options.js
+;// CONCATENATED MODULE: ./.quasar/quasar-user-options.js
 /**
  * THIS FILE IS GENERATED AUTOMATICALLY.
  * DO NOT EDIT.
@@ -141,7 +187,7 @@ const routes = [{
 /* harmony default export */ const quasar_user_options = ({
   config: {}
 });
-;// CONCATENATED MODULE: ../.quasar/client-entry.js
+;// CONCATENATED MODULE: ./.quasar/client-entry.js
 
 
 
@@ -213,8 +259,8 @@ async function start({
   }, false); // on deviceready
 }
 
-app(runtime_dom_esm_bundler/* createApp */.ri, quasar_user_options).then(app => {
-  return Promise.all([Promise.resolve(/* import() eager */).then(__webpack_require__.bind(__webpack_require__, 5471))]).then(bootFiles => {
+_quasar_app(runtime_dom_esm_bundler/* createApp */.ri, quasar_user_options).then(app => {
+  return Promise.all([Promise.resolve(/* import() eager */).then(__webpack_require__.bind(__webpack_require__, 5474)), Promise.resolve(/* import() eager */).then(__webpack_require__.bind(__webpack_require__, 474))]).then(bootFiles => {
     const boot = bootFiles.map(entry => entry.default).filter(entry => typeof entry === 'function');
     start(app, boot);
   });
@@ -222,7 +268,50 @@ app(runtime_dom_esm_bundler/* createApp */.ri, quasar_user_options).then(app => 
 
 /***/ }),
 
-/***/ 5471:
+/***/ 474:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "auth": () => (/* binding */ auth),
+/* harmony export */   "db": () => (/* binding */ db),
+/* harmony export */   "storage": () => (/* binding */ storage),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(8485);
+/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(firebase_app__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var firebase_auth__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(8511);
+/* harmony import */ var firebase_firestore__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(8064);
+/* harmony import */ var firebase_storage__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(3433);
+
+
+
+ // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
+const firebaseConfig = {
+  apiKey: 'AIzaSyA69Vo0iFf4Ld4j8Y0soRlooN2sGeBJwfM',
+  authDomain: 'veleri-app.firebaseapp.com',
+  projectId: 'veleri-app',
+  storageBucket: 'veleri-app.appspot.com',
+  messagingSenderId: '764963646541',
+  appId: '1:764963646541:web:a366f5508336ccf7e48004',
+  measurementId: 'G-ENZGF68S6H'
+};
+firebase_app__WEBPACK_IMPORTED_MODULE_0___default().initializeApp(firebaseConfig);
+const auth = firebase_app__WEBPACK_IMPORTED_MODULE_0___default().auth();
+const db = firebase_app__WEBPACK_IMPORTED_MODULE_0___default().firestore();
+const storage = firebase_app__WEBPACK_IMPORTED_MODULE_0___default().storage();
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (({
+  app
+}) => {
+  app.config.globalProperties.$auth = auth;
+  app.config.globalProperties.$db = db;
+  app.config.globalProperties.$storage = storage;
+});
+
+/***/ }),
+
+/***/ 5474:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -230,8 +319,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
 /* harmony export */   "api": () => (/* binding */ api)
 /* harmony export */ });
-/* harmony import */ var quasar_wrappers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1540);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6746);
+/* harmony import */ var quasar_wrappers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(7083);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(52);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 
  // Be careful when using SSR for cross-request state pollution
@@ -394,7 +483,7 @@ const api = axios__WEBPACK_IMPORTED_MODULE_1___default().create({
 /******/ 	/* webpack/runtime/load script */
 /******/ 	(() => {
 /******/ 		var inProgress = {};
-/******/ 		// data-webpack is not used as build has no uniqueName
+/******/ 		var dataWebpackPrefix = "veleri-app:";
 /******/ 		// loadScript function to load a script via script tag
 /******/ 		__webpack_require__.l = (url, done, key, chunkId) => {
 /******/ 			if(inProgress[url]) { inProgress[url].push(done); return; }
@@ -403,7 +492,7 @@ const api = axios__WEBPACK_IMPORTED_MODULE_1___default().create({
 /******/ 				var scripts = document.getElementsByTagName("script");
 /******/ 				for(var i = 0; i < scripts.length; i++) {
 /******/ 					var s = scripts[i];
-/******/ 					if(s.getAttribute("src") == url) { script = s; break; }
+/******/ 					if(s.getAttribute("src") == url || s.getAttribute("data-webpack") == dataWebpackPrefix + key) { script = s; break; }
 /******/ 				}
 /******/ 			}
 /******/ 			if(!script) {
@@ -415,7 +504,7 @@ const api = axios__WEBPACK_IMPORTED_MODULE_1___default().create({
 /******/ 				if (__webpack_require__.nc) {
 /******/ 					script.setAttribute("nonce", __webpack_require__.nc);
 /******/ 				}
-/******/ 		
+/******/ 				script.setAttribute("data-webpack", dataWebpackPrefix + key);
 /******/ 				script.src = url;
 /******/ 			}
 /******/ 			inProgress[url] = [done];
@@ -510,7 +599,7 @@ const api = axios__WEBPACK_IMPORTED_MODULE_1___default().create({
 /******/ 		};
 /******/ 		
 /******/ 		__webpack_require__.f.miniCss = (chunkId, promises) => {
-/******/ 			var cssChunks = {"193":1,"213":1,"831":1};
+/******/ 			var cssChunks = {"357":1,"408":1,"837":1};
 /******/ 			if(installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
 /******/ 			else if(installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
 /******/ 				promises.push(installedCssChunks[chunkId] = loadStylesheet(chunkId).then(() => {
@@ -608,7 +697,7 @@ const api = axios__WEBPACK_IMPORTED_MODULE_1___default().create({
 /******/ 			return __webpack_require__.O(result);
 /******/ 		}
 /******/ 		
-/******/ 		var chunkLoadingGlobal = self["webpackChunk"] = self["webpackChunk"] || [];
+/******/ 		var chunkLoadingGlobal = self["webpackChunkveleri_app"] = self["webpackChunkveleri_app"] || [];
 /******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
 /******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
 /******/ 	})();
@@ -618,7 +707,7 @@ const api = axios__WEBPACK_IMPORTED_MODULE_1___default().create({
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, [736], () => (__webpack_require__(8980)))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, [736], () => (__webpack_require__(9942)))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()
