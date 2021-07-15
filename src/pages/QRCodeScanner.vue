@@ -9,6 +9,7 @@
 </template>
 <script>
 import { useRouter } from 'vue-router'
+
 export default {
   mounted () {
     const destroyQR = async function () {
@@ -34,7 +35,6 @@ export default {
     window.QRScanner.scan(callback)
   }
 }
-
 </script>
 
 <style lang="sass" scoped>
