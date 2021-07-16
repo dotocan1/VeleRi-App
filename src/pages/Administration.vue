@@ -85,7 +85,18 @@ export default {
       this.$auth.signOut()
         .then(this.$router.push('/'))
     },
-    submit () { this.disabledInput = true },
+    submit () {
+      this.disabledInput = true
+      const docRef = this.$db.collection('Menu').doc(this.menuId)
+
+      return docRef.update({
+        Email: this.email,
+        Telephone: this.telephone,
+        Cabinet: this.cabinet,
+        Consultations: this.consultations,
+        Carrier: this.carrier
+      })
+    },
     editForms () {
       this.disabledInput = false
     },
