@@ -13,19 +13,20 @@
       <h4 class="text-h4 q-mt-md">Unesite osobne podatke:</h4>
   </div>
   <div class="col-12 q-mb-md">
-    <q-input disable outlined v-model="email" label="Unesite email" />
+    <q-input outlined v-model="email" label="Unesite email" :disable="disabledInput"/>
   </div>
   <div class="col-12 q-mb-md">
-    <q-input disable outlined v-model="telephone" label="Unesite broj telefona" />
+    <q-input outlined v-model="telephone" label="Unesite broj telefona" :disable="disabledInput"/>
   </div>
   <div class="col-12 q-mb-md">
-    <q-input disable outlined v-model="cabinet" label="Unesite pripadni kabinet" />
+    <q-input outlined v-model="cabinet" label="Unesite pripadni kabinet" :disable="disabledInput"/>
   </div>
   <div class="col-12 q-mb-md">
-    <q-input disable outlined v-model="carrier" label="Unesite kolegije gdje je profesor nositelj" />
+    <q-input outlined v-model="carrier" label="Unesite kolegije gdje je profesor nositelj" :disable="disabledInput"/>
   </div>
   <div class="col-2 q-mb-md">
-    <q-btn>Spremi</q-btn>
+    <q-btn
+    @click="submit">Spremi</q-btn>
   </div>
   <div class="col-1 q-ml-md">
     <q-btn
@@ -63,7 +64,7 @@
 import { ref } from 'vue'
 
 export default {
-  setup () {
+  data () {
     return {
       emailCB: ref(false),
       telephoneCB: ref(false),
@@ -75,7 +76,8 @@ export default {
       cabinet: '',
       consultations: '',
       carrier: '',
-      menuId: ''
+      menuId: '',
+      disabledInput: true
     }
   },
   methods: {
@@ -83,11 +85,14 @@ export default {
       this.$auth.signOut()
         .then(this.$router.push('/'))
     },
+    submit () { this.disabledInput = true },
     editForms () {
-      // this.email.removeAttribute('disabled')
+      this.disabledInput = false
     },
     submitCheckboxes () {
       // updating data
+
+      this.disabledInput = true
       const docRef = this.$db.collection('Menu').doc(this.menuId)
 
       return docRef.update({
