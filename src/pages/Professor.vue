@@ -5,14 +5,11 @@
 </template>
 
 <script>
-// import AlertMe from '../components/AlertMe.vue'
 
 export default {
-  components: {
-    // AlertMe
-  },
   mounted () {
     // I need the id data here
+    // alert(this.$route.params.id)
   }
 }
 
