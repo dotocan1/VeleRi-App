@@ -1,6 +1,11 @@
 <template>
 <q-page>
-<h1>{{name}} {{lastName}}</h1>
+<h3 class="text-h3">
+  Ime i prezime profesora: {{name}} {{lastName}}
+</h3>
+<h4 class="text-h4" v-if="isEmail">E-mail: {{email}}</h4>
+<h4 class="text-h4" v-if="isTelephone">Telephone: {{telephone}}</h4>
+
 </q-page>
 </template>
 
@@ -10,7 +15,12 @@ export default {
   data () {
     return {
       name: '',
-      lastName: ''
+      lastName: '',
+      email: '',
+      isEmail: true,
+      telephone: '',
+      isTelephone: true
+
     }
   },
   mounted () {
@@ -40,7 +50,10 @@ export default {
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
           const menuData = doc.data()
-          console.log(menuData)
+          this.email = menuData.Email
+          this.isEmail = menuData.isEmail
+          this.telephone = menuData.Telephone
+          this.isTelephone = menuData.isTelephone
         })
       })
       .catch((error) => {
