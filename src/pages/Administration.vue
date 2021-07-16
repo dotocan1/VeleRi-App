@@ -6,12 +6,6 @@
   >Sign out
       </q-btn>
   </div>
-  <div>
-      <q-btn
-        @click="consoleLog">
-        Console log
-      </q-btn>
-  </div>
 </div>
 <!-- Konfiguriranje podataka -->
 <div class="row">
@@ -45,19 +39,19 @@
       <h4 class="text-h4 q-mt-md">Omogucite vidljivost podataka:</h4>
   </div>
   <div class="col-12">
-    <q-checkbox v-model="emailCB" label="Vidljiv email" />
+    <q-checkbox v-model="emailCB" label="Vidljiv email" @click="submitCheckboxes"/>
   </div>
   <div class="col-12">
-    <q-checkbox v-model="telephoneCB" label="Vidljiv broj telefona" />
+    <q-checkbox v-model="telephoneCB" label="Vidljiv broj telefona" @click="submitCheckboxes" />
   </div>
   <div class="col-12">
-   <q-checkbox v-model="cabinetCB" label="Vidljiv kabinet" />
+   <q-checkbox v-model="cabinetCB" label="Vidljiv kabinet" @click="submitCheckboxes"/>
   </div>
   <div class="col-12">
-   <q-checkbox v-model="consultationsCB" label="Vidljivo vrijeme konzultacija" />
+   <q-checkbox v-model="consultationsCB" label="Vidljivo vrijeme konzultacija" @click="submitCheckboxes"/>
   </div>
   <div class="col-12">
-   <q-checkbox v-model="carrierCB" label="Vidljive informacije o nositelju kolegija" />
+   <q-checkbox v-model="carrierCB" label="Vidljive informacije o nositelju kolegija" @click="submitCheckboxes"/>
   </div>
 
 </div>
@@ -80,7 +74,8 @@ export default {
       telephone: '',
       cabinet: '',
       consultations: '',
-      carrier: ''
+      carrier: '',
+      menuId: ''
     }
   },
   methods: {
@@ -91,38 +86,51 @@ export default {
     editForms () {
       // this.email.removeAttribute('disabled')
     },
-    consoleLog () {
-      // console.log(this.$auth.currentUser)
-      // const docRef = this.$db.collection('Menu').doc('D6AZT8jGkbZ6CSFItOdc')s
+    submitCheckboxes () {
+      // updating data
+      const docRef = this.$db.collection('Menu').doc(this.menuId)
+
+      return docRef.update({
+        isEmail: this.emailCB,
+        isTelephone: this.telephoneCB,
+        isCabinet: this.cabinetCB,
+        isConsultations: this.consultationsCB,
+        isCarrier: this.carrierCB
+      })
     }
+
   },
   mounted () {
-    const docRef = this.$db.collection('Menu').doc('D6AZT8jGkbZ6CSFItOdc')
+    const userId = this.$auth.currentUser.uid
 
-    docRef.get().then((doc) => {
-      if (doc.exists) {
-        // console.log('Document data:', doc.data())
-        const data = doc.data()
-        // This modifies the checkboxes
-        this.emailCB = !!(data.isEmail)
-        this.telephoneCB = !!(data.isTelephone)
-        this.cabinetCB = !!(data.isCabinet)
-        this.consultationsCB = !!(data.isConsultations)
-        this.carrierCB = !!(data.isCarrier)
+    const menuRef = this.$db.collection('Menu').where('UserId', '==', userId)
 
-        // This fills in the input forms
+    menuRef
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          const data = doc.data()
+          // get menu id
+          this.menuId = doc.id
+          // This modifies the checkboxes
+          this.emailCB = !!(data.isEmail)
+          this.telephoneCB = !!(data.isTelephone)
+          this.cabinetCB = !!(data.isCabinet)
+          this.consultationsCB = !!(data.isConsultations)
+          this.carrierCB = !!(data.isCarrier)
 
-        this.email = data.Email
-        this.telephone = data.Telephone
-        this.cabinet = data.Cabinet
-        this.consultations = data.Consultations
-        this.carrier = data.Carrier
-      } else {
-        console.log('No such document!')
-      }
-    }).catch((error) => {
-      console.log('Error getting document:', error)
-    })
+          // This fills in the input forms
+
+          this.email = data.Email
+          this.telephone = data.Telephone
+          this.cabinet = data.Cabinet
+          this.consultations = data.Consultations
+          this.carrier = data.Carrier
+        })
+      })
+      .catch((error) => {
+        console.log('Error getting documents: ', error)
+      })
   }
 
 }
