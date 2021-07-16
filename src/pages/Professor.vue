@@ -5,6 +5,9 @@
 </h3>
 <h4 class="text-h4" v-if="isEmail">E-mail: {{email}}</h4>
 <h4 class="text-h4" v-if="isTelephone">Telephone: {{telephone}}</h4>
+<h4 class="text-h4" v-if="isCabinet">Telephone: {{cabinet}}</h4>
+<h4 class="text-h4" v-if="isConsultations">Telephone: {{consultations}}</h4>
+<h4 class="text-h4" v-if="isCarrier">Telephone: {{carrier}}</h4>
 
 </q-page>
 </template>
@@ -19,7 +22,13 @@ export default {
       email: '',
       isEmail: true,
       telephone: '',
-      isTelephone: true
+      isTelephone: true,
+      cabinet: '',
+      isCabinet: true,
+      consultations: '',
+      isConsultations: true,
+      carrier: '',
+      isCarrier: true
 
     }
   },
@@ -54,6 +63,12 @@ export default {
           this.isEmail = menuData.isEmail
           this.telephone = menuData.Telephone
           this.isTelephone = menuData.isTelephone
+          this.cabinet = menuData.Cabinet
+          this.isCabinet = menuData.isCabinet
+          this.consultations = menuData.isConsultations
+          this.isConsultations = menuData.isConsultations
+          this.carrier = menuData.Carrier
+          this.isCarrier = menuData.isCarrier
         })
       })
       .catch((error) => {
