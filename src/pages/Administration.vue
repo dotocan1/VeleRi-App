@@ -54,7 +54,11 @@
   <div class="col-12">
    <q-checkbox v-model="carrierCB" label="Vidljive informacije o nositelju kolegija" @click="submitCheckboxes"/>
   </div>
-
+  <!-- Slika qr koda: -->
+  <div class="row">
+    <h4 class="text-h4 q-mt-md col-12">Pripadni QR kod:</h4>
+    <img id="qr-code" class="col-6 justify-center items-center" alt="">
+  </div>
 </div>
 
 </template>
@@ -147,6 +151,10 @@ export default {
       .catch((error) => {
         console.log('Error getting documents: ', error)
       })
+    // qr code picture
+
+    const img = document.getElementById('qr-code')
+    img.src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${userId}`
   }
 
 }
