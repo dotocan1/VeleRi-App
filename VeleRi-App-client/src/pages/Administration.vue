@@ -1,5 +1,5 @@
 <template>
-<div class="row">
+<q-page><div class="row">
   <div>
       <q-btn
   @click="logout"
@@ -61,6 +61,7 @@
     <a id="img-download" download="qr-code.png">Download image</a>
   </div>
 </div>
+</q-page>
 
 </template>
 
@@ -166,5 +167,5 @@ export default {
 
 <style lang="sass" scoped>
 .q-page
-  background: linear-gradient(to top, #373b44, #4286f4)
+  background: white
 </style>

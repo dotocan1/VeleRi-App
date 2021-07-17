@@ -1,5 +1,6 @@
 <template>
-    <div class="q-pa-lg row justify-center">
+<q-page>
+  <div class="q-pa-lg row justify-center">
         <div
             class="col"
             style="max-width: 400px"
@@ -43,7 +44,8 @@
                 </q-card>
             </q-form>
         </div>
-    </div>
+    </div></q-page>
+
 </template>
 <script>
 export default {
@@ -77,3 +79,7 @@ export default {
   }
 }
 </script>
+<style lang="sass" scoped>
+.q-page
+  background: white
+</style>
