@@ -14,6 +14,7 @@ const routes = [
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
+      { path: 'Home', component: () => import('pages/Home.vue') },
       { path: 'Professor/:id', component: () => import('pages/Professor.vue') },
       { path: '/', component: () => import('pages/Index.vue') },
       { path: '/QRCodeScanner', component: () => import('pages/QRCodeScanner.vue') },

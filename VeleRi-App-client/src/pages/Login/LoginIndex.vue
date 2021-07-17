@@ -9,34 +9,39 @@
             <q-card>
                 <q-card-section>
                     <div class="text-h6">
-                    Login
+                    Prijava
                     </div>
                 </q-card-section>
                 <q-card-section>
-                    <div class="q-gutter-md">
+                    <div>
                         <q-input
                         filled
                         type="email"
                         v-model="email"
-                        label="Your email *"
-                        hint="Email to login"
+                        label="Vas email"
+
                         lazy-rules
-                        :rules="[ val => emailPattern.test(val) || 'Please type valid email']"
+                        :rules="[ val => emailPattern.test(val) || 'Molim vas upisite valjani email']"
                         />
                         <q-input
                         filled
                         type="password"
                         v-model="password"
-                        label="Password *"
-                        hint="Password to login"
+                        label="Sifra"
+
                         lazy-rules
-                        :rules="[ val => val && val.length > 0 || 'Please type password']"
+                        :rules="[ val => val && val.length > 0 || 'Molim vas, upisite sifru']"
                         />
             </div>
                 </q-card-section>
                 <q-card-actions align="right">
+                   <q-btn
+                    label="Natrag"
+                    to="/"
+                    color="primary"
+                    />
                     <q-btn
-                        label="Login"
+                        label="Prijava"
                         type="submit"
                         color="primary"
                     />

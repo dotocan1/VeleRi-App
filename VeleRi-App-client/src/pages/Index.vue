@@ -1,11 +1,23 @@
 <template>
   <q-page class="flex flex-center">
-    <div class="row">
-      <div><p>This is index page</p></div>
+    <div class="row justify-center">
       <div>
         <q-btn
-          clickable
-          to="/Login">Login</q-btn></div>
+        class="background-color-white"
+        to="/Home"
+        label="Nastavite kao student"
+        />
+      </div>
+      <div class="q-mt-sm background-color-white">
+          <q-btn
+          to="/Login"
+          label="Prijavite se kao profesor"/>
+      </div>
+      <div class="q-mt-sm background-color-white">
+          <q-btn
+          label="Registrirajte se kao profesor"
+          />
+      </div>
     </div>
   </q-page>
 </template>
@@ -21,4 +33,6 @@ export default {
 <style lang="sass" scoped>
 .q-page
   background: linear-gradient(to top, #373b44, #4286f4)
+.background-color-white
+  background: white
 </style>
