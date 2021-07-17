@@ -58,6 +58,7 @@
   <div class="row">
     <h4 class="text-h4 q-mt-md col-12">Pripadni QR kod:</h4>
     <img id="qr-code" class="col-6 justify-center items-center" alt="">
+    <a id="img-download" download="qr-code.png">Download image</a>
   </div>
 </div>
 
@@ -155,6 +156,9 @@ export default {
 
     const img = document.getElementById('qr-code')
     img.src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${userId}`
+
+    const btnDownloadImg = document.getElementById('img-download')
+    btnDownloadImg.href = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${userId}`
   }
 
 }
