@@ -24,11 +24,13 @@ export default {
     const callback = function (err, contents) {
       if (err) {
         alert(err._message)
-      }
-      // this pushes to scanned content
-      destroyQR().then(function () {
+      }else{
+        destroyQR().then(function () {
         $router.push(`/Professor/${contents}`)
       })
+      }
+      // this pushes to scanned content
+      
     }
 
     window.QRScanner.scan(callback)
