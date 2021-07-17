@@ -1,5 +1,13 @@
 <template>
   <q-layout view="hHh lpR fFf">
+     <q-header elevated>
+      <q-toolbar>
+        <q-toolbar-title>
+          VeleriApp
+        </q-toolbar-title>
+        <q-space />
+      </q-toolbar>
+    </q-header>
 <q-footer elevated class="bg-grey-8 text-white">
       <div class="row justify-center">
         <div><q-toolbar>
