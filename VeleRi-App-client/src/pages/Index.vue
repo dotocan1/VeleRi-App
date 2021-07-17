@@ -15,6 +15,7 @@
       </div>
       <div class="q-mt-sm background-color-white">
           <q-btn
+          to="/Registration"
           label="Registrirajte se kao profesor"
           />
       </div>

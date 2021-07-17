@@ -3,18 +3,15 @@ const routes = [
     path: '/Login',
     component: () => import('layouts/LoginPageLayout.vue'),
     children: [
-      {
-        path: '',
-        component: () =>
-          import('pages/Login/LoginIndex.vue')
-      }
+      { path: '/Login', component: () => import('pages/Login/LoginIndex.vue') },
+      { path: '/Registration', component: () => import('pages/Login/Registration.vue') }
     ]
   },
   {
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: 'Home', component: () => import('pages/Home.vue') },
+      { path: '/Home', component: () => import('pages/Home.vue') },
       { path: 'Professor/:id', component: () => import('pages/Professor.vue') },
       { path: '/', component: () => import('pages/Index.vue') },
       { path: '/QRCodeScanner', component: () => import('pages/QRCodeScanner.vue') },
