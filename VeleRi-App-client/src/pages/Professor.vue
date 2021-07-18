@@ -3,11 +3,11 @@
 <h3 class="text-h3">
   Ime i prezime profesora: {{name}} {{lastName}}
 </h3>
-<h4 class="text-h4" v-if="isEmail">E-mail: {{email}}</h4>
-<h4 class="text-h4" v-if="isTelephone">Telephone: {{telephone}}</h4>
-<h4 class="text-h4" v-if="isCabinet">Telephone: {{cabinet}}</h4>
-<h4 class="text-h4" v-if="isConsultations">Telephone: {{consultations}}</h4>
-<h4 class="text-h4" v-if="isCarrier">Telephone: {{carrier}}</h4>
+<h2 class="text-h2" v-if="isEmail">E-mail: {{email}}</h2>
+<h2 class="text-h2" v-if="isTelephone">Telephone: {{telephone}}</h2>
+<h2 class="text-h2" v-if="isCabinet">Telephone: {{cabinet}}</h2>
+<h2 class="text-h2" v-if="isConsultations">Telephone: {{consultations}}</h2>
+<h2 class="text-h2" v-if="isCarrier">Telephone: {{carrier}}</h2>
 
 </q-page>
 </template>
@@ -17,8 +17,8 @@
 export default {
   data () {
     return {
-      name: '',
-      lastName: '',
+      name: 'Ime',
+      lastName: 'Prezime',
       email: '',
       isEmail: true,
       telephone: '',

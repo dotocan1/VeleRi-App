@@ -17,13 +17,13 @@ var runtime_core_esm_bundler = __webpack_require__(3673);
 // EXTERNAL MODULE: ./src/assets/qr-code-scanner-no-qr.png
 var qr_code_scanner_no_qr = __webpack_require__(1013);
 var qr_code_scanner_no_qr_default = /*#__PURE__*/__webpack_require__.n(qr_code_scanner_no_qr);
-;// CONCATENATED MODULE: ./node_modules/@quasar/app/lib/webpack/loader.js.transform-quasar-imports.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-2.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@quasar/app/lib/webpack/loader.vue.auto-import-quasar.js??ruleSet[0].use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[1]!./src/pages/QRCodeScanner.vue?vue&type=template&id=e4f9dce4&scoped=true
+;// CONCATENATED MODULE: ./node_modules/@quasar/app/lib/webpack/loader.js.transform-quasar-imports.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-2.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@quasar/app/lib/webpack/loader.vue.auto-import-quasar.js??ruleSet[0].use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[1]!./src/pages/QRCodeScanner.vue?vue&type=template&id=0bd7027d&scoped=true
 
 
 
-const _withId = /*#__PURE__*/(0,runtime_core_esm_bundler/* withScopeId */.HX)("data-v-e4f9dce4");
+const _withId = /*#__PURE__*/(0,runtime_core_esm_bundler/* withScopeId */.HX)("data-v-0bd7027d");
 
-(0,runtime_core_esm_bundler/* pushScopeId */.dD)("data-v-e4f9dce4");
+(0,runtime_core_esm_bundler/* pushScopeId */.dD)("data-v-0bd7027d");
 
 const _hoisted_1 = /*#__PURE__*/(0,runtime_core_esm_bundler/* createVNode */.Wm)("div", {
   class: "row window-height window-width justify-center items-center transparent-div"
@@ -45,14 +45,14 @@ const render = /*#__PURE__*/_withId((_ctx, _cache, $props, $setup, $data, $optio
     _: 1
   });
 });
-;// CONCATENATED MODULE: ./src/pages/QRCodeScanner.vue?vue&type=template&id=e4f9dce4&scoped=true
+;// CONCATENATED MODULE: ./src/pages/QRCodeScanner.vue?vue&type=template&id=0bd7027d&scoped=true
 
 // EXTERNAL MODULE: ./node_modules/vue-router/dist/vue-router.esm-bundler.js + 3 modules
 var vue_router_esm_bundler = __webpack_require__(8493);
 ;// CONCATENATED MODULE: ./node_modules/@quasar/app/lib/webpack/loader.js.transform-quasar-imports.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-2.use[0]!./node_modules/@quasar/app/lib/webpack/loader.vue.auto-import-quasar.js??ruleSet[0].use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[1]!./src/pages/QRCodeScanner.vue?vue&type=script&lang=js
 
 /* harmony default export */ const QRCodeScannervue_type_script_lang_js = ({
-  setup() {
+  mounted() {
     const destroyQR = async function () {
       window.QRScanner.destroy();
     };
@@ -65,12 +65,12 @@ var vue_router_esm_bundler = __webpack_require__(8493);
     const callback = function (err, contents) {
       if (err) {
         alert(err._message);
+      } else {
+        destroyQR().then(function () {
+          $router.push(`/Professor/${contents}`);
+        });
       } // this pushes to scanned content
 
-
-      destroyQR().then(function () {
-        $router.push('/Home');
-      });
     };
 
     window.QRScanner.scan(callback);
@@ -91,7 +91,7 @@ var runtime_auto_import_default = /*#__PURE__*/__webpack_require__.n(runtime_aut
 
 ;
 QRCodeScannervue_type_script_lang_js.render = render
-QRCodeScannervue_type_script_lang_js.__scopeId = "data-v-e4f9dce4"
+QRCodeScannervue_type_script_lang_js.__scopeId = "data-v-0bd7027d"
 
 /* harmony default export */ const QRCodeScanner = (QRCodeScannervue_type_script_lang_js);
 ;

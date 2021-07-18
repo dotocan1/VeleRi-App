@@ -22022,6 +22022,7 @@ function computed(getterOrOptions) {
 /* harmony export */   "$d": () => (/* binding */ callWithAsyncErrorHandling),
 /* harmony export */   "Fl": () => (/* binding */ computed),
 /* harmony export */   "j4": () => (/* binding */ createBlock),
+/* harmony export */   "kq": () => (/* binding */ createCommentVNode),
 /* harmony export */   "Us": () => (/* binding */ createRenderer),
 /* harmony export */   "Uk": () => (/* binding */ createTextVNode),
 /* harmony export */   "Wm": () => (/* binding */ createVNode),
@@ -22049,7 +22050,7 @@ function computed(getterOrOptions) {
 /* harmony export */   "wy": () => (/* binding */ withDirectives),
 /* harmony export */   "HX": () => (/* binding */ withScopeId)
 /* harmony export */ });
-/* unused harmony exports Comment, KeepAlive, Static, Suspense, Teleport, Text, callWithErrorHandling, cloneVNode, compatUtils, createCommentVNode, createHydrationRenderer, createSlots, createStaticVNode, defineAsyncComponent, defineEmit, defineProps, devtools, handleError, initCustomFormatter, isRuntimeOnly, isVNode, mergeProps, onActivated, onBeforeMount, onDeactivated, onErrorCaptured, onRenderTracked, onRenderTriggered, onServerPrefetch, onUnmounted, queuePostFlushCb, registerRuntimeCompiler, renderList, renderSlot, resolveDirective, resolveDynamicComponent, resolveFilter, setBlockTracking, setDevtoolsHook, ssrContextKey, ssrUtils, toHandlers, transformVNodeArgs, useContext, useSSRContext, version, warn */
+/* unused harmony exports Comment, KeepAlive, Static, Suspense, Teleport, Text, callWithErrorHandling, cloneVNode, compatUtils, createHydrationRenderer, createSlots, createStaticVNode, defineAsyncComponent, defineEmit, defineProps, devtools, handleError, initCustomFormatter, isRuntimeOnly, isVNode, mergeProps, onActivated, onBeforeMount, onDeactivated, onErrorCaptured, onRenderTracked, onRenderTriggered, onServerPrefetch, onUnmounted, queuePostFlushCb, registerRuntimeCompiler, renderList, renderSlot, resolveDirective, resolveDynamicComponent, resolveFilter, setBlockTracking, setDevtoolsHook, ssrContextKey, ssrUtils, toHandlers, transformVNodeArgs, useContext, useSSRContext, version, warn */
 /* harmony import */ var _vue_reactivity__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(1959);
 /* harmony import */ var _vue_shared__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2323);
 
@@ -32881,8 +32882,8 @@ module.exports.default = module.exports, module.exports.__esModule = true;
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Z": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _home_th0tminik_VeleRi_App_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(515);
-/* harmony import */ var _home_th0tminik_VeleRi_App_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_home_th0tminik_VeleRi_App_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _home_th0tminik_VeleRi_App_VeleRi_App_client_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(515);
+/* harmony import */ var _home_th0tminik_VeleRi_App_VeleRi_App_client_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_home_th0tminik_VeleRi_App_VeleRi_App_client_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(3673);
 /* harmony import */ var _icon_QIcon_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4554);
 /* harmony import */ var _composables_private_use_size_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(2417);
@@ -32894,7 +32895,7 @@ module.exports.default = module.exports, module.exports.__esModule = true;
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,vue__WEBPACK_IMPORTED_MODULE_3__/* .defineComponent */ .aZ)({
   name: 'QAvatar',
-  props: _home_th0tminik_VeleRi_App_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0___default()(_home_th0tminik_VeleRi_App_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0___default()({}, _composables_private_use_size_js__WEBPACK_IMPORTED_MODULE_2__/* .useSizeProps */ .LU), {}, {
+  props: _home_th0tminik_VeleRi_App_VeleRi_App_client_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0___default()(_home_th0tminik_VeleRi_App_VeleRi_App_client_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0___default()({}, _composables_private_use_size_js__WEBPACK_IMPORTED_MODULE_2__/* .useSizeProps */ .LU), {}, {
     fontSize: String,
     color: String,
     textColor: String,
@@ -33568,8 +33569,8 @@ let touchTarget = null,
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Z": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _home_th0tminik_VeleRi_App_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(515);
-/* harmony import */ var _home_th0tminik_VeleRi_App_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_home_th0tminik_VeleRi_App_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _home_th0tminik_VeleRi_App_VeleRi_App_client_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(515);
+/* harmony import */ var _home_th0tminik_VeleRi_App_VeleRi_App_client_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_home_th0tminik_VeleRi_App_VeleRi_App_client_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var core_js_modules_es_array_flat_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(9377);
 /* harmony import */ var core_js_modules_es_array_flat_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_flat_js__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(3673);
@@ -33582,7 +33583,7 @@ let touchTarget = null,
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,vue__WEBPACK_IMPORTED_MODULE_3__/* .defineComponent */ .aZ)({
   name: 'QCard',
-  props: _home_th0tminik_VeleRi_App_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0___default()(_home_th0tminik_VeleRi_App_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0___default()({}, _composables_private_use_dark_js__WEBPACK_IMPORTED_MODULE_2__/* .useDarkProps */ .S), {}, {
+  props: _home_th0tminik_VeleRi_App_VeleRi_App_client_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0___default()(_home_th0tminik_VeleRi_App_VeleRi_App_client_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0___default()({}, _composables_private_use_dark_js__WEBPACK_IMPORTED_MODULE_2__/* .useDarkProps */ .S), {}, {
     tag: {
       type: String,
       default: 'div'
@@ -33614,8 +33615,8 @@ let touchTarget = null,
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Z": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _home_th0tminik_VeleRi_App_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(515);
-/* harmony import */ var _home_th0tminik_VeleRi_App_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_home_th0tminik_VeleRi_App_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _home_th0tminik_VeleRi_App_VeleRi_App_client_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(515);
+/* harmony import */ var _home_th0tminik_VeleRi_App_VeleRi_App_client_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_home_th0tminik_VeleRi_App_VeleRi_App_client_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(3673);
 /* harmony import */ var _composables_private_use_align_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(9992);
 /* harmony import */ var _utils_private_render_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(7657);
@@ -33625,7 +33626,7 @@ let touchTarget = null,
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,vue__WEBPACK_IMPORTED_MODULE_2__/* .defineComponent */ .aZ)({
   name: 'QCardActions',
-  props: _home_th0tminik_VeleRi_App_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0___default()(_home_th0tminik_VeleRi_App_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0___default()({}, _composables_private_use_align_js__WEBPACK_IMPORTED_MODULE_1__/* .useAlignProps */ .jO), {}, {
+  props: _home_th0tminik_VeleRi_App_VeleRi_App_client_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0___default()(_home_th0tminik_VeleRi_App_VeleRi_App_client_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0___default()({}, _composables_private_use_align_js__WEBPACK_IMPORTED_MODULE_1__/* .useAlignProps */ .jO), {}, {
     vertical: Boolean
   }),
 
@@ -34479,8 +34480,8 @@ const bgNode = (0,runtime_core_esm_bundler.h)('div', {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Z": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _home_th0tminik_VeleRi_App_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(515);
-/* harmony import */ var _home_th0tminik_VeleRi_App_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_home_th0tminik_VeleRi_App_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _home_th0tminik_VeleRi_App_VeleRi_App_client_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(515);
+/* harmony import */ var _home_th0tminik_VeleRi_App_VeleRi_App_client_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_home_th0tminik_VeleRi_App_VeleRi_App_client_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var core_js_modules_es_regexp_constructor_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4303);
 /* harmony import */ var core_js_modules_es_regexp_constructor_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_regexp_constructor_js__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(7280);
@@ -34529,7 +34530,7 @@ const ionRE = /^ion-/;
 const faLaRE = /^[l|f]a[s|r|l|b|d]? /;
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,vue__WEBPACK_IMPORTED_MODULE_5__/* .defineComponent */ .aZ)({
   name: 'QIcon',
-  props: _home_th0tminik_VeleRi_App_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0___default()(_home_th0tminik_VeleRi_App_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0___default()({}, _composables_private_use_size_js__WEBPACK_IMPORTED_MODULE_4__/* .useSizeProps */ .LU), {}, {
+  props: _home_th0tminik_VeleRi_App_VeleRi_App_client_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0___default()(_home_th0tminik_VeleRi_App_VeleRi_App_client_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0___default()({}, _composables_private_use_size_js__WEBPACK_IMPORTED_MODULE_4__/* .useSizeProps */ .LU), {}, {
     tag: {
       type: String,
       default: 'i'
@@ -36341,8 +36342,8 @@ const isKorean = /[\u3131-\u314e\u314f-\u3163\uac00-\ud7a3]/;
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Z": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _home_th0tminik_VeleRi_App_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(515);
-/* harmony import */ var _home_th0tminik_VeleRi_App_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_home_th0tminik_VeleRi_App_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _home_th0tminik_VeleRi_App_VeleRi_App_client_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(515);
+/* harmony import */ var _home_th0tminik_VeleRi_App_VeleRi_App_client_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_home_th0tminik_VeleRi_App_VeleRi_App_client_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(3673);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(1959);
 /* harmony import */ var _composables_private_use_dark_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2236);
@@ -36359,7 +36360,7 @@ const isKorean = /[\u3131-\u314e\u314f-\u3163\uac00-\ud7a3]/;
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,vue__WEBPACK_IMPORTED_MODULE_4__/* .defineComponent */ .aZ)({
   name: 'QItem',
-  props: _home_th0tminik_VeleRi_App_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0___default()(_home_th0tminik_VeleRi_App_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0___default()(_home_th0tminik_VeleRi_App_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0___default()({}, _composables_private_use_dark_js__WEBPACK_IMPORTED_MODULE_1__/* .useDarkProps */ .S), _composables_private_use_router_link_js__WEBPACK_IMPORTED_MODULE_2__/* .useRouterLinkProps */ .$), {}, {
+  props: _home_th0tminik_VeleRi_App_VeleRi_App_client_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0___default()(_home_th0tminik_VeleRi_App_VeleRi_App_client_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0___default()(_home_th0tminik_VeleRi_App_VeleRi_App_client_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0___default()({}, _composables_private_use_dark_js__WEBPACK_IMPORTED_MODULE_1__/* .useDarkProps */ .S), _composables_private_use_router_link_js__WEBPACK_IMPORTED_MODULE_2__/* .useRouterLinkProps */ .$), {}, {
     tag: {
       type: String,
       default: 'div'
@@ -37513,8 +37514,8 @@ const useDarkProps = {
 /* harmony export */   "Do": () => (/* binding */ useFormInputNameAttr)
 /* harmony export */ });
 /* unused harmony export useFormAttrs */
-/* harmony import */ var _home_th0tminik_VeleRi_App_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(515);
-/* harmony import */ var _home_th0tminik_VeleRi_App_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_home_th0tminik_VeleRi_App_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _home_th0tminik_VeleRi_App_VeleRi_App_client_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(515);
+/* harmony import */ var _home_th0tminik_VeleRi_App_VeleRi_App_client_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_home_th0tminik_VeleRi_App_VeleRi_App_client_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3673);
 
 
@@ -37530,7 +37531,7 @@ function useFormAttrs(props) {
 }
 function useFormInject(formAttrs = {}, formDomProps = {}) {
   return (child, action, className) => {
-    child[action]((0,vue__WEBPACK_IMPORTED_MODULE_1__.h)('input', _home_th0tminik_VeleRi_App_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0___default()(_home_th0tminik_VeleRi_App_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0___default()({
+    child[action]((0,vue__WEBPACK_IMPORTED_MODULE_1__.h)('input', _home_th0tminik_VeleRi_App_VeleRi_App_client_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0___default()(_home_th0tminik_VeleRi_App_VeleRi_App_client_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0___default()({
       class: 'hidden' + (className || '')
     }, formAttrs.value), formDomProps.value)));
   };
@@ -37781,8 +37782,8 @@ const useSizeProps = {
 /* harmony export */   "ZP": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* unused harmony export iosEmulated */
-/* harmony import */ var _home_th0tminik_VeleRi_App_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(515);
-/* harmony import */ var _home_th0tminik_VeleRi_App_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_home_th0tminik_VeleRi_App_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _home_th0tminik_VeleRi_App_VeleRi_App_client_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(515);
+/* harmony import */ var _home_th0tminik_VeleRi_App_VeleRi_App_client_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_home_th0tminik_VeleRi_App_VeleRi_App_client_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7280);
 /* harmony import */ var core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(1959);
@@ -37825,7 +37826,7 @@ const hasTouch =  false ? 0 : 'ontouchstart' in window || window.navigator.maxTo
 
 function applyIosCorrection(is) {
   iosCorrection = {
-    is: _home_th0tminik_VeleRi_App_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0___default()({}, is)
+    is: _home_th0tminik_VeleRi_App_VeleRi_App_client_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0___default()({}, is)
   };
   delete is.mac;
   delete is.desktop;
