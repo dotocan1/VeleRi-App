@@ -53,7 +53,7 @@ const routes = [{
     component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(862)]).then(__webpack_require__.bind(__webpack_require__, 7862))
   }, {
     path: '/Registration',
-    component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(105)]).then(__webpack_require__.bind(__webpack_require__, 2105))
+    component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(369)]).then(__webpack_require__.bind(__webpack_require__, 1369))
   }]
 }, {
   path: '/',
@@ -63,7 +63,7 @@ const routes = [{
     component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(340)]).then(__webpack_require__.bind(__webpack_require__, 4340))
   }, {
     path: 'Professor/:id',
-    component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(327)]).then(__webpack_require__.bind(__webpack_require__, 7327))
+    component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(207)]).then(__webpack_require__.bind(__webpack_require__, 5207))
   }, {
     path: '/',
     component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(625)]).then(__webpack_require__.bind(__webpack_require__, 4625))
@@ -605,7 +605,7 @@ const api = axios__WEBPACK_IMPORTED_MODULE_1___default().create({
 /******/ 		};
 /******/ 		
 /******/ 		__webpack_require__.f.miniCss = (chunkId, promises) => {
-/******/ 			var cssChunks = {"327":1,"340":1,"357":1,"625":1,"862":1,"996":1};
+/******/ 			var cssChunks = {"207":1,"340":1,"357":1,"369":1,"625":1,"862":1,"996":1};
 /******/ 			if(installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
 /******/ 			else if(installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
 /******/ 				promises.push(installedCssChunks[chunkId] = loadStylesheet(chunkId).then(() => {
