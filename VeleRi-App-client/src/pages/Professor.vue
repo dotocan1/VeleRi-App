@@ -3,11 +3,11 @@
 <h3 class="text-h3">
   Ime i prezime profesora: {{name}} {{lastName}}
 </h3>
-<h2 class="text-h2" v-if="isEmail">E-mail: {{email}}</h2>
-<h2 class="text-h2" v-if="isTelephone">Telephone: {{telephone}}</h2>
-<h2 class="text-h2" v-if="isCabinet">Telephone: {{cabinet}}</h2>
-<h2 class="text-h2" v-if="isConsultations">Telephone: {{consultations}}</h2>
-<h2 class="text-h2" v-if="isCarrier">Telephone: {{carrier}}</h2>
+<h6 class="text-h6" v-if="isEmail">E-mail: {{email}}</h6>
+<h6 class="text-h6" v-if="isTelephone">Broj telefona: {{telephone}}</h6>
+<h6 class="text-h6" v-if="isCabinet">Broj kabineta: {{cabinet}}</h6>
+<h6 class="text-h6" v-if="isConsultations">Konzultacije: {{consultations}}</h6>
+<h6 class="text-h6" v-if="isCarrier">Nositelj kolegija: {{carrier}}</h6>
 
 </q-page>
 </template>
@@ -65,7 +65,7 @@ export default {
           this.isTelephone = menuData.isTelephone
           this.cabinet = menuData.Cabinet
           this.isCabinet = menuData.isCabinet
-          this.consultations = menuData.isConsultations
+          this.consultations = menuData.Consultations
           this.isConsultations = menuData.isConsultations
           this.carrier = menuData.Carrier
           this.isCarrier = menuData.isCarrier
