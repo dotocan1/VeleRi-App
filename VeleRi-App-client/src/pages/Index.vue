@@ -5,19 +5,19 @@
         <q-btn
         class="background-color-white"
         to="/Home"
-        label="Nastavite kao student"
-        />
+        label="Nastavite kao student"/>
       </div>
-      <div class="q-mt-sm background-color-white">
-          <q-btn
-          to="/Login"
-          label="Prijavite se kao profesor"/>
+      <div class="q-mt-sm">
+        <q-btn
+        class="background-color-white"
+        to="/Login"
+        label="Prijavite se kao profesor"/>
       </div>
-      <div class="q-mt-sm background-color-white">
-          <q-btn
-          to="/Registration"
-          label="Registrirajte se kao profesor"
-          />
+      <div class="q-mt-sm">
+        <q-btn
+        class="background-color-white"
+        to="/Registration"
+        label="Registrirajte se kao profesor"/>
       </div>
     </div>
   </q-page>
