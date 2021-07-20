@@ -1,6 +1,6 @@
 <template>
 <q-page>
-<h3 class="text-h3">
+<h3 class="text-h3 q-mt-none">
   Ime i prezime profesora: {{name}} {{lastName}}
 </h3>
 <h6 class="text-h6" v-if="isEmail">E-mail: {{email}}</h6>
