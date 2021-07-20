@@ -46,6 +46,11 @@ export default {
           const userData = doc.data()
           this.name = userData.Name
           this.lastName = userData.LastName
+          this.email = userData.Email
+          this.telephone = userData.Telephone
+          this.cabinet = userData.Cabinet
+          this.consultations = userData.Consultations
+          this.carrier = userData.Carrier
         })
       })
       .catch((error) => {
@@ -59,15 +64,11 @@ export default {
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
           const menuData = doc.data()
-          this.email = menuData.Email
+
           this.isEmail = menuData.isEmail
-          this.telephone = menuData.Telephone
           this.isTelephone = menuData.isTelephone
-          this.cabinet = menuData.Cabinet
           this.isCabinet = menuData.isCabinet
-          this.consultations = menuData.Consultations
           this.isConsultations = menuData.isConsultations
-          this.carrier = menuData.Carrier
           this.isCarrier = menuData.isCarrier
         })
       })

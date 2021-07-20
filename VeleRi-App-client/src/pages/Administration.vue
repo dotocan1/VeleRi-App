@@ -83,6 +83,7 @@ export default {
       consultations: '',
       carrier: '',
       menuId: '',
+      usersDataId: '',
       disabledInput: true
     }
   },
@@ -93,7 +94,7 @@ export default {
     },
     submit () {
       this.disabledInput = true
-      const docRef = this.$db.collection('Menu').doc(this.menuId)
+      const docRef = this.$db.collection('UsersData').doc(this.Id)
 
       return docRef.update({
         Email: this.email,
@@ -126,6 +127,7 @@ export default {
     const userId = this.$auth.currentUser.uid
 
     const menuRef = this.$db.collection('Menu').where('UserId', '==', userId)
+    const userRef = this.$db.collection('UsersData').where('UserId', '==', userId)
 
     menuRef
       .get()
@@ -140,6 +142,19 @@ export default {
           this.cabinetCB = !!(data.isCabinet)
           this.consultationsCB = !!(data.isConsultations)
           this.carrierCB = !!(data.isCarrier)
+        })
+      })
+      .catch((error) => {
+        console.log('Error getting documents: ', error)
+      })
+
+    userRef
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          // get usersData id
+          const data = doc.data()
+          this.usersDataId = doc.id
 
           // This fills in the input forms
 
@@ -150,9 +165,7 @@ export default {
           this.carrier = data.Carrier
         })
       })
-      .catch((error) => {
-        console.log('Error getting documents: ', error)
-      })
+
     // qr code picture
 
     const img = document.getElementById('qr-code')

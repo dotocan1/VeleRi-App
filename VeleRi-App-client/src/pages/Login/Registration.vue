@@ -1,8 +1,7 @@
 <template>
   <q-page>
         <q-form
-      @submit="onSubmit"
-      @reset="onReset"
+        @submit="registerUser"
     >
      <q-input
         filled
@@ -31,7 +30,7 @@
       />
 
       <div>
-        <q-btn label="Submit" type="submit" color="primary" @click="registerUser"/>
+        <q-btn label="Submit" type="submit" color="primary"/>
         <q-btn label="Reset" type="reset" color="primary" flat class="q-ml-sm" />
       </div>
     </q-form>
@@ -53,29 +52,8 @@ export default {
       this.$auth.createUserWithEmailAndPassword(this.email, this.password)
         .then((userCredential) => {
           // Signed in
-          const user = userCredential.user
-          console.log(user)
-          this.$router.push('/Administration')
-          // adding data to UsersData
-          this.$db.collection('UsersData').add({
-            Name: this.name,
-            Users_lastname: this.lastName,
-            UserId: this.$auth.currentUser.uid
-          })
-          // adding data to Menu
-          this.$db.collection('Menu').add({
-            Cabinet: '',
-            Carrier: '',
-            Consultations: '',
-            Email: this.email,
-            Telephone: '',
-            UserId: this.$auth.currentUser.uid,
-            isCabinet: true,
-            isCarrier: true,
-            isConsultations: true,
-            isEmail: true,
-            isTelephone: true
-          })
+          // this.$router.push('/Administration')
+
         })
     }
   }
