@@ -49,11 +49,35 @@ export default {
   },
   methods: {
     registerUser () {
+      this.$auth.signOut()
+
       this.$auth.createUserWithEmailAndPassword(this.email, this.password)
         .then((userCredential) => {
           // Signed in
-          // this.$router.push('/Administration')
-
+          this.$db.collection('UsersData').doc('usersDataId').set({
+            Name: this.name,
+            LastName: this.lastName,
+            Email: this.email,
+            Telephone: '',
+            Cabinet: '',
+            Consultations: '',
+            Carrier: '',
+            UserId: this.$auth.currentUser.uid
+          })
+            .then(() => {
+              this.$db.collection('Menu').doc('usersDataId').set({
+                isEmail: true,
+                isTelephone: true,
+                isCabinet: true,
+                isConsultations: true,
+                isCarrier: true,
+                UserId: this.$auth.currentUser.uid
+              })
+                .then(() => {
+                  console.log('Should push now ngl')
+                  this.$router.push('/Administration')
+                })
+            })
         })
     }
   }

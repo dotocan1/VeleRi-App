@@ -94,7 +94,7 @@ export default {
     },
     submit () {
       this.disabledInput = true
-      const docRef = this.$db.collection('UsersData').doc(this.Id)
+      const docRef = this.$db.collection('UsersData').doc(this.usersDataId)
 
       return docRef.update({
         Email: this.email,
