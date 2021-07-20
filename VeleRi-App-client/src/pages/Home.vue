@@ -1,6 +1,6 @@
 <template>
   <q-page>
-      <h3 class="q-mt-none">Ovdje su informacije o faksu</h3>
+      <h3 class="q-mt-none">Ovdje ce biti informacije o faksu</h3>
   </q-page>
 </template>
 

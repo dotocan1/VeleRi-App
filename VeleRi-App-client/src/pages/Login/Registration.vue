@@ -50,12 +50,16 @@ export default {
   },
   methods: {
     registerUser () {
+      function generateUID () {
+        return Math.random().toString(36).substr(2, 9)
+      }
+
       this.$auth.signOut()
 
       this.$auth.createUserWithEmailAndPassword(this.email, this.password)
         .then((userCredential) => {
           // Signed in
-          this.$db.collection('UsersData').doc('usersDataId').set({
+          this.$db.collection('UsersData').doc(generateUID()).set({
             Name: this.name,
             LastName: this.lastName,
             Email: this.email,
@@ -66,7 +70,7 @@ export default {
             UserId: this.$auth.currentUser.uid
           })
             .then(() => {
-              this.$db.collection('Menu').doc('usersDataId').set({
+              this.$db.collection('Menu').doc(generateUID()).set({
                 isEmail: true,
                 isTelephone: true,
                 isCabinet: true,
