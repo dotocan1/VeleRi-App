@@ -2,6 +2,7 @@
   <q-page>
         <q-form
         @submit="registerUser"
+        @reset="goBack"
     >
      <q-input
         filled
@@ -30,8 +31,8 @@
       />
 
       <div>
-        <q-btn label="Submit" type="submit" color="primary"/>
-        <q-btn label="Reset" type="reset" color="primary" flat class="q-ml-sm" />
+        <q-btn label="Potvrdi" type="submit" color="primary"/>
+        <q-btn label="Natrag" type="reset" color="primary" flat class="q-ml-sm" />
       </div>
     </q-form>
   </q-page>
@@ -79,6 +80,9 @@ export default {
                 })
             })
         })
+    },
+    goBack () {
+      this.$router.push('/')
     }
   }
 }
