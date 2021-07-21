@@ -15,22 +15,22 @@
                 <q-card-section>
                     <div>
                         <q-input
-                        filled
-                        type="email"
-                        v-model="email"
-                        label="Vas email"
-
-                        lazy-rules
-                        :rules="[ val => emailPattern.test(val) || 'Molim vas upisite valjani email']"
+                          filled
+                          v-model="email"
+                          label="Vas email"
+                          lazy-rules
+                          :rules="[val => !!val || 'Ovo polje ne moze ostati prazno',
+                          val => emailPattern.test(val) || 'Please type valid email']"
                         />
                         <q-input
-                        filled
-                        type="password"
-                        v-model="password"
-                        label="Sifra"
-
-                        lazy-rules
-                        :rules="[ val => val && val.length > 0 || 'Molim vas, upisite sifru']"
+                          filled
+                          type="password"
+                          v-model="password"
+                          label="Vasa sifra"
+                          lazy-rules
+                          :rules="[val => !!val || 'Ovo polje ne moze ostati prazno',
+                          val => val.length > 5 || 'Sifra mora sadrzavati barem 6 znamenka'
+                          ]"
                         />
             </div>
                 </q-card-section>
