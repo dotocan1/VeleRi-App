@@ -53,13 +53,21 @@
 
 </template>
 <script>
+
+import { useQuasar } from 'quasar'
+
 export default {
-  name: 'LoginIndex',
+  setup () {
+
+  },
+
   data () {
     return {
       emailPattern: /^(?=[a-zA-Z0-9@._%+-]{6,254}$)[a-zA-Z0-9._%+-]{1,64}@(?:[a-zA-Z0-9-]{1,63}\.){1,8}[a-zA-Z]{2,63}$/,
       email: null,
-      password: null
+      password: null,
+      q: useQuasar()
+
     }
   },
   mounted: function () {
@@ -71,14 +79,20 @@ export default {
     onLogin () {
       this.$auth.signInWithEmailAndPassword(this.email, this.password)
         .then(response => {
+          this.$q.notify({
+            type: 'Positive',
+            message: 'Uspjesna prijava'
+          })
           this.$router.push('/Administration')
         })
         .catch(error => {
           console.log(error)
           this.$q.notify({
             type: 'negative',
-            message: 'Login failed.'
+            message: 'Neuspjesna prijava'
           })
+
+          this.password = ''
         })
     }
   }

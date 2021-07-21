@@ -68,6 +68,7 @@
 <script>
 
 import { ref } from 'vue'
+import { useQuasar } from 'quasar'
 
 export default {
   data () {
@@ -84,7 +85,8 @@ export default {
       carrier: '',
       menuId: '',
       usersDataId: '',
-      disabledInput: true
+      disabledInput: true,
+      q: useQuasar()
     }
   },
   methods: {
@@ -103,6 +105,20 @@ export default {
         Consultations: this.consultations,
         Carrier: this.carrier
       })
+        .then(() => {
+          this.$q.notify({
+            type: 'Positive',
+            message: 'Podaci uspjesno spremljeni'
+          })
+        })
+        .catch((error) => {
+          // The document probably doesn't exist.
+          console.error('Error updating document: ', error)
+          this.$q.notify({
+            type: 'Negative',
+            message: 'Podaci nisu uspjesno spremljeni'
+          })
+        })
     },
     editForms () {
       this.disabledInput = false
