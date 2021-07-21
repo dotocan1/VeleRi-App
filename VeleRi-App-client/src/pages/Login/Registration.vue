@@ -9,18 +9,27 @@
         type="name"
         v-model="name"
         label="Vase ime"
+        lazy-rules
+        :rules="[val => !!val || 'Ovo polje ne moze ostati prazno',
+        ]"
         />
     <q-input
         filled
         type="lastName"
         v-model="lastName"
         label="Vase prezime"
+        lazy-rules
+        :rules="[val => !!val || 'Ovo polje ne moze ostati prazno',
+        ]"
         />
 
     <q-input
         filled
         v-model="email"
         label="Vas email"
+        lazy-rules
+        :rules="[val => !!val || 'Ovo polje ne moze ostati prazno',
+                val => emailPattern.test(val) || 'Please type valid email']"
       />
 
     <q-input
@@ -28,6 +37,10 @@
         type="password"
         v-model="password"
         label="Vasa sifra"
+        lazy-rules
+        :rules="[val => !!val || 'Ovo polje ne moze ostati prazno',
+        val => val.length > 5 || 'Sifra mora sadrzavati barem 6 znamenka'
+        ]"
       />
 
       <div>
@@ -45,7 +58,8 @@ export default {
       email: '',
       password: '',
       name: '',
-      lastName: ''
+      lastName: '',
+      emailPattern: /^(?=[a-zA-Z0-9@._%+-]{6,254}$)[a-zA-Z0-9._%+-]{1,64}@(?:[a-zA-Z0-9-]{1,63}\.){1,8}[a-zA-Z]{2,63}$/
     }
   },
   methods: {
