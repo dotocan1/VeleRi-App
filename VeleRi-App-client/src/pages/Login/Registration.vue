@@ -1,5 +1,12 @@
 <template>
   <q-page>
+    <div class="row wrap justify-center items-center content-center">
+      <div class="col q-ma-lg"  style="max-width: 400px">
+    <q-card>
+      <q-card-section>
+        <div class="text-h6">Registracija</div>
+      </q-card-section>
+      <q-card-section>
         <q-form
         @submit="registerUser"
         @reset="goBack"
@@ -43,11 +50,15 @@
         ]"
       />
 
-      <div>
+      <q-card-actions>
         <q-btn label="Potvrdi" type="submit" color="primary"/>
         <q-btn label="Natrag" type="reset" color="primary" flat class="q-ml-sm" />
-      </div>
+      </q-card-actions>
     </q-form>
+      </q-card-section>
+    </q-card>
+  </div>
+</div>
   </q-page>
 </template>
 
