@@ -107,7 +107,7 @@ export default {
       })
         .then(() => {
           this.$q.notify({
-            type: 'Positive',
+            type: 'positive',
             message: 'Podaci uspjesno spremljeni'
           })
         })
@@ -115,7 +115,7 @@ export default {
           // The document probably doesn't exist.
           console.error('Error updating document: ', error)
           this.$q.notify({
-            type: 'Negative',
+            type: 'negative',
             message: 'Podaci nisu uspjesno spremljeni'
           })
         })
@@ -136,6 +136,20 @@ export default {
         isConsultations: this.consultationsCB,
         isCarrier: this.carrierCB
       })
+        .then(() => {
+          this.$q.notify({
+            type: 'positive',
+            message: 'Podaci uspjesno spremljeni'
+          })
+        })
+        .catch((error) => {
+          // The document probably doesn't exist.
+          console.error('Error updating document: ', error)
+          this.$q.notify({
+            type: 'negative',
+            message: 'Podaci nisu uspjesno spremljeni'
+          })
+        })
     }
 
   },

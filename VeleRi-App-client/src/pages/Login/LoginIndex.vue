@@ -80,7 +80,7 @@ export default {
       this.$auth.signInWithEmailAndPassword(this.email, this.password)
         .then(response => {
           this.$q.notify({
-            type: 'Positive',
+            type: 'positive',
             message: 'Uspjesna prijava'
           })
           this.$router.push('/Administration')
