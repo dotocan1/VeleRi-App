@@ -37,7 +37,7 @@
 <!-- Konfiguriranje vidljivih podataka: -->
 <div class="row">
   <div class="col-10">
-      <h4 class="text-h4 q-mt-md">Omogucite vidljivost podataka:</h4>
+      <h4 class="text-h4 q-mt-md">Omogućite vidljivost podataka:</h4>
   </div>
   <div class="col-12">
     <q-checkbox v-model="emailCB" label="Vidljiv email" @click="submitCheckboxes"/>
@@ -58,7 +58,7 @@
   <div class="row">
     <h4 class="text-h4 q-mt-md col-12">Pripadni QR kod:</h4>
     <img id="qr-code" class="col-6 justify-center items-center" alt="">
-    <a id="img-download" download="qr-code.png">Download image</a>
+    <a id="img-download" download="qr-code.png">Preuzmite sliku</a>
   </div>
 </div>
 </q-page>
@@ -108,7 +108,7 @@ export default {
         .then(() => {
           this.$q.notify({
             type: 'positive',
-            message: 'Podaci uspjesno spremljeni'
+            message: 'Podaci uspješno spremljeni'
           })
         })
         .catch((error) => {
@@ -116,7 +116,7 @@ export default {
           console.error('Error updating document: ', error)
           this.$q.notify({
             type: 'negative',
-            message: 'Podaci nisu uspjesno spremljeni'
+            message: 'Podaci nisu uspješno spremljeni'
           })
         })
     },
@@ -139,7 +139,7 @@ export default {
         .then(() => {
           this.$q.notify({
             type: 'positive',
-            message: 'Podaci uspjesno spremljeni'
+            message: 'Podaci uspješno spremljeni'
           })
         })
         .catch((error) => {
@@ -147,7 +147,7 @@ export default {
           console.error('Error updating document: ', error)
           this.$q.notify({
             type: 'negative',
-            message: 'Podaci nisu uspjesno spremljeni'
+            message: 'Podaci nisu uspješno spremljeni'
           })
         })
     }

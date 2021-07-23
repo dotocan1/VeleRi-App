@@ -19,17 +19,17 @@
                           v-model="email"
                           label="Vas email"
                           lazy-rules
-                          :rules="[val => !!val || 'Ovo polje ne moze ostati prazno',
+                          :rules="[val => !!val || 'Ovo polje ne može ostati prazno',
                           val => emailPattern.test(val) || 'Please type valid email']"
                         />
                         <q-input
                           filled
                           type="password"
                           v-model="password"
-                          label="Vasa sifra"
+                          label="Vasa šifra"
                           lazy-rules
-                          :rules="[val => !!val || 'Ovo polje ne moze ostati prazno',
-                          val => val.length > 5 || 'Sifra mora sadrzavati barem 6 znamenka'
+                          :rules="[val => !!val || 'Ovo polje ne može ostati prazno',
+                          val => val.length > 5 || 'Šifra mora sadrzavati barem 6 znamenka'
                           ]"
                         />
             </div>
@@ -81,7 +81,7 @@ export default {
         .then(response => {
           this.$q.notify({
             type: 'positive',
-            message: 'Uspjesna prijava'
+            message: 'Uspješna prijava'
           })
           this.$router.push('/Administration')
         })
@@ -89,7 +89,7 @@ export default {
           console.log(error)
           this.$q.notify({
             type: 'negative',
-            message: 'Neuspjesna prijava'
+            message: 'Neuspješna prijava'
           })
 
           this.password = ''
