@@ -1,43 +1,40 @@
 <template>
-<q-page><div class="row">
-  <div>
-      <q-btn
-  @click="logout"
-  >Sign out
-      </q-btn>
-  </div>
-</div>
+<q-page>
 <!-- Konfiguriranje podataka -->
-<div class="row">
-  <div class="col-10">
-      <h4 class="text-h4 q-mt-md">Unesite osobne podatke:</h4>
-  </div>
-  <div class="col-12 q-mb-md">
+<div class="row justify-center q-pa-md">
+<div
+  class="col-12"
+  style="max-width:400px"
+>
+<q-card
+  style="max-width: 400px">
+  <q-card-section>
+    <div class="text-h5 q-mt-md">Unesite osobne podatke:</div>
+  </q-card-section>
+  <q-card-section>
     <q-input outlined v-model="email" label="Unesite email" :disable="disabledInput"/>
-  </div>
-  <div class="col-12 q-mb-md">
-    <q-input outlined v-model="telephone" label="Unesite broj telefona" :disable="disabledInput"/>
-  </div>
-  <div class="col-12 q-mb-md">
-    <q-input outlined v-model="cabinet" label="Unesite pripadni kabinet" :disable="disabledInput"/>
-  </div>
-  <div class="col-12 q-mb-md">
-    <q-input outlined v-model="carrier" label="Unesite kolegije gdje je profesor nositelj" :disable="disabledInput"/>
-  </div>
-  <div class="col-2 q-mb-md">
+    <q-input class="q-mt-sm" outlined v-model="telephone" label="Unesite broj telefona" :disable="disabledInput"/>
+    <q-input class="q-mt-sm" outlined v-model="cabinet" label="Unesite pripadni kabinet" :disable="disabledInput"/>
+    <q-input class="q-mt-sm" outlined v-model="carrier" label="Unesite kolegije gdje je profesor nositelj" :disable="disabledInput"/>
+  </q-card-section>
+  <q-card-actions
+  align="right">
     <q-btn
-    @click="submit">Spremi</q-btn>
-  </div>
-  <div class="col-1 q-ml-md">
+    color="primary"
+    @click="submit"
+    label="Spremi"/>
     <q-btn
+    color="primary"
     @click="editForms"
-    >Izmijeni</q-btn>
-  </div>
+    label="Izmijeni"/>
+  </q-card-actions>
+</q-card>
+</div>
 </div>
 <!-- Konfiguriranje vidljivih podataka: -->
 <div class="row">
   <div class="col-10">
-      <h4 class="text-h4 q-mt-md">Omogućite vidljivost podataka:</h4>
+      <div class="text-h5 q-mt-md">Omogućite vidljivost podataka:</div>
   </div>
   <div class="col-12">
     <q-checkbox v-model="emailCB" label="Vidljiv email" @click="submitCheckboxes"/>
@@ -61,6 +58,10 @@
     <a id="img-download" download="qr-code.png">Preuzmite sliku</a>
   </div>
 </div>
+<q-btn
+  @click="logout"
+  label="Odjava"
+  class="background-color-white q-mt-md q-ml-sm"/>
 </q-page>
 
 </template>
@@ -210,5 +211,7 @@ export default {
 
 <style lang="sass" scoped>
 .q-page
+  background: linear-gradient(to top, #373b44, #4286f4)
+.background-color-white
   background: white
 </style>
