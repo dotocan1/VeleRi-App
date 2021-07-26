@@ -1,11 +1,11 @@
 <template>
 <q-page>
 <!-- Banner -->
-   <div class="q-pa-md q-gutter-sm">
+  <div class="q-pa-md q-gutter-sm">
     <q-banner class="bg-red-7 text-black">
       <div class="text-h5">Dobrodošli nazad, {{name}} {{lastName}}!</div>
     </q-banner>
-</div>
+  </div>
 <!-- Konfiguriranje podataka -->
 <div class="row justify-center q-pa-md">
   <div
@@ -36,7 +36,7 @@
         label="Izmijeni"/>
     </q-card-actions>
   </q-card>
-</div>
+
 <!-- Konfiguriranje vidljivih podataka: -->
 
 <div
@@ -48,19 +48,19 @@
     <q-card-section>
     <div class="text-h5 q-mt-md">Odredite vidljivost podataka:</div>
     </q-card-section>
-    <div class="col-12">
+    <div>
       <q-checkbox v-model="emailCB" label="Vidljiv email" @click="submitCheckboxes"/>
     </div>
-    <div class="col-12">
+    <div>
       <q-checkbox v-model="telephoneCB" label="Vidljiv broj telefona" @click="submitCheckboxes" />
     </div>
-    <div class="col-12">
+    <div>
       <q-checkbox v-model="cabinetCB" label="Vidljiv kabinet" @click="submitCheckboxes"/>
     </div>
-    <div class="col-12">
+    <div>
       <q-checkbox v-model="consultationsCB" label="Vidljivo vrijeme konzultacija" @click="submitCheckboxes"/>
     </div>
-    <div class="col-12">
+    <div>
       <q-checkbox v-model="carrierCB" label="Vidljive informacije o nositelju kolegija" @click="submitCheckboxes"/>
     </div>
     </q-card>
@@ -85,8 +85,8 @@
   @click="logout"
   label="Odjava"
   class="background-color-white q-mt-md q-ml-sm"/>
+</div>
 </q-page>
-
 </template>
 
 <script>
@@ -121,6 +121,8 @@ export default {
         .then(this.$router.push('/'))
     },
     submit () {
+      this.$q.loadingBar.start()
+
       this.disabledInput = true
       const docRef = this.$db.collection('UsersData').doc(this.usersDataId)
 
@@ -132,12 +134,14 @@ export default {
         Carrier: this.carrier
       })
         .then(() => {
+          this.$q.loadingBar.stop()
           this.$q.notify({
             type: 'positive',
             message: 'Podaci uspješno spremljeni'
           })
         })
         .catch((error) => {
+          this.$q.loadingBar.stop()
           // The document probably doesn't exist.
           console.error('Error updating document: ', error)
           this.$q.notify({

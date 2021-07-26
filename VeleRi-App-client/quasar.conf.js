@@ -86,7 +86,15 @@ module.exports = configure(function (ctx) {
 
     // https://v2.quasar.dev/quasar-cli/quasar-conf-js#Property%3A-framework
     framework: {
-      config: { notify: 'message' },
+      config: {
+        loadingBar: {
+          skipHijack: true,
+          color: 'blue',
+          size: '15px',
+          position: 'bottom'
+        },
+        notify: 'message'
+      },
 
       // iconSet: 'material-icons', // Quasar icon set
       // lang: 'en-US', // Quasar language pack
@@ -99,7 +107,7 @@ module.exports = configure(function (ctx) {
       // directives: [],
 
       // Quasar plugins
-      plugins: ['Notify']
+      plugins: ['Notify', 'LoadingBar']
     },
 
     // animations: 'all', // --- includes all animations

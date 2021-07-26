@@ -17,7 +17,7 @@
                         <q-input
                           filled
                           v-model="email"
-                          label="Vas email"
+                          label="Vaš email"
                           lazy-rules
                           :rules="[val => !!val || 'Ovo polje ne može ostati prazno',
                           val => emailPattern.test(val) || 'Please type valid email']"
@@ -26,7 +26,7 @@
                           filled
                           type="password"
                           v-model="password"
-                          label="Vasa šifra"
+                          label="Vaša šifra"
                           lazy-rules
                           :rules="[val => !!val || 'Ovo polje ne može ostati prazno',
                           val => val.length > 5 || 'Šifra mora sadrzavati barem 6 znamenka'
@@ -77,8 +77,11 @@ export default {
   },
   methods: {
     onLogin () {
+      this.$q.loadingBar.start()
+
       this.$auth.signInWithEmailAndPassword(this.email, this.password)
         .then(response => {
+          this.$q.loadingBar.stop()
           this.$q.notify({
             type: 'positive',
             message: 'Uspješna prijava'
@@ -87,6 +90,9 @@ export default {
         })
         .catch(error => {
           console.log(error)
+
+          this.$q.loadingBar.stop()
+
           this.$q.notify({
             type: 'negative',
             message: 'Neuspješna prijava'

@@ -15,7 +15,7 @@
         filled
         type="name"
         v-model="name"
-        label="Vase ime"
+        label="Vaše ime"
         lazy-rules
         :rules="[val => !!val || 'Ovo polje ne moze ostati prazno',
         ]"
@@ -24,7 +24,7 @@
         filled
         type="lastName"
         v-model="lastName"
-        label="Vase prezime"
+        label="Vaše prezime"
         lazy-rules
         :rules="[val => !!val || 'Ovo polje ne moze ostati prazno',
         ]"
@@ -33,7 +33,7 @@
     <q-input
         filled
         v-model="email"
-        label="Vas email"
+        label="Vaš email"
         lazy-rules
         :rules="[val => !!val || 'Ovo polje ne moze ostati prazno',
                 val => emailPattern.test(val) || 'Please type valid email']"
@@ -43,7 +43,7 @@
         filled
         type="password"
         v-model="password"
-        label="Vasa sifra"
+        label="Vaša sifra"
         lazy-rules
         :rules="[val => !!val || 'Ovo polje ne moze ostati prazno',
         val => val.length > 5 || 'Sifra mora sadrzavati barem 6 znamenka'
@@ -63,6 +63,9 @@
 </template>
 
 <script>
+
+import { useQuasar } from 'quasar'
+
 export default {
   data () {
     return {
@@ -70,14 +73,18 @@ export default {
       password: '',
       name: '',
       lastName: '',
-      emailPattern: /^(?=[a-zA-Z0-9@._%+-]{6,254}$)[a-zA-Z0-9._%+-]{1,64}@(?:[a-zA-Z0-9-]{1,63}\.){1,8}[a-zA-Z]{2,63}$/
+      emailPattern: /^(?=[a-zA-Z0-9@._%+-]{6,254}$)[a-zA-Z0-9._%+-]{1,64}@(?:[a-zA-Z0-9-]{1,63}\.){1,8}[a-zA-Z]{2,63}$/,
+      q: useQuasar()
     }
   },
   methods: {
+
     registerUser () {
       function generateUID () {
         return Math.random().toString(36).substr(2, 9)
       }
+
+      this.$q.loadingBar.start()
 
       this.$auth.signOut()
 
@@ -104,7 +111,7 @@ export default {
                 UserId: this.$auth.currentUser.uid
               })
                 .then(() => {
-                  console.log('Should push now ngl')
+                  this.$q.loadingBar.stop()
                   this.$router.push('/Administration')
                 })
             })

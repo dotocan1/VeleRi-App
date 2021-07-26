@@ -14,8 +14,8 @@ var es_string_replace = __webpack_require__(5363);
 var web_dom_collections_iterator = __webpack_require__(71);
 // EXTERNAL MODULE: ./node_modules/@vue/runtime-dom/dist/runtime-dom.esm-bundler.js
 var runtime_dom_esm_bundler = __webpack_require__(8880);
-// EXTERNAL MODULE: ./node_modules/quasar/src/vue-plugin.js + 13 modules
-var vue_plugin = __webpack_require__(4345);
+// EXTERNAL MODULE: ./node_modules/quasar/src/vue-plugin.js
+var vue_plugin = __webpack_require__(9592);
 // EXTERNAL MODULE: ./node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.js
 var runtime_core_esm_bundler = __webpack_require__(3673);
 ;// CONCATENATED MODULE: ./node_modules/@quasar/app/lib/webpack/loader.js.transform-quasar-imports.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-2.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@quasar/app/lib/webpack/loader.vue.auto-import-quasar.js??ruleSet[0].use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[1]!./src/App.vue?vue&type=template&id=37c7742a
@@ -50,10 +50,10 @@ const routes = [{
   component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(712)]).then(__webpack_require__.bind(__webpack_require__, 4712)),
   children: [{
     path: '/Login',
-    component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(862)]).then(__webpack_require__.bind(__webpack_require__, 7862))
+    component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(573)]).then(__webpack_require__.bind(__webpack_require__, 2573))
   }, {
     path: '/Registration',
-    component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(95)]).then(__webpack_require__.bind(__webpack_require__, 95))
+    component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(97)]).then(__webpack_require__.bind(__webpack_require__, 7097))
   }]
 }, {
   path: '/',
@@ -66,13 +66,13 @@ const routes = [{
     component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(189)]).then(__webpack_require__.bind(__webpack_require__, 8189))
   }, {
     path: '/',
-    component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(228)]).then(__webpack_require__.bind(__webpack_require__, 3228))
+    component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(957)]).then(__webpack_require__.bind(__webpack_require__, 7957))
   }, {
     path: '/QRCodeScanner',
     component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(720)]).then(__webpack_require__.bind(__webpack_require__, 7720))
   }, {
     path: '/Administration',
-    component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(726)]).then(__webpack_require__.bind(__webpack_require__, 726))
+    component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(724)]).then(__webpack_require__.bind(__webpack_require__, 8724))
   }]
 }, // Always leave this as last one,
 // but you can also remove it
@@ -178,6 +178,8 @@ const isUserLoggedIn = () => {
     router
   };
 }
+// EXTERNAL MODULE: ./node_modules/quasar/src/plugins/Notify.js + 1 modules
+var Notify = __webpack_require__(9140);
 ;// CONCATENATED MODULE: ./.quasar/quasar-user-options.js
 /**
  * THIS FILE IS GENERATED AUTOMATICALLY.
@@ -190,8 +192,14 @@ const isUserLoggedIn = () => {
  *
  * Boot files are your "main.js"
  **/
+;
 /* harmony default export */ const quasar_user_options = ({
-  config: {}
+  config: {
+    "notify": "message"
+  },
+  plugins: {
+    Notify: Notify/* default */.Z
+  }
 });
 ;// CONCATENATED MODULE: ./.quasar/client-entry.js
 
@@ -605,7 +613,7 @@ const api = axios__WEBPACK_IMPORTED_MODULE_1___default().create({
 /******/ 		};
 /******/ 		
 /******/ 		__webpack_require__.f.miniCss = (chunkId, promises) => {
-/******/ 			var cssChunks = {"95":1,"189":1,"228":1,"720":1,"726":1,"862":1,"934":1};
+/******/ 			var cssChunks = {"97":1,"189":1,"573":1,"720":1,"724":1,"934":1,"957":1};
 /******/ 			if(installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
 /******/ 			else if(installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
 /******/ 				promises.push(installedCssChunks[chunkId] = loadStylesheet(chunkId).then(() => {

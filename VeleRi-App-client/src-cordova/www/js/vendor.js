@@ -21136,6 +21136,7 @@ module.exports = function qInstall (component, type, items) {
 /* harmony export */   "X3": () => (/* binding */ isProxy),
 /* harmony export */   "PG": () => (/* binding */ isReactive),
 /* harmony export */   "dq": () => (/* binding */ isRef),
+/* harmony export */   "Xl": () => (/* binding */ markRaw),
 /* harmony export */   "Jd": () => (/* binding */ pauseTracking),
 /* harmony export */   "WL": () => (/* binding */ proxyRefs),
 /* harmony export */   "qj": () => (/* binding */ reactive),
@@ -21150,7 +21151,7 @@ module.exports = function qInstall (component, type, items) {
 /* harmony export */   "X$": () => (/* binding */ trigger),
 /* harmony export */   "SU": () => (/* binding */ unref)
 /* harmony export */ });
-/* unused harmony exports ITERATE_KEY, customRef, enableTracking, isReadonly, markRaw, readonly, shallowReadonly, toRefs, triggerRef */
+/* unused harmony exports ITERATE_KEY, customRef, enableTracking, isReadonly, readonly, shallowReadonly, toRefs, triggerRef */
 /* harmony import */ var _vue_shared__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2323);
 
 
@@ -21854,7 +21855,7 @@ function toRaw(observed) {
     return ((observed && toRaw(observed["__v_raw" /* RAW */])) || observed);
 }
 function markRaw(value) {
-    def(value, "__v_skip" /* SKIP */, true);
+    (0,_vue_shared__WEBPACK_IMPORTED_MODULE_0__/* .def */ .Nj)(value, "__v_skip" /* SKIP */, true);
     return value;
 }
 
@@ -29093,9 +29094,10 @@ const compatUtils = (null);
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "uT": () => (/* binding */ Transition),
+/* harmony export */   "W3": () => (/* binding */ TransitionGroup),
 /* harmony export */   "ri": () => (/* binding */ createApp)
 /* harmony export */ });
-/* unused harmony exports TransitionGroup, createSSRApp, hydrate, render, useCssModule, useCssVars, vModelCheckbox, vModelDynamic, vModelRadio, vModelSelect, vModelText, vShow, withKeys, withModifiers */
+/* unused harmony exports createSSRApp, hydrate, render, useCssModule, useCssVars, vModelCheckbox, vModelDynamic, vModelRadio, vModelSelect, vModelText, vShow, withKeys, withModifiers */
 /* harmony import */ var _vue_shared__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2323);
 /* harmony import */ var _vue_runtime_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3673);
 /* harmony import */ var _vue_runtime_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(1959);
@@ -29945,7 +29947,7 @@ const TransitionGroupImpl = {
         };
     }
 };
-const TransitionGroup = (/* unused pure expression or super */ null && (TransitionGroupImpl));
+const TransitionGroup = TransitionGroupImpl;
 function callPendingCbs(c) {
     const el = c.el;
     if (el._moveCb) {
@@ -32923,6 +32925,58 @@ module.exports.default = module.exports, module.exports.__esModule = true;
         class: 'q-avatar__content row flex-center overflow-hidden',
         style: contentStyle.value
       }, (0,_utils_private_render_js__WEBPACK_IMPORTED_MODULE_4__/* .hMergeSlotSafely */ .pf)(slots.default, icon))]);
+    };
+  }
+
+}));
+
+/***/ }),
+
+/***/ 5607:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _home_th0tminik_VeleRi_App_VeleRi_App_client_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(515);
+/* harmony import */ var _home_th0tminik_VeleRi_App_VeleRi_App_client_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_home_th0tminik_VeleRi_App_VeleRi_App_client_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(3673);
+/* harmony import */ var _composables_private_use_dark_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2236);
+/* harmony import */ var _utils_private_render_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(7657);
+
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,vue__WEBPACK_IMPORTED_MODULE_2__/* .defineComponent */ .aZ)({
+  name: 'QBanner',
+  props: _home_th0tminik_VeleRi_App_VeleRi_App_client_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0___default()(_home_th0tminik_VeleRi_App_VeleRi_App_client_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0___default()({}, _composables_private_use_dark_js__WEBPACK_IMPORTED_MODULE_1__/* .useDarkProps */ .S), {}, {
+    inlineActions: Boolean,
+    dense: Boolean,
+    rounded: Boolean
+  }),
+
+  setup(props, {
+    slots
+  }) {
+    const vm = (0,vue__WEBPACK_IMPORTED_MODULE_2__/* .getCurrentInstance */ .FN)();
+    const isDark = (0,_composables_private_use_dark_js__WEBPACK_IMPORTED_MODULE_1__/* .default */ .Z)(props, vm.proxy.$q);
+    const classes = (0,vue__WEBPACK_IMPORTED_MODULE_2__/* .computed */ .Fl)(() => 'q-banner row items-center' + (props.dense === true ? ' q-banner--dense' : '') + (isDark.value === true ? ' q-banner--dark q-dark' : '') + (props.rounded === true ? ' rounded-borders' : ''));
+    const actionClass = (0,vue__WEBPACK_IMPORTED_MODULE_2__/* .computed */ .Fl)(() => 'q-banner__actions row items-center justify-end' + ` col-${props.inlineActions === true ? 'auto' : 'all'}`);
+    return () => {
+      const child = [(0,vue__WEBPACK_IMPORTED_MODULE_2__.h)('div', {
+        class: 'q-banner__avatar col-auto row items-center self-start'
+      }, (0,_utils_private_render_js__WEBPACK_IMPORTED_MODULE_3__/* .hSlot */ .KR)(slots.avatar)), (0,vue__WEBPACK_IMPORTED_MODULE_2__.h)('div', {
+        class: 'q-banner__content col text-body2'
+      }, (0,_utils_private_render_js__WEBPACK_IMPORTED_MODULE_3__/* .hSlot */ .KR)(slots.default))];
+      const actions = (0,_utils_private_render_js__WEBPACK_IMPORTED_MODULE_3__/* .hSlot */ .KR)(slots.action);
+      actions !== void 0 && child.push((0,vue__WEBPACK_IMPORTED_MODULE_2__.h)('div', {
+        class: actionClass.value
+      }, actions));
+      return (0,vue__WEBPACK_IMPORTED_MODULE_2__.h)('div', {
+        class: classes.value + (props.inlineActions === false && actions !== void 0 ? ' q-banner--top-padding' : ''),
+        role: 'alert'
+      }, child);
     };
   }
 
@@ -37771,6 +37825,1546 @@ const useSizeProps = {
 
 /***/ }),
 
+/***/ 8825:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": () => (/* binding */ useQuasar)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3673);
+/* harmony import */ var _utils_private_symbols_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2547);
+
+
+/**
+ * Returns the $q instance.
+ * Equivalent to `this.$q` inside templates.
+ */
+
+function useQuasar() {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__/* .inject */ .f3)(_utils_private_symbols_js__WEBPACK_IMPORTED_MODULE_1__/* .quasarKey */ .Ng);
+}
+
+/***/ }),
+
+/***/ 4705:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  "Z": () => (/* binding */ icon_set)
+});
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/objectSpread2.js
+var objectSpread2 = __webpack_require__(515);
+var objectSpread2_default = /*#__PURE__*/__webpack_require__.n(objectSpread2);
+// EXTERNAL MODULE: ./node_modules/quasar/src/utils/private/define-reactive-plugin.js
+var define_reactive_plugin = __webpack_require__(2002);
+;// CONCATENATED MODULE: ./node_modules/quasar/icon-set/material-icons.js
+/* harmony default export */ const material_icons = ({
+  name: 'material-icons',
+  type: {
+    positive: 'check_circle',
+    negative: 'warning',
+    info: 'info',
+    warning: 'priority_high'
+  },
+  arrow: {
+    up: 'arrow_upward',
+    right: 'arrow_forward',
+    down: 'arrow_downward',
+    left: 'arrow_back',
+    dropdown: 'arrow_drop_down'
+  },
+  chevron: {
+    left: 'chevron_left',
+    right: 'chevron_right'
+  },
+  colorPicker: {
+    spectrum: 'gradient',
+    tune: 'tune',
+    palette: 'style'
+  },
+  pullToRefresh: {
+    icon: 'refresh'
+  },
+  carousel: {
+    left: 'chevron_left',
+    right: 'chevron_right',
+    up: 'keyboard_arrow_up',
+    down: 'keyboard_arrow_down',
+    navigationIcon: 'lens'
+  },
+  chip: {
+    remove: 'cancel',
+    selected: 'check'
+  },
+  datetime: {
+    arrowLeft: 'chevron_left',
+    arrowRight: 'chevron_right',
+    now: 'access_time',
+    today: 'today'
+  },
+  editor: {
+    bold: 'format_bold',
+    italic: 'format_italic',
+    strikethrough: 'strikethrough_s',
+    underline: 'format_underlined',
+    unorderedList: 'format_list_bulleted',
+    orderedList: 'format_list_numbered',
+    subscript: 'vertical_align_bottom',
+    superscript: 'vertical_align_top',
+    hyperlink: 'link',
+    toggleFullscreen: 'fullscreen',
+    quote: 'format_quote',
+    left: 'format_align_left',
+    center: 'format_align_center',
+    right: 'format_align_right',
+    justify: 'format_align_justify',
+    print: 'print',
+    outdent: 'format_indent_decrease',
+    indent: 'format_indent_increase',
+    removeFormat: 'format_clear',
+    formatting: 'text_format',
+    fontSize: 'format_size',
+    align: 'format_align_left',
+    hr: 'remove',
+    undo: 'undo',
+    redo: 'redo',
+    heading: 'format_size',
+    code: 'code',
+    size: 'format_size',
+    font: 'font_download',
+    viewSource: 'code'
+  },
+  expansionItem: {
+    icon: 'keyboard_arrow_down',
+    denseIcon: 'arrow_drop_down'
+  },
+  fab: {
+    icon: 'add',
+    activeIcon: 'close'
+  },
+  field: {
+    clear: 'cancel',
+    error: 'error'
+  },
+  pagination: {
+    first: 'first_page',
+    prev: 'keyboard_arrow_left',
+    next: 'keyboard_arrow_right',
+    last: 'last_page'
+  },
+  rating: {
+    icon: 'grade'
+  },
+  stepper: {
+    done: 'check',
+    active: 'edit',
+    error: 'warning'
+  },
+  tabs: {
+    left: 'chevron_left',
+    right: 'chevron_right',
+    up: 'keyboard_arrow_up',
+    down: 'keyboard_arrow_down'
+  },
+  table: {
+    arrowUp: 'arrow_upward',
+    warning: 'warning',
+    firstPage: 'first_page',
+    prevPage: 'chevron_left',
+    nextPage: 'chevron_right',
+    lastPage: 'last_page'
+  },
+  tree: {
+    icon: 'play_arrow'
+  },
+  uploader: {
+    done: 'done',
+    clear: 'clear',
+    add: 'add_box',
+    upload: 'cloud_upload',
+    removeQueue: 'clear_all',
+    removeUploaded: 'done_all'
+  }
+});
+;// CONCATENATED MODULE: ./node_modules/quasar/src/icon-set.js
+
+
+
+const Plugin = (0,define_reactive_plugin/* default */.Z)({
+  iconMapFn: null,
+  __icons: {}
+}, {
+  set(setObject, ssrContext) {
+    const def = objectSpread2_default()(objectSpread2_default()({}, setObject), {}, {
+      rtl: setObject.rtl === true
+    });
+
+    if (false) {} else {
+      def.set = Plugin.set;
+      Object.assign(Plugin.__icons, def);
+    }
+  },
+
+  install({
+    $q,
+    iconSet,
+    ssrContext
+  }) {
+    if (false) {} else {
+      if ($q.config.iconMapFn !== void 0) {
+        this.iconMapFn = $q.config.iconMapFn;
+      }
+
+      $q.iconSet = this.__icons;
+      Object.defineProperty($q, 'iconMapFn', {
+        get: () => this.iconMapFn,
+        set: val => {
+          this.iconMapFn = val;
+        }
+      });
+
+      if (this.__installed === true) {
+        iconSet !== void 0 && this.set(iconSet);
+      } else {
+        this.set(iconSet || material_icons);
+      }
+    }
+  }
+
+});
+/* harmony default export */ const icon_set = (Plugin);
+
+/***/ }),
+
+/***/ 5251:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  "$": () => (/* binding */ createChildApp),
+  "Z": () => (/* binding */ install_quasar)
+});
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/objectSpread2.js
+var objectSpread2 = __webpack_require__(515);
+var objectSpread2_default = /*#__PURE__*/__webpack_require__.n(objectSpread2);
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/objectWithoutProperties.js
+var objectWithoutProperties = __webpack_require__(9119);
+var objectWithoutProperties_default = /*#__PURE__*/__webpack_require__.n(objectWithoutProperties);
+// EXTERNAL MODULE: ./node_modules/@vue/runtime-dom/dist/runtime-dom.esm-bundler.js
+var runtime_dom_esm_bundler = __webpack_require__(8880);
+// EXTERNAL MODULE: ./node_modules/quasar/src/plugins/Platform.js
+var Platform = __webpack_require__(4688);
+// EXTERNAL MODULE: ./node_modules/quasar/src/utils/private/define-reactive-plugin.js
+var define_reactive_plugin = __webpack_require__(2002);
+// EXTERNAL MODULE: ./node_modules/quasar/src/utils/event.js
+var utils_event = __webpack_require__(4716);
+;// CONCATENATED MODULE: ./node_modules/quasar/src/utils/debounce.js
+/* harmony default export */ function debounce(fn, wait = 250, immediate) {
+  let timeout;
+
+  function debounced()
+  /* ...args */
+  {
+    const args = arguments;
+
+    const later = () => {
+      timeout = void 0;
+
+      if (immediate !== true) {
+        fn.apply(this, args);
+      }
+    };
+
+    clearTimeout(timeout);
+
+    if (immediate === true && timeout === void 0) {
+      fn.apply(this, args);
+    }
+
+    timeout = setTimeout(later, wait);
+  }
+
+  debounced.cancel = () => {
+    clearTimeout(timeout);
+  };
+
+  return debounced;
+}
+;// CONCATENATED MODULE: ./node_modules/quasar/src/plugins/Screen.js
+
+
+
+
+const SIZE_LIST = ['sm', 'md', 'lg', 'xl'];
+const {
+  passive
+} = utils_event/* listenOpts */.rU;
+/* harmony default export */ const Screen = ((0,define_reactive_plugin/* default */.Z)({
+  width: 0,
+  height: 0,
+  name: 'xs',
+  sizes: {
+    sm: 600,
+    md: 1024,
+    lg: 1440,
+    xl: 1920
+  },
+  lt: {
+    sm: true,
+    md: true,
+    lg: true,
+    xl: true
+  },
+  gt: {
+    xs: false,
+    sm: false,
+    md: false,
+    lg: false
+  },
+  xs: true,
+  sm: false,
+  md: false,
+  lg: false,
+  xl: false
+}, {
+  setSizes: utils_event/* noop */.ZT,
+  setDebounce: utils_event/* noop */.ZT,
+
+  install({
+    $q,
+    onSSRHydrated
+  }) {
+    $q.screen = this;
+
+    if (false) {}
+
+    if (this.__installed === true) {
+      if ($q.config.screen !== void 0) {
+        if ($q.config.screen.bodyClasses === false) {
+          document.body.classList.remove(`screen--${this.name}`);
+        } else {
+          this.__update(true);
+        }
+      }
+
+      return;
+    }
+
+    const classes = $q.config.screen !== void 0 && $q.config.screen.bodyClasses === true;
+
+    this.__update = force => {
+      const w = window.innerWidth,
+            h = window.innerHeight;
+
+      if (h !== this.height) {
+        this.height = h;
+      }
+
+      if (w !== this.width) {
+        this.width = w;
+      } else if (force !== true) {
+        return;
+      }
+
+      let s = this.sizes;
+      this.gt.xs = w >= s.sm;
+      this.gt.sm = w >= s.md;
+      this.gt.md = w >= s.lg;
+      this.gt.lg = w >= s.xl;
+      this.lt.sm = w < s.sm;
+      this.lt.md = w < s.md;
+      this.lt.lg = w < s.lg;
+      this.lt.xl = w < s.xl;
+      this.xs = this.lt.sm;
+      this.sm = this.gt.xs === true && this.lt.md === true;
+      this.md = this.gt.sm === true && this.lt.lg === true;
+      this.lg = this.gt.md === true && this.lt.xl === true;
+      this.xl = this.gt.lg;
+      s = this.xs === true && 'xs' || this.sm === true && 'sm' || this.md === true && 'md' || this.lg === true && 'lg' || 'xl';
+
+      if (s !== this.name) {
+        if (classes === true) {
+          document.body.classList.remove(`screen--${this.name}`);
+          document.body.classList.add(`screen--${s}`);
+        }
+
+        this.name = s;
+      }
+    };
+
+    let updateEvt,
+        updateSizes = {},
+        updateDebounce = 16;
+
+    this.setSizes = sizes => {
+      SIZE_LIST.forEach(name => {
+        if (sizes[name] !== void 0) {
+          updateSizes[name] = sizes[name];
+        }
+      });
+    };
+
+    this.setDebounce = deb => {
+      updateDebounce = deb;
+    };
+
+    const start = () => {
+      const style = getComputedStyle(document.body),
+            target = window.visualViewport !== void 0 ? window.visualViewport : window; // if css props available
+
+      if (style.getPropertyValue('--q-size-sm')) {
+        SIZE_LIST.forEach(name => {
+          this.sizes[name] = parseInt(style.getPropertyValue(`--q-size-${name}`), 10);
+        });
+      }
+
+      this.setSizes = sizes => {
+        SIZE_LIST.forEach(name => {
+          if (sizes[name]) {
+            this.sizes[name] = sizes[name];
+          }
+        });
+
+        this.__update(true);
+      };
+
+      this.setDebounce = delay => {
+        updateEvt !== void 0 && target.removeEventListener('resize', updateEvt, passive);
+        updateEvt = delay > 0 ? debounce(this.__update, delay) : this.__update;
+        target.addEventListener('resize', updateEvt, passive);
+      };
+
+      this.setDebounce(updateDebounce);
+
+      if (Object.keys(updateSizes).length > 0) {
+        this.setSizes(updateSizes);
+        updateSizes = void 0; // free up memory
+      } else {
+        this.__update();
+      } // due to optimizations, this would be left out otherwise
+
+
+      classes === true && this.name === 'xs' && document.body.classList.add('screen--xs');
+    };
+
+    if (Platform/* isRuntimeSsrPreHydration.value */.uX.value === true) {
+      onSSRHydrated.push(start);
+    } else {
+      start();
+    }
+  }
+
+}));
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.regexp.exec.js
+var es_regexp_exec = __webpack_require__(7280);
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.replace.js
+var es_string_replace = __webpack_require__(5363);
+;// CONCATENATED MODULE: ./node_modules/quasar/src/plugins/Dark.js
+
+
+
+
+const Plugin = (0,define_reactive_plugin/* default */.Z)({
+  isActive: false,
+  mode: false
+}, {
+  __media: void 0,
+
+  set(val) {
+    if (false) {}
+
+    Plugin.mode = val;
+
+    if (val === 'auto') {
+      if (Plugin.__media === void 0) {
+        Plugin.__media = window.matchMedia('(prefers-color-scheme: dark)');
+
+        Plugin.__updateMedia = () => {
+          Plugin.set('auto');
+        };
+
+        Plugin.__media.addListener(Plugin.__updateMedia);
+      }
+
+      val = Plugin.__media.matches;
+    } else if (Plugin.__media !== void 0) {
+      Plugin.__media.removeListener(Plugin.__updateMedia);
+
+      Plugin.__media = void 0;
+    }
+
+    Plugin.isActive = val === true;
+    document.body.classList.remove(`body--${val === true ? 'light' : 'dark'}`);
+    document.body.classList.add(`body--${val === true ? 'dark' : 'light'}`);
+  },
+
+  toggle() {
+    if (true) {
+      Plugin.set(Plugin.isActive === false);
+    }
+  },
+
+  install({
+    $q,
+    onSSRHydrated,
+    ssrContext
+  }) {
+    const {
+      dark
+    } = $q.config;
+
+    if (false) {}
+
+    $q.dark = this;
+
+    if (this.__installed === true && dark === void 0) {
+      return;
+    }
+
+    this.isActive = dark === true;
+    const initialVal = dark !== void 0 ? dark : false;
+
+    if (Platform/* isRuntimeSsrPreHydration.value */.uX.value === true) {
+      const ssrSet = val => {
+        this.__fromSSR = val;
+      };
+
+      const originalSet = this.set;
+      this.set = ssrSet;
+      ssrSet(initialVal);
+      onSSRHydrated.push(() => {
+        this.set = originalSet;
+        this.set(this.__fromSSR);
+      });
+    } else {
+      this.set(initialVal);
+    }
+  }
+
+});
+/* harmony default export */ const Dark = (Plugin);
+// EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom-collections.iterator.js
+var web_dom_collections_iterator = __webpack_require__(71);
+;// CONCATENATED MODULE: ./node_modules/quasar/src/history.js
+
+
+
+
+const getTrue = () => true;
+
+function filterInvalidPath(path) {
+  return typeof path === 'string' && path !== '' && path !== '/' && path !== '#/';
+}
+
+function normalizeExitPath(path) {
+  path.startsWith('#') === true && (path = path.substr(1));
+  path.startsWith('/') === false && (path = '/' + path);
+  path.endsWith('/') === true && (path = path.substr(0, path.length - 1));
+  return '#' + path;
+}
+
+function getShouldExitFn(cfg) {
+  if (cfg.backButtonExit === false) {
+    return () => false;
+  }
+
+  if (cfg.backButtonExit === '*') {
+    return getTrue;
+  } // Add default root path
+
+
+  const exitPaths = ['#/']; // Add custom exit paths
+
+  Array.isArray(cfg.backButtonExit) === true && exitPaths.push(...cfg.backButtonExit.filter(filterInvalidPath).map(normalizeExitPath));
+  return () => exitPaths.includes(window.location.hash);
+}
+
+/* harmony default export */ const src_history = ({
+  __history: [],
+  add: utils_event/* noop */.ZT,
+  remove: utils_event/* noop */.ZT,
+
+  install({
+    $q
+  }) {
+    if ( false || this.__installed === true) {
+      return;
+    }
+
+    const {
+      cordova,
+      capacitor
+    } = Platform/* client.is */.Lp.is;
+
+    if (cordova !== true && capacitor !== true) {
+      return;
+    }
+
+    const qConf = $q.config[cordova === true ? 'cordova' : 'capacitor'];
+
+    if (qConf !== void 0 && qConf.backButton === false) {
+      return;
+    } // if the '@capacitor/app' plugin is not installed
+    // then we got nothing to do
+
+
+    if ( // if we're on Capacitor mode
+    capacitor === true // and it's also not in Capacitor's main instance
+    && (window.Capacitor === void 0 || window.Capacitor.Plugins.App === void 0)) {
+      return;
+    }
+
+    this.add = entry => {
+      if (entry.condition === void 0) {
+        entry.condition = getTrue;
+      }
+
+      this.__history.push(entry);
+    };
+
+    this.remove = entry => {
+      const index = this.__history.indexOf(entry);
+
+      if (index >= 0) {
+        this.__history.splice(index, 1);
+      }
+    };
+
+    const shouldExit = getShouldExitFn(Object.assign({
+      backButtonExit: true
+    }, qConf));
+
+    const backHandler = () => {
+      if (this.__history.length) {
+        const entry = this.__history[this.__history.length - 1];
+
+        if (entry.condition() === true) {
+          this.__history.pop();
+
+          entry.handler();
+        }
+      } else if (shouldExit() === true) {
+        navigator.app.exitApp();
+      } else {
+        window.history.back();
+      }
+    };
+
+    if (cordova === true) {
+      document.addEventListener('deviceready', () => {
+        document.addEventListener('backbutton', backHandler, false);
+      });
+    } else {
+      window.Capacitor.Plugins.App.addListener('backButton', backHandler);
+    }
+  }
+
+});
+// EXTERNAL MODULE: ./node_modules/quasar/src/lang.js + 1 modules
+var lang = __webpack_require__(1845);
+;// CONCATENATED MODULE: ./node_modules/quasar/src/utils/set-css-var.js
+function setCssVar(propName, value, element = document.body) {
+  if (typeof propName !== 'string') {
+    throw new TypeError('Expected a string as propName');
+  }
+
+  if (typeof value !== 'string') {
+    throw new TypeError('Expected a string as value');
+  }
+
+  if (!(element instanceof Element)) {
+    throw new TypeError('Expected a DOM element');
+  }
+
+  element.style.setProperty(`--q-${propName}`, value);
+}
+// EXTERNAL MODULE: ./node_modules/quasar/src/utils/private/key-composition.js
+var key_composition = __webpack_require__(1436);
+;// CONCATENATED MODULE: ./node_modules/quasar/src/body.js
+
+
+
+
+
+
+
+function getMobilePlatform(is) {
+  if (is.ios === true) return 'ios';
+  if (is.android === true) return 'android';
+}
+
+function getBodyClasses({
+  is,
+  has,
+  within
+}, cfg) {
+  const cls = [is.desktop === true ? 'desktop' : 'mobile', `${has.touch === false ? 'no-' : ''}touch`];
+
+  if (is.mobile === true) {
+    const mobile = getMobilePlatform(is);
+    mobile !== void 0 && cls.push('platform-' + mobile);
+  }
+
+  if (is.nativeMobile === true) {
+    const type = is.nativeMobileWrapper;
+    cls.push(type);
+    cls.push('native-mobile');
+
+    if (is.ios === true && (cfg[type] === void 0 || cfg[type].iosStatusBarPadding !== false)) {
+      cls.push('q-ios-padding');
+    }
+  } else if (is.electron === true) {
+    cls.push('electron');
+  } else if (is.bex === true) {
+    cls.push('bex');
+  }
+
+  within.iframe === true && cls.push('within-iframe');
+  return cls;
+}
+
+function applyClientSsrCorrections() {
+  const classes = document.body.className;
+  let newCls = classes;
+
+  if (Platform/* iosCorrection */.aG !== void 0) {
+    newCls = newCls.replace('desktop', 'platform-ios mobile');
+  }
+
+  if (Platform/* client.has.touch */.Lp.has.touch === true) {
+    newCls = newCls.replace('no-touch', 'touch');
+  }
+
+  if (Platform/* client.within.iframe */.Lp.within.iframe === true) {
+    newCls += ' within-iframe';
+  }
+
+  if (classes !== newCls) {
+    document.body.className = newCls;
+  }
+}
+
+function setColors(brand) {
+  for (const color in brand) {
+    setCssVar(color, brand[color]);
+  }
+}
+
+/* harmony default export */ const body = ({
+  install(opts) {
+    if (false) {}
+
+    const {
+      $q
+    } = opts;
+    $q.config.brand !== void 0 && setColors($q.config.brand);
+
+    if (this.__installed === true) {
+      return;
+    }
+
+    if (Platform/* isRuntimeSsrPreHydration.value */.uX.value === true) {
+      applyClientSsrCorrections();
+    } else {
+      const cls = getBodyClasses(Platform/* client */.Lp, $q.config);
+      document.body.classList.add.apply(document.body.classList, cls);
+    }
+
+    if (Platform/* client.is.ios */.Lp.is.ios === true) {
+      // needed for iOS button active state
+      document.body.addEventListener('touchstart', utils_event/* noop */.ZT);
+    }
+
+    window.addEventListener('keydown', key_composition/* onKeyDownComposition */.ZK, true);
+  }
+
+});
+// EXTERNAL MODULE: ./node_modules/quasar/src/icon-set.js + 1 modules
+var icon_set = __webpack_require__(4705);
+// EXTERNAL MODULE: ./node_modules/quasar/src/utils/private/symbols.js
+var symbols = __webpack_require__(2547);
+// EXTERNAL MODULE: ./node_modules/quasar/src/utils/private/global-config.js
+var global_config = __webpack_require__(5578);
+;// CONCATENATED MODULE: ./node_modules/quasar/src/install-quasar.js
+
+
+const _excluded = ["reload"];
+
+
+
+
+
+
+
+
+
+
+const autoInstalledPlugins = [Platform/* default */.ZP, body, Dark, Screen, src_history, lang/* default */.Z, icon_set/* default */.Z];
+function createChildApp(appCfg, parentApp) {
+  const app = (0,runtime_dom_esm_bundler/* createApp */.ri)(appCfg);
+  app.config.globalProperties = parentApp.config.globalProperties;
+
+  const _parentApp$_context = parentApp._context,
+        {
+    reload
+  } = _parentApp$_context,
+        appContext = objectWithoutProperties_default()(_parentApp$_context, _excluded);
+
+  Object.assign(app._context, appContext);
+  return app;
+}
+
+function installPlugins(pluginOpts, pluginList) {
+  pluginList.forEach(Plugin => {
+    Plugin.install(pluginOpts);
+    Plugin.__installed = true;
+  });
+}
+
+function prepareApp(app, uiOpts, pluginOpts) {
+  app.config.globalProperties.$q = pluginOpts.$q;
+  app.provide(symbols/* quasarKey */.Ng, pluginOpts.$q);
+  installPlugins(pluginOpts, autoInstalledPlugins);
+  uiOpts.components !== void 0 && Object.values(uiOpts.components).forEach(c => {
+    if (Object(c) === c && c.name !== void 0) {
+      app.component(c.name, c);
+    }
+  });
+  uiOpts.directives !== void 0 && Object.values(uiOpts.directives).forEach(d => {
+    if (Object(d) === d && d.name !== void 0) {
+      app.directive(d.name, d);
+    }
+  });
+  uiOpts.plugins !== void 0 && installPlugins(pluginOpts, Object.values(uiOpts.plugins).filter(p => typeof p.install === 'function' && autoInstalledPlugins.includes(p) === false));
+
+  if (Platform/* isRuntimeSsrPreHydration.value */.uX.value === true) {
+    pluginOpts.$q.onSSRHydrated = () => {
+      pluginOpts.onSSRHydrated.forEach(fn => {
+        fn();
+      });
+
+      pluginOpts.$q.onSSRHydrated = () => {};
+    };
+  }
+}
+
+/* harmony default export */ const install_quasar = ( false ? 0 : function (parentApp, opts = {}) {
+  const $q = {
+    version: "2.0.0"
+  };
+
+  if (global_config/* globalConfigIsFrozen */.Uf === false) {
+    if (opts.config !== void 0) {
+      Object.assign(global_config/* globalConfig */.w6, opts.config);
+    }
+
+    $q.config = objectSpread2_default()({}, global_config/* globalConfig */.w6);
+    (0,global_config/* freezeGlobalConfig */.tP)();
+  } else {
+    $q.config = opts.config || {};
+  }
+
+  prepareApp(parentApp, opts, {
+    parentApp,
+    $q,
+    lang: opts.lang,
+    iconSet: opts.iconSet,
+    onSSRHydrated: []
+  });
+});
+
+/***/ }),
+
+/***/ 1845:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  "Z": () => (/* binding */ lang)
+});
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/objectSpread2.js
+var objectSpread2 = __webpack_require__(515);
+var objectSpread2_default = /*#__PURE__*/__webpack_require__.n(objectSpread2);
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.regexp.exec.js
+var es_regexp_exec = __webpack_require__(7280);
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.replace.js
+var es_string_replace = __webpack_require__(5363);
+// EXTERNAL MODULE: ./node_modules/quasar/src/utils/private/define-reactive-plugin.js
+var define_reactive_plugin = __webpack_require__(2002);
+;// CONCATENATED MODULE: ./node_modules/quasar/lang/en-US.js
+
+/* harmony default export */ const en_US = ({
+  isoName: 'en-US',
+  nativeName: 'English (US)',
+  label: {
+    clear: 'Clear',
+    ok: 'OK',
+    cancel: 'Cancel',
+    close: 'Close',
+    set: 'Set',
+    select: 'Select',
+    reset: 'Reset',
+    remove: 'Remove',
+    update: 'Update',
+    create: 'Create',
+    search: 'Search',
+    filter: 'Filter',
+    refresh: 'Refresh'
+  },
+  date: {
+    days: 'Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday'.split('_'),
+    daysShort: 'Sun_Mon_Tue_Wed_Thu_Fri_Sat'.split('_'),
+    months: 'January_February_March_April_May_June_July_August_September_October_November_December'.split('_'),
+    monthsShort: 'Jan_Feb_Mar_Apr_May_Jun_Jul_Aug_Sep_Oct_Nov_Dec'.split('_'),
+    firstDayOfWeek: 0,
+    // 0-6, 0 - Sunday, 1 Monday, ...
+    format24h: false,
+    pluralDay: 'days'
+  },
+  table: {
+    noData: 'No data available',
+    noResults: 'No matching records found',
+    loading: 'Loading...',
+    selectedRecords: rows => rows === 1 ? '1 record selected.' : (rows === 0 ? 'No' : rows) + ' records selected.',
+    recordsPerPage: 'Records per page:',
+    allRows: 'All',
+    pagination: (start, end, total) => start + '-' + end + ' of ' + total,
+    columns: 'Columns'
+  },
+  editor: {
+    url: 'URL',
+    bold: 'Bold',
+    italic: 'Italic',
+    strikethrough: 'Strikethrough',
+    underline: 'Underline',
+    unorderedList: 'Unordered List',
+    orderedList: 'Ordered List',
+    subscript: 'Subscript',
+    superscript: 'Superscript',
+    hyperlink: 'Hyperlink',
+    toggleFullscreen: 'Toggle Fullscreen',
+    quote: 'Quote',
+    left: 'Left align',
+    center: 'Center align',
+    right: 'Right align',
+    justify: 'Justify align',
+    print: 'Print',
+    outdent: 'Decrease indentation',
+    indent: 'Increase indentation',
+    removeFormat: 'Remove formatting',
+    formatting: 'Formatting',
+    fontSize: 'Font Size',
+    align: 'Align',
+    hr: 'Insert Horizontal Rule',
+    undo: 'Undo',
+    redo: 'Redo',
+    heading1: 'Heading 1',
+    heading2: 'Heading 2',
+    heading3: 'Heading 3',
+    heading4: 'Heading 4',
+    heading5: 'Heading 5',
+    heading6: 'Heading 6',
+    paragraph: 'Paragraph',
+    code: 'Code',
+    size1: 'Very small',
+    size2: 'A bit small',
+    size3: 'Normal',
+    size4: 'Medium-large',
+    size5: 'Big',
+    size6: 'Very big',
+    size7: 'Maximum',
+    defaultFont: 'Default Font',
+    viewSource: 'View Source'
+  },
+  tree: {
+    noNodes: 'No nodes available',
+    noResults: 'No matching nodes found'
+  }
+});
+;// CONCATENATED MODULE: ./node_modules/quasar/src/lang.js
+
+
+
+
+
+
+function getLocale() {
+  if (false) {}
+
+  const val = Array.isArray(navigator.languages) === true && navigator.languages.length > 0 ? navigator.languages[0] : navigator.language;
+
+  if (typeof val === 'string') {
+    return val.split(/[-_]/).map((v, i) => i === 0 ? v.toLowerCase() : i > 1 || v.length < 4 ? v.toUpperCase() : v[0].toUpperCase() + v.slice(1).toLowerCase()).join('-');
+  }
+}
+
+const Plugin = (0,define_reactive_plugin/* default */.Z)({
+  __langPack: {}
+}, {
+  getLocale,
+
+  set(langObject = en_US, ssrContext) {
+    const lang = objectSpread2_default()(objectSpread2_default()({}, langObject), {}, {
+      rtl: langObject.rtl === true,
+      getLocale
+    });
+
+    if (false) {} else {
+      const el = document.documentElement;
+      el.setAttribute('dir', lang.rtl === true ? 'rtl' : 'ltr');
+      el.setAttribute('lang', lang.isoName);
+      lang.set = Plugin.set;
+      Object.assign(Plugin.__langPack, lang);
+      Plugin.props = lang;
+      Plugin.isoName = lang.isoName;
+      Plugin.nativeName = lang.nativeName;
+    }
+  },
+
+  install({
+    $q,
+    lang,
+    ssrContext
+  }) {
+    if (false) {} else {
+      $q.lang = Plugin.__langPack;
+
+      if (this.__installed === true) {
+        lang !== void 0 && this.set(lang);
+      } else {
+        this.set(lang || en_US);
+      }
+    }
+  }
+
+});
+/* harmony default export */ const lang = (Plugin);
+
+/***/ }),
+
+/***/ 9140:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  "Z": () => (/* binding */ Notify)
+});
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/objectSpread2.js
+var objectSpread2 = __webpack_require__(515);
+var objectSpread2_default = /*#__PURE__*/__webpack_require__.n(objectSpread2);
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/objectWithoutProperties.js
+var objectWithoutProperties = __webpack_require__(9119);
+var objectWithoutProperties_default = /*#__PURE__*/__webpack_require__.n(objectWithoutProperties);
+// EXTERNAL MODULE: ./node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.js
+var runtime_core_esm_bundler = __webpack_require__(3673);
+// EXTERNAL MODULE: ./node_modules/@vue/reactivity/dist/reactivity.esm-bundler.js
+var reactivity_esm_bundler = __webpack_require__(1959);
+// EXTERNAL MODULE: ./node_modules/@vue/runtime-dom/dist/runtime-dom.esm-bundler.js
+var runtime_dom_esm_bundler = __webpack_require__(8880);
+// EXTERNAL MODULE: ./node_modules/quasar/src/components/avatar/QAvatar.js
+var QAvatar = __webpack_require__(5096);
+// EXTERNAL MODULE: ./node_modules/quasar/src/components/icon/QIcon.js
+var QIcon = __webpack_require__(4554);
+// EXTERNAL MODULE: ./node_modules/quasar/src/components/btn/QBtn.js + 3 modules
+var QBtn = __webpack_require__(6114);
+// EXTERNAL MODULE: ./node_modules/quasar/src/components/spinner/QSpinner.js + 1 modules
+var QSpinner = __webpack_require__(9754);
+// EXTERNAL MODULE: ./node_modules/quasar/src/utils/event.js
+var utils_event = __webpack_require__(4716);
+// EXTERNAL MODULE: ./node_modules/quasar/src/utils/private/global-config.js
+var global_config = __webpack_require__(5578);
+;// CONCATENATED MODULE: ./node_modules/quasar/src/utils/private/global-nodes.js
+
+const globalNodes = [];
+let target =  false ? 0 : document.body;
+function createGlobalNode(id) {
+  const el = document.createElement('div');
+
+  if (id !== void 0) {
+    el.id = id;
+  }
+
+  if (global_config/* globalConfig.globalNodes */.w6.globalNodes !== void 0) {
+    const cls = global_config/* globalConfig.globalNodes.class */.w6.globalNodes.class;
+
+    if (cls !== void 0) {
+      el.className = cls;
+    }
+  }
+
+  target.appendChild(el);
+  globalNodes.push(el);
+  return el;
+}
+function removeGlobalNode(el) {
+  globalNodes.splice(globalNodes.indexOf(el), 1);
+  el.remove();
+}
+function changeGlobalNodesTarget(el) {
+  if (el !== target) {
+    target = el;
+    globalNodes.forEach(el => {
+      if (el.contains(target) === false) {
+        target.appendChild(el);
+      }
+    });
+  }
+}
+// EXTERNAL MODULE: ./node_modules/quasar/src/install-quasar.js + 6 modules
+var install_quasar = __webpack_require__(5251);
+;// CONCATENATED MODULE: ./node_modules/quasar/src/plugins/Notify.js
+
+
+const _excluded = ["handler", "noDismiss"];
+
+
+
+
+
+
+
+
+let uid = 0,
+    addNotification;
+const defaults = {};
+const positionList = ['top-left', 'top-right', 'bottom-left', 'bottom-right', 'top', 'bottom', 'left', 'right', 'center'];
+const badgePositions = ['top-left', 'top-right', 'bottom-left', 'bottom-right'];
+const notifTypes = {
+  positive: {
+    icon: $q => $q.iconSet.type.positive,
+    color: 'positive'
+  },
+  negative: {
+    icon: $q => $q.iconSet.type.negative,
+    color: 'negative'
+  },
+  warning: {
+    icon: $q => $q.iconSet.type.warning,
+    color: 'warning',
+    textColor: 'dark'
+  },
+  info: {
+    icon: $q => $q.iconSet.type.info,
+    color: 'info'
+  },
+  ongoing: {
+    group: false,
+    timeout: 0,
+    spinner: true,
+    color: 'grey-8'
+  }
+};
+const groups = {};
+const positionClass = {};
+
+function logError(error, config) {
+  console.error(`Notify: ${error}`, config);
+  return false;
+}
+
+function getComponent($q) {
+  return (0,runtime_core_esm_bundler/* defineComponent */.aZ)({
+    name: 'QNotifications',
+
+    setup() {
+      const notificationsList = {};
+      const notifRefs = [];
+      positionList.forEach(pos => {
+        notificationsList[pos] = (0,reactivity_esm_bundler/* ref */.iH)([]);
+        const vert = ['left', 'center', 'right'].includes(pos) === true ? 'center' : pos.indexOf('top') > -1 ? 'top' : 'bottom',
+              align = pos.indexOf('left') > -1 ? 'start' : pos.indexOf('right') > -1 ? 'end' : 'center',
+              classes = ['left', 'right'].includes(pos) ? `items-${pos === 'left' ? 'start' : 'end'} justify-center` : pos === 'center' ? 'flex-center' : `items-${align}`;
+        positionClass[pos] = `q-notifications__list q-notifications__list--${vert} fixed column no-wrap ${classes}`;
+      });
+
+      addNotification = (config, originalApi) => {
+        if (!config) {
+          return logError('parameter required');
+        }
+
+        let Api;
+        const notif = {
+          textColor: 'white'
+        };
+
+        if (config.ignoreDefaults !== true) {
+          Object.assign(notif, defaults);
+        }
+
+        if (Object(config) !== config) {
+          if (notif.type) {
+            Object.assign(notif, notifTypes[notif.type]);
+          }
+
+          config = {
+            message: config
+          };
+        }
+
+        Object.assign(notif, notifTypes[config.type || notif.type], config);
+
+        if (typeof notif.icon === 'function') {
+          notif.icon = notif.icon($q);
+        }
+
+        if (!notif.spinner) {
+          notif.spinner = false;
+        } else {
+          if (notif.spinner === true) {
+            notif.spinner = QSpinner/* default */.Z;
+          }
+
+          notif.spinner = (0,reactivity_esm_bundler/* markRaw */.Xl)(notif.spinner);
+        }
+
+        notif.meta = {
+          hasMedia: Boolean(notif.spinner !== false || notif.icon || notif.avatar)
+        };
+
+        if (notif.position) {
+          if (positionList.includes(notif.position) === false) {
+            return logError('wrong position', config);
+          }
+        } else {
+          notif.position = 'bottom';
+        }
+
+        if (notif.timeout === void 0) {
+          notif.timeout = 5000;
+        } else {
+          const t = parseInt(notif.timeout, 10);
+
+          if (isNaN(t) || t < 0) {
+            return logError('wrong timeout', config);
+          }
+
+          notif.timeout = t;
+        }
+
+        if (notif.timeout === 0) {
+          notif.progress = false;
+        } else if (notif.progress === true) {
+          notif.meta.progressClass = 'q-notification__progress' + (notif.progressClass ? ` ${notif.progressClass}` : '');
+          notif.meta.progressStyle = {
+            animationDuration: `${notif.timeout + 1000}ms`
+          };
+        }
+
+        const actions = (Array.isArray(config.actions) === true ? config.actions : []).concat(config.ignoreDefaults !== true && Array.isArray(defaults.actions) === true ? defaults.actions : []).concat(notifTypes[config.type] !== void 0 && Array.isArray(notifTypes[config.type].actions) === true ? notifTypes[config.type].actions : []);
+        notif.closeBtn && actions.push({
+          label: typeof notif.closeBtn === 'string' ? notif.closeBtn : $q.lang.label.close
+        });
+        notif.actions = actions.map(_ref => {
+          let {
+            handler,
+            noDismiss
+          } = _ref,
+              item = objectWithoutProperties_default()(_ref, _excluded);
+
+          return objectSpread2_default()(objectSpread2_default()({
+            flat: true
+          }, item), {}, {
+            onClick: typeof handler === 'function' ? () => {
+              handler();
+              noDismiss !== true && dismiss();
+            } : () => {
+              dismiss();
+            }
+          });
+        });
+
+        if (notif.multiLine === void 0) {
+          notif.multiLine = notif.actions.length > 1;
+        }
+
+        Object.assign(notif.meta, {
+          class: 'q-notification row items-stretch' + ` q-notification--${notif.multiLine === true ? 'multi-line' : 'standard'}` + (notif.color !== void 0 ? ` bg-${notif.color}` : '') + (notif.textColor !== void 0 ? ` text-${notif.textColor}` : '') + (notif.classes !== void 0 ? ` ${notif.classes}` : ''),
+          wrapperClass: 'q-notification__wrapper col relative-position border-radius-inherit ' + (notif.multiLine === true ? 'column no-wrap justify-center' : 'row items-center'),
+          contentClass: 'q-notification__content row items-center' + (notif.multiLine === true ? '' : ' col'),
+          attrs: objectSpread2_default()({
+            role: 'alert'
+          }, notif.attrs)
+        });
+
+        if (notif.group === false) {
+          notif.group = void 0;
+          notif.meta.group = void 0;
+        } else {
+          if (notif.group === void 0 || notif.group === true) {
+            // do not replace notifications with different buttons
+            notif.group = [notif.message, notif.caption, notif.multiline].concat(notif.actions.map(props => `${props.label}*${props.icon}`)).join('|');
+          }
+
+          notif.meta.group = notif.group + '|' + notif.position;
+        }
+
+        if (notif.actions.length === 0) {
+          notif.actions = void 0;
+        } else {
+          notif.meta.actionsClass = 'q-notification__actions row items-center ' + (notif.multiLine === true ? 'justify-end' : 'col-auto') + (notif.meta.hasMedia === true ? ' q-notification__actions--with-media' : '');
+        }
+
+        if (originalApi !== void 0) {
+          // reset timeout if any
+          clearTimeout(originalApi.notif.meta.timer); // retain uid
+
+          notif.meta.uid = originalApi.notif.meta.uid; // replace notif
+
+          const index = notificationsList[notif.position].value.indexOf(originalApi.notif);
+          notificationsList[notif.position].value[index] = notif;
+        } else {
+          const original = groups[notif.meta.group]; // woohoo, it's a new notification
+
+          if (original === void 0) {
+            notif.meta.uid = uid++;
+            notif.meta.badge = 1;
+
+            if (['left', 'right', 'center'].indexOf(notif.position) !== -1) {
+              notificationsList[notif.position].value.splice(Math.floor(notificationsList[notif.position].value.length / 2), 0, notif);
+            } else {
+              const action = notif.position.indexOf('top') > -1 ? 'unshift' : 'push';
+              notificationsList[notif.position].value[action](notif);
+            }
+
+            if (notif.group !== void 0) {
+              groups[notif.meta.group] = notif;
+            }
+          } // ok, so it's NOT a new one
+          else {
+              // reset timeout if any
+              clearTimeout(original.meta.timer);
+
+              if (notif.badgePosition !== void 0) {
+                if (badgePositions.includes(notif.badgePosition) === false) {
+                  return logError('wrong badgePosition', config);
+                }
+              } else {
+                notif.badgePosition = `top-${notif.position.indexOf('left') > -1 ? 'right' : 'left'}`;
+              }
+
+              notif.meta.uid = original.meta.uid;
+              notif.meta.badge = original.meta.badge + 1;
+              notif.meta.badgeClass = `q-notification__badge q-notification__badge--${notif.badgePosition}` + (notif.badgeColor !== void 0 ? ` bg-${notif.badgeColor}` : '') + (notif.badgeTextColor !== void 0 ? ` text-${notif.badgeTextColor}` : '') + (notif.badgeClass ? ` ${notif.badgeClass}` : '');
+              const index = notificationsList[notif.position].value.indexOf(original);
+              notificationsList[notif.position].value[index] = groups[notif.meta.group] = notif;
+            }
+        }
+
+        const dismiss = () => {
+          remove(notif);
+          Api = void 0;
+        };
+
+        if (notif.timeout > 0) {
+          notif.meta.timer = setTimeout(() => {
+            dismiss();
+          }, notif.timeout +
+          /* show duration */
+          1000);
+        } // only non-groupable can be updated
+
+
+        if (notif.group !== void 0) {
+          return props => {
+            if (props !== void 0) {
+              logError('trying to update a grouped one which is forbidden', config);
+            } else {
+              dismiss();
+            }
+          };
+        }
+
+        Api = {
+          dismiss,
+          config,
+          notif
+        };
+
+        if (originalApi !== void 0) {
+          Object.assign(originalApi, Api);
+          return;
+        }
+
+        return props => {
+          // if notification wasn't previously dismissed
+          if (Api !== void 0) {
+            // if no params, then we must dismiss the notification
+            if (props === void 0) {
+              Api.dismiss();
+            } // otherwise we're updating it
+            else {
+                const newNotif = Object.assign({}, Api.config, props, {
+                  group: false,
+                  position: notif.position
+                });
+                addNotification(newNotif, Api);
+              }
+          }
+        };
+      };
+
+      function remove(notif) {
+        clearTimeout(notif.meta.timer);
+        const index = notificationsList[notif.position].value.indexOf(notif);
+
+        if (index !== -1) {
+          if (notif.group !== void 0) {
+            delete groups[notif.meta.group];
+          }
+
+          const el = notifRefs['' + notif.meta.uid];
+
+          if (el) {
+            const {
+              width,
+              height
+            } = getComputedStyle(el);
+            el.style.left = `${el.offsetLeft}px`;
+            el.style.width = width;
+            el.style.height = height;
+          }
+
+          notificationsList[notif.position].value.splice(index, 1);
+
+          if (typeof notif.onDismiss === 'function') {
+            notif.onDismiss();
+          }
+        }
+      }
+
+      return () => (0,runtime_core_esm_bundler.h)('div', {
+        class: 'q-notifications'
+      }, positionList.map(pos => {
+        return (0,runtime_core_esm_bundler.h)(runtime_dom_esm_bundler/* TransitionGroup */.W3, {
+          key: pos,
+          class: positionClass[pos],
+          tag: 'div',
+          name: `q-notification--${pos}`
+        }, () => notificationsList[pos].value.map(notif => {
+          let msgChild;
+          const meta = notif.meta;
+          const msgData = {
+            class: 'q-notification__message col'
+          };
+
+          if (notif.html === true) {
+            msgData.innerHTML = notif.caption ? `<div>${notif.message}</div><div class="q-notification__caption">${notif.caption}</div>` : notif.message;
+          } else {
+            const msgNode = [notif.message];
+            msgChild = notif.caption ? [(0,runtime_core_esm_bundler.h)('div', msgNode), (0,runtime_core_esm_bundler.h)('div', {
+              class: 'q-notification__caption'
+            }, [notif.caption])] : msgNode;
+          }
+
+          const mainChild = [];
+
+          if (meta.hasMedia === true) {
+            if (notif.spinner !== false) {
+              mainChild.push((0,runtime_core_esm_bundler.h)(notif.spinner, {
+                class: 'q-notification__spinner'
+              }));
+            } else if (notif.icon) {
+              mainChild.push((0,runtime_core_esm_bundler.h)(QIcon/* default */.Z, {
+                class: 'q-notification__icon',
+                name: notif.icon,
+                role: 'img'
+              }));
+            } else if (notif.avatar) {
+              mainChild.push((0,runtime_core_esm_bundler.h)(QAvatar/* default */.Z, {
+                class: 'q-notification__avatar'
+              }, () => (0,runtime_core_esm_bundler.h)('img', {
+                src: notif.avatar,
+                'aria-hidden': 'true'
+              })));
+            }
+          }
+
+          mainChild.push((0,runtime_core_esm_bundler.h)('div', msgData, msgChild));
+          const child = [(0,runtime_core_esm_bundler.h)('div', {
+            class: meta.contentClass
+          }, mainChild)];
+          notif.progress === true && child.push((0,runtime_core_esm_bundler.h)('div', {
+            key: `${meta.uid}|p|${meta.badge}`,
+            class: meta.progressClass,
+            style: meta.progressStyle
+          }));
+          notif.actions !== void 0 && child.push((0,runtime_core_esm_bundler.h)('div', {
+            class: meta.actionsClass
+          }, notif.actions.map(props => (0,runtime_core_esm_bundler.h)(QBtn/* default */.Z, props))));
+          meta.badge > 1 && child.push((0,runtime_core_esm_bundler.h)('div', {
+            key: `${meta.uid}|${meta.badge}`,
+            class: notif.meta.badgeClass,
+            style: notif.badgeStyle
+          }, [meta.badge]));
+          return (0,runtime_core_esm_bundler.h)('div', objectSpread2_default()({
+            ref: el => {
+              notifRefs['' + meta.uid] = el;
+            },
+            key: meta.uid,
+            class: meta.class
+          }, meta.attrs), [(0,runtime_core_esm_bundler.h)('div', {
+            class: meta.wrapperClass
+          }, child)]);
+        }));
+      }));
+    }
+
+  });
+}
+
+/* harmony default export */ const Notify = ({
+  create(opts) {
+    return  false ? 0 : addNotification(opts);
+  },
+
+  setDefaults(opts) {
+    if (true) {
+      opts === Object(opts) && Object.assign(defaults, opts);
+    }
+  },
+
+  registerType(typeName, typeOpts) {
+    if ( true && typeOpts === Object(typeOpts)) {
+      notifTypes[typeName] = typeOpts;
+    }
+  },
+
+  install({
+    $q,
+    parentApp
+  }) {
+    $q.notify = this.create;
+    $q.notify.setDefaults = this.setDefaults;
+    $q.notify.registerType = this.registerType;
+
+    if ($q.config.notify !== void 0) {
+      this.setDefaults($q.config.notify);
+    }
+
+    if ( true && this.__installed !== true) {
+      const el = createGlobalNode('q-notify');
+      (0,install_quasar/* createChildApp */.$)(getComponent($q), parentApp).mount(el);
+    }
+  }
+
+});
+
+/***/ }),
+
 /***/ 4688:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -38331,6 +39925,32 @@ function cleanEvt(ctx, targetName) {
 
 /***/ }),
 
+/***/ 2002:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1959);
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ( false ? 0 : (state, plugin) => {
+  const props = {};
+  const reactiveState = (0,vue__WEBPACK_IMPORTED_MODULE_0__/* .reactive */ .qj)(state);
+  Object.keys(state).forEach(name => {
+    props[name] = {
+      get: () => reactiveState[name],
+      set: val => {
+        reactiveState[name] = val;
+      }
+    };
+  });
+  Object.defineProperties(plugin, props);
+  return plugin;
+});
+
+/***/ }),
+
 /***/ 230:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -38372,6 +39992,23 @@ function removeFocusFn(fn) {
   if (index !== -1) {
     queue.splice(index, 1);
   }
+}
+
+/***/ }),
+
+/***/ 5578:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "w6": () => (/* binding */ globalConfig),
+/* harmony export */   "Uf": () => (/* binding */ globalConfigIsFrozen),
+/* harmony export */   "tP": () => (/* binding */ freezeGlobalConfig)
+/* harmony export */ });
+const globalConfig = {};
+let globalConfigIsFrozen = false;
+function freezeGlobalConfig() {
+  globalConfigIsFrozen = true;
 }
 
 /***/ }),
@@ -38473,990 +40110,24 @@ const uploaderKey = '_q_u_';
 
 /***/ }),
 
-/***/ 4345:
+/***/ 9592:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _install_quasar_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5251);
+/* harmony import */ var _lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(1845);
+/* harmony import */ var _icon_set_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(4705);
 
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, {
-  "Z": () => (/* binding */ vue_plugin)
-});
 
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/objectSpread2.js
-var objectSpread2 = __webpack_require__(515);
-var objectSpread2_default = /*#__PURE__*/__webpack_require__.n(objectSpread2);
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/objectWithoutProperties.js
-var objectWithoutProperties = __webpack_require__(9119);
-// EXTERNAL MODULE: ./node_modules/quasar/src/plugins/Platform.js
-var Platform = __webpack_require__(4688);
-// EXTERNAL MODULE: ./node_modules/@vue/reactivity/dist/reactivity.esm-bundler.js
-var reactivity_esm_bundler = __webpack_require__(1959);
-;// CONCATENATED MODULE: ./node_modules/quasar/src/utils/private/define-reactive-plugin.js
 
-/* harmony default export */ const define_reactive_plugin = ( false ? 0 : (state, plugin) => {
-  const props = {};
-  const reactiveState = (0,reactivity_esm_bundler/* reactive */.qj)(state);
-  Object.keys(state).forEach(name => {
-    props[name] = {
-      get: () => reactiveState[name],
-      set: val => {
-        reactiveState[name] = val;
-      }
-    };
-  });
-  Object.defineProperties(plugin, props);
-  return plugin;
-});
-// EXTERNAL MODULE: ./node_modules/quasar/src/utils/event.js
-var utils_event = __webpack_require__(4716);
-;// CONCATENATED MODULE: ./node_modules/quasar/src/utils/debounce.js
-/* harmony default export */ function debounce(fn, wait = 250, immediate) {
-  let timeout;
-
-  function debounced()
-  /* ...args */
-  {
-    const args = arguments;
-
-    const later = () => {
-      timeout = void 0;
-
-      if (immediate !== true) {
-        fn.apply(this, args);
-      }
-    };
-
-    clearTimeout(timeout);
-
-    if (immediate === true && timeout === void 0) {
-      fn.apply(this, args);
-    }
-
-    timeout = setTimeout(later, wait);
-  }
-
-  debounced.cancel = () => {
-    clearTimeout(timeout);
-  };
-
-  return debounced;
-}
-;// CONCATENATED MODULE: ./node_modules/quasar/src/plugins/Screen.js
-
-
-
-
-const SIZE_LIST = ['sm', 'md', 'lg', 'xl'];
-const {
-  passive
-} = utils_event/* listenOpts */.rU;
-/* harmony default export */ const Screen = (define_reactive_plugin({
-  width: 0,
-  height: 0,
-  name: 'xs',
-  sizes: {
-    sm: 600,
-    md: 1024,
-    lg: 1440,
-    xl: 1920
-  },
-  lt: {
-    sm: true,
-    md: true,
-    lg: true,
-    xl: true
-  },
-  gt: {
-    xs: false,
-    sm: false,
-    md: false,
-    lg: false
-  },
-  xs: true,
-  sm: false,
-  md: false,
-  lg: false,
-  xl: false
-}, {
-  setSizes: utils_event/* noop */.ZT,
-  setDebounce: utils_event/* noop */.ZT,
-
-  install({
-    $q,
-    onSSRHydrated
-  }) {
-    $q.screen = this;
-
-    if (false) {}
-
-    if (this.__installed === true) {
-      if ($q.config.screen !== void 0) {
-        if ($q.config.screen.bodyClasses === false) {
-          document.body.classList.remove(`screen--${this.name}`);
-        } else {
-          this.__update(true);
-        }
-      }
-
-      return;
-    }
-
-    const classes = $q.config.screen !== void 0 && $q.config.screen.bodyClasses === true;
-
-    this.__update = force => {
-      const w = window.innerWidth,
-            h = window.innerHeight;
-
-      if (h !== this.height) {
-        this.height = h;
-      }
-
-      if (w !== this.width) {
-        this.width = w;
-      } else if (force !== true) {
-        return;
-      }
-
-      let s = this.sizes;
-      this.gt.xs = w >= s.sm;
-      this.gt.sm = w >= s.md;
-      this.gt.md = w >= s.lg;
-      this.gt.lg = w >= s.xl;
-      this.lt.sm = w < s.sm;
-      this.lt.md = w < s.md;
-      this.lt.lg = w < s.lg;
-      this.lt.xl = w < s.xl;
-      this.xs = this.lt.sm;
-      this.sm = this.gt.xs === true && this.lt.md === true;
-      this.md = this.gt.sm === true && this.lt.lg === true;
-      this.lg = this.gt.md === true && this.lt.xl === true;
-      this.xl = this.gt.lg;
-      s = this.xs === true && 'xs' || this.sm === true && 'sm' || this.md === true && 'md' || this.lg === true && 'lg' || 'xl';
-
-      if (s !== this.name) {
-        if (classes === true) {
-          document.body.classList.remove(`screen--${this.name}`);
-          document.body.classList.add(`screen--${s}`);
-        }
-
-        this.name = s;
-      }
-    };
-
-    let updateEvt,
-        updateSizes = {},
-        updateDebounce = 16;
-
-    this.setSizes = sizes => {
-      SIZE_LIST.forEach(name => {
-        if (sizes[name] !== void 0) {
-          updateSizes[name] = sizes[name];
-        }
-      });
-    };
-
-    this.setDebounce = deb => {
-      updateDebounce = deb;
-    };
-
-    const start = () => {
-      const style = getComputedStyle(document.body),
-            target = window.visualViewport !== void 0 ? window.visualViewport : window; // if css props available
-
-      if (style.getPropertyValue('--q-size-sm')) {
-        SIZE_LIST.forEach(name => {
-          this.sizes[name] = parseInt(style.getPropertyValue(`--q-size-${name}`), 10);
-        });
-      }
-
-      this.setSizes = sizes => {
-        SIZE_LIST.forEach(name => {
-          if (sizes[name]) {
-            this.sizes[name] = sizes[name];
-          }
-        });
-
-        this.__update(true);
-      };
-
-      this.setDebounce = delay => {
-        updateEvt !== void 0 && target.removeEventListener('resize', updateEvt, passive);
-        updateEvt = delay > 0 ? debounce(this.__update, delay) : this.__update;
-        target.addEventListener('resize', updateEvt, passive);
-      };
-
-      this.setDebounce(updateDebounce);
-
-      if (Object.keys(updateSizes).length > 0) {
-        this.setSizes(updateSizes);
-        updateSizes = void 0; // free up memory
-      } else {
-        this.__update();
-      } // due to optimizations, this would be left out otherwise
-
-
-      classes === true && this.name === 'xs' && document.body.classList.add('screen--xs');
-    };
-
-    if (Platform/* isRuntimeSsrPreHydration.value */.uX.value === true) {
-      onSSRHydrated.push(start);
-    } else {
-      start();
-    }
-  }
-
-}));
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.regexp.exec.js
-var es_regexp_exec = __webpack_require__(7280);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.replace.js
-var es_string_replace = __webpack_require__(5363);
-;// CONCATENATED MODULE: ./node_modules/quasar/src/plugins/Dark.js
-
-
-
-
-const Plugin = define_reactive_plugin({
-  isActive: false,
-  mode: false
-}, {
-  __media: void 0,
-
-  set(val) {
-    if (false) {}
-
-    Plugin.mode = val;
-
-    if (val === 'auto') {
-      if (Plugin.__media === void 0) {
-        Plugin.__media = window.matchMedia('(prefers-color-scheme: dark)');
-
-        Plugin.__updateMedia = () => {
-          Plugin.set('auto');
-        };
-
-        Plugin.__media.addListener(Plugin.__updateMedia);
-      }
-
-      val = Plugin.__media.matches;
-    } else if (Plugin.__media !== void 0) {
-      Plugin.__media.removeListener(Plugin.__updateMedia);
-
-      Plugin.__media = void 0;
-    }
-
-    Plugin.isActive = val === true;
-    document.body.classList.remove(`body--${val === true ? 'light' : 'dark'}`);
-    document.body.classList.add(`body--${val === true ? 'dark' : 'light'}`);
-  },
-
-  toggle() {
-    if (true) {
-      Plugin.set(Plugin.isActive === false);
-    }
-  },
-
-  install({
-    $q,
-    onSSRHydrated,
-    ssrContext
-  }) {
-    const {
-      dark
-    } = $q.config;
-
-    if (false) {}
-
-    $q.dark = this;
-
-    if (this.__installed === true && dark === void 0) {
-      return;
-    }
-
-    this.isActive = dark === true;
-    const initialVal = dark !== void 0 ? dark : false;
-
-    if (Platform/* isRuntimeSsrPreHydration.value */.uX.value === true) {
-      const ssrSet = val => {
-        this.__fromSSR = val;
-      };
-
-      const originalSet = this.set;
-      this.set = ssrSet;
-      ssrSet(initialVal);
-      onSSRHydrated.push(() => {
-        this.set = originalSet;
-        this.set(this.__fromSSR);
-      });
-    } else {
-      this.set(initialVal);
-    }
-  }
-
-});
-/* harmony default export */ const Dark = (Plugin);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom-collections.iterator.js
-var web_dom_collections_iterator = __webpack_require__(71);
-;// CONCATENATED MODULE: ./node_modules/quasar/src/history.js
-
-
-
-
-const getTrue = () => true;
-
-function filterInvalidPath(path) {
-  return typeof path === 'string' && path !== '' && path !== '/' && path !== '#/';
-}
-
-function normalizeExitPath(path) {
-  path.startsWith('#') === true && (path = path.substr(1));
-  path.startsWith('/') === false && (path = '/' + path);
-  path.endsWith('/') === true && (path = path.substr(0, path.length - 1));
-  return '#' + path;
-}
-
-function getShouldExitFn(cfg) {
-  if (cfg.backButtonExit === false) {
-    return () => false;
-  }
-
-  if (cfg.backButtonExit === '*') {
-    return getTrue;
-  } // Add default root path
-
-
-  const exitPaths = ['#/']; // Add custom exit paths
-
-  Array.isArray(cfg.backButtonExit) === true && exitPaths.push(...cfg.backButtonExit.filter(filterInvalidPath).map(normalizeExitPath));
-  return () => exitPaths.includes(window.location.hash);
-}
-
-/* harmony default export */ const src_history = ({
-  __history: [],
-  add: utils_event/* noop */.ZT,
-  remove: utils_event/* noop */.ZT,
-
-  install({
-    $q
-  }) {
-    if ( false || this.__installed === true) {
-      return;
-    }
-
-    const {
-      cordova,
-      capacitor
-    } = Platform/* client.is */.Lp.is;
-
-    if (cordova !== true && capacitor !== true) {
-      return;
-    }
-
-    const qConf = $q.config[cordova === true ? 'cordova' : 'capacitor'];
-
-    if (qConf !== void 0 && qConf.backButton === false) {
-      return;
-    } // if the '@capacitor/app' plugin is not installed
-    // then we got nothing to do
-
-
-    if ( // if we're on Capacitor mode
-    capacitor === true // and it's also not in Capacitor's main instance
-    && (window.Capacitor === void 0 || window.Capacitor.Plugins.App === void 0)) {
-      return;
-    }
-
-    this.add = entry => {
-      if (entry.condition === void 0) {
-        entry.condition = getTrue;
-      }
-
-      this.__history.push(entry);
-    };
-
-    this.remove = entry => {
-      const index = this.__history.indexOf(entry);
-
-      if (index >= 0) {
-        this.__history.splice(index, 1);
-      }
-    };
-
-    const shouldExit = getShouldExitFn(Object.assign({
-      backButtonExit: true
-    }, qConf));
-
-    const backHandler = () => {
-      if (this.__history.length) {
-        const entry = this.__history[this.__history.length - 1];
-
-        if (entry.condition() === true) {
-          this.__history.pop();
-
-          entry.handler();
-        }
-      } else if (shouldExit() === true) {
-        navigator.app.exitApp();
-      } else {
-        window.history.back();
-      }
-    };
-
-    if (cordova === true) {
-      document.addEventListener('deviceready', () => {
-        document.addEventListener('backbutton', backHandler, false);
-      });
-    } else {
-      window.Capacitor.Plugins.App.addListener('backButton', backHandler);
-    }
-  }
-
-});
-;// CONCATENATED MODULE: ./node_modules/quasar/lang/en-US.js
-
-/* harmony default export */ const en_US = ({
-  isoName: 'en-US',
-  nativeName: 'English (US)',
-  label: {
-    clear: 'Clear',
-    ok: 'OK',
-    cancel: 'Cancel',
-    close: 'Close',
-    set: 'Set',
-    select: 'Select',
-    reset: 'Reset',
-    remove: 'Remove',
-    update: 'Update',
-    create: 'Create',
-    search: 'Search',
-    filter: 'Filter',
-    refresh: 'Refresh'
-  },
-  date: {
-    days: 'Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday'.split('_'),
-    daysShort: 'Sun_Mon_Tue_Wed_Thu_Fri_Sat'.split('_'),
-    months: 'January_February_March_April_May_June_July_August_September_October_November_December'.split('_'),
-    monthsShort: 'Jan_Feb_Mar_Apr_May_Jun_Jul_Aug_Sep_Oct_Nov_Dec'.split('_'),
-    firstDayOfWeek: 0,
-    // 0-6, 0 - Sunday, 1 Monday, ...
-    format24h: false,
-    pluralDay: 'days'
-  },
-  table: {
-    noData: 'No data available',
-    noResults: 'No matching records found',
-    loading: 'Loading...',
-    selectedRecords: rows => rows === 1 ? '1 record selected.' : (rows === 0 ? 'No' : rows) + ' records selected.',
-    recordsPerPage: 'Records per page:',
-    allRows: 'All',
-    pagination: (start, end, total) => start + '-' + end + ' of ' + total,
-    columns: 'Columns'
-  },
-  editor: {
-    url: 'URL',
-    bold: 'Bold',
-    italic: 'Italic',
-    strikethrough: 'Strikethrough',
-    underline: 'Underline',
-    unorderedList: 'Unordered List',
-    orderedList: 'Ordered List',
-    subscript: 'Subscript',
-    superscript: 'Superscript',
-    hyperlink: 'Hyperlink',
-    toggleFullscreen: 'Toggle Fullscreen',
-    quote: 'Quote',
-    left: 'Left align',
-    center: 'Center align',
-    right: 'Right align',
-    justify: 'Justify align',
-    print: 'Print',
-    outdent: 'Decrease indentation',
-    indent: 'Increase indentation',
-    removeFormat: 'Remove formatting',
-    formatting: 'Formatting',
-    fontSize: 'Font Size',
-    align: 'Align',
-    hr: 'Insert Horizontal Rule',
-    undo: 'Undo',
-    redo: 'Redo',
-    heading1: 'Heading 1',
-    heading2: 'Heading 2',
-    heading3: 'Heading 3',
-    heading4: 'Heading 4',
-    heading5: 'Heading 5',
-    heading6: 'Heading 6',
-    paragraph: 'Paragraph',
-    code: 'Code',
-    size1: 'Very small',
-    size2: 'A bit small',
-    size3: 'Normal',
-    size4: 'Medium-large',
-    size5: 'Big',
-    size6: 'Very big',
-    size7: 'Maximum',
-    defaultFont: 'Default Font',
-    viewSource: 'View Source'
-  },
-  tree: {
-    noNodes: 'No nodes available',
-    noResults: 'No matching nodes found'
-  }
-});
-;// CONCATENATED MODULE: ./node_modules/quasar/src/lang.js
-
-
-
-
-
-
-function getLocale() {
-  if (false) {}
-
-  const val = Array.isArray(navigator.languages) === true && navigator.languages.length > 0 ? navigator.languages[0] : navigator.language;
-
-  if (typeof val === 'string') {
-    return val.split(/[-_]/).map((v, i) => i === 0 ? v.toLowerCase() : i > 1 || v.length < 4 ? v.toUpperCase() : v[0].toUpperCase() + v.slice(1).toLowerCase()).join('-');
-  }
-}
-
-const lang_Plugin = define_reactive_plugin({
-  __langPack: {}
-}, {
-  getLocale,
-
-  set(langObject = en_US, ssrContext) {
-    const lang = objectSpread2_default()(objectSpread2_default()({}, langObject), {}, {
-      rtl: langObject.rtl === true,
-      getLocale
-    });
-
-    if (false) {} else {
-      const el = document.documentElement;
-      el.setAttribute('dir', lang.rtl === true ? 'rtl' : 'ltr');
-      el.setAttribute('lang', lang.isoName);
-      lang.set = lang_Plugin.set;
-      Object.assign(lang_Plugin.__langPack, lang);
-      lang_Plugin.props = lang;
-      lang_Plugin.isoName = lang.isoName;
-      lang_Plugin.nativeName = lang.nativeName;
-    }
-  },
-
-  install({
-    $q,
-    lang,
-    ssrContext
-  }) {
-    if (false) {} else {
-      $q.lang = lang_Plugin.__langPack;
-
-      if (this.__installed === true) {
-        lang !== void 0 && this.set(lang);
-      } else {
-        this.set(lang || en_US);
-      }
-    }
-  }
-
-});
-/* harmony default export */ const lang = (lang_Plugin);
-;// CONCATENATED MODULE: ./node_modules/quasar/src/utils/set-css-var.js
-function setCssVar(propName, value, element = document.body) {
-  if (typeof propName !== 'string') {
-    throw new TypeError('Expected a string as propName');
-  }
-
-  if (typeof value !== 'string') {
-    throw new TypeError('Expected a string as value');
-  }
-
-  if (!(element instanceof Element)) {
-    throw new TypeError('Expected a DOM element');
-  }
-
-  element.style.setProperty(`--q-${propName}`, value);
-}
-// EXTERNAL MODULE: ./node_modules/quasar/src/utils/private/key-composition.js
-var key_composition = __webpack_require__(1436);
-;// CONCATENATED MODULE: ./node_modules/quasar/src/body.js
-
-
-
-
-
-
-
-function getMobilePlatform(is) {
-  if (is.ios === true) return 'ios';
-  if (is.android === true) return 'android';
-}
-
-function getBodyClasses({
-  is,
-  has,
-  within
-}, cfg) {
-  const cls = [is.desktop === true ? 'desktop' : 'mobile', `${has.touch === false ? 'no-' : ''}touch`];
-
-  if (is.mobile === true) {
-    const mobile = getMobilePlatform(is);
-    mobile !== void 0 && cls.push('platform-' + mobile);
-  }
-
-  if (is.nativeMobile === true) {
-    const type = is.nativeMobileWrapper;
-    cls.push(type);
-    cls.push('native-mobile');
-
-    if (is.ios === true && (cfg[type] === void 0 || cfg[type].iosStatusBarPadding !== false)) {
-      cls.push('q-ios-padding');
-    }
-  } else if (is.electron === true) {
-    cls.push('electron');
-  } else if (is.bex === true) {
-    cls.push('bex');
-  }
-
-  within.iframe === true && cls.push('within-iframe');
-  return cls;
-}
-
-function applyClientSsrCorrections() {
-  const classes = document.body.className;
-  let newCls = classes;
-
-  if (Platform/* iosCorrection */.aG !== void 0) {
-    newCls = newCls.replace('desktop', 'platform-ios mobile');
-  }
-
-  if (Platform/* client.has.touch */.Lp.has.touch === true) {
-    newCls = newCls.replace('no-touch', 'touch');
-  }
-
-  if (Platform/* client.within.iframe */.Lp.within.iframe === true) {
-    newCls += ' within-iframe';
-  }
-
-  if (classes !== newCls) {
-    document.body.className = newCls;
-  }
-}
-
-function setColors(brand) {
-  for (const color in brand) {
-    setCssVar(color, brand[color]);
-  }
-}
-
-/* harmony default export */ const body = ({
-  install(opts) {
-    if (false) {}
-
-    const {
-      $q
-    } = opts;
-    $q.config.brand !== void 0 && setColors($q.config.brand);
-
-    if (this.__installed === true) {
-      return;
-    }
-
-    if (Platform/* isRuntimeSsrPreHydration.value */.uX.value === true) {
-      applyClientSsrCorrections();
-    } else {
-      const cls = getBodyClasses(Platform/* client */.Lp, $q.config);
-      document.body.classList.add.apply(document.body.classList, cls);
-    }
-
-    if (Platform/* client.is.ios */.Lp.is.ios === true) {
-      // needed for iOS button active state
-      document.body.addEventListener('touchstart', utils_event/* noop */.ZT);
-    }
-
-    window.addEventListener('keydown', key_composition/* onKeyDownComposition */.ZK, true);
-  }
-
-});
-;// CONCATENATED MODULE: ./node_modules/quasar/icon-set/material-icons.js
-/* harmony default export */ const material_icons = ({
-  name: 'material-icons',
-  type: {
-    positive: 'check_circle',
-    negative: 'warning',
-    info: 'info',
-    warning: 'priority_high'
-  },
-  arrow: {
-    up: 'arrow_upward',
-    right: 'arrow_forward',
-    down: 'arrow_downward',
-    left: 'arrow_back',
-    dropdown: 'arrow_drop_down'
-  },
-  chevron: {
-    left: 'chevron_left',
-    right: 'chevron_right'
-  },
-  colorPicker: {
-    spectrum: 'gradient',
-    tune: 'tune',
-    palette: 'style'
-  },
-  pullToRefresh: {
-    icon: 'refresh'
-  },
-  carousel: {
-    left: 'chevron_left',
-    right: 'chevron_right',
-    up: 'keyboard_arrow_up',
-    down: 'keyboard_arrow_down',
-    navigationIcon: 'lens'
-  },
-  chip: {
-    remove: 'cancel',
-    selected: 'check'
-  },
-  datetime: {
-    arrowLeft: 'chevron_left',
-    arrowRight: 'chevron_right',
-    now: 'access_time',
-    today: 'today'
-  },
-  editor: {
-    bold: 'format_bold',
-    italic: 'format_italic',
-    strikethrough: 'strikethrough_s',
-    underline: 'format_underlined',
-    unorderedList: 'format_list_bulleted',
-    orderedList: 'format_list_numbered',
-    subscript: 'vertical_align_bottom',
-    superscript: 'vertical_align_top',
-    hyperlink: 'link',
-    toggleFullscreen: 'fullscreen',
-    quote: 'format_quote',
-    left: 'format_align_left',
-    center: 'format_align_center',
-    right: 'format_align_right',
-    justify: 'format_align_justify',
-    print: 'print',
-    outdent: 'format_indent_decrease',
-    indent: 'format_indent_increase',
-    removeFormat: 'format_clear',
-    formatting: 'text_format',
-    fontSize: 'format_size',
-    align: 'format_align_left',
-    hr: 'remove',
-    undo: 'undo',
-    redo: 'redo',
-    heading: 'format_size',
-    code: 'code',
-    size: 'format_size',
-    font: 'font_download',
-    viewSource: 'code'
-  },
-  expansionItem: {
-    icon: 'keyboard_arrow_down',
-    denseIcon: 'arrow_drop_down'
-  },
-  fab: {
-    icon: 'add',
-    activeIcon: 'close'
-  },
-  field: {
-    clear: 'cancel',
-    error: 'error'
-  },
-  pagination: {
-    first: 'first_page',
-    prev: 'keyboard_arrow_left',
-    next: 'keyboard_arrow_right',
-    last: 'last_page'
-  },
-  rating: {
-    icon: 'grade'
-  },
-  stepper: {
-    done: 'check',
-    active: 'edit',
-    error: 'warning'
-  },
-  tabs: {
-    left: 'chevron_left',
-    right: 'chevron_right',
-    up: 'keyboard_arrow_up',
-    down: 'keyboard_arrow_down'
-  },
-  table: {
-    arrowUp: 'arrow_upward',
-    warning: 'warning',
-    firstPage: 'first_page',
-    prevPage: 'chevron_left',
-    nextPage: 'chevron_right',
-    lastPage: 'last_page'
-  },
-  tree: {
-    icon: 'play_arrow'
-  },
-  uploader: {
-    done: 'done',
-    clear: 'clear',
-    add: 'add_box',
-    upload: 'cloud_upload',
-    removeQueue: 'clear_all',
-    removeUploaded: 'done_all'
-  }
-});
-;// CONCATENATED MODULE: ./node_modules/quasar/src/icon-set.js
-
-
-
-const icon_set_Plugin = define_reactive_plugin({
-  iconMapFn: null,
-  __icons: {}
-}, {
-  set(setObject, ssrContext) {
-    const def = objectSpread2_default()(objectSpread2_default()({}, setObject), {}, {
-      rtl: setObject.rtl === true
-    });
-
-    if (false) {} else {
-      def.set = icon_set_Plugin.set;
-      Object.assign(icon_set_Plugin.__icons, def);
-    }
-  },
-
-  install({
-    $q,
-    iconSet,
-    ssrContext
-  }) {
-    if (false) {} else {
-      if ($q.config.iconMapFn !== void 0) {
-        this.iconMapFn = $q.config.iconMapFn;
-      }
-
-      $q.iconSet = this.__icons;
-      Object.defineProperty($q, 'iconMapFn', {
-        get: () => this.iconMapFn,
-        set: val => {
-          this.iconMapFn = val;
-        }
-      });
-
-      if (this.__installed === true) {
-        iconSet !== void 0 && this.set(iconSet);
-      } else {
-        this.set(iconSet || material_icons);
-      }
-    }
-  }
-
-});
-/* harmony default export */ const icon_set = (icon_set_Plugin);
-// EXTERNAL MODULE: ./node_modules/quasar/src/utils/private/symbols.js
-var symbols = __webpack_require__(2547);
-;// CONCATENATED MODULE: ./node_modules/quasar/src/utils/private/global-config.js
-const globalConfig = {};
-let globalConfigIsFrozen = false;
-function freezeGlobalConfig() {
-  globalConfigIsFrozen = true;
-}
-;// CONCATENATED MODULE: ./node_modules/quasar/src/install-quasar.js
-
-
-const _excluded = (/* unused pure expression or super */ null && (["reload"]));
-
-
-
-
-
-
-
-
-
-
-const autoInstalledPlugins = [Platform/* default */.ZP, body, Dark, Screen, src_history, lang, icon_set];
-function createChildApp(appCfg, parentApp) {
-  const app = createApp(appCfg);
-  app.config.globalProperties = parentApp.config.globalProperties;
-
-  const _parentApp$_context = parentApp._context,
-        {
-    reload
-  } = _parentApp$_context,
-        appContext = _objectWithoutProperties(_parentApp$_context, _excluded);
-
-  Object.assign(app._context, appContext);
-  return app;
-}
-
-function installPlugins(pluginOpts, pluginList) {
-  pluginList.forEach(Plugin => {
-    Plugin.install(pluginOpts);
-    Plugin.__installed = true;
-  });
-}
-
-function prepareApp(app, uiOpts, pluginOpts) {
-  app.config.globalProperties.$q = pluginOpts.$q;
-  app.provide(symbols/* quasarKey */.Ng, pluginOpts.$q);
-  installPlugins(pluginOpts, autoInstalledPlugins);
-  uiOpts.components !== void 0 && Object.values(uiOpts.components).forEach(c => {
-    if (Object(c) === c && c.name !== void 0) {
-      app.component(c.name, c);
-    }
-  });
-  uiOpts.directives !== void 0 && Object.values(uiOpts.directives).forEach(d => {
-    if (Object(d) === d && d.name !== void 0) {
-      app.directive(d.name, d);
-    }
-  });
-  uiOpts.plugins !== void 0 && installPlugins(pluginOpts, Object.values(uiOpts.plugins).filter(p => typeof p.install === 'function' && autoInstalledPlugins.includes(p) === false));
-
-  if (Platform/* isRuntimeSsrPreHydration.value */.uX.value === true) {
-    pluginOpts.$q.onSSRHydrated = () => {
-      pluginOpts.onSSRHydrated.forEach(fn => {
-        fn();
-      });
-
-      pluginOpts.$q.onSSRHydrated = () => {};
-    };
-  }
-}
-
-/* harmony default export */ const install_quasar = ( false ? 0 : function (parentApp, opts = {}) {
-  const $q = {
-    version: "2.0.0"
-  };
-
-  if (globalConfigIsFrozen === false) {
-    if (opts.config !== void 0) {
-      Object.assign(globalConfig, opts.config);
-    }
-
-    $q.config = objectSpread2_default()({}, globalConfig);
-    freezeGlobalConfig();
-  } else {
-    $q.config = opts.config || {};
-  }
-
-  prepareApp(parentApp, opts, {
-    parentApp,
-    $q,
-    lang: opts.lang,
-    iconSet: opts.iconSet,
-    onSSRHydrated: []
-  });
-});
-;// CONCATENATED MODULE: ./node_modules/quasar/src/vue-plugin.js
-
-
-
-/* harmony default export */ const vue_plugin = ({
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   version: "2.0.0",
-  install: install_quasar,
-  lang: lang,
-  iconSet: icon_set
+  install: _install_quasar_js__WEBPACK_IMPORTED_MODULE_0__/* .default */ .Z,
+  lang: _lang_js__WEBPACK_IMPORTED_MODULE_1__/* .default */ .Z,
+  iconSet: _icon_set_js__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z
 });
 
 /***/ }),
