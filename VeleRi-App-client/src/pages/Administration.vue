@@ -93,6 +93,7 @@
 
 import { ref } from 'vue'
 import { useQuasar } from 'quasar'
+import { index } from '../../backend/downloadImage'
 
 export default {
   data () {
@@ -180,6 +181,7 @@ export default {
 
   },
   mounted () {
+    index()
     const userId = this.$auth.currentUser.uid
 
     const menuRef = this.$db.collection('Menu').where('UserId', '==', userId)
