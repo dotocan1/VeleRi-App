@@ -1,63 +1,86 @@
 <template>
 <q-page>
+<!-- Banner -->
+   <div class="q-pa-md q-gutter-sm">
+    <q-banner class="bg-red-7 text-black">
+      <div class="text-h5">Dobrodošli nazad, {{name}} {{lastName}}!</div>
+    </q-banner>
+</div>
 <!-- Konfiguriranje podataka -->
 <div class="row justify-center q-pa-md">
-<div
+  <div
   class="col-12"
   style="max-width:400px"
->
-<q-card
-  style="max-width: 400px">
-  <q-card-section>
+  >
+  <q-card
+  style="max-width: 400px"
+  class="bg-grey-2">
+    <q-card-section>
     <div class="text-h5 q-mt-md">Unesite osobne podatke:</div>
-  </q-card-section>
-  <q-card-section>
+    </q-card-section>
+    <q-card-section>
     <q-input outlined v-model="email" label="Unesite email" :disable="disabledInput"/>
     <q-input class="q-mt-sm" outlined v-model="telephone" label="Unesite broj telefona" :disable="disabledInput"/>
     <q-input class="q-mt-sm" outlined v-model="cabinet" label="Unesite pripadni kabinet" :disable="disabledInput"/>
     <q-input class="q-mt-sm" outlined v-model="carrier" label="Unesite kolegije gdje je profesor nositelj" :disable="disabledInput"/>
-  </q-card-section>
-  <q-card-actions
-  align="right">
-    <q-btn
-    color="primary"
-    @click="submit"
-    label="Spremi"/>
-    <q-btn
-    color="primary"
-    @click="editForms"
-    label="Izmijeni"/>
-  </q-card-actions>
-</q-card>
-</div>
+    </q-card-section>
+    <q-card-actions
+      align="right">
+      <q-btn
+        color="primary"
+        @click="submit"
+        label="Spremi"/>
+      <q-btn
+        color="primary"
+        @click="editForms"
+        label="Izmijeni"/>
+    </q-card-actions>
+  </q-card>
 </div>
 <!-- Konfiguriranje vidljivih podataka: -->
-<div class="row">
-  <div class="col-10">
-      <div class="text-h5 q-mt-md">Omogućite vidljivost podataka:</div>
-  </div>
-  <div class="col-12">
-    <q-checkbox v-model="emailCB" label="Vidljiv email" @click="submitCheckboxes"/>
-  </div>
-  <div class="col-12">
-    <q-checkbox v-model="telephoneCB" label="Vidljiv broj telefona" @click="submitCheckboxes" />
-  </div>
-  <div class="col-12">
-   <q-checkbox v-model="cabinetCB" label="Vidljiv kabinet" @click="submitCheckboxes"/>
-  </div>
-  <div class="col-12">
-   <q-checkbox v-model="consultationsCB" label="Vidljivo vrijeme konzultacija" @click="submitCheckboxes"/>
-  </div>
-  <div class="col-12">
-   <q-checkbox v-model="carrierCB" label="Vidljive informacije o nositelju kolegija" @click="submitCheckboxes"/>
-  </div>
+
+<div
+  class="col-12 q-mt-md"
+  style="max-width:400px">
+  <q-card
+    style="max-width: 400px"
+    class="bg-grey-2">
+    <q-card-section>
+    <div class="text-h5 q-mt-md">Odredite vidljivost podataka:</div>
+    </q-card-section>
+    <div class="col-12">
+      <q-checkbox v-model="emailCB" label="Vidljiv email" @click="submitCheckboxes"/>
+    </div>
+    <div class="col-12">
+      <q-checkbox v-model="telephoneCB" label="Vidljiv broj telefona" @click="submitCheckboxes" />
+    </div>
+    <div class="col-12">
+      <q-checkbox v-model="cabinetCB" label="Vidljiv kabinet" @click="submitCheckboxes"/>
+    </div>
+    <div class="col-12">
+      <q-checkbox v-model="consultationsCB" label="Vidljivo vrijeme konzultacija" @click="submitCheckboxes"/>
+    </div>
+    <div class="col-12">
+      <q-checkbox v-model="carrierCB" label="Vidljive informacije o nositelju kolegija" @click="submitCheckboxes"/>
+    </div>
+    </q-card>
+</div>
+</div>
   <!-- Slika qr koda: -->
-  <div class="row">
-    <h4 class="text-h4 q-mt-md col-12">Pripadni QR kod:</h4>
+  <div
+  class="col-12 q-mt-md"
+  style="max-width:400px">
+    <q-card
+      style="max-width: 400px"
+      class="bg-grey-2">
+    <q-card-section>
+      <div class="text-h5 q-mt-md">Pripadni QR kod:</div>
+    </q-card-section>
     <img id="qr-code" class="col-6 justify-center items-center" alt="">
     <a id="img-download" download="qr-code.png">Preuzmite sliku</a>
+    </q-card>
   </div>
-</div>
+
 <q-btn
   @click="logout"
   label="Odjava"
@@ -74,6 +97,8 @@ import { useQuasar } from 'quasar'
 export default {
   data () {
     return {
+      name: '',
+      lastName: '',
       emailCB: ref(false),
       telephoneCB: ref(false),
       cabinetCB: ref(false),
@@ -188,6 +213,8 @@ export default {
           this.usersDataId = doc.id
 
           // This fills in the input forms
+          this.name = data.Name
+          this.lastName = data.LastName
 
           this.email = data.Email
           this.telephone = data.Telephone
