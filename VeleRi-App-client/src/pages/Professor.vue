@@ -5,7 +5,7 @@
         <div class="q-pa-md q-gutter-sm">
           <q-card style="max-width: 400px" class="bg-grey-2">
             <q-card-section>
-              <q-img src="" />
+              <q-img style="max-height: 400px" />
               <div class="text-h5">
                 Ime i prezime profesora: {{ name }} {{ lastName }}
               </div>
