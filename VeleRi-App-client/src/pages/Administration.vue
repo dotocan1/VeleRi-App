@@ -196,37 +196,38 @@ export default {
           uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
             console.log('File available at', downloadURL)
             this.downloadURL = downloadURL
+          }).then(() => {
+            this.disabledInput = true
+            const docRef = this.$db.collection('UsersData').doc(this.usersDataId)
+
+            return docRef
+              .update({
+                Email: this.email,
+                Telephone: this.telephone,
+                Cabinet: this.cabinet,
+                Consultations: this.consultations,
+                Carrier: this.carrier,
+                DownloadURL: this.downloadURL
+              })
+              .then(() => {
+                this.$q.loadingBar.stop()
+                this.$q.notify({
+                  type: 'positive',
+                  message: 'Podaci uspješno spremljeni'
+                })
+              })
+              .catch((error) => {
+                this.$q.loadingBar.stop()
+                // The document probably doesn't exist.
+                console.error('Error updating document: ', error)
+                this.$q.notify({
+                  type: 'negative',
+                  message: 'Podaci nisu uspješno spremljeni'
+                })
+              })
           })
         }
       )
-
-      this.disabledInput = true
-      const docRef = this.$db.collection('UsersData').doc(this.usersDataId)
-
-      return docRef
-        .update({
-          Email: this.email,
-          Telephone: this.telephone,
-          Cabinet: this.cabinet,
-          Consultations: this.consultations,
-          Carrier: this.carrier
-        })
-        .then(() => {
-          this.$q.loadingBar.stop()
-          this.$q.notify({
-            type: 'positive',
-            message: 'Podaci uspješno spremljeni'
-          })
-        })
-        .catch((error) => {
-          this.$q.loadingBar.stop()
-          // The document probably doesn't exist.
-          console.error('Error updating document: ', error)
-          this.$q.notify({
-            type: 'negative',
-            message: 'Podaci nisu uspješno spremljeni'
-          })
-        })
     },
     editForms () {
       this.disabledInput = false

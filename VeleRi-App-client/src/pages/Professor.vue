@@ -5,8 +5,8 @@
         <div class="q-pa-md q-gutter-sm">
           <q-card style="max-width: 400px" class="bg-grey-2">
             <q-card-section>
-              <q-img style="max-height: 400px" v-model="professorImg" :src="url" />
-              <div class="text-h5">
+              <q-img style="max-height: 400px" v-model="downloadURL" :src="url" />
+              <div class="text-h5 q-md-lg">
                 Ime i prezime profesora: {{ name }} {{ lastName }}
               </div>
               <div class="text-h6" v-if="isEmail">E-mail: {{ email }}</div>
@@ -40,26 +40,11 @@ export default {
       isConsultations: true,
       carrier: '',
       isCarrier: true,
-      professorImg: {},
+      downloadURL: '',
       url: ''
     }
   },
   mounted () {
-    // Get a reference to the storage service, which is used to create references in your storage bucket
-    const storage = this.$storage
-
-    // Create a storage reference from our storage service
-    const storageRef = storage.ref()
-
-    // image config over
-
-    const professorsRef = storageRef.child('professors/profesor.jpg')
-
-    professorsRef.getDownloadURL().then((url) => {
-      // `url` is the download URL for 'images/stars.jpg'
-      console.log(`Evo url ${url}`)
-      this.url = url
-    })
     // I need the id data here
     // alert(this.$route.params.id)
     const id = this.$route.params.id
@@ -78,6 +63,7 @@ export default {
           this.cabinet = userData.Cabinet
           this.consultations = userData.Consultations
           this.carrier = userData.Carrier
+          this.url = userData.DownloadURL
         })
       })
       .catch((error) => {
