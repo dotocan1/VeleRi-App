@@ -99,7 +99,8 @@ export default {
               Cabinet: '',
               Consultations: '',
               Carrier: '',
-              UserId: this.$auth.currentUser.uid
+              UserId: this.$auth.currentUser.uid,
+              DownloadURL: ''
             })
             .then(() => {
               this.$db
