@@ -152,7 +152,8 @@ export default {
       usersDataId: '',
       disabledInput: true,
       q: useQuasar(),
-      pictureUpload: null
+      pictureUpload: null,
+      downloadURL: ''
     }
   },
   methods: {
@@ -167,10 +168,37 @@ export default {
 
       const professorsRef = storageRef.child(`professors/${uid()}`)
 
-      // 'file' comes from the Blob or File API
-      professorsRef.put(this.pictureUpload).then((snapshot) => {
-        console.log('Uploaded a blob or file!')
-      })
+      const uploadTask = professorsRef.put(this.pictureUpload)
+      // TODO: gotta add downlaod url to this
+      // upload task
+      uploadTask.on('state_changed',
+        (snapshot) => {
+          // Observe state change events such as progress, pause, and resume
+          // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+          const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          console.log('Upload is ' + progress + '% done')
+          switch (snapshot.state) {
+            case this.$storage.TaskState.PAUSED: // or 'paused'
+              console.log('Upload is paused')
+              break
+            case this.$storage.TaskState.RUNNING: // or 'running'
+              console.log('Upload is running')
+              break
+          }
+        },
+        (error) => {
+          // Handle unsuccessful uploads
+          console.log(error)
+        },
+        () => {
+          // Handle successful uploads on complete
+          // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+          uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
+            console.log('File available at', downloadURL)
+            this.downloadURL = downloadURL
+          })
+        }
+      )
 
       this.disabledInput = true
       const docRef = this.$db.collection('UsersData').doc(this.usersDataId)
