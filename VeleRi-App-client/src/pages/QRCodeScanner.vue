@@ -1,9 +1,13 @@
 <template>
-    <q-page>
-        <div class="transparent-div">
-        <img src="../assets/qr-code-scanner-no-qr.png" class="qr-scanner fixed-center" alt="">
-        </div>
-    </q-page>
+  <q-page>
+    <div class="transparent-div">
+      <img
+        src="../assets/qr-code-scanner-no-qr.png"
+        class="qr-scanner fixed-center"
+        alt=""
+      />
+    </div>
+  </q-page>
 </template>
 <script>
 import { useRouter } from 'vue-router'
@@ -41,5 +45,4 @@ export default {
   width: 250px
 .transparent-div
   background-color: transparent
-
 </style>

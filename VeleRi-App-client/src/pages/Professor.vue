@@ -1,19 +1,30 @@
 <template>
-<q-page>
-<h3 class="text-h3 q-mt-none">
-  Ime i prezime profesora: {{name}} {{lastName}}
-</h3>
-<h6 class="text-h6" v-if="isEmail">E-mail: {{email}}</h6>
-<h6 class="text-h6" v-if="isTelephone">Broj telefona: {{telephone}}</h6>
-<h6 class="text-h6" v-if="isCabinet">Broj kabineta: {{cabinet}}</h6>
-<h6 class="text-h6" v-if="isConsultations">Konzultacije: {{consultations}}</h6>
-<h6 class="text-h6" v-if="isCarrier">Nositelj kolegija: {{carrier}}</h6>
-
-</q-page>
+  <q-page>
+    <div class="row justify-center q-pa-md">
+      <div class="col-12" style="max-width: 400px">
+        <div class="q-pa-md q-gutter-sm">
+          <q-card style="max-width: 400px" class="bg-grey-2">
+            <q-card-section>
+              <q-img src="" />
+              <div class="text-h5">
+                Ime i prezime profesora: {{ name }} {{ lastName }}
+              </div>
+              <div class="text-h6" v-if="isEmail">E-mail: {{ email }}</div>
+              <div class="text-h6" v-if="isTelephone">Broj telefona: {{ telephone }}</div>
+              <div class="text-h6" v-if="isCabinet">Broj kabineta: {{ cabinet }}</div>
+              <div class="text-h6" v-if="isConsultations">
+                Konzultacije: {{ consultations }}
+              </div>
+              <div class="text-h6" v-if="isCarrier">Nositelj kolegija: {{ carrier }}</div>
+            </q-card-section>
+          </q-card>
+        </div>
+      </div>
+    </div>
+  </q-page>
 </template>
 
 <script>
-
 export default {
   data () {
     return {
@@ -29,7 +40,6 @@ export default {
       isConsultations: true,
       carrier: '',
       isCarrier: true
-
     }
   },
   mounted () {
@@ -77,7 +87,6 @@ export default {
       })
   }
 }
-
 </script>
 
 <style lang="sass" scoped>
