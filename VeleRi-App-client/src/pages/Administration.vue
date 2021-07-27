@@ -54,7 +54,7 @@
                 <q-icon name="cloud_upload" @click.stop />
               </template>
               <template v-slot:append>
-                <q-icon name="close" @click.stop="model = null" class="cursor-pointer" />
+                <q-icon name="close" @click.stop="pictureUpload = null" class="cursor-pointer" />
               </template>
             </q-file>
           </q-card-section>
@@ -131,7 +131,7 @@
 
 <script>
 import { ref } from 'vue'
-import { useQuasar } from 'quasar'
+import { useQuasar, uid } from 'quasar'
 
 export default {
   data () {
@@ -161,6 +161,16 @@ export default {
     },
     submit () {
       this.$q.loadingBar.start()
+
+      // uploading image here
+      const storageRef = this.$storage.ref()
+
+      const professorsRef = storageRef.child(`professors/${uid()}`)
+
+      // 'file' comes from the Blob or File API
+      professorsRef.put(this.pictureUpload).then((snapshot) => {
+        console.log('Uploaded a blob or file!')
+      })
 
       this.disabledInput = true
       const docRef = this.$db.collection('UsersData').doc(this.usersDataId)
