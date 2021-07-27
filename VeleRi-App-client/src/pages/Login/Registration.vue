@@ -61,7 +61,7 @@
 </template>
 
 <script>
-import { useQuasar } from 'quasar'
+import { useQuasar, uid } from 'quasar'
 
 export default {
   data () {
@@ -76,10 +76,6 @@ export default {
   },
   methods: {
     registerUser () {
-      function generateUID () {
-        return Math.random().toString(36).substr(2, 9)
-      }
-
       this.$q.loadingBar.start()
 
       this.$auth.signOut()
@@ -90,7 +86,7 @@ export default {
           // Signed in
           this.$db
             .collection('UsersData')
-            .doc(generateUID())
+            .doc(uid())
             .set({
               Name: this.name,
               LastName: this.lastName,
@@ -105,7 +101,7 @@ export default {
             .then(() => {
               this.$db
                 .collection('Menu')
-                .doc(generateUID())
+                .doc(uid())
                 .set({
                   isEmail: true,
                   isTelephone: true,
