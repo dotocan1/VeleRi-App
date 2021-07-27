@@ -6,6 +6,7 @@
         <div class="text-h5">Dobrodošli nazad, {{ name }} {{ lastName }}!</div>
       </q-banner>
     </div>
+    <!-- TODO: Moram dodati konzultacije -->
     <!-- Konfiguriranje podataka -->
     <div class="row justify-center q-pa-md">
       <div class="col-12" style="max-width: 400px">
@@ -41,6 +42,21 @@
               label="Unesite kolegije gdje je profesor nositelj"
               :disable="disabledInput"
             />
+            <q-file
+              filled
+              class="q-mt-md"
+              bottom-slots
+              v-model="pictureUpload"
+              label="Odaberite sliku profila"
+              counter
+            >
+              <template v-slot:prepend>
+                <q-icon name="cloud_upload" @click.stop />
+              </template>
+              <template v-slot:append>
+                <q-icon name="close" @click.stop="model = null" class="cursor-pointer" />
+              </template>
+            </q-file>
           </q-card-section>
           <q-card-actions align="right">
             <q-btn color="primary" @click="submit" label="Spremi" />
@@ -135,7 +151,8 @@ export default {
       menuId: '',
       usersDataId: '',
       disabledInput: true,
-      q: useQuasar()
+      q: useQuasar(),
+      pictureUpload: null
     }
   },
   methods: {

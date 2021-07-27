@@ -37,6 +37,7 @@ export default {
     window.QRScanner.scan(callback)
   }
 }
+
 </script>
 
 <style lang="sass" scoped>
