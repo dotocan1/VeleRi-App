@@ -165,7 +165,7 @@ export default {
     logout () {
       this.$auth.signOut().then(this.$router.push('/'))
     },
-    // TODO: Moram popraviti updajtanje
+
     submit () {
       this.$q.loadingBar.start()
 
@@ -173,71 +173,100 @@ export default {
       const storageRef = this.$storage.ref()
 
       const professorsRef = storageRef.child(`professors/${uid()}`)
+      if (this.pictureUpload === null) {
+        console.log('Its null')
+        this.disabledInput = true
+        const docRef = this.$db.collection('UsersData').doc(this.usersDataId)
+        return docRef
+          .update({
+            Email: this.email,
+            Telephone: this.telephone,
+            Cabinet: this.cabinet,
+            Consultations: this.consultations,
+            Carrier: this.carrier
+          })
+          .then(() => {
+            this.$q.loadingBar.stop()
+            this.$q.notify({
+              type: 'positive',
+              message: 'Podaci uspješno spremljeni'
+            })
+          })
+          .catch((error) => {
+            this.$q.loadingBar.stop()
+            // The document probably doesn't exist.
+            console.error('Error updating document: ', error)
+            this.$q.notify({
+              type: 'negative',
+              message: 'Podaci nisu uspješno spremljeni'
+            })
+          })
+      } else {
+        const uploadTask = professorsRef.put(this.pictureUpload)
 
-      const uploadTask = professorsRef.put(this.pictureUpload)
-      // TODO: gotta add downlaod url to this
-      // upload task
-      uploadTask.on(
-        'state_changed',
-        (snapshot) => {
+        // upload task
+        uploadTask.on(
+          'state_changed',
+          (snapshot) => {
           // Observe state change events such as progress, pause, and resume
           // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
-          const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-          console.log('Upload is ' + progress + '% done')
-          switch (snapshot.state) {
-            case this.$storage.TaskState.PAUSED: // or 'paused'
-              console.log('Upload is paused')
-              break
-            case this.$storage.TaskState.RUNNING: // or 'running'
-              console.log('Upload is running')
-              break
-          }
-        },
-        (error) => {
+            const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+            console.log('Upload is ' + progress + '% done')
+            switch (snapshot.state) {
+              case this.$storage.TaskState.PAUSED: // or 'paused'
+                console.log('Upload is paused')
+                break
+              case this.$storage.TaskState.RUNNING: // or 'running'
+                console.log('Upload is running')
+                break
+            }
+          },
+          (error) => {
           // Handle unsuccessful uploads
-          console.log(error)
-        },
-        () => {
+            console.log(error)
+          },
+          () => {
           // Handle successful uploads on complete
           // For instance, get the download URL: https://firebasestorage.googleapis.com/...
-          uploadTask.snapshot.ref
-            .getDownloadURL()
-            .then((downloadURL) => {
-              console.log('File available at', downloadURL)
-              this.downloadURL = downloadURL
-            })
-            .then(() => {
-              this.disabledInput = true
-              const docRef = this.$db.collection('UsersData').doc(this.usersDataId)
+            uploadTask.snapshot.ref
+              .getDownloadURL()
+              .then((downloadURL) => {
+                console.log('File available at', downloadURL)
+                this.downloadURL = downloadURL
+              })
+              .then(() => {
+                this.disabledInput = true
+                const docRef = this.$db.collection('UsersData').doc(this.usersDataId)
 
-              return docRef
-                .update({
-                  Email: this.email,
-                  Telephone: this.telephone,
-                  Cabinet: this.cabinet,
-                  Consultations: this.consultations,
-                  Carrier: this.carrier,
-                  DownloadURL: this.downloadURL
-                })
-                .then(() => {
-                  this.$q.loadingBar.stop()
-                  this.$q.notify({
-                    type: 'positive',
-                    message: 'Podaci uspješno spremljeni'
+                return docRef
+                  .update({
+                    Email: this.email,
+                    Telephone: this.telephone,
+                    Cabinet: this.cabinet,
+                    Consultations: this.consultations,
+                    Carrier: this.carrier,
+                    DownloadURL: this.downloadURL
                   })
-                })
-                .catch((error) => {
-                  this.$q.loadingBar.stop()
-                  // The document probably doesn't exist.
-                  console.error('Error updating document: ', error)
-                  this.$q.notify({
-                    type: 'negative',
-                    message: 'Podaci nisu uspješno spremljeni'
+                  .then(() => {
+                    this.$q.loadingBar.stop()
+                    this.$q.notify({
+                      type: 'positive',
+                      message: 'Podaci uspješno spremljeni'
+                    })
                   })
-                })
-            })
-        }
-      )
+                  .catch((error) => {
+                    this.$q.loadingBar.stop()
+                    // The document probably doesn't exist.
+                    console.error('Error updating document: ', error)
+                    this.$q.notify({
+                      type: 'negative',
+                      message: 'Podaci nisu uspješno spremljeni'
+                    })
+                  })
+              })
+          }
+        )
+      }
     },
     editForms () {
       this.disabledInput = false
