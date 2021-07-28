@@ -47,8 +47,9 @@
               class="q-mt-md"
               bottom-slots
               v-model="pictureUpload"
-              label="Odaberite sliku profila"
+              label="Odaberite ili izmijenite sliku profila"
               counter
+              :disable="disabledInput"
             >
               <template v-slot:prepend>
                 <q-icon name="cloud_upload" @click.stop />
@@ -113,7 +114,7 @@
           </q-card>
         </div>
       </div>
-      <!-- TODO: Moram popraviti sliku ovdje -->
+      <!-- FIXME: Moram popraviti sliku ovdje -->
       <!-- Slika qr koda: -->
       <div class="col-12 q-mt-md" style="max-width: 400px">
         <q-card style="max-width: 400px" class="bg-grey-2">
@@ -165,7 +166,7 @@ export default {
     logout () {
       this.$auth.signOut().then(this.$router.push('/'))
     },
-
+    // FIXME: Fix this callback hell
     submit () {
       this.$q.loadingBar.start()
 
