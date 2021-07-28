@@ -8,7 +8,7 @@
     </div>
     <!-- TODO: Moram dodati konzultacije -->
     <!-- Konfiguriranje podataka -->
-    <div class="row justify-center q-pa-md">
+    <div class="row justify-center items-center content-center q-pa-md">
       <div class="col-12" style="max-width: 400px">
         <q-card style="max-width: 400px" class="bg-grey-2">
           <q-card-section>
@@ -54,7 +54,11 @@
                 <q-icon name="cloud_upload" @click.stop />
               </template>
               <template v-slot:append>
-                <q-icon name="close" @click.stop="pictureUpload = null" class="cursor-pointer" />
+                <q-icon
+                  name="close"
+                  @click.stop="pictureUpload = null"
+                  class="cursor-pointer"
+                />
               </template>
             </q-file>
           </q-card-section>
@@ -109,14 +113,14 @@
           </q-card>
         </div>
       </div>
+      <!-- TODO: Moram popraviti sliku ovdje -->
       <!-- Slika qr koda: -->
       <div class="col-12 q-mt-md" style="max-width: 400px">
         <q-card style="max-width: 400px" class="bg-grey-2">
           <q-card-section>
-            <div class="text-h5 q-mt-md">Pripadni QR kod:</div>
+            <div class="text-h5 q-mt-md col-12">Pripadni QR kod:</div>
           </q-card-section>
-          <img id="qr-code" class="col-6 justify-center items-center" alt="" />
-          <a id="img-download" download="qr-code.png">Preuzmite sliku</a>
+          <q-img width="50%" height="50%" alt="" :src="url" class="col-12 self-center"/>
         </q-card>
       </div>
 
@@ -153,13 +157,15 @@ export default {
       disabledInput: true,
       q: useQuasar(),
       pictureUpload: null,
-      downloadURL: ''
+      downloadURL: '',
+      url: ''
     }
   },
   methods: {
     logout () {
       this.$auth.signOut().then(this.$router.push('/'))
     },
+    // TODO: Moram popraviti updajtanje
     submit () {
       this.$q.loadingBar.start()
 
@@ -171,7 +177,8 @@ export default {
       const uploadTask = professorsRef.put(this.pictureUpload)
       // TODO: gotta add downlaod url to this
       // upload task
-      uploadTask.on('state_changed',
+      uploadTask.on(
+        'state_changed',
         (snapshot) => {
           // Observe state change events such as progress, pause, and resume
           // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
@@ -193,39 +200,42 @@ export default {
         () => {
           // Handle successful uploads on complete
           // For instance, get the download URL: https://firebasestorage.googleapis.com/...
-          uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
-            console.log('File available at', downloadURL)
-            this.downloadURL = downloadURL
-          }).then(() => {
-            this.disabledInput = true
-            const docRef = this.$db.collection('UsersData').doc(this.usersDataId)
+          uploadTask.snapshot.ref
+            .getDownloadURL()
+            .then((downloadURL) => {
+              console.log('File available at', downloadURL)
+              this.downloadURL = downloadURL
+            })
+            .then(() => {
+              this.disabledInput = true
+              const docRef = this.$db.collection('UsersData').doc(this.usersDataId)
 
-            return docRef
-              .update({
-                Email: this.email,
-                Telephone: this.telephone,
-                Cabinet: this.cabinet,
-                Consultations: this.consultations,
-                Carrier: this.carrier,
-                DownloadURL: this.downloadURL
-              })
-              .then(() => {
-                this.$q.loadingBar.stop()
-                this.$q.notify({
-                  type: 'positive',
-                  message: 'Podaci uspješno spremljeni'
+              return docRef
+                .update({
+                  Email: this.email,
+                  Telephone: this.telephone,
+                  Cabinet: this.cabinet,
+                  Consultations: this.consultations,
+                  Carrier: this.carrier,
+                  DownloadURL: this.downloadURL
                 })
-              })
-              .catch((error) => {
-                this.$q.loadingBar.stop()
-                // The document probably doesn't exist.
-                console.error('Error updating document: ', error)
-                this.$q.notify({
-                  type: 'negative',
-                  message: 'Podaci nisu uspješno spremljeni'
+                .then(() => {
+                  this.$q.loadingBar.stop()
+                  this.$q.notify({
+                    type: 'positive',
+                    message: 'Podaci uspješno spremljeni'
+                  })
                 })
-              })
-          })
+                .catch((error) => {
+                  this.$q.loadingBar.stop()
+                  // The document probably doesn't exist.
+                  console.error('Error updating document: ', error)
+                  this.$q.notify({
+                    type: 'negative',
+                    message: 'Podaci nisu uspješno spremljeni'
+                  })
+                })
+            })
         }
       )
     },
@@ -307,11 +317,7 @@ export default {
 
     // qr code picture
 
-    const img = document.getElementById('qr-code')
-    img.src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${userId}`
-
-    const btnDownloadImg = document.getElementById('img-download')
-    btnDownloadImg.href = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${userId}`
+    this.url = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${userId}`
   }
 }
 </script>

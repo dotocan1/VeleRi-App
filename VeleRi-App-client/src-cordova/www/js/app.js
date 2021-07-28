@@ -50,35 +50,35 @@ const routes = [{
   component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(712)]).then(__webpack_require__.bind(__webpack_require__, 4712)),
   children: [{
     path: '/Login',
-    component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(573)]).then(__webpack_require__.bind(__webpack_require__, 2573))
+    component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(179)]).then(__webpack_require__.bind(__webpack_require__, 2179))
   }, {
     path: '/Registration',
-    component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(97)]).then(__webpack_require__.bind(__webpack_require__, 7097))
+    component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(713)]).then(__webpack_require__.bind(__webpack_require__, 6713))
   }]
 }, {
   path: '/',
   component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(369)]).then(__webpack_require__.bind(__webpack_require__, 1369)),
   children: [{
     path: '/Home',
-    component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(934)]).then(__webpack_require__.bind(__webpack_require__, 2934))
+    component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(540)]).then(__webpack_require__.bind(__webpack_require__, 1540))
   }, {
     path: 'Professor/:id',
-    component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(189)]).then(__webpack_require__.bind(__webpack_require__, 8189))
+    component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(296)]).then(__webpack_require__.bind(__webpack_require__, 6296))
   }, {
     path: '/',
-    component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(957)]).then(__webpack_require__.bind(__webpack_require__, 7957))
+    component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(609)]).then(__webpack_require__.bind(__webpack_require__, 7609))
   }, {
     path: '/QRCodeScanner',
-    component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(720)]).then(__webpack_require__.bind(__webpack_require__, 7720))
+    component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(351)]).then(__webpack_require__.bind(__webpack_require__, 3351))
   }, {
     path: '/Administration',
-    component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(724)]).then(__webpack_require__.bind(__webpack_require__, 8724))
+    component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(175)]).then(__webpack_require__.bind(__webpack_require__, 6175))
   }]
 }, // Always leave this as last one,
 // but you can also remove it
 {
   path: '/:catchAll(.*)*',
-  component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(193)]).then(__webpack_require__.bind(__webpack_require__, 2193))
+  component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(670)]).then(__webpack_require__.bind(__webpack_require__, 5670))
 }];
 /* harmony default export */ const router_routes = (routes);
 // EXTERNAL MODULE: ./src/boot/VeleriAppSetup.js
@@ -178,8 +178,10 @@ const isUserLoggedIn = () => {
     router
   };
 }
-// EXTERNAL MODULE: ./node_modules/quasar/src/plugins/Notify.js + 1 modules
-var Notify = __webpack_require__(9140);
+// EXTERNAL MODULE: ./node_modules/quasar/src/plugins/Notify.js
+var Notify = __webpack_require__(4434);
+// EXTERNAL MODULE: ./node_modules/quasar/src/plugins/LoadingBar.js + 1 modules
+var LoadingBar = __webpack_require__(921);
 ;// CONCATENATED MODULE: ./.quasar/quasar-user-options.js
 /**
  * THIS FILE IS GENERATED AUTOMATICALLY.
@@ -195,10 +197,17 @@ var Notify = __webpack_require__(9140);
 ;
 /* harmony default export */ const quasar_user_options = ({
   config: {
+    "loadingBar": {
+      "skipHijack": true,
+      "color": "blue",
+      "size": "15px",
+      "position": "bottom"
+    },
     "notify": "message"
   },
   plugins: {
-    Notify: Notify/* default */.Z
+    Notify: Notify/* default */.Z,
+    LoadingBar: LoadingBar/* default */.Z
   }
 });
 ;// CONCATENATED MODULE: ./.quasar/client-entry.js
@@ -613,7 +622,7 @@ const api = axios__WEBPACK_IMPORTED_MODULE_1___default().create({
 /******/ 		};
 /******/ 		
 /******/ 		__webpack_require__.f.miniCss = (chunkId, promises) => {
-/******/ 			var cssChunks = {"97":1,"189":1,"573":1,"720":1,"724":1,"934":1,"957":1};
+/******/ 			var cssChunks = {"175":1,"179":1,"296":1,"351":1,"540":1,"609":1,"713":1};
 /******/ 			if(installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
 /******/ 			else if(installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
 /******/ 				promises.push(installedCssChunks[chunkId] = loadStylesheet(chunkId).then(() => {

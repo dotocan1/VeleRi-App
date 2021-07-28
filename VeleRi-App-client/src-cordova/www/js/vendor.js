@@ -29095,9 +29095,10 @@ const compatUtils = (null);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "uT": () => (/* binding */ Transition),
 /* harmony export */   "W3": () => (/* binding */ TransitionGroup),
-/* harmony export */   "ri": () => (/* binding */ createApp)
+/* harmony export */   "ri": () => (/* binding */ createApp),
+/* harmony export */   "iM": () => (/* binding */ withModifiers)
 /* harmony export */ });
-/* unused harmony exports createSSRApp, hydrate, render, useCssModule, useCssVars, vModelCheckbox, vModelDynamic, vModelRadio, vModelSelect, vModelText, vShow, withKeys, withModifiers */
+/* unused harmony exports createSSRApp, hydrate, render, useCssModule, useCssVars, vModelCheckbox, vModelDynamic, vModelRadio, vModelSelect, vModelText, vShow, withKeys */
 /* harmony import */ var _vue_shared__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2323);
 /* harmony import */ var _vue_runtime_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3673);
 /* harmony import */ var _vue_runtime_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(1959);
@@ -32984,7 +32985,7 @@ module.exports.default = module.exports, module.exports.__esModule = true;
 
 /***/ }),
 
-/***/ 6114:
+/***/ 8240:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -33007,154 +33008,8 @@ var runtime_dom_esm_bundler = __webpack_require__(8880);
 var QIcon = __webpack_require__(4554);
 // EXTERNAL MODULE: ./node_modules/quasar/src/components/spinner/QSpinner.js + 1 modules
 var QSpinner = __webpack_require__(9754);
-// EXTERNAL MODULE: ./node_modules/quasar/src/utils/dom.js
-var dom = __webpack_require__(2012);
-// EXTERNAL MODULE: ./node_modules/quasar/src/utils/event.js
-var utils_event = __webpack_require__(4716);
-// EXTERNAL MODULE: ./node_modules/quasar/src/utils/private/key-composition.js
-var key_composition = __webpack_require__(1436);
-;// CONCATENATED MODULE: ./node_modules/quasar/src/utils/throttle.js
-/* harmony default export */ function throttle(fn, limit = 250) {
-  let wait = false,
-      result;
-  return function ()
-  /* ...args */
-  {
-    if (wait === false) {
-      wait = true;
-      setTimeout(() => {
-        wait = false;
-      }, limit);
-      result = fn.apply(this, arguments);
-    }
-
-    return result;
-  };
-}
-;// CONCATENATED MODULE: ./node_modules/quasar/src/directives/Ripple.js
-
-
-
-
-
-
-function showRipple(evt, el, ctx, forceCenter) {
-  ctx.modifiers.stop === true && (0,utils_event/* stop */.sT)(evt);
-  const color = ctx.modifiers.color;
-  let center = ctx.modifiers.center;
-  center = center === true || forceCenter === true;
-  const node = document.createElement('span'),
-        innerNode = document.createElement('span'),
-        pos = (0,utils_event/* position */.FK)(evt),
-        {
-    left,
-    top,
-    width,
-    height
-  } = el.getBoundingClientRect(),
-        diameter = Math.sqrt(width * width + height * height),
-        radius = diameter / 2,
-        centerX = `${(width - diameter) / 2}px`,
-        x = center ? centerX : `${pos.left - left - radius}px`,
-        centerY = `${(height - diameter) / 2}px`,
-        y = center ? centerY : `${pos.top - top - radius}px`;
-  innerNode.className = 'q-ripple__inner';
-  (0,dom/* css */.iv)(innerNode, {
-    height: `${diameter}px`,
-    width: `${diameter}px`,
-    transform: `translate3d(${x},${y},0) scale3d(.2,.2,1)`,
-    opacity: 0
-  });
-  node.className = `q-ripple${color ? ' text-' + color : ''}`;
-  node.setAttribute('dir', 'ltr');
-  node.appendChild(innerNode);
-  el.appendChild(node);
-
-  const abort = () => {
-    node.remove();
-    clearTimeout(timer);
-  };
-
-  ctx.abort.push(abort);
-  let timer = setTimeout(() => {
-    innerNode.classList.add('q-ripple__inner--enter');
-    innerNode.style.transform = `translate3d(${centerX},${centerY},0) scale3d(1,1,1)`;
-    innerNode.style.opacity = 0.2;
-    timer = setTimeout(() => {
-      innerNode.classList.remove('q-ripple__inner--enter');
-      innerNode.classList.add('q-ripple__inner--leave');
-      innerNode.style.opacity = 0;
-      timer = setTimeout(() => {
-        node.remove();
-        ctx.abort.splice(ctx.abort.indexOf(abort), 1);
-      }, 275);
-    }, 250);
-  }, 50);
-}
-
-function updateModifiers(ctx, {
-  modifiers,
-  value,
-  arg,
-  instance
-}) {
-  const cfg = Object.assign({}, instance.$q.config.ripple, modifiers, value);
-  ctx.modifiers = {
-    early: cfg.early === true,
-    stop: cfg.stop === true,
-    center: cfg.center === true,
-    color: cfg.color || arg,
-    keyCodes: [].concat(cfg.keyCodes || 13)
-  };
-}
-
-/* harmony default export */ const Ripple = ( false ? 0 : {
-  name: 'ripple',
-
-  beforeMount(el, binding) {
-    const ctx = {
-      enabled: binding.value !== false,
-      modifiers: {},
-      abort: [],
-
-      start(evt) {
-        if (ctx.enabled === true && evt.qSkipRipple !== true && (ctx.modifiers.early === true ? ['mousedown', 'touchstart'].includes(evt.type) === true : evt.type === 'click')) {
-          showRipple(evt, el, ctx, evt.qKeyEvent === true);
-        }
-      },
-
-      keystart: throttle(evt => {
-        if (ctx.enabled === true && evt.qSkipRipple !== true && (0,key_composition/* isKeyCode */.So)(evt, ctx.modifiers.keyCodes) === true && evt.type === `key${ctx.modifiers.early === true ? 'down' : 'up'}`) {
-          showRipple(evt, el, ctx, true);
-        }
-      }, 300)
-    };
-    updateModifiers(ctx, binding);
-    el.__qripple = ctx;
-    (0,utils_event/* addEvt */.M0)(ctx, 'main', [[el, 'mousedown', 'start', 'passive'], [el, 'touchstart', 'start', 'passive'], [el, 'click', 'start', 'passive'], [el, 'keydown', 'keystart', 'passive'], [el, 'keyup', 'keystart', 'passive']]);
-  },
-
-  updated(el, binding) {
-    if (binding.oldValue !== binding.value) {
-      const ctx = el.__qripple;
-      ctx.enabled = binding.value !== false;
-
-      if (ctx.enabled === true && Object(binding.value) === binding.value) {
-        updateModifiers(ctx, binding);
-      }
-    }
-  },
-
-  beforeUnmount(el) {
-    const ctx = el.__qripple;
-    ctx.abort.forEach(fn => {
-      fn();
-    });
-    (0,utils_event/* cleanEvt */.ul)(ctx, 'main');
-    delete el._qripple;
-  }
-
-});
+// EXTERNAL MODULE: ./node_modules/quasar/src/directives/Ripple.js + 1 modules
+var Ripple = __webpack_require__(6489);
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.regexp.exec.js
 var es_regexp_exec = __webpack_require__(7280);
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.flat.js
@@ -33315,6 +33170,10 @@ const useBtnProps = objectSpread2_default()(objectSpread2_default()(objectSpread
 }
 // EXTERNAL MODULE: ./node_modules/quasar/src/utils/private/render.js
 var render = __webpack_require__(7657);
+// EXTERNAL MODULE: ./node_modules/quasar/src/utils/event.js
+var utils_event = __webpack_require__(4716);
+// EXTERNAL MODULE: ./node_modules/quasar/src/utils/private/key-composition.js
+var key_composition = __webpack_require__(1436);
 ;// CONCATENATED MODULE: ./node_modules/quasar/src/components/btn/QBtn.js
 
 
@@ -33399,7 +33258,7 @@ let touchTarget = null,
     });
     const directives = (0,runtime_core_esm_bundler/* computed */.Fl)(() => {
       // if props.disable !== true && props.ripple !== false
-      return [[Ripple, ripple.value, void 0, {
+      return [[Ripple/* default */.Z, ripple.value, void 0, {
         center: props.round
       }]];
     });
@@ -33997,6 +33856,631 @@ const bgNode = (0,runtime_core_esm_bundler.h)('div', {
 
   setup() {
     return use_checkbox('checkbox', () => () => [bgNode]);
+  }
+
+}));
+
+/***/ }),
+
+/***/ 4816:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  "Z": () => (/* binding */ QFile)
+});
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/objectSpread2.js
+var objectSpread2 = __webpack_require__(515);
+var objectSpread2_default = /*#__PURE__*/__webpack_require__.n(objectSpread2);
+// EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom-collections.iterator.js
+var web_dom_collections_iterator = __webpack_require__(71);
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.reduce.js
+var es_array_reduce = __webpack_require__(107);
+// EXTERNAL MODULE: ./node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.js
+var runtime_core_esm_bundler = __webpack_require__(3673);
+// EXTERNAL MODULE: ./node_modules/@vue/reactivity/dist/reactivity.esm-bundler.js
+var reactivity_esm_bundler = __webpack_require__(1959);
+// EXTERNAL MODULE: ./node_modules/quasar/src/components/icon/QIcon.js
+var QIcon = __webpack_require__(4554);
+// EXTERNAL MODULE: ./node_modules/quasar/src/directives/Ripple.js + 1 modules
+var Ripple = __webpack_require__(6489);
+// EXTERNAL MODULE: ./node_modules/quasar/src/composables/private/use-dark.js
+var use_dark = __webpack_require__(2236);
+// EXTERNAL MODULE: ./node_modules/quasar/src/composables/private/use-size.js
+var use_size = __webpack_require__(2417);
+// EXTERNAL MODULE: ./node_modules/quasar/src/utils/event.js
+var utils_event = __webpack_require__(4716);
+// EXTERNAL MODULE: ./node_modules/quasar/src/utils/private/render.js
+var render = __webpack_require__(7657);
+;// CONCATENATED MODULE: ./node_modules/quasar/src/components/chip/QChip.js
+
+
+
+
+
+
+
+
+const defaultSizes = {
+  xs: 8,
+  sm: 10,
+  md: 14,
+  lg: 20,
+  xl: 24
+};
+/* harmony default export */ const QChip = ((0,runtime_core_esm_bundler/* defineComponent */.aZ)({
+  name: 'QChip',
+  props: objectSpread2_default()(objectSpread2_default()(objectSpread2_default()({}, use_dark/* useDarkProps */.S), use_size/* useSizeProps */.LU), {}, {
+    dense: Boolean,
+    icon: String,
+    iconRight: String,
+    iconRemove: String,
+    iconSelected: String,
+    label: [String, Number],
+    color: String,
+    textColor: String,
+    modelValue: {
+      type: Boolean,
+      default: true
+    },
+    selected: {
+      type: Boolean,
+      default: null
+    },
+    square: Boolean,
+    outline: Boolean,
+    clickable: Boolean,
+    removable: Boolean,
+    tabindex: [String, Number],
+    disable: Boolean,
+    ripple: {
+      type: [Boolean, Object],
+      default: true
+    }
+  }),
+  emits: ['update:modelValue', 'update:selected', 'remove', 'click'],
+
+  setup(props, {
+    slots,
+    emit
+  }) {
+    const {
+      proxy: {
+        $q
+      }
+    } = (0,runtime_core_esm_bundler/* getCurrentInstance */.FN)();
+    const isDark = (0,use_dark/* default */.Z)(props, $q);
+    const sizeStyle = (0,use_size/* default */.ZP)(props, defaultSizes);
+    const hasLeftIcon = (0,runtime_core_esm_bundler/* computed */.Fl)(() => props.selected === true || props.icon !== void 0);
+    const leftIcon = (0,runtime_core_esm_bundler/* computed */.Fl)(() => props.selected === true ? props.iconSelected || $q.iconSet.chip.selected : props.icon);
+    const removeIcon = (0,runtime_core_esm_bundler/* computed */.Fl)(() => props.iconRemove || $q.iconSet.chip.remove);
+    const isClickable = (0,runtime_core_esm_bundler/* computed */.Fl)(() => props.disable === false && (props.clickable === true || props.selected !== null));
+    const classes = (0,runtime_core_esm_bundler/* computed */.Fl)(() => {
+      const text = props.outline === true ? props.color || props.textColor : props.textColor;
+      return 'q-chip row inline no-wrap items-center' + (props.outline === false && props.color !== void 0 ? ` bg-${props.color}` : '') + (text ? ` text-${text} q-chip--colored` : '') + (props.disable === true ? ' disabled' : '') + (props.dense === true ? ' q-chip--dense' : '') + (props.outline === true ? ' q-chip--outline' : '') + (props.selected === true ? ' q-chip--selected' : '') + (isClickable.value === true ? ' q-chip--clickable cursor-pointer non-selectable q-hoverable' : '') + (props.square === true ? ' q-chip--square' : '') + (isDark.value === true ? ' q-chip--dark q-dark' : '');
+    });
+    const attributes = (0,runtime_core_esm_bundler/* computed */.Fl)(() => props.disable === true ? {
+      tabindex: -1,
+      'aria-disabled': 'true'
+    } : {
+      tabindex: props.tabindex || 0
+    });
+
+    function onKeyup(e) {
+      e.keyCode === 13
+      /* ENTER */
+      && onClick(e);
+    }
+
+    function onClick(e) {
+      if (!props.disable) {
+        emit('update:selected', !props.selected);
+        emit('click', e);
+      }
+    }
+
+    function onRemove(e) {
+      if (e.keyCode === void 0 || e.keyCode === 13) {
+        (0,utils_event/* stopAndPrevent */.NS)(e);
+
+        if (props.disable === false) {
+          emit('update:modelValue', false);
+          emit('remove');
+        }
+      }
+    }
+
+    function getContent() {
+      const child = [];
+      isClickable.value === true && child.push((0,runtime_core_esm_bundler.h)('div', {
+        class: 'q-focus-helper'
+      }));
+      hasLeftIcon.value === true && child.push((0,runtime_core_esm_bundler.h)(QIcon/* default */.Z, {
+        class: 'q-chip__icon q-chip__icon--left',
+        name: leftIcon.value
+      }));
+      const label = props.label !== void 0 ? [(0,runtime_core_esm_bundler.h)('div', {
+        class: 'ellipsis'
+      }, [props.label])] : void 0;
+      child.push((0,runtime_core_esm_bundler.h)('div', {
+        class: 'q-chip__content col row no-wrap items-center q-anchor--skip'
+      }, (0,render/* hMergeSlotSafely */.pf)(slots.default, label)));
+      props.iconRight && child.push((0,runtime_core_esm_bundler.h)(QIcon/* default */.Z, {
+        class: 'q-chip__icon q-chip__icon--right',
+        name: props.iconRight
+      }));
+      props.removable === true && child.push((0,runtime_core_esm_bundler.h)(QIcon/* default */.Z, objectSpread2_default()(objectSpread2_default()({
+        class: 'q-chip__icon q-chip__icon--remove cursor-pointer',
+        name: removeIcon.value
+      }, attributes.value), {}, {
+        onClick: onRemove,
+        onKeyup: onRemove
+      })));
+      return child;
+    }
+
+    return () => {
+      if (props.modelValue === false) {
+        return;
+      }
+
+      const data = {
+        class: classes.value,
+        style: sizeStyle.value
+      };
+      isClickable.value === true && Object.assign(data, attributes.value, {
+        onClick,
+        onKeyup
+      });
+      return (0,render/* hDir */.Jl)('div', data, getContent(), 'ripple', props.ripple !== false && props.disable !== true, () => [[Ripple/* default */.Z, props.ripple]]);
+    };
+  }
+
+}));
+// EXTERNAL MODULE: ./node_modules/quasar/src/composables/private/use-field.js + 4 modules
+var use_field = __webpack_require__(8500);
+// EXTERNAL MODULE: ./node_modules/quasar/src/composables/private/use-form.js
+var use_form = __webpack_require__(9550);
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.regexp.exec.js
+var es_regexp_exec = __webpack_require__(7280);
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.trim.js
+var es_string_trim = __webpack_require__(6801);
+;// CONCATENATED MODULE: ./node_modules/quasar/src/composables/private/use-file.js
+
+
+
+
+
+
+function filterFiles(files, rejectedFiles, failedPropValidation, filterFn) {
+  const acceptedFiles = [];
+  files.forEach(file => {
+    if (filterFn(file) === true) {
+      acceptedFiles.push(file);
+    } else {
+      rejectedFiles.push({
+        failedPropValidation,
+        file
+      });
+    }
+  });
+  return acceptedFiles;
+}
+
+function stopAndPreventDrag(e) {
+  e && e.dataTransfer && (e.dataTransfer.dropEffect = 'copy');
+  (0,utils_event/* stopAndPrevent */.NS)(e);
+}
+
+const useFileProps = {
+  multiple: Boolean,
+  accept: String,
+  capture: String,
+  maxFileSize: [Number, String],
+  maxTotalSize: [Number, String],
+  maxFiles: [Number, String],
+  filter: Function
+};
+const useFileEmits = ['rejected'];
+/* harmony default export */ function use_file({
+  editable,
+  dnd,
+  getFileInput,
+  addFilesToQueue
+}) {
+  const {
+    props,
+    emit,
+    proxy
+  } = (0,runtime_core_esm_bundler/* getCurrentInstance */.FN)();
+  const extensions = (0,runtime_core_esm_bundler/* computed */.Fl)(() => props.accept !== void 0 ? props.accept.split(',').map(ext => {
+    ext = ext.trim();
+
+    if (ext === '*') {
+      // support "*"
+      return '*/';
+    } else if (ext.endsWith('/*')) {
+      // support "image/*" or "*/*"
+      ext = ext.slice(0, ext.length - 1);
+    }
+
+    return ext.toUpperCase();
+  }) : null);
+  const maxFilesNumber = (0,runtime_core_esm_bundler/* computed */.Fl)(() => parseInt(props.maxFiles, 10));
+  const maxTotalSizeNumber = (0,runtime_core_esm_bundler/* computed */.Fl)(() => parseInt(props.maxTotalSize, 10));
+
+  function pickFiles(e) {
+    if (editable.value) {
+      const input = getFileInput();
+      input && input.click(e);
+    }
+  }
+
+  function addFiles(files) {
+    if (editable.value && files) {
+      addFilesToQueue(null, files);
+    }
+  }
+
+  function processFiles(e, filesToProcess, currentFileList, append) {
+    let files = Array.from(filesToProcess || e.target.files);
+    const rejectedFiles = [];
+
+    const done = () => {
+      if (rejectedFiles.length > 0) {
+        emit('rejected', rejectedFiles);
+      }
+    }; // filter file types
+
+
+    if (props.accept !== void 0 && extensions.value.indexOf('*/') === -1) {
+      files = filterFiles(files, rejectedFiles, 'accept', file => {
+        return extensions.value.some(ext => file.type.toUpperCase().startsWith(ext) || file.name.toUpperCase().endsWith(ext));
+      });
+
+      if (files.length === 0) {
+        return done();
+      }
+    } // filter max file size
+
+
+    if (props.maxFileSize !== void 0) {
+      const maxFileSize = parseInt(props.maxFileSize, 10);
+      files = filterFiles(files, rejectedFiles, 'max-file-size', file => {
+        return file.size <= maxFileSize;
+      });
+
+      if (files.length === 0) {
+        return done();
+      }
+    } // Cordova/iOS allows selecting multiple files even when the
+    // multiple attribute is not specified. We also normalize drag'n'dropped
+    // files here:
+
+
+    if (props.multiple !== true) {
+      files = [files[0]];
+    }
+
+    if (props.maxTotalSize !== void 0) {
+      let size = append === true ? currentFileList.reduce((total, file) => total + file.size, 0) : 0;
+      files = filterFiles(files, rejectedFiles, 'max-total-size', file => {
+        size += file.size;
+        return size <= maxTotalSizeNumber.value;
+      });
+
+      if (files.length === 0) {
+        return done();
+      }
+    } // do we have custom filter function?
+
+
+    if (typeof props.filter === 'function') {
+      const filteredFiles = props.filter(files);
+      files = filterFiles(files, rejectedFiles, 'filter', file => {
+        return filteredFiles.includes(file);
+      });
+    }
+
+    if (props.maxFiles !== void 0) {
+      let filesNumber = append === true ? currentFileList.length : 0;
+      files = filterFiles(files, rejectedFiles, 'max-files', () => {
+        filesNumber++;
+        return filesNumber <= maxFilesNumber.value;
+      });
+
+      if (files.length === 0) {
+        return done();
+      }
+    }
+
+    done();
+
+    if (files.length > 0) {
+      return files;
+    }
+  }
+
+  function onDragover(e) {
+    stopAndPreventDrag(e);
+    dnd.value !== true && (dnd.value = true);
+  }
+
+  function onDragleave(e) {
+    (0,utils_event/* stopAndPrevent */.NS)(e);
+    dnd.value = false;
+  }
+
+  function onDrop(e) {
+    stopAndPreventDrag(e);
+    const files = e.dataTransfer.files;
+
+    if (files.length > 0) {
+      addFilesToQueue(null, files);
+    }
+
+    dnd.value = false;
+  }
+
+  function getDndNode(type) {
+    if (dnd.value === true) {
+      return (0,runtime_core_esm_bundler.h)('div', {
+        class: `q-${type}__dnd absolute-full`,
+        onDragenter: stopAndPreventDrag,
+        onDragover: stopAndPreventDrag,
+        onDragleave,
+        onDrop
+      });
+    }
+  } // expose public methods
+
+
+  Object.assign(proxy, {
+    pickFiles,
+    addFiles
+  });
+  return {
+    pickFiles,
+    addFiles,
+    onDragover,
+    processFiles,
+    getDndNode,
+    maxFilesNumber,
+    maxTotalSizeNumber
+  };
+}
+// EXTERNAL MODULE: ./node_modules/quasar/src/composables/private/use-file-dom-props.js
+var use_file_dom_props = __webpack_require__(2726);
+// EXTERNAL MODULE: ./node_modules/quasar/src/utils/format.js
+var format = __webpack_require__(2130);
+;// CONCATENATED MODULE: ./node_modules/quasar/src/components/file/QFile.js
+
+
+
+
+
+
+
+
+
+
+/* harmony default export */ const QFile = ((0,runtime_core_esm_bundler/* defineComponent */.aZ)({
+  name: 'QFile',
+  props: objectSpread2_default()(objectSpread2_default()(objectSpread2_default()(objectSpread2_default()({}, use_field/* useFieldProps */.Cl), use_form/* useFormProps */.Fz), useFileProps), {}, {
+    /* SSR does not know about File & FileList */
+    modelValue:  false ? 0 : [File, FileList, Array],
+    append: Boolean,
+    useChips: Boolean,
+    displayValue: [String, Number],
+    tabindex: {
+      type: [String, Number],
+      default: 0
+    },
+    counterLabel: Function,
+    inputClass: [Array, String, Object],
+    inputStyle: [Array, String, Object]
+  }),
+  emits: [...use_field/* useFieldEmits */.HJ, ...useFileEmits],
+
+  setup(props, {
+    slots,
+    emit,
+    attrs
+  }) {
+    const {
+      proxy
+    } = (0,runtime_core_esm_bundler/* getCurrentInstance */.FN)();
+    const state = (0,use_field/* useFieldState */.tL)();
+    const inputRef = (0,reactivity_esm_bundler/* ref */.iH)(null);
+    const dnd = (0,reactivity_esm_bundler/* ref */.iH)(false);
+    const nameProp = (0,use_form/* useFormInputNameAttr */.Do)(props);
+    const {
+      pickFiles,
+      onDragover,
+      processFiles,
+      getDndNode
+    } = use_file({
+      editable: state.editable,
+      dnd,
+      getFileInput,
+      addFilesToQueue
+    });
+    const formDomProps = (0,use_file_dom_props/* default */.Z)(props);
+    const innerValue = (0,runtime_core_esm_bundler/* computed */.Fl)(() => Object(props.modelValue) === props.modelValue ? 'length' in props.modelValue ? Array.from(props.modelValue) : [props.modelValue] : []);
+    const hasValue = (0,runtime_core_esm_bundler/* computed */.Fl)(() => (0,use_field/* fieldValueIsFilled */.yV)(innerValue.value));
+    const selectedString = (0,runtime_core_esm_bundler/* computed */.Fl)(() => innerValue.value.map(file => file.name).join(', '));
+    const totalSize = (0,runtime_core_esm_bundler/* computed */.Fl)(() => (0,format/* humanStorageSize */.rB)(innerValue.value.reduce((acc, file) => acc + file.size, 0)));
+    const counterProps = (0,runtime_core_esm_bundler/* computed */.Fl)(() => ({
+      totalSize: totalSize.value,
+      filesNumber: innerValue.value.length,
+      maxFiles: props.maxFiles
+    }));
+    const inputAttrs = (0,runtime_core_esm_bundler/* computed */.Fl)(() => objectSpread2_default()(objectSpread2_default()({
+      tabindex: -1,
+      type: 'file',
+      title: '',
+      // try to remove default tooltip,
+      accept: props.accept,
+      capture: props.capture,
+      name: nameProp.value
+    }, attrs), {}, {
+      id: state.targetUid.value,
+      disabled: state.editable.value !== true
+    }));
+    const isAppending = (0,runtime_core_esm_bundler/* computed */.Fl)(() => props.multiple === true && props.append === true);
+
+    function removeAtIndex(index) {
+      const files = innerValue.value.slice();
+      files.splice(index, 1);
+      emitValue(files);
+    }
+
+    function removeFile(file) {
+      const index = innerValue.value.findIndex(file);
+
+      if (index > -1) {
+        removeAtIndex(index);
+      }
+    }
+
+    function emitValue(files) {
+      emit('update:modelValue', props.multiple === true ? files : files[0]);
+    }
+
+    function onKeyup(e) {
+      // only on ENTER
+      e.keyCode === 13 && pickFiles(e);
+    }
+
+    function getFileInput() {
+      return inputRef.value;
+    }
+
+    function addFilesToQueue(e, fileList) {
+      const files = processFiles(e, fileList, innerValue.value, isAppending.value); // if nothing to do...
+
+      if (files === void 0) {
+        return;
+      } // protect against input @change being called in a loop
+      // like it happens on Safari, so don't emit same thing:
+
+
+      if (props.multiple === true ? props.modelValue && files.every(f => innerValue.value.includes(f)) : props.modelValue === files[0]) {
+        return;
+      }
+
+      emitValue(isAppending.value === true ? innerValue.value.concat(files) : files);
+    }
+
+    function getFiller() {
+      return [(0,runtime_core_esm_bundler.h)('input', {
+        class: [props.inputClass, 'q-file__filler'],
+        style: props.inputStyle,
+        tabindex: -1
+      })];
+    }
+
+    function getSelection() {
+      if (slots.file !== void 0) {
+        return innerValue.value.length === 0 ? getFiller() : innerValue.value.map((file, index) => slots.file({
+          index,
+          file,
+          ref: this
+        }));
+      }
+
+      if (slots.selected !== void 0) {
+        return innerValue.value.length === 0 ? getFiller() : slots.selected({
+          files: innerValue.value,
+          ref: this
+        });
+      }
+
+      if (props.useChips === true) {
+        return innerValue.value.length === 0 ? getFiller() : innerValue.value.map((file, i) => (0,runtime_core_esm_bundler.h)(QChip, {
+          key: 'file-' + i,
+          removable: state.editable.value,
+          dense: true,
+          textColor: props.color,
+          tabindex: props.tabindex,
+          onRemove: () => {
+            removeAtIndex(i);
+          }
+        }, () => (0,runtime_core_esm_bundler.h)('span', {
+          class: 'ellipsis',
+          textContent: file.name
+        })));
+      }
+
+      const textContent = props.displayValue !== void 0 ? props.displayValue : selectedString.value;
+      return textContent.length > 0 ? [(0,runtime_core_esm_bundler.h)('div', {
+        class: props.inputClass,
+        style: props.inputStyle,
+        textContent
+      })] : getFiller();
+    }
+
+    function getInput() {
+      const data = objectSpread2_default()(objectSpread2_default()(objectSpread2_default()({
+        ref: inputRef
+      }, inputAttrs.value), formDomProps.value), {}, {
+        class: 'q-field__input fit absolute-full cursor-pointer',
+        onChange: addFilesToQueue
+      });
+
+      if (props.multiple === true) {
+        data.multiple = true;
+      }
+
+      return (0,runtime_core_esm_bundler.h)('input', data);
+    }
+
+    Object.assign(state, {
+      inheritAttrs: true,
+      fieldClass: {
+        value: 'q-file q-field--auto-height'
+      },
+      emitValue,
+      hasValue,
+      inputRef,
+      innerValue,
+      floatingLabel: (0,runtime_core_esm_bundler/* computed */.Fl)(() => hasValue.value === true || (0,use_field/* fieldValueIsFilled */.yV)(props.displayValue)),
+      computedCounter: (0,runtime_core_esm_bundler/* computed */.Fl)(() => {
+        if (props.counterLabel !== void 0) {
+          return props.counterLabel(counterProps.value);
+        }
+
+        const max = props.maxFiles;
+        return `${innerValue.value.length}${max !== void 0 ? ' / ' + max : ''} (${totalSize.value})`;
+      }),
+      getControlChild: () => getDndNode('file'),
+      getControl: () => {
+        const data = {
+          ref: state.targetRef,
+          class: 'q-field__native row items-center cursor-pointer',
+          tabindex: props.tabindex
+        };
+
+        if (state.editable.value === true) {
+          Object.assign(data, {
+            onDragover,
+            onKeyup
+          });
+        }
+
+        return (0,runtime_core_esm_bundler.h)('div', data, [getInput()].concat(getSelection()));
+      }
+    }); // expose public methods
+
+    Object.assign(proxy, {
+      removeAtIndex,
+      removeFile,
+      getNativeElement: () => inputRef.value
+    });
+    return (0,use_field/* default */.ZP)(state);
   }
 
 }));
@@ -34734,7 +35218,299 @@ const faLaRE = /^[l|f]a[s|r|l|b|d]? /;
 
 /***/ }),
 
-/***/ 1206:
+/***/ 4027:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  "Z": () => (/* binding */ QImg)
+});
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/objectSpread2.js
+var objectSpread2 = __webpack_require__(515);
+var objectSpread2_default = /*#__PURE__*/__webpack_require__.n(objectSpread2);
+// EXTERNAL MODULE: ./node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.js
+var runtime_core_esm_bundler = __webpack_require__(3673);
+// EXTERNAL MODULE: ./node_modules/@vue/reactivity/dist/reactivity.esm-bundler.js
+var reactivity_esm_bundler = __webpack_require__(1959);
+// EXTERNAL MODULE: ./node_modules/@vue/runtime-dom/dist/runtime-dom.esm-bundler.js
+var runtime_dom_esm_bundler = __webpack_require__(8880);
+// EXTERNAL MODULE: ./node_modules/quasar/src/components/spinner/QSpinner.js + 1 modules
+var QSpinner = __webpack_require__(9754);
+;// CONCATENATED MODULE: ./node_modules/quasar/src/composables/private/use-ratio.js
+
+const useRatioProps = {
+  ratio: [String, Number]
+};
+/* harmony default export */ function use_ratio(props, naturalRatio) {
+  // return ratioStyle
+  return (0,runtime_core_esm_bundler/* computed */.Fl)(() => {
+    const ratio = Number(props.ratio || (naturalRatio !== void 0 ? naturalRatio.value : void 0));
+    return isNaN(ratio) !== true && ratio > 0 ? {
+      paddingBottom: `${100 / ratio}%`
+    } : null;
+  });
+}
+// EXTERNAL MODULE: ./node_modules/quasar/src/utils/private/render.js
+var render = __webpack_require__(7657);
+// EXTERNAL MODULE: ./node_modules/quasar/src/plugins/Platform.js
+var Platform = __webpack_require__(4688);
+;// CONCATENATED MODULE: ./node_modules/quasar/src/components/img/QImg.js
+
+
+
+
+
+
+const crossoriginValues = ['anonymous', 'use-credentials'];
+const loadingValues = ['eager', 'lazy'];
+const fitValues = ['cover', 'fill', 'contain', 'none', 'scale-down'];
+const defaultRatio = 16 / 9;
+/* harmony default export */ const QImg = ((0,runtime_core_esm_bundler/* defineComponent */.aZ)({
+  name: 'QImg',
+  props: objectSpread2_default()(objectSpread2_default()({}, useRatioProps), {}, {
+    src: String,
+    srcset: String,
+    sizes: String,
+    alt: String,
+    crossorigin: {
+      type: String,
+      validator: val => crossoriginValues.includes(val)
+    },
+    draggable: Boolean,
+    loading: {
+      type: String,
+      default: 'lazy',
+      validator: val => loadingValues.includes(val)
+    },
+    width: String,
+    height: String,
+    initialRatio: {
+      type: [Number, String],
+      default: defaultRatio
+    },
+    placeholderSrc: String,
+    fit: {
+      type: String,
+      default: 'cover',
+      validator: val => fitValues.includes(val)
+    },
+    position: {
+      type: String,
+      default: '50% 50%'
+    },
+    imgClass: String,
+    imgStyle: Object,
+    noSpinner: Boolean,
+    noNativeMenu: Boolean,
+    noTransition: Boolean,
+    spinnerColor: String,
+    spinnerSize: String
+  }),
+  emits: ['load', 'error'],
+
+  setup(props, {
+    slots,
+    attrs,
+    emit
+  }) {
+    const naturalRatio = (0,reactivity_esm_bundler/* ref */.iH)(props.initialRatio);
+    const ratioStyle = use_ratio(props, naturalRatio);
+    let loadTimer;
+    const images = [(0,reactivity_esm_bundler/* ref */.iH)(null), (0,reactivity_esm_bundler/* ref */.iH)(props.placeholderSrc !== void 0 ? {
+      src: props.placeholderSrc
+    } : null)];
+    const position = (0,reactivity_esm_bundler/* ref */.iH)(0);
+    const isLoading = (0,reactivity_esm_bundler/* ref */.iH)(false);
+    const hasError = (0,reactivity_esm_bundler/* ref */.iH)(false);
+    const classes = (0,runtime_core_esm_bundler/* computed */.Fl)(() => `q-img q-img--${props.noNativeMenu === true ? 'no-' : ''}menu`);
+    const style = (0,runtime_core_esm_bundler/* computed */.Fl)(() => ({
+      width: props.width,
+      height: props.height
+    }));
+    const imgClass = (0,runtime_core_esm_bundler/* computed */.Fl)(() => `q-img__image ${props.imgClass !== void 0 ? props.imgClass + ' ' : ''}` + `q-img__image--with${props.noTransition === true ? 'out' : ''}-transition`);
+    const imgStyle = (0,runtime_core_esm_bundler/* computed */.Fl)(() => objectSpread2_default()(objectSpread2_default()({}, props.imgStyle), {}, {
+      objectFit: props.fit,
+      objectPosition: props.position
+    }));
+    (0,runtime_core_esm_bundler/* watch */.YP)(() => getCurrentSrc(), addImage);
+
+    function getCurrentSrc() {
+      return props.src || props.srcset || props.sizes ? {
+        src: props.src,
+        srcset: props.srcset,
+        sizes: props.sizes
+      } : null;
+    }
+
+    function addImage(imgProps) {
+      clearTimeout(loadTimer);
+      hasError.value = false;
+
+      if (imgProps === null) {
+        isLoading.value = false;
+        images[0].value = null;
+        images[1].value = null;
+        return;
+      }
+
+      isLoading.value = true;
+      images[position.value].value = imgProps;
+    }
+
+    function onLoad({
+      target
+    }) {
+      // if component has been already destroyed
+      if (loadTimer === null) {
+        return;
+      }
+
+      clearTimeout(loadTimer);
+      naturalRatio.value = target.naturalHeight === 0 ? 0.5 : target.naturalWidth / target.naturalHeight;
+      waitForCompleteness(target, 1);
+    }
+
+    function waitForCompleteness(target, count) {
+      // protect against running forever
+      if (loadTimer === null || count === 1000) {
+        return;
+      }
+
+      if (target.complete === true) {
+        onReady(target);
+      } else {
+        loadTimer = setTimeout(() => {
+          waitForCompleteness(target, count + 1);
+        }, 50);
+      }
+    }
+
+    function onReady(img) {
+      // if component has been already destroyed
+      if (loadTimer === null) {
+        return;
+      }
+
+      position.value = position.value === 1 ? 0 : 1;
+      images[position.value].value = null;
+      isLoading.value = false;
+      hasError.value = false;
+      emit('load', img.currentSrc || img.src);
+    }
+
+    function onError(err) {
+      clearTimeout(loadTimer);
+      isLoading.value = false;
+      hasError.value = true;
+      images[0].value = null;
+      images[1].value = null;
+      emit('error', err);
+    }
+
+    function getContainer(key, child) {
+      return (0,runtime_core_esm_bundler.h)('div', {
+        class: 'q-img__container absolute-full',
+        key
+      }, child);
+    }
+
+    function getImage(index) {
+      const img = images[index].value;
+
+      const data = objectSpread2_default()(objectSpread2_default()({
+        key: 'img_' + index
+      }, attrs), {}, {
+        class: imgClass.value,
+        style: imgStyle.value,
+        crossorigin: props.crossorigin,
+        height: props.height,
+        width: props.width,
+        loading: props.loading,
+        'aria-hidden': 'true',
+        draggable: props.draggable
+      }, img);
+
+      if (position.value === index) {
+        data.class += ' q-img__image--waiting';
+        Object.assign(data, {
+          onLoad,
+          onError
+        });
+      } else {
+        data.class += ' q-img__image--loaded';
+      }
+
+      return getContainer('img' + index, (0,runtime_core_esm_bundler.h)('img', data));
+    }
+
+    function getContent() {
+      if (isLoading.value !== true) {
+        return (0,runtime_core_esm_bundler.h)('div', {
+          key: 'content',
+          class: 'q-img__content absolute-full q-anchor--skip'
+        }, (0,render/* hSlot */.KR)(slots[hasError.value === true ? 'error' : 'default']));
+      }
+
+      return (0,runtime_core_esm_bundler.h)('div', {
+        key: 'loading',
+        class: 'q-img__loading absolute-full flex flex-center'
+      }, slots.loading !== void 0 ? slots.loading() : props.noSpinner === true ? void 0 : [(0,runtime_core_esm_bundler.h)(QSpinner/* default */.Z, {
+        color: props.spinnerColor,
+        size: props.spinnerSize
+      })]);
+    }
+
+    if (true) {
+      if (false) {} else {
+        addImage(getCurrentSrc());
+      }
+
+      (0,runtime_core_esm_bundler/* onBeforeUnmount */.Jd)(() => {
+        clearTimeout(loadTimer);
+        loadTimer = null;
+      });
+    }
+
+    return () => {
+      const content = [];
+
+      if (ratioStyle.value !== null) {
+        content.push((0,runtime_core_esm_bundler.h)('div', {
+          key: 'filler',
+          style: ratioStyle.value
+        }));
+      }
+
+      if (hasError.value !== true) {
+        if (images[0].value !== null) {
+          content.push(getImage(0));
+        }
+
+        if (images[1].value !== null) {
+          content.push(getImage(1));
+        }
+      }
+
+      content.push((0,runtime_core_esm_bundler.h)(runtime_dom_esm_bundler/* Transition */.uT, {
+        name: 'q-transition--fade'
+      }, getContent));
+      return (0,runtime_core_esm_bundler.h)('div', {
+        class: classes.value,
+        style: style.value,
+        role: 'img',
+        'aria-label': props.alt
+      }, content);
+    };
+  }
+
+}));
+
+/***/ }),
+
+/***/ 2426:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -34753,799 +35529,8 @@ var web_dom_collections_iterator = __webpack_require__(71);
 var runtime_core_esm_bundler = __webpack_require__(3673);
 // EXTERNAL MODULE: ./node_modules/@vue/reactivity/dist/reactivity.esm-bundler.js
 var reactivity_esm_bundler = __webpack_require__(1959);
-// EXTERNAL MODULE: ./node_modules/@vue/runtime-dom/dist/runtime-dom.esm-bundler.js
-var runtime_dom_esm_bundler = __webpack_require__(8880);
-// EXTERNAL MODULE: ./node_modules/quasar/src/plugins/Platform.js
-var Platform = __webpack_require__(4688);
-// EXTERNAL MODULE: ./node_modules/quasar/src/components/icon/QIcon.js
-var QIcon = __webpack_require__(4554);
-// EXTERNAL MODULE: ./node_modules/quasar/src/components/spinner/QSpinner.js + 1 modules
-var QSpinner = __webpack_require__(9754);
-// EXTERNAL MODULE: ./node_modules/quasar/src/composables/private/use-dark.js
-var use_dark = __webpack_require__(2236);
-// EXTERNAL MODULE: ./node_modules/quasar/src/utils/private/symbols.js
-var symbols = __webpack_require__(2547);
-;// CONCATENATED MODULE: ./node_modules/quasar/src/composables/use-form-child.js
-
-
-/* harmony default export */ function use_form_child({
-  validate,
-  resetValidation,
-  requiresQForm
-}) {
-  const $form = (0,runtime_core_esm_bundler/* inject */.f3)(symbols/* formKey */.vh, false);
-
-  if ($form !== false) {
-    const {
-      props,
-      proxy
-    } = (0,runtime_core_esm_bundler/* getCurrentInstance */.FN)(); // export public method (so it can be used in QForm)
-
-    Object.assign(proxy, validate);
-    (0,runtime_core_esm_bundler/* watch */.YP)(() => props.disable, val => {
-      if (val === true) {
-        typeof resetValidation === 'function' && resetValidation();
-        $form.unbindComponent(proxy);
-      } else {
-        $form.bindComponent(proxy);
-      }
-    }); // register component to parent QForm
-
-    props.disable !== true && $form.bindComponent(proxy);
-    (0,runtime_core_esm_bundler/* onBeforeUnmount */.Jd)(() => {
-      // unregister component
-      props.disable !== true && $form.unbindComponent(proxy);
-    });
-  } else if (requiresQForm !== true) {
-    console.error('Parent QForm not found on useFormChild()!');
-  }
-}
-;// CONCATENATED MODULE: ./node_modules/quasar/src/utils/patterns.js
-// file referenced from docs
-const hex = /^#[0-9a-fA-F]{3}([0-9a-fA-F]{3})?$/,
-      hexa = /^#[0-9a-fA-F]{4}([0-9a-fA-F]{4})?$/,
-      hexOrHexa = /^#([0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$/,
-      rgb = /^rgb\(((0|[1-9][\d]?|1[\d]{0,2}|2[\d]?|2[0-4][\d]|25[0-5]),){2}(0|[1-9][\d]?|1[\d]{0,2}|2[\d]?|2[0-4][\d]|25[0-5])\)$/,
-      rgba = /^rgba\(((0|[1-9][\d]?|1[\d]{0,2}|2[\d]?|2[0-4][\d]|25[0-5]),){2}(0|[1-9][\d]?|1[\d]{0,2}|2[\d]?|2[0-4][\d]|25[0-5]),(0|0\.[0-9]+[1-9]|0\.[1-9]+|1)\)$/;
-const testPattern = {
-  date: v => /^-?[\d]+\/[0-1]\d\/[0-3]\d$/.test(v),
-  time: v => /^([0-1]?\d|2[0-3]):[0-5]\d$/.test(v),
-  fulltime: v => /^([0-1]?\d|2[0-3]):[0-5]\d:[0-5]\d$/.test(v),
-  timeOrFulltime: v => /^([0-1]?\d|2[0-3]):[0-5]\d(:[0-5]\d)?$/.test(v),
-  hexColor: v => hex.test(v),
-  hexaColor: v => hexa.test(v),
-  hexOrHexaColor: v => hexOrHexa.test(v),
-  rgbColor: v => rgb.test(v),
-  rgbaColor: v => rgba.test(v),
-  rgbOrRgbaColor: v => rgb.test(v) || rgba.test(v),
-  hexOrRgbColor: v => hex.test(v) || rgb.test(v),
-  hexaOrRgbaColor: v => hexa.test(v) || rgba.test(v),
-  anyColor: v => hexOrHexa.test(v) || rgb.test(v) || rgba.test(v)
-};
-/* harmony default export */ const patterns = ({
-  testPattern
-});
-;// CONCATENATED MODULE: ./node_modules/quasar/src/composables/private/use-validate.js
-
-
-
-
-const lazyRulesValues = [true, false, 'ondemand'];
-const useValidateProps = {
-  modelValue: {},
-  error: {
-    type: Boolean,
-    default: null
-  },
-  errorMessage: String,
-  noErrorIcon: Boolean,
-  rules: Array,
-  reactiveRules: Boolean,
-  lazyRules: {
-    type: [Boolean, String],
-    validator: v => lazyRulesValues.includes(v)
-  }
-};
-/* harmony default export */ function use_validate(focused, innerLoading) {
-  const {
-    props,
-    proxy
-  } = (0,runtime_core_esm_bundler/* getCurrentInstance */.FN)();
-  const innerError = (0,reactivity_esm_bundler/* ref */.iH)(false);
-  const innerErrorMessage = (0,reactivity_esm_bundler/* ref */.iH)(null);
-  const isDirtyModel = (0,reactivity_esm_bundler/* ref */.iH)(null);
-  use_form_child({
-    validate,
-    resetValidation,
-    requiresQForm: true
-  });
-  let validateIndex = 0,
-      unwatchRules;
-  const hasRules = (0,runtime_core_esm_bundler/* computed */.Fl)(() => props.rules !== void 0 && props.rules !== null && props.rules.length > 0);
-  const hasError = (0,runtime_core_esm_bundler/* computed */.Fl)(() => props.error === true || innerError.value === true);
-  const computedErrorMessage = (0,runtime_core_esm_bundler/* computed */.Fl)(() => typeof props.errorMessage === 'string' && props.errorMessage.length > 0 ? props.errorMessage : innerErrorMessage.value);
-  (0,runtime_core_esm_bundler/* watch */.YP)(() => props.modelValue, () => {
-    validateIfNeeded();
-  });
-  (0,runtime_core_esm_bundler/* watch */.YP)(() => props.reactiveRules, val => {
-    if (val === true) {
-      if (unwatchRules === void 0) {
-        unwatchRules = (0,runtime_core_esm_bundler/* watch */.YP)(() => props.rules, () => {
-          validateIfNeeded(true);
-        });
-      }
-    } else if (unwatchRules !== void 0) {
-      unwatchRules();
-      unwatchRules = void 0;
-    }
-  }, {
-    immediate: true
-  });
-  (0,runtime_core_esm_bundler/* watch */.YP)(focused, val => {
-    if (props.lazyRules !== 'ondemand') {
-      if (val === true) {
-        if (isDirtyModel.value === null) {
-          isDirtyModel.value = false;
-        }
-      } else if (isDirtyModel.value === false && hasRules.value === true) {
-        isDirtyModel.value = true;
-        validate();
-      }
-    }
-  });
-
-  function resetValidation() {
-    validateIndex++;
-    innerLoading.value = false;
-    isDirtyModel.value = null;
-    innerError.value = false;
-    innerErrorMessage.value = null;
-  }
-  /*
-   * Return value
-   *   - true (validation succeeded)
-   *   - false (validation failed)
-   *   - Promise (pending async validation)
-   */
-
-
-  function validate(val = props.modelValue) {
-    if (hasRules.value !== true) {
-      return true;
-    }
-
-    validateIndex++;
-
-    if (innerLoading.value !== true && props.lazyRules !== true) {
-      isDirtyModel.value = true;
-    }
-
-    const update = (err, msg) => {
-      if (innerError.value !== err) {
-        innerError.value = err;
-      }
-
-      const m = msg || void 0;
-
-      if (innerErrorMessage.value !== m) {
-        innerErrorMessage.value = m;
-      }
-
-      if (innerLoading.value !== false) {
-        innerLoading.value = false;
-      }
-    };
-
-    const promises = [];
-
-    for (let i = 0; i < props.rules.length; i++) {
-      const rule = props.rules[i];
-      let res;
-
-      if (typeof rule === 'function') {
-        res = rule(val);
-      } else if (typeof rule === 'string' && testPattern[rule] !== void 0) {
-        res = testPattern[rule](val);
-      }
-
-      if (res === false || typeof res === 'string') {
-        update(true, res);
-        return false;
-      } else if (res !== true && res !== void 0) {
-        promises.push(res);
-      }
-    }
-
-    if (promises.length === 0) {
-      update(false);
-      return true;
-    }
-
-    if (innerLoading.value !== true) {
-      innerLoading.value = true;
-    }
-
-    const index = validateIndex;
-    return Promise.all(promises).then(res => {
-      if (index !== validateIndex) {
-        return true;
-      }
-
-      if (res === void 0 || Array.isArray(res) === false || res.length === 0) {
-        update(false);
-        return true;
-      }
-
-      const msg = res.find(r => r === false || typeof r === 'string');
-      update(msg !== void 0, msg);
-      return msg === void 0;
-    }, e => {
-      if (index === validateIndex) {
-        console.error(e);
-        update(true);
-        return false;
-      }
-
-      return true;
-    });
-  }
-
-  function validateIfNeeded(changedRules) {
-    if (hasRules.value === true && props.lazyRules !== 'ondemand' && (isDirtyModel.value === true || props.lazyRules !== true && changedRules !== true)) {
-      validate();
-    }
-  }
-
-  (0,runtime_core_esm_bundler/* onBeforeUnmount */.Jd)(() => {
-    unwatchRules !== void 0 && unwatchRules();
-  }); // expose public methods & props
-
-  Object.assign(proxy, {
-    resetValidation,
-    validate
-  });
-  Object.defineProperty(proxy, 'hasError', {
-    get: () => hasError.value
-  });
-  return {
-    isDirtyModel,
-    hasRules,
-    hasError,
-    computedErrorMessage,
-    validate,
-    resetValidation
-  };
-}
-;// CONCATENATED MODULE: ./node_modules/quasar/src/composables/private/use-split-attrs.js
-
-const listenerRE = /^on[A-Z]/;
-/* harmony default export */ function use_split_attrs(attrs) {
-  const acc = {
-    listeners: (0,reactivity_esm_bundler/* ref */.iH)({}),
-    attributes: (0,reactivity_esm_bundler/* ref */.iH)({})
-  };
-
-  function update() {
-    const listeners = {};
-    const attributes = {};
-    Object.keys(attrs).forEach(key => {
-      if (listenerRE.test(key) === true) {
-        listeners[key] = attrs[key];
-      } else if (key !== 'class' && key !== 'style') {
-        attributes[key] = attrs[key];
-      }
-    });
-    acc.listeners.value = listeners;
-    acc.attributes.value = attributes;
-  }
-
-  (0,runtime_core_esm_bundler/* onBeforeUpdate */.Xn)(update);
-  update();
-  return acc;
-}
-// EXTERNAL MODULE: ./node_modules/quasar/src/utils/private/render.js
-var render = __webpack_require__(7657);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array-buffer.slice.js
-var es_array_buffer_slice = __webpack_require__(979);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.typed-array.uint8-array.js
-var es_typed_array_uint8_array = __webpack_require__(6105);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.typed-array.sort.js
-var es_typed_array_sort = __webpack_require__(2396);
-;// CONCATENATED MODULE: ./node_modules/quasar/src/utils/uid.js
-
-
-
-
-/**
- * Based on the work of https://github.com/jchook/uuid-random
- */
-let buf,
-    bufIdx = 0;
-const hexBytes = new Array(256); // Pre-calculate toString(16) for speed
-
-for (let i = 0; i < 256; i++) {
-  hexBytes[i] = (i + 0x100).toString(16).substr(1);
-} // Use best available PRNG
-
-
-const randomBytes = (() => {
-  // Node & Browser support
-  const lib = typeof crypto !== 'undefined' ? crypto : typeof window !== 'undefined' ? window.crypto || window.msCrypto : void 0;
-
-  if (lib !== void 0) {
-    if (lib.randomBytes !== void 0) {
-      return lib.randomBytes;
-    }
-
-    if (lib.getRandomValues !== void 0) {
-      return n => {
-        const bytes = new Uint8Array(n);
-        lib.getRandomValues(bytes);
-        return bytes;
-      };
-    }
-  }
-
-  return n => {
-    const r = [];
-
-    for (let i = n; i > 0; i--) {
-      r.push(Math.floor(Math.random() * 256));
-    }
-
-    return r;
-  };
-})(); // Buffer random numbers for speed
-// Reduce memory usage by decreasing this number (min 16)
-// or improve speed by increasing this number (try 16384)
-
-
-const BUFFER_SIZE = 4096;
-/* harmony default export */ function uid() {
-  // Buffer some random bytes for speed
-  if (buf === void 0 || bufIdx + 16 > BUFFER_SIZE) {
-    bufIdx = 0;
-    buf = randomBytes(BUFFER_SIZE);
-  }
-
-  const b = Array.prototype.slice.call(buf, bufIdx, bufIdx += 16);
-  b[6] = b[6] & 0x0f | 0x40;
-  b[8] = b[8] & 0x3f | 0x80;
-  return hexBytes[b[0]] + hexBytes[b[1]] + hexBytes[b[2]] + hexBytes[b[3]] + '-' + hexBytes[b[4]] + hexBytes[b[5]] + '-' + hexBytes[b[6]] + hexBytes[b[7]] + '-' + hexBytes[b[8]] + hexBytes[b[9]] + '-' + hexBytes[b[10]] + hexBytes[b[11]] + hexBytes[b[12]] + hexBytes[b[13]] + hexBytes[b[14]] + hexBytes[b[15]];
-}
-// EXTERNAL MODULE: ./node_modules/quasar/src/utils/event.js
-var utils_event = __webpack_require__(4716);
-// EXTERNAL MODULE: ./node_modules/quasar/src/utils/private/focus-manager.js
-var focus_manager = __webpack_require__(230);
-;// CONCATENATED MODULE: ./node_modules/quasar/src/composables/private/use-field.js
-
-
-
-
-
-
-
-
-
-
-
-
-
-function getTargetUid(val) {
-  return val === void 0 ? `f_${uid()}` : val;
-}
-
-function fieldValueIsFilled(val) {
-  return val !== void 0 && val !== null && ('' + val).length > 0;
-}
-const useFieldProps = objectSpread2_default()(objectSpread2_default()(objectSpread2_default()({}, use_dark/* useDarkProps */.S), useValidateProps), {}, {
-  label: String,
-  stackLabel: Boolean,
-  hint: String,
-  hideHint: Boolean,
-  prefix: String,
-  suffix: String,
-  labelColor: String,
-  color: String,
-  bgColor: String,
-  filled: Boolean,
-  outlined: Boolean,
-  borderless: Boolean,
-  standout: [Boolean, String],
-  square: Boolean,
-  loading: Boolean,
-  labelSlot: Boolean,
-  bottomSlots: Boolean,
-  hideBottomSpace: Boolean,
-  rounded: Boolean,
-  dense: Boolean,
-  itemAligned: Boolean,
-  counter: Boolean,
-  clearable: Boolean,
-  clearIcon: String,
-  disable: Boolean,
-  readonly: Boolean,
-  autofocus: Boolean,
-  for: String,
-  maxlength: [Number, String]
-});
-const useFieldEmits = ['update:modelValue', 'clear', 'focus', 'blur', 'popup-show', 'popup-hide'];
-function useFieldState() {
-  const {
-    props,
-    attrs,
-    proxy
-  } = (0,runtime_core_esm_bundler/* getCurrentInstance */.FN)();
-  const isDark = (0,use_dark/* default */.Z)(props, proxy.$q);
-  return {
-    isDark,
-    editable: (0,runtime_core_esm_bundler/* computed */.Fl)(() => props.disable !== true && props.readonly !== true),
-    innerLoading: (0,reactivity_esm_bundler/* ref */.iH)(false),
-    focused: (0,reactivity_esm_bundler/* ref */.iH)(false),
-    hasPopupOpen: (0,reactivity_esm_bundler/* ref */.iH)(false),
-    splitAttrs: use_split_attrs(attrs),
-    targetUid: (0,reactivity_esm_bundler/* ref */.iH)(getTargetUid(props.for)),
-    rootRef: (0,reactivity_esm_bundler/* ref */.iH)(null),
-    targetRef: (0,reactivity_esm_bundler/* ref */.iH)(null),
-    controlRef: (0,reactivity_esm_bundler/* ref */.iH)(null)
-    /**
-     * user supplied additionals:
-      * innerValue - computed
-     * floatingLabel - computed
-     * inputRef - computed
-      * fieldClass - computed
-     * hasShadow - computed
-      * controlEvents - Object with fn(e)
-      * getControl - fn
-     * getInnerAppend - fn
-     * getControlChild - fn
-     * getShadowControl - fn
-     * showPopup - fn
-     */
-
-  };
-}
-/* harmony default export */ function use_field(state) {
-  const {
-    props,
-    emit,
-    slots,
-    attrs,
-    proxy
-  } = (0,runtime_core_esm_bundler/* getCurrentInstance */.FN)();
-  const {
-    $q
-  } = proxy;
-  let focusoutTimer;
-
-  if (state.hasValue === void 0) {
-    state.hasValue = (0,runtime_core_esm_bundler/* computed */.Fl)(() => fieldValueIsFilled(props.modelValue));
-  }
-
-  if (state.emitValue === void 0) {
-    state.emitValue = value => {
-      emit('update:modelValue', value);
-    };
-  }
-
-  if (state.controlEvents === void 0) {
-    state.controlEvents = {
-      onFocusin: onControlFocusin,
-      onFocusout: onControlFocusout
-    };
-  }
-
-  Object.assign(state, {
-    clearValue,
-    onControlFocusin,
-    onControlFocusout,
-    focus
-  });
-
-  if (state.computedCounter === void 0) {
-    state.computedCounter = (0,runtime_core_esm_bundler/* computed */.Fl)(() => {
-      if (props.counter !== false) {
-        const len = typeof props.modelValue === 'string' || typeof props.modelValue === 'number' ? ('' + props.modelValue).length : Array.isArray(props.modelValue) === true ? props.modelValue.length : 0;
-        const max = props.maxlength !== void 0 ? props.maxlength : props.maxValues;
-        return len + (max !== void 0 ? ' / ' + max : '');
-      }
-    });
-  }
-
-  const {
-    isDirtyModel,
-    hasRules,
-    hasError,
-    computedErrorMessage,
-    resetValidation
-  } = use_validate(state.focused, state.innerLoading);
-  const floatingLabel = state.floatingLabel !== void 0 ? (0,runtime_core_esm_bundler/* computed */.Fl)(() => props.stackLabel === true || state.focused.value === true || state.floatingLabel.value === true) : (0,runtime_core_esm_bundler/* computed */.Fl)(() => props.stackLabel === true || state.focused.value === true || state.hasValue.value === true);
-  const shouldRenderBottom = (0,runtime_core_esm_bundler/* computed */.Fl)(() => props.bottomSlots === true || props.hint !== void 0 || hasRules.value === true || props.counter === true || props.error !== null);
-  const styleType = (0,runtime_core_esm_bundler/* computed */.Fl)(() => {
-    if (props.filled === true) {
-      return 'filled';
-    }
-
-    if (props.outlined === true) {
-      return 'outlined';
-    }
-
-    if (props.borderless === true) {
-      return 'borderless';
-    }
-
-    if (props.standout) {
-      return 'standout';
-    }
-
-    return 'standard';
-  });
-  const classes = (0,runtime_core_esm_bundler/* computed */.Fl)(() => `q-field row no-wrap items-start q-field--${styleType.value}` + (state.fieldClass !== void 0 ? ` ${state.fieldClass.value}` : '') + (props.rounded === true ? ' q-field--rounded' : '') + (props.square === true ? ' q-field--square' : '') + (floatingLabel.value === true ? ' q-field--float' : '') + (hasLabel.value === true ? ' q-field--labeled' : '') + (props.dense === true ? ' q-field--dense' : '') + (props.itemAligned === true ? ' q-field--item-aligned q-item-type' : '') + (state.isDark.value === true ? ' q-field--dark' : '') + (state.getControl === void 0 ? ' q-field--auto-height' : '') + (state.focused.value === true ? ' q-field--focused' : '') + (hasError.value === true ? ' q-field--error' : '') + (hasError.value === true || state.focused.value === true ? ' q-field--highlighted' : '') + (props.hideBottomSpace !== true && shouldRenderBottom.value === true ? ' q-field--with-bottom' : '') + (props.disable === true ? ' q-field--disabled' : props.readonly === true ? ' q-field--readonly' : ''));
-  const contentClass = (0,runtime_core_esm_bundler/* computed */.Fl)(() => 'q-field__control relative-position row no-wrap' + (props.bgColor !== void 0 ? ` bg-${props.bgColor}` : '') + (hasError.value === true ? ' text-negative' : typeof props.standout === 'string' && props.standout.length > 0 && state.focused.value === true ? ` ${props.standout}` : props.color !== void 0 ? ` text-${props.color}` : ''));
-  const hasLabel = (0,runtime_core_esm_bundler/* computed */.Fl)(() => props.labelSlot === true || props.label !== void 0);
-  const labelClass = (0,runtime_core_esm_bundler/* computed */.Fl)(() => 'q-field__label no-pointer-events absolute ellipsis' + (props.labelColor !== void 0 && hasError.value !== true ? ` text-${props.labelColor}` : ''));
-  const controlSlotScope = (0,runtime_core_esm_bundler/* computed */.Fl)(() => ({
-    id: state.targetUid.value,
-    editable: state.editable.value,
-    focused: state.focused.value,
-    floatingLabel: floatingLabel.value,
-    modelValue: props.modelValue,
-    emitValue: state.emitValue
-  }));
-  const attributes = (0,runtime_core_esm_bundler/* computed */.Fl)(() => {
-    const acc = {
-      for: state.targetUid.value
-    };
-
-    if (props.disable === true) {
-      acc['aria-disabled'] = 'true';
-    } else if (props.readonly === true) {
-      acc['aria-readonly'] = 'true';
-    }
-
-    return acc;
-  });
-  (0,runtime_core_esm_bundler/* watch */.YP)(() => props.for, val => {
-    // don't transform targetUid into a computed
-    // prop as it will break SSR
-    state.targetUid.value = getTargetUid(val);
-  });
-  let focusFn;
-
-  function focus() {
-    focusFn !== void 0 && (0,focus_manager/* removeFocusFn */.fP)(focusFn);
-    focusFn = (0,focus_manager/* addFocusFn */.jd)(() => {
-      focusFn = void 0;
-      const el = document.activeElement;
-      let target = state.targetRef !== void 0 && state.targetRef.value;
-
-      if (target && (el === null || el.id !== state.targetUid.value)) {
-        target.hasAttribute('tabindex') === true || (target = target.querySelector('[tabindex]'));
-
-        if (target && target !== el) {
-          target.focus();
-        }
-      }
-    });
-  }
-
-  function blur() {
-    focusFn !== void 0 && (0,focus_manager/* removeFocusFn */.fP)(focusFn);
-    const el = document.activeElement;
-
-    if (el !== null && state.rootRef.value.contains(el)) {
-      el.blur();
-    }
-  }
-
-  function onControlFocusin(e) {
-    if (state.editable.value === true && state.focused.value === false) {
-      state.focused.value = true;
-      emit('focus', e);
-    }
-  }
-
-  function onControlFocusout(e, then) {
-    clearTimeout(focusoutTimer);
-    focusoutTimer = setTimeout(() => {
-      if (document.hasFocus() === true && (state.hasPopupOpen.value === true || state.controlRef !== void 0 && (state.controlRef.value === null || state.controlRef.value.contains(document.activeElement) !== false))) {
-        return;
-      }
-
-      if (state.focused.value === true) {
-        state.focused.value = false;
-        emit('blur', e);
-      }
-
-      then !== void 0 && then();
-    });
-  }
-
-  function clearValue(e) {
-    // prevent activating the field but keep focus on desktop
-    (0,utils_event/* stopAndPrevent */.NS)(e);
-
-    if ($q.platform.is.mobile !== true) {
-      const el = state.targetRef !== void 0 && state.targetRef.value || state.rootRef.value;
-      el.focus();
-    } else if (state.rootRef.value.contains(document.activeElement) === true) {
-      document.activeElement.blur();
-    }
-
-    if (props.type === 'file') {
-      // TODO vue3
-      // do not let focus be triggered
-      // as it will make the native file dialog
-      // appear for another selection
-      state.inputRef.value.value = null;
-    }
-
-    emit('update:modelValue', null);
-    emit('clear', props.modelValue);
-    (0,runtime_core_esm_bundler/* nextTick */.Y3)(() => {
-      resetValidation();
-
-      if (props.lazyRules !== 'ondemand' && $q.platform.is.mobile !== true) {
-        isDirtyModel.value = false;
-      }
-    });
-  }
-
-  function getContent() {
-    const node = [];
-    slots.prepend !== void 0 && node.push((0,runtime_core_esm_bundler.h)('div', {
-      class: 'q-field__prepend q-field__marginal row no-wrap items-center',
-      key: 'prepend',
-      onClick: utils_event/* prevent */.X$
-    }, slots.prepend()));
-    node.push((0,runtime_core_esm_bundler.h)('div', {
-      class: 'q-field__control-container col relative-position row no-wrap q-anchor--skip'
-    }, getControlContainer()));
-    slots.append !== void 0 && node.push((0,runtime_core_esm_bundler.h)('div', {
-      class: 'q-field__append q-field__marginal row no-wrap items-center',
-      key: 'append',
-      onClick: utils_event/* prevent */.X$
-    }, slots.append()));
-    hasError.value === true && props.noErrorIcon === false && node.push(getInnerAppendNode('error', [(0,runtime_core_esm_bundler.h)(QIcon/* default */.Z, {
-      name: $q.iconSet.field.error,
-      color: 'negative'
-    })]));
-
-    if (props.loading === true || state.innerLoading.value === true) {
-      node.push(getInnerAppendNode('inner-loading-append', slots.loading !== void 0 ? slots.loading() : [(0,runtime_core_esm_bundler.h)(QSpinner/* default */.Z, {
-        color: props.color
-      })]));
-    } else if (props.clearable === true && state.hasValue.value === true && state.editable.value === true) {
-      node.push(getInnerAppendNode('inner-clearable-append', [(0,runtime_core_esm_bundler.h)(QIcon/* default */.Z, {
-        class: 'q-field__focusable-action',
-        tag: 'button',
-        name: props.clearIcon || $q.iconSet.field.clear,
-        tabindex: 0,
-        type: 'button',
-        onClick: clearValue
-      })]));
-    }
-
-    state.getInnerAppend !== void 0 && node.push(getInnerAppendNode('inner-append', state.getInnerAppend()));
-    state.getControlChild !== void 0 && node.push(state.getControlChild());
-    return node;
-  }
-
-  function getControlContainer() {
-    const node = [];
-    props.prefix !== void 0 && props.prefix !== null && node.push((0,runtime_core_esm_bundler.h)('div', {
-      class: 'q-field__prefix no-pointer-events row items-center'
-    }, props.prefix));
-
-    if (state.getShadowControl !== void 0 && state.hasShadow.value === true) {
-      node.push(state.getShadowControl());
-    }
-
-    if (state.getControl !== void 0) {
-      node.push(state.getControl());
-    } // internal usage only:
-    else if (slots.rawControl !== void 0) {
-        node.push(slots.rawControl());
-      } else if (slots.control !== void 0) {
-        node.push((0,runtime_core_esm_bundler.h)('div', objectSpread2_default()(objectSpread2_default()({
-          ref: state.targetRef,
-          class: 'q-field__native row'
-        }, state.splitAttrs.attributes.value), {}, {
-          'data-autofocus': props.autofocus === true || void 0
-        }), slots.control(controlSlotScope.value)));
-      }
-
-    hasLabel.value === true && node.push((0,runtime_core_esm_bundler.h)('div', {
-      class: labelClass.value
-    }, (0,render/* hSlot */.KR)(slots.label, props.label)));
-    props.suffix !== void 0 && props.suffix !== null && node.push((0,runtime_core_esm_bundler.h)('div', {
-      class: 'q-field__suffix no-pointer-events row items-center'
-    }, props.suffix));
-    return node.concat((0,render/* hSlot */.KR)(slots.default));
-  }
-
-  function getBottom() {
-    let msg, key;
-
-    if (hasError.value === true) {
-      if (computedErrorMessage.value !== null) {
-        msg = [(0,runtime_core_esm_bundler.h)('div', computedErrorMessage.value)];
-        key = `q--slot-error-${computedErrorMessage.value}`;
-      } else {
-        msg = (0,render/* hSlot */.KR)(slots.error);
-        key = 'q--slot-error';
-      }
-    } else if (props.hideHint !== true || state.focused.value === true) {
-      if (props.hint !== void 0) {
-        msg = [(0,runtime_core_esm_bundler.h)('div', props.hint)];
-        key = `q--slot-hint-${props.hint}`;
-      } else {
-        msg = (0,render/* hSlot */.KR)(slots.hint);
-        key = 'q--slot-hint';
-      }
-    }
-
-    const hasCounter = props.counter === true || slots.counter !== void 0;
-
-    if (props.hideBottomSpace === true && hasCounter === false && msg === void 0) {
-      return;
-    }
-
-    const main = (0,runtime_core_esm_bundler.h)('div', {
-      key,
-      class: 'q-field__messages col'
-    }, msg);
-    return (0,runtime_core_esm_bundler.h)('div', {
-      class: 'q-field__bottom row items-start q-field__bottom--' + (props.hideBottomSpace !== true ? 'animated' : 'stale')
-    }, [props.hideBottomSpace === true ? main : (0,runtime_core_esm_bundler.h)(runtime_dom_esm_bundler/* Transition */.uT, {
-      name: 'q-transition--field-message'
-    }, () => main), hasCounter === true ? (0,runtime_core_esm_bundler.h)('div', {
-      class: 'q-field__counter'
-    }, slots.counter !== void 0 ? slots.counter() : state.computedCounter.value) : null]);
-  }
-
-  function getInnerAppendNode(key, content) {
-    return content === null ? null : (0,runtime_core_esm_bundler.h)('div', {
-      key,
-      class: 'q-field__append q-field__marginal row no-wrap items-center q-anchor--skip'
-    }, content);
-  } // expose public methods
-
-
-  Object.assign(proxy, {
-    focus,
-    blur
-  });
-  (0,runtime_core_esm_bundler/* onMounted */.bv)(() => {
-    if (Platform/* isRuntimeSsrPreHydration.value */.uX.value === true && props.for === void 0) {
-      state.targetUid.value = getTargetUid();
-    }
-
-    props.autofocus === true && proxy.focus();
-  });
-  (0,runtime_core_esm_bundler/* onBeforeUnmount */.Jd)(() => {
-    clearTimeout(focusoutTimer);
-  });
-  return function renderField() {
-    return (0,runtime_core_esm_bundler.h)('label', objectSpread2_default()({
-      ref: state.rootRef,
-      class: state.inheritAttrs !== true ? [classes.value, attrs.class] : classes.value,
-      style: attrs.style
-    }, attributes.value), [slots.before !== void 0 ? (0,runtime_core_esm_bundler.h)('div', {
-      class: 'q-field__before q-field__marginal row no-wrap items-center',
-      onClick: utils_event/* prevent */.X$
-    }, slots.before()) : null, (0,runtime_core_esm_bundler.h)('div', {
-      class: 'q-field__inner relative-position col self-stretch'
-    }, [(0,runtime_core_esm_bundler.h)('div', objectSpread2_default()({
-      ref: state.controlRef,
-      class: contentClass.value,
-      tabindex: -1
-    }, state.controlEvents), getContent()), shouldRenderBottom.value === true ? getBottom() : null]), slots.after !== void 0 ? (0,runtime_core_esm_bundler.h)('div', {
-      class: 'q-field__after q-field__marginal row no-wrap items-center',
-      onClick: utils_event/* prevent */.X$
-    }, slots.after()) : null]);
-  };
-}
+// EXTERNAL MODULE: ./node_modules/quasar/src/composables/private/use-field.js + 4 modules
+var use_field = __webpack_require__(8500);
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.regexp.constructor.js
 var es_regexp_constructor = __webpack_require__(4303);
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.regexp.exec.js
@@ -36011,39 +35996,8 @@ const useMaskProps = {
 }
 // EXTERNAL MODULE: ./node_modules/quasar/src/composables/private/use-form.js
 var use_form = __webpack_require__(9550);
-;// CONCATENATED MODULE: ./node_modules/quasar/src/composables/private/use-file-dom-props.js
-
-/* harmony default export */ function use_file_dom_props(props, typeGuard) {
-  function getFormDomProps() {
-    const model = props.modelValue;
-
-    try {
-      const dt = 'DataTransfer' in window ? new DataTransfer() : 'ClipboardEvent' in window ? new ClipboardEvent('').clipboardData : void 0;
-
-      if (Object(model) === model) {
-        ('length' in model ? Array.from(model) : [model]).forEach(file => {
-          dt.items.add(file);
-        });
-      }
-
-      return {
-        files: dt.files
-      };
-    } catch (e) {
-      return {
-        files: void 0
-      };
-    }
-  }
-
-  return typeGuard === true ? (0,runtime_core_esm_bundler/* computed */.Fl)(() => {
-    if (props.type !== 'file') {
-      return;
-    }
-
-    return getFormDomProps();
-  }) : (0,runtime_core_esm_bundler/* computed */.Fl)(getFormDomProps);
-}
+// EXTERNAL MODULE: ./node_modules/quasar/src/composables/private/use-file-dom-props.js
+var use_file_dom_props = __webpack_require__(2726);
 ;// CONCATENATED MODULE: ./node_modules/quasar/src/composables/private/use-key-composition.js
 const isJapanese = /[\u3000-\u303f\u3040-\u309f\u30a0-\u30ff\uff00-\uff9f\u4e00-\u9faf\u3400-\u4dbf]/;
 const isChinese = /(?:[\u3300-\u4DBF\u4E00-\u9FFF\uF900-\uFAFF\uFE30-\uFE4F]|[\uD840-\uD868\uD86A-\uD872][\uDC00-\uDFFF]|\uD869[\uDC00-\uDEDF\uDF00-\uDFFF]|\uD873[\uDC00-\uDEAF]|\uD87E[\uDC00-\uDE1F])/;
@@ -36066,6 +36020,10 @@ const isKorean = /[\u3131-\u314e\u314f-\u3163\uac00-\ud7a3]/;
     }
   };
 }
+// EXTERNAL MODULE: ./node_modules/quasar/src/utils/event.js
+var utils_event = __webpack_require__(4716);
+// EXTERNAL MODULE: ./node_modules/quasar/src/utils/private/focus-manager.js
+var focus_manager = __webpack_require__(230);
 ;// CONCATENATED MODULE: ./node_modules/quasar/src/components/input/QInput.js
 
 
@@ -36080,7 +36038,7 @@ const isKorean = /[\u3131-\u314e\u314f-\u3163\uac00-\ud7a3]/;
 /* harmony default export */ const QInput = ((0,runtime_core_esm_bundler/* defineComponent */.aZ)({
   name: 'QInput',
   inheritAttrs: false,
-  props: objectSpread2_default()(objectSpread2_default()(objectSpread2_default()(objectSpread2_default()({}, useFieldProps), useMaskProps), use_form/* useFormProps */.Fz), {}, {
+  props: objectSpread2_default()(objectSpread2_default()(objectSpread2_default()(objectSpread2_default()({}, use_field/* useFieldProps */.Cl), useMaskProps), use_form/* useFormProps */.Fz), {}, {
     modelValue: {
       required: false
     },
@@ -36095,7 +36053,7 @@ const isKorean = /[\u3131-\u314e\u314f-\u3163\uac00-\ud7a3]/;
     inputClass: [Array, String, Object],
     inputStyle: [Array, String, Object]
   }),
-  emits: [...useFieldEmits, 'paste', 'change'],
+  emits: [...use_field/* useFieldEmits */.HJ, 'paste', 'change'],
 
   setup(props, {
     emit,
@@ -36116,12 +36074,12 @@ const isKorean = /[\u3131-\u314e\u314f-\u3163\uac00-\ud7a3]/;
       updateMaskValue,
       onMaskedKeydown
     } = use_mask(props, emit, emitValue, inputRef);
-    const formDomProps = use_file_dom_props(props,
+    const formDomProps = (0,use_file_dom_props/* default */.Z)(props,
     /* type guard */
     true);
-    const hasValue = (0,runtime_core_esm_bundler/* computed */.Fl)(() => fieldValueIsFilled(innerValue.value));
+    const hasValue = (0,runtime_core_esm_bundler/* computed */.Fl)(() => (0,use_field/* fieldValueIsFilled */.yV)(innerValue.value));
     const onComposition = use_key_composition(onInput);
-    const state = useFieldState();
+    const state = (0,use_field/* useFieldState */.tL)();
     const isTextarea = (0,runtime_core_esm_bundler/* computed */.Fl)(() => props.type === 'textarea' || props.autogrow === true);
     const onEvents = (0,runtime_core_esm_bundler/* computed */.Fl)(() => {
       const evt = objectSpread2_default()(objectSpread2_default()({}, state.splitAttrs.listeners.value), {}, {
@@ -36356,7 +36314,7 @@ const isKorean = /[\u3131-\u314e\u314f-\u3163\uac00-\ud7a3]/;
       inputRef,
       emitValue,
       hasValue,
-      floatingLabel: (0,runtime_core_esm_bundler/* computed */.Fl)(() => hasValue.value === true || fieldValueIsFilled(props.displayValue)),
+      floatingLabel: (0,runtime_core_esm_bundler/* computed */.Fl)(() => hasValue.value === true || (0,use_field/* fieldValueIsFilled */.yV)(props.displayValue)),
       getControl: () => {
         return (0,runtime_core_esm_bundler.h)(isTextarea.value === true ? 'textarea' : 'input', objectSpread2_default()(objectSpread2_default()(objectSpread2_default()({
           ref: inputRef,
@@ -36374,7 +36332,7 @@ const isKorean = /[\u3131-\u314e\u314f-\u3163\uac00-\ud7a3]/;
         }, getCurValue()), (0,runtime_core_esm_bundler.h)('span', props.shadowText)]);
       }
     });
-    const renderFn = use_field(state); // expose public methods
+    const renderFn = (0,use_field/* default */.ZP)(state); // expose public methods
 
     const vm = (0,runtime_core_esm_bundler/* getCurrentInstance */.FN)();
     Object.assign(vm.proxy, {
@@ -37558,6 +37516,802 @@ const useDarkProps = {
 
 /***/ }),
 
+/***/ 8500:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  "ZP": () => (/* binding */ use_field),
+  "yV": () => (/* binding */ fieldValueIsFilled),
+  "HJ": () => (/* binding */ useFieldEmits),
+  "Cl": () => (/* binding */ useFieldProps),
+  "tL": () => (/* binding */ useFieldState)
+});
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/objectSpread2.js
+var objectSpread2 = __webpack_require__(515);
+var objectSpread2_default = /*#__PURE__*/__webpack_require__.n(objectSpread2);
+// EXTERNAL MODULE: ./node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.js
+var runtime_core_esm_bundler = __webpack_require__(3673);
+// EXTERNAL MODULE: ./node_modules/@vue/reactivity/dist/reactivity.esm-bundler.js
+var reactivity_esm_bundler = __webpack_require__(1959);
+// EXTERNAL MODULE: ./node_modules/@vue/runtime-dom/dist/runtime-dom.esm-bundler.js
+var runtime_dom_esm_bundler = __webpack_require__(8880);
+// EXTERNAL MODULE: ./node_modules/quasar/src/plugins/Platform.js
+var Platform = __webpack_require__(4688);
+// EXTERNAL MODULE: ./node_modules/quasar/src/components/icon/QIcon.js
+var QIcon = __webpack_require__(4554);
+// EXTERNAL MODULE: ./node_modules/quasar/src/components/spinner/QSpinner.js + 1 modules
+var QSpinner = __webpack_require__(9754);
+// EXTERNAL MODULE: ./node_modules/quasar/src/composables/private/use-dark.js
+var use_dark = __webpack_require__(2236);
+// EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom-collections.iterator.js
+var web_dom_collections_iterator = __webpack_require__(71);
+// EXTERNAL MODULE: ./node_modules/quasar/src/utils/private/symbols.js
+var symbols = __webpack_require__(2547);
+;// CONCATENATED MODULE: ./node_modules/quasar/src/composables/use-form-child.js
+
+
+/* harmony default export */ function use_form_child({
+  validate,
+  resetValidation,
+  requiresQForm
+}) {
+  const $form = (0,runtime_core_esm_bundler/* inject */.f3)(symbols/* formKey */.vh, false);
+
+  if ($form !== false) {
+    const {
+      props,
+      proxy
+    } = (0,runtime_core_esm_bundler/* getCurrentInstance */.FN)(); // export public method (so it can be used in QForm)
+
+    Object.assign(proxy, validate);
+    (0,runtime_core_esm_bundler/* watch */.YP)(() => props.disable, val => {
+      if (val === true) {
+        typeof resetValidation === 'function' && resetValidation();
+        $form.unbindComponent(proxy);
+      } else {
+        $form.bindComponent(proxy);
+      }
+    }); // register component to parent QForm
+
+    props.disable !== true && $form.bindComponent(proxy);
+    (0,runtime_core_esm_bundler/* onBeforeUnmount */.Jd)(() => {
+      // unregister component
+      props.disable !== true && $form.unbindComponent(proxy);
+    });
+  } else if (requiresQForm !== true) {
+    console.error('Parent QForm not found on useFormChild()!');
+  }
+}
+;// CONCATENATED MODULE: ./node_modules/quasar/src/utils/patterns.js
+// file referenced from docs
+const hex = /^#[0-9a-fA-F]{3}([0-9a-fA-F]{3})?$/,
+      hexa = /^#[0-9a-fA-F]{4}([0-9a-fA-F]{4})?$/,
+      hexOrHexa = /^#([0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$/,
+      rgb = /^rgb\(((0|[1-9][\d]?|1[\d]{0,2}|2[\d]?|2[0-4][\d]|25[0-5]),){2}(0|[1-9][\d]?|1[\d]{0,2}|2[\d]?|2[0-4][\d]|25[0-5])\)$/,
+      rgba = /^rgba\(((0|[1-9][\d]?|1[\d]{0,2}|2[\d]?|2[0-4][\d]|25[0-5]),){2}(0|[1-9][\d]?|1[\d]{0,2}|2[\d]?|2[0-4][\d]|25[0-5]),(0|0\.[0-9]+[1-9]|0\.[1-9]+|1)\)$/;
+const testPattern = {
+  date: v => /^-?[\d]+\/[0-1]\d\/[0-3]\d$/.test(v),
+  time: v => /^([0-1]?\d|2[0-3]):[0-5]\d$/.test(v),
+  fulltime: v => /^([0-1]?\d|2[0-3]):[0-5]\d:[0-5]\d$/.test(v),
+  timeOrFulltime: v => /^([0-1]?\d|2[0-3]):[0-5]\d(:[0-5]\d)?$/.test(v),
+  hexColor: v => hex.test(v),
+  hexaColor: v => hexa.test(v),
+  hexOrHexaColor: v => hexOrHexa.test(v),
+  rgbColor: v => rgb.test(v),
+  rgbaColor: v => rgba.test(v),
+  rgbOrRgbaColor: v => rgb.test(v) || rgba.test(v),
+  hexOrRgbColor: v => hex.test(v) || rgb.test(v),
+  hexaOrRgbaColor: v => hexa.test(v) || rgba.test(v),
+  anyColor: v => hexOrHexa.test(v) || rgb.test(v) || rgba.test(v)
+};
+/* harmony default export */ const patterns = ({
+  testPattern
+});
+;// CONCATENATED MODULE: ./node_modules/quasar/src/composables/private/use-validate.js
+
+
+
+
+const lazyRulesValues = [true, false, 'ondemand'];
+const useValidateProps = {
+  modelValue: {},
+  error: {
+    type: Boolean,
+    default: null
+  },
+  errorMessage: String,
+  noErrorIcon: Boolean,
+  rules: Array,
+  reactiveRules: Boolean,
+  lazyRules: {
+    type: [Boolean, String],
+    validator: v => lazyRulesValues.includes(v)
+  }
+};
+/* harmony default export */ function use_validate(focused, innerLoading) {
+  const {
+    props,
+    proxy
+  } = (0,runtime_core_esm_bundler/* getCurrentInstance */.FN)();
+  const innerError = (0,reactivity_esm_bundler/* ref */.iH)(false);
+  const innerErrorMessage = (0,reactivity_esm_bundler/* ref */.iH)(null);
+  const isDirtyModel = (0,reactivity_esm_bundler/* ref */.iH)(null);
+  use_form_child({
+    validate,
+    resetValidation,
+    requiresQForm: true
+  });
+  let validateIndex = 0,
+      unwatchRules;
+  const hasRules = (0,runtime_core_esm_bundler/* computed */.Fl)(() => props.rules !== void 0 && props.rules !== null && props.rules.length > 0);
+  const hasError = (0,runtime_core_esm_bundler/* computed */.Fl)(() => props.error === true || innerError.value === true);
+  const computedErrorMessage = (0,runtime_core_esm_bundler/* computed */.Fl)(() => typeof props.errorMessage === 'string' && props.errorMessage.length > 0 ? props.errorMessage : innerErrorMessage.value);
+  (0,runtime_core_esm_bundler/* watch */.YP)(() => props.modelValue, () => {
+    validateIfNeeded();
+  });
+  (0,runtime_core_esm_bundler/* watch */.YP)(() => props.reactiveRules, val => {
+    if (val === true) {
+      if (unwatchRules === void 0) {
+        unwatchRules = (0,runtime_core_esm_bundler/* watch */.YP)(() => props.rules, () => {
+          validateIfNeeded(true);
+        });
+      }
+    } else if (unwatchRules !== void 0) {
+      unwatchRules();
+      unwatchRules = void 0;
+    }
+  }, {
+    immediate: true
+  });
+  (0,runtime_core_esm_bundler/* watch */.YP)(focused, val => {
+    if (props.lazyRules !== 'ondemand') {
+      if (val === true) {
+        if (isDirtyModel.value === null) {
+          isDirtyModel.value = false;
+        }
+      } else if (isDirtyModel.value === false && hasRules.value === true) {
+        isDirtyModel.value = true;
+        validate();
+      }
+    }
+  });
+
+  function resetValidation() {
+    validateIndex++;
+    innerLoading.value = false;
+    isDirtyModel.value = null;
+    innerError.value = false;
+    innerErrorMessage.value = null;
+  }
+  /*
+   * Return value
+   *   - true (validation succeeded)
+   *   - false (validation failed)
+   *   - Promise (pending async validation)
+   */
+
+
+  function validate(val = props.modelValue) {
+    if (hasRules.value !== true) {
+      return true;
+    }
+
+    validateIndex++;
+
+    if (innerLoading.value !== true && props.lazyRules !== true) {
+      isDirtyModel.value = true;
+    }
+
+    const update = (err, msg) => {
+      if (innerError.value !== err) {
+        innerError.value = err;
+      }
+
+      const m = msg || void 0;
+
+      if (innerErrorMessage.value !== m) {
+        innerErrorMessage.value = m;
+      }
+
+      if (innerLoading.value !== false) {
+        innerLoading.value = false;
+      }
+    };
+
+    const promises = [];
+
+    for (let i = 0; i < props.rules.length; i++) {
+      const rule = props.rules[i];
+      let res;
+
+      if (typeof rule === 'function') {
+        res = rule(val);
+      } else if (typeof rule === 'string' && testPattern[rule] !== void 0) {
+        res = testPattern[rule](val);
+      }
+
+      if (res === false || typeof res === 'string') {
+        update(true, res);
+        return false;
+      } else if (res !== true && res !== void 0) {
+        promises.push(res);
+      }
+    }
+
+    if (promises.length === 0) {
+      update(false);
+      return true;
+    }
+
+    if (innerLoading.value !== true) {
+      innerLoading.value = true;
+    }
+
+    const index = validateIndex;
+    return Promise.all(promises).then(res => {
+      if (index !== validateIndex) {
+        return true;
+      }
+
+      if (res === void 0 || Array.isArray(res) === false || res.length === 0) {
+        update(false);
+        return true;
+      }
+
+      const msg = res.find(r => r === false || typeof r === 'string');
+      update(msg !== void 0, msg);
+      return msg === void 0;
+    }, e => {
+      if (index === validateIndex) {
+        console.error(e);
+        update(true);
+        return false;
+      }
+
+      return true;
+    });
+  }
+
+  function validateIfNeeded(changedRules) {
+    if (hasRules.value === true && props.lazyRules !== 'ondemand' && (isDirtyModel.value === true || props.lazyRules !== true && changedRules !== true)) {
+      validate();
+    }
+  }
+
+  (0,runtime_core_esm_bundler/* onBeforeUnmount */.Jd)(() => {
+    unwatchRules !== void 0 && unwatchRules();
+  }); // expose public methods & props
+
+  Object.assign(proxy, {
+    resetValidation,
+    validate
+  });
+  Object.defineProperty(proxy, 'hasError', {
+    get: () => hasError.value
+  });
+  return {
+    isDirtyModel,
+    hasRules,
+    hasError,
+    computedErrorMessage,
+    validate,
+    resetValidation
+  };
+}
+;// CONCATENATED MODULE: ./node_modules/quasar/src/composables/private/use-split-attrs.js
+
+const listenerRE = /^on[A-Z]/;
+/* harmony default export */ function use_split_attrs(attrs) {
+  const acc = {
+    listeners: (0,reactivity_esm_bundler/* ref */.iH)({}),
+    attributes: (0,reactivity_esm_bundler/* ref */.iH)({})
+  };
+
+  function update() {
+    const listeners = {};
+    const attributes = {};
+    Object.keys(attrs).forEach(key => {
+      if (listenerRE.test(key) === true) {
+        listeners[key] = attrs[key];
+      } else if (key !== 'class' && key !== 'style') {
+        attributes[key] = attrs[key];
+      }
+    });
+    acc.listeners.value = listeners;
+    acc.attributes.value = attributes;
+  }
+
+  (0,runtime_core_esm_bundler/* onBeforeUpdate */.Xn)(update);
+  update();
+  return acc;
+}
+// EXTERNAL MODULE: ./node_modules/quasar/src/utils/private/render.js
+var render = __webpack_require__(7657);
+// EXTERNAL MODULE: ./node_modules/quasar/src/utils/uid.js
+var uid = __webpack_require__(1185);
+// EXTERNAL MODULE: ./node_modules/quasar/src/utils/event.js
+var utils_event = __webpack_require__(4716);
+// EXTERNAL MODULE: ./node_modules/quasar/src/utils/private/focus-manager.js
+var focus_manager = __webpack_require__(230);
+;// CONCATENATED MODULE: ./node_modules/quasar/src/composables/private/use-field.js
+
+
+
+
+
+
+
+
+
+
+
+
+
+function getTargetUid(val) {
+  return val === void 0 ? `f_${(0,uid/* default */.Z)()}` : val;
+}
+
+function fieldValueIsFilled(val) {
+  return val !== void 0 && val !== null && ('' + val).length > 0;
+}
+const useFieldProps = objectSpread2_default()(objectSpread2_default()(objectSpread2_default()({}, use_dark/* useDarkProps */.S), useValidateProps), {}, {
+  label: String,
+  stackLabel: Boolean,
+  hint: String,
+  hideHint: Boolean,
+  prefix: String,
+  suffix: String,
+  labelColor: String,
+  color: String,
+  bgColor: String,
+  filled: Boolean,
+  outlined: Boolean,
+  borderless: Boolean,
+  standout: [Boolean, String],
+  square: Boolean,
+  loading: Boolean,
+  labelSlot: Boolean,
+  bottomSlots: Boolean,
+  hideBottomSpace: Boolean,
+  rounded: Boolean,
+  dense: Boolean,
+  itemAligned: Boolean,
+  counter: Boolean,
+  clearable: Boolean,
+  clearIcon: String,
+  disable: Boolean,
+  readonly: Boolean,
+  autofocus: Boolean,
+  for: String,
+  maxlength: [Number, String]
+});
+const useFieldEmits = ['update:modelValue', 'clear', 'focus', 'blur', 'popup-show', 'popup-hide'];
+function useFieldState() {
+  const {
+    props,
+    attrs,
+    proxy
+  } = (0,runtime_core_esm_bundler/* getCurrentInstance */.FN)();
+  const isDark = (0,use_dark/* default */.Z)(props, proxy.$q);
+  return {
+    isDark,
+    editable: (0,runtime_core_esm_bundler/* computed */.Fl)(() => props.disable !== true && props.readonly !== true),
+    innerLoading: (0,reactivity_esm_bundler/* ref */.iH)(false),
+    focused: (0,reactivity_esm_bundler/* ref */.iH)(false),
+    hasPopupOpen: (0,reactivity_esm_bundler/* ref */.iH)(false),
+    splitAttrs: use_split_attrs(attrs),
+    targetUid: (0,reactivity_esm_bundler/* ref */.iH)(getTargetUid(props.for)),
+    rootRef: (0,reactivity_esm_bundler/* ref */.iH)(null),
+    targetRef: (0,reactivity_esm_bundler/* ref */.iH)(null),
+    controlRef: (0,reactivity_esm_bundler/* ref */.iH)(null)
+    /**
+     * user supplied additionals:
+      * innerValue - computed
+     * floatingLabel - computed
+     * inputRef - computed
+      * fieldClass - computed
+     * hasShadow - computed
+      * controlEvents - Object with fn(e)
+      * getControl - fn
+     * getInnerAppend - fn
+     * getControlChild - fn
+     * getShadowControl - fn
+     * showPopup - fn
+     */
+
+  };
+}
+/* harmony default export */ function use_field(state) {
+  const {
+    props,
+    emit,
+    slots,
+    attrs,
+    proxy
+  } = (0,runtime_core_esm_bundler/* getCurrentInstance */.FN)();
+  const {
+    $q
+  } = proxy;
+  let focusoutTimer;
+
+  if (state.hasValue === void 0) {
+    state.hasValue = (0,runtime_core_esm_bundler/* computed */.Fl)(() => fieldValueIsFilled(props.modelValue));
+  }
+
+  if (state.emitValue === void 0) {
+    state.emitValue = value => {
+      emit('update:modelValue', value);
+    };
+  }
+
+  if (state.controlEvents === void 0) {
+    state.controlEvents = {
+      onFocusin: onControlFocusin,
+      onFocusout: onControlFocusout
+    };
+  }
+
+  Object.assign(state, {
+    clearValue,
+    onControlFocusin,
+    onControlFocusout,
+    focus
+  });
+
+  if (state.computedCounter === void 0) {
+    state.computedCounter = (0,runtime_core_esm_bundler/* computed */.Fl)(() => {
+      if (props.counter !== false) {
+        const len = typeof props.modelValue === 'string' || typeof props.modelValue === 'number' ? ('' + props.modelValue).length : Array.isArray(props.modelValue) === true ? props.modelValue.length : 0;
+        const max = props.maxlength !== void 0 ? props.maxlength : props.maxValues;
+        return len + (max !== void 0 ? ' / ' + max : '');
+      }
+    });
+  }
+
+  const {
+    isDirtyModel,
+    hasRules,
+    hasError,
+    computedErrorMessage,
+    resetValidation
+  } = use_validate(state.focused, state.innerLoading);
+  const floatingLabel = state.floatingLabel !== void 0 ? (0,runtime_core_esm_bundler/* computed */.Fl)(() => props.stackLabel === true || state.focused.value === true || state.floatingLabel.value === true) : (0,runtime_core_esm_bundler/* computed */.Fl)(() => props.stackLabel === true || state.focused.value === true || state.hasValue.value === true);
+  const shouldRenderBottom = (0,runtime_core_esm_bundler/* computed */.Fl)(() => props.bottomSlots === true || props.hint !== void 0 || hasRules.value === true || props.counter === true || props.error !== null);
+  const styleType = (0,runtime_core_esm_bundler/* computed */.Fl)(() => {
+    if (props.filled === true) {
+      return 'filled';
+    }
+
+    if (props.outlined === true) {
+      return 'outlined';
+    }
+
+    if (props.borderless === true) {
+      return 'borderless';
+    }
+
+    if (props.standout) {
+      return 'standout';
+    }
+
+    return 'standard';
+  });
+  const classes = (0,runtime_core_esm_bundler/* computed */.Fl)(() => `q-field row no-wrap items-start q-field--${styleType.value}` + (state.fieldClass !== void 0 ? ` ${state.fieldClass.value}` : '') + (props.rounded === true ? ' q-field--rounded' : '') + (props.square === true ? ' q-field--square' : '') + (floatingLabel.value === true ? ' q-field--float' : '') + (hasLabel.value === true ? ' q-field--labeled' : '') + (props.dense === true ? ' q-field--dense' : '') + (props.itemAligned === true ? ' q-field--item-aligned q-item-type' : '') + (state.isDark.value === true ? ' q-field--dark' : '') + (state.getControl === void 0 ? ' q-field--auto-height' : '') + (state.focused.value === true ? ' q-field--focused' : '') + (hasError.value === true ? ' q-field--error' : '') + (hasError.value === true || state.focused.value === true ? ' q-field--highlighted' : '') + (props.hideBottomSpace !== true && shouldRenderBottom.value === true ? ' q-field--with-bottom' : '') + (props.disable === true ? ' q-field--disabled' : props.readonly === true ? ' q-field--readonly' : ''));
+  const contentClass = (0,runtime_core_esm_bundler/* computed */.Fl)(() => 'q-field__control relative-position row no-wrap' + (props.bgColor !== void 0 ? ` bg-${props.bgColor}` : '') + (hasError.value === true ? ' text-negative' : typeof props.standout === 'string' && props.standout.length > 0 && state.focused.value === true ? ` ${props.standout}` : props.color !== void 0 ? ` text-${props.color}` : ''));
+  const hasLabel = (0,runtime_core_esm_bundler/* computed */.Fl)(() => props.labelSlot === true || props.label !== void 0);
+  const labelClass = (0,runtime_core_esm_bundler/* computed */.Fl)(() => 'q-field__label no-pointer-events absolute ellipsis' + (props.labelColor !== void 0 && hasError.value !== true ? ` text-${props.labelColor}` : ''));
+  const controlSlotScope = (0,runtime_core_esm_bundler/* computed */.Fl)(() => ({
+    id: state.targetUid.value,
+    editable: state.editable.value,
+    focused: state.focused.value,
+    floatingLabel: floatingLabel.value,
+    modelValue: props.modelValue,
+    emitValue: state.emitValue
+  }));
+  const attributes = (0,runtime_core_esm_bundler/* computed */.Fl)(() => {
+    const acc = {
+      for: state.targetUid.value
+    };
+
+    if (props.disable === true) {
+      acc['aria-disabled'] = 'true';
+    } else if (props.readonly === true) {
+      acc['aria-readonly'] = 'true';
+    }
+
+    return acc;
+  });
+  (0,runtime_core_esm_bundler/* watch */.YP)(() => props.for, val => {
+    // don't transform targetUid into a computed
+    // prop as it will break SSR
+    state.targetUid.value = getTargetUid(val);
+  });
+  let focusFn;
+
+  function focus() {
+    focusFn !== void 0 && (0,focus_manager/* removeFocusFn */.fP)(focusFn);
+    focusFn = (0,focus_manager/* addFocusFn */.jd)(() => {
+      focusFn = void 0;
+      const el = document.activeElement;
+      let target = state.targetRef !== void 0 && state.targetRef.value;
+
+      if (target && (el === null || el.id !== state.targetUid.value)) {
+        target.hasAttribute('tabindex') === true || (target = target.querySelector('[tabindex]'));
+
+        if (target && target !== el) {
+          target.focus();
+        }
+      }
+    });
+  }
+
+  function blur() {
+    focusFn !== void 0 && (0,focus_manager/* removeFocusFn */.fP)(focusFn);
+    const el = document.activeElement;
+
+    if (el !== null && state.rootRef.value.contains(el)) {
+      el.blur();
+    }
+  }
+
+  function onControlFocusin(e) {
+    if (state.editable.value === true && state.focused.value === false) {
+      state.focused.value = true;
+      emit('focus', e);
+    }
+  }
+
+  function onControlFocusout(e, then) {
+    clearTimeout(focusoutTimer);
+    focusoutTimer = setTimeout(() => {
+      if (document.hasFocus() === true && (state.hasPopupOpen.value === true || state.controlRef !== void 0 && (state.controlRef.value === null || state.controlRef.value.contains(document.activeElement) !== false))) {
+        return;
+      }
+
+      if (state.focused.value === true) {
+        state.focused.value = false;
+        emit('blur', e);
+      }
+
+      then !== void 0 && then();
+    });
+  }
+
+  function clearValue(e) {
+    // prevent activating the field but keep focus on desktop
+    (0,utils_event/* stopAndPrevent */.NS)(e);
+
+    if ($q.platform.is.mobile !== true) {
+      const el = state.targetRef !== void 0 && state.targetRef.value || state.rootRef.value;
+      el.focus();
+    } else if (state.rootRef.value.contains(document.activeElement) === true) {
+      document.activeElement.blur();
+    }
+
+    if (props.type === 'file') {
+      // TODO vue3
+      // do not let focus be triggered
+      // as it will make the native file dialog
+      // appear for another selection
+      state.inputRef.value.value = null;
+    }
+
+    emit('update:modelValue', null);
+    emit('clear', props.modelValue);
+    (0,runtime_core_esm_bundler/* nextTick */.Y3)(() => {
+      resetValidation();
+
+      if (props.lazyRules !== 'ondemand' && $q.platform.is.mobile !== true) {
+        isDirtyModel.value = false;
+      }
+    });
+  }
+
+  function getContent() {
+    const node = [];
+    slots.prepend !== void 0 && node.push((0,runtime_core_esm_bundler.h)('div', {
+      class: 'q-field__prepend q-field__marginal row no-wrap items-center',
+      key: 'prepend',
+      onClick: utils_event/* prevent */.X$
+    }, slots.prepend()));
+    node.push((0,runtime_core_esm_bundler.h)('div', {
+      class: 'q-field__control-container col relative-position row no-wrap q-anchor--skip'
+    }, getControlContainer()));
+    slots.append !== void 0 && node.push((0,runtime_core_esm_bundler.h)('div', {
+      class: 'q-field__append q-field__marginal row no-wrap items-center',
+      key: 'append',
+      onClick: utils_event/* prevent */.X$
+    }, slots.append()));
+    hasError.value === true && props.noErrorIcon === false && node.push(getInnerAppendNode('error', [(0,runtime_core_esm_bundler.h)(QIcon/* default */.Z, {
+      name: $q.iconSet.field.error,
+      color: 'negative'
+    })]));
+
+    if (props.loading === true || state.innerLoading.value === true) {
+      node.push(getInnerAppendNode('inner-loading-append', slots.loading !== void 0 ? slots.loading() : [(0,runtime_core_esm_bundler.h)(QSpinner/* default */.Z, {
+        color: props.color
+      })]));
+    } else if (props.clearable === true && state.hasValue.value === true && state.editable.value === true) {
+      node.push(getInnerAppendNode('inner-clearable-append', [(0,runtime_core_esm_bundler.h)(QIcon/* default */.Z, {
+        class: 'q-field__focusable-action',
+        tag: 'button',
+        name: props.clearIcon || $q.iconSet.field.clear,
+        tabindex: 0,
+        type: 'button',
+        onClick: clearValue
+      })]));
+    }
+
+    state.getInnerAppend !== void 0 && node.push(getInnerAppendNode('inner-append', state.getInnerAppend()));
+    state.getControlChild !== void 0 && node.push(state.getControlChild());
+    return node;
+  }
+
+  function getControlContainer() {
+    const node = [];
+    props.prefix !== void 0 && props.prefix !== null && node.push((0,runtime_core_esm_bundler.h)('div', {
+      class: 'q-field__prefix no-pointer-events row items-center'
+    }, props.prefix));
+
+    if (state.getShadowControl !== void 0 && state.hasShadow.value === true) {
+      node.push(state.getShadowControl());
+    }
+
+    if (state.getControl !== void 0) {
+      node.push(state.getControl());
+    } // internal usage only:
+    else if (slots.rawControl !== void 0) {
+        node.push(slots.rawControl());
+      } else if (slots.control !== void 0) {
+        node.push((0,runtime_core_esm_bundler.h)('div', objectSpread2_default()(objectSpread2_default()({
+          ref: state.targetRef,
+          class: 'q-field__native row'
+        }, state.splitAttrs.attributes.value), {}, {
+          'data-autofocus': props.autofocus === true || void 0
+        }), slots.control(controlSlotScope.value)));
+      }
+
+    hasLabel.value === true && node.push((0,runtime_core_esm_bundler.h)('div', {
+      class: labelClass.value
+    }, (0,render/* hSlot */.KR)(slots.label, props.label)));
+    props.suffix !== void 0 && props.suffix !== null && node.push((0,runtime_core_esm_bundler.h)('div', {
+      class: 'q-field__suffix no-pointer-events row items-center'
+    }, props.suffix));
+    return node.concat((0,render/* hSlot */.KR)(slots.default));
+  }
+
+  function getBottom() {
+    let msg, key;
+
+    if (hasError.value === true) {
+      if (computedErrorMessage.value !== null) {
+        msg = [(0,runtime_core_esm_bundler.h)('div', computedErrorMessage.value)];
+        key = `q--slot-error-${computedErrorMessage.value}`;
+      } else {
+        msg = (0,render/* hSlot */.KR)(slots.error);
+        key = 'q--slot-error';
+      }
+    } else if (props.hideHint !== true || state.focused.value === true) {
+      if (props.hint !== void 0) {
+        msg = [(0,runtime_core_esm_bundler.h)('div', props.hint)];
+        key = `q--slot-hint-${props.hint}`;
+      } else {
+        msg = (0,render/* hSlot */.KR)(slots.hint);
+        key = 'q--slot-hint';
+      }
+    }
+
+    const hasCounter = props.counter === true || slots.counter !== void 0;
+
+    if (props.hideBottomSpace === true && hasCounter === false && msg === void 0) {
+      return;
+    }
+
+    const main = (0,runtime_core_esm_bundler.h)('div', {
+      key,
+      class: 'q-field__messages col'
+    }, msg);
+    return (0,runtime_core_esm_bundler.h)('div', {
+      class: 'q-field__bottom row items-start q-field__bottom--' + (props.hideBottomSpace !== true ? 'animated' : 'stale')
+    }, [props.hideBottomSpace === true ? main : (0,runtime_core_esm_bundler.h)(runtime_dom_esm_bundler/* Transition */.uT, {
+      name: 'q-transition--field-message'
+    }, () => main), hasCounter === true ? (0,runtime_core_esm_bundler.h)('div', {
+      class: 'q-field__counter'
+    }, slots.counter !== void 0 ? slots.counter() : state.computedCounter.value) : null]);
+  }
+
+  function getInnerAppendNode(key, content) {
+    return content === null ? null : (0,runtime_core_esm_bundler.h)('div', {
+      key,
+      class: 'q-field__append q-field__marginal row no-wrap items-center q-anchor--skip'
+    }, content);
+  } // expose public methods
+
+
+  Object.assign(proxy, {
+    focus,
+    blur
+  });
+  (0,runtime_core_esm_bundler/* onMounted */.bv)(() => {
+    if (Platform/* isRuntimeSsrPreHydration.value */.uX.value === true && props.for === void 0) {
+      state.targetUid.value = getTargetUid();
+    }
+
+    props.autofocus === true && proxy.focus();
+  });
+  (0,runtime_core_esm_bundler/* onBeforeUnmount */.Jd)(() => {
+    clearTimeout(focusoutTimer);
+  });
+  return function renderField() {
+    return (0,runtime_core_esm_bundler.h)('label', objectSpread2_default()({
+      ref: state.rootRef,
+      class: state.inheritAttrs !== true ? [classes.value, attrs.class] : classes.value,
+      style: attrs.style
+    }, attributes.value), [slots.before !== void 0 ? (0,runtime_core_esm_bundler.h)('div', {
+      class: 'q-field__before q-field__marginal row no-wrap items-center',
+      onClick: utils_event/* prevent */.X$
+    }, slots.before()) : null, (0,runtime_core_esm_bundler.h)('div', {
+      class: 'q-field__inner relative-position col self-stretch'
+    }, [(0,runtime_core_esm_bundler.h)('div', objectSpread2_default()({
+      ref: state.controlRef,
+      class: contentClass.value,
+      tabindex: -1
+    }, state.controlEvents), getContent()), shouldRenderBottom.value === true ? getBottom() : null]), slots.after !== void 0 ? (0,runtime_core_esm_bundler.h)('div', {
+      class: 'q-field__after q-field__marginal row no-wrap items-center',
+      onClick: utils_event/* prevent */.X$
+    }, slots.after()) : null]);
+  };
+}
+
+/***/ }),
+
+/***/ 2726:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": () => (/* export default binding */ __WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3673);
+
+/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__(props, typeGuard) {
+  function getFormDomProps() {
+    const model = props.modelValue;
+
+    try {
+      const dt = 'DataTransfer' in window ? new DataTransfer() : 'ClipboardEvent' in window ? new ClipboardEvent('').clipboardData : void 0;
+
+      if (Object(model) === model) {
+        ('length' in model ? Array.from(model) : [model]).forEach(file => {
+          dt.items.add(file);
+        });
+      }
+
+      return {
+        files: dt.files
+      };
+    } catch (e) {
+      return {
+        files: void 0
+      };
+    }
+  }
+
+  return typeGuard === true ? (0,vue__WEBPACK_IMPORTED_MODULE_0__/* .computed */ .Fl)(() => {
+    if (props.type !== 'file') {
+      return;
+    }
+
+    return getFormDomProps();
+  }) : (0,vue__WEBPACK_IMPORTED_MODULE_0__/* .computed */ .Fl)(getFormDomProps);
+}
+
+/***/ }),
+
 /***/ 9550:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -37844,6 +38598,167 @@ const useSizeProps = {
 function useQuasar() {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__/* .inject */ .f3)(_utils_private_symbols_js__WEBPACK_IMPORTED_MODULE_1__/* .quasarKey */ .Ng);
 }
+
+/***/ }),
+
+/***/ 6489:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  "Z": () => (/* binding */ Ripple)
+});
+
+// EXTERNAL MODULE: ./node_modules/quasar/src/utils/dom.js
+var dom = __webpack_require__(2012);
+// EXTERNAL MODULE: ./node_modules/quasar/src/utils/event.js
+var utils_event = __webpack_require__(4716);
+// EXTERNAL MODULE: ./node_modules/quasar/src/utils/private/key-composition.js
+var key_composition = __webpack_require__(1436);
+;// CONCATENATED MODULE: ./node_modules/quasar/src/utils/throttle.js
+/* harmony default export */ function throttle(fn, limit = 250) {
+  let wait = false,
+      result;
+  return function ()
+  /* ...args */
+  {
+    if (wait === false) {
+      wait = true;
+      setTimeout(() => {
+        wait = false;
+      }, limit);
+      result = fn.apply(this, arguments);
+    }
+
+    return result;
+  };
+}
+;// CONCATENATED MODULE: ./node_modules/quasar/src/directives/Ripple.js
+
+
+
+
+
+
+function showRipple(evt, el, ctx, forceCenter) {
+  ctx.modifiers.stop === true && (0,utils_event/* stop */.sT)(evt);
+  const color = ctx.modifiers.color;
+  let center = ctx.modifiers.center;
+  center = center === true || forceCenter === true;
+  const node = document.createElement('span'),
+        innerNode = document.createElement('span'),
+        pos = (0,utils_event/* position */.FK)(evt),
+        {
+    left,
+    top,
+    width,
+    height
+  } = el.getBoundingClientRect(),
+        diameter = Math.sqrt(width * width + height * height),
+        radius = diameter / 2,
+        centerX = `${(width - diameter) / 2}px`,
+        x = center ? centerX : `${pos.left - left - radius}px`,
+        centerY = `${(height - diameter) / 2}px`,
+        y = center ? centerY : `${pos.top - top - radius}px`;
+  innerNode.className = 'q-ripple__inner';
+  (0,dom/* css */.iv)(innerNode, {
+    height: `${diameter}px`,
+    width: `${diameter}px`,
+    transform: `translate3d(${x},${y},0) scale3d(.2,.2,1)`,
+    opacity: 0
+  });
+  node.className = `q-ripple${color ? ' text-' + color : ''}`;
+  node.setAttribute('dir', 'ltr');
+  node.appendChild(innerNode);
+  el.appendChild(node);
+
+  const abort = () => {
+    node.remove();
+    clearTimeout(timer);
+  };
+
+  ctx.abort.push(abort);
+  let timer = setTimeout(() => {
+    innerNode.classList.add('q-ripple__inner--enter');
+    innerNode.style.transform = `translate3d(${centerX},${centerY},0) scale3d(1,1,1)`;
+    innerNode.style.opacity = 0.2;
+    timer = setTimeout(() => {
+      innerNode.classList.remove('q-ripple__inner--enter');
+      innerNode.classList.add('q-ripple__inner--leave');
+      innerNode.style.opacity = 0;
+      timer = setTimeout(() => {
+        node.remove();
+        ctx.abort.splice(ctx.abort.indexOf(abort), 1);
+      }, 275);
+    }, 250);
+  }, 50);
+}
+
+function updateModifiers(ctx, {
+  modifiers,
+  value,
+  arg,
+  instance
+}) {
+  const cfg = Object.assign({}, instance.$q.config.ripple, modifiers, value);
+  ctx.modifiers = {
+    early: cfg.early === true,
+    stop: cfg.stop === true,
+    center: cfg.center === true,
+    color: cfg.color || arg,
+    keyCodes: [].concat(cfg.keyCodes || 13)
+  };
+}
+
+/* harmony default export */ const Ripple = ( false ? 0 : {
+  name: 'ripple',
+
+  beforeMount(el, binding) {
+    const ctx = {
+      enabled: binding.value !== false,
+      modifiers: {},
+      abort: [],
+
+      start(evt) {
+        if (ctx.enabled === true && evt.qSkipRipple !== true && (ctx.modifiers.early === true ? ['mousedown', 'touchstart'].includes(evt.type) === true : evt.type === 'click')) {
+          showRipple(evt, el, ctx, evt.qKeyEvent === true);
+        }
+      },
+
+      keystart: throttle(evt => {
+        if (ctx.enabled === true && evt.qSkipRipple !== true && (0,key_composition/* isKeyCode */.So)(evt, ctx.modifiers.keyCodes) === true && evt.type === `key${ctx.modifiers.early === true ? 'down' : 'up'}`) {
+          showRipple(evt, el, ctx, true);
+        }
+      }, 300)
+    };
+    updateModifiers(ctx, binding);
+    el.__qripple = ctx;
+    (0,utils_event/* addEvt */.M0)(ctx, 'main', [[el, 'mousedown', 'start', 'passive'], [el, 'touchstart', 'start', 'passive'], [el, 'click', 'start', 'passive'], [el, 'keydown', 'keystart', 'passive'], [el, 'keyup', 'keystart', 'passive']]);
+  },
+
+  updated(el, binding) {
+    if (binding.oldValue !== binding.value) {
+      const ctx = el.__qripple;
+      ctx.enabled = binding.value !== false;
+
+      if (ctx.enabled === true && Object(binding.value) === binding.value) {
+        updateModifiers(ctx, binding);
+      }
+    }
+  },
+
+  beforeUnmount(el) {
+    const ctx = el.__qripple;
+    ctx.abort.forEach(fn => {
+      fn();
+    });
+    (0,utils_event/* cleanEvt */.ul)(ctx, 'main');
+    delete el._qripple;
+  }
+
+});
 
 /***/ }),
 
@@ -38853,80 +39768,380 @@ const Plugin = (0,define_reactive_plugin/* default */.Z)({
 
 /***/ }),
 
-/***/ 9140:
+/***/ 921:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
-  "Z": () => (/* binding */ Notify)
+  "Z": () => (/* binding */ LoadingBar)
 });
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/objectSpread2.js
 var objectSpread2 = __webpack_require__(515);
 var objectSpread2_default = /*#__PURE__*/__webpack_require__.n(objectSpread2);
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/objectWithoutProperties.js
-var objectWithoutProperties = __webpack_require__(9119);
-var objectWithoutProperties_default = /*#__PURE__*/__webpack_require__.n(objectWithoutProperties);
-// EXTERNAL MODULE: ./node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.js
-var runtime_core_esm_bundler = __webpack_require__(3673);
 // EXTERNAL MODULE: ./node_modules/@vue/reactivity/dist/reactivity.esm-bundler.js
 var reactivity_esm_bundler = __webpack_require__(1959);
-// EXTERNAL MODULE: ./node_modules/@vue/runtime-dom/dist/runtime-dom.esm-bundler.js
-var runtime_dom_esm_bundler = __webpack_require__(8880);
-// EXTERNAL MODULE: ./node_modules/quasar/src/components/avatar/QAvatar.js
-var QAvatar = __webpack_require__(5096);
-// EXTERNAL MODULE: ./node_modules/quasar/src/components/icon/QIcon.js
-var QIcon = __webpack_require__(4554);
-// EXTERNAL MODULE: ./node_modules/quasar/src/components/btn/QBtn.js + 3 modules
-var QBtn = __webpack_require__(6114);
-// EXTERNAL MODULE: ./node_modules/quasar/src/components/spinner/QSpinner.js + 1 modules
-var QSpinner = __webpack_require__(9754);
+// EXTERNAL MODULE: ./node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.js
+var runtime_core_esm_bundler = __webpack_require__(3673);
+// EXTERNAL MODULE: ./node_modules/quasar/src/utils/private/define-reactive-plugin.js
+var define_reactive_plugin = __webpack_require__(2002);
 // EXTERNAL MODULE: ./node_modules/quasar/src/utils/event.js
 var utils_event = __webpack_require__(4716);
-// EXTERNAL MODULE: ./node_modules/quasar/src/utils/private/global-config.js
-var global_config = __webpack_require__(5578);
-;// CONCATENATED MODULE: ./node_modules/quasar/src/utils/private/global-nodes.js
+// EXTERNAL MODULE: ./node_modules/quasar/src/utils/private/global-nodes.js
+var global_nodes = __webpack_require__(8144);
+// EXTERNAL MODULE: ./node_modules/quasar/src/install-quasar.js + 6 modules
+var install_quasar = __webpack_require__(5251);
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.reverse.js
+var es_array_reverse = __webpack_require__(7070);
+// EXTERNAL MODULE: ./node_modules/quasar/src/utils/format.js
+var format = __webpack_require__(2130);
+;// CONCATENATED MODULE: ./node_modules/quasar/src/components/ajax-bar/QAjaxBar.js
 
-const globalNodes = [];
-let target =  false ? 0 : document.body;
-function createGlobalNode(id) {
-  const el = document.createElement('div');
 
-  if (id !== void 0) {
-    el.id = id;
+
+
+const xhr =  false ? 0 : XMLHttpRequest,
+      send =  false ? 0 : xhr.prototype.send,
+      stackStart = [],
+      stackStop = [];
+let highjackCount = 0;
+
+function translate({
+  p,
+  pos,
+  active,
+  horiz,
+  reverse,
+  dir
+}) {
+  let x = 1,
+      y = 1;
+
+  if (horiz) {
+    if (reverse) {
+      x = -1;
+    }
+
+    if (pos === 'bottom') {
+      y = -1;
+    }
+
+    return {
+      transform: `translate3d(${x * (p - 100)}%,${active ? 0 : y * -200}%,0)`
+    };
   }
 
-  if (global_config/* globalConfig.globalNodes */.w6.globalNodes !== void 0) {
-    const cls = global_config/* globalConfig.globalNodes.class */.w6.globalNodes.class;
+  if (reverse) {
+    y = -1;
+  }
 
-    if (cls !== void 0) {
-      el.className = cls;
+  if (pos === 'right') {
+    x = -1;
+  }
+
+  return {
+    transform: `translate3d(${active ? 0 : dir * x * -200}%,${y * (p - 100)}%,0)`
+  };
+}
+
+function inc(p, amount) {
+  if (typeof amount !== 'number') {
+    if (p < 25) {
+      amount = Math.random() * 3 + 3;
+    } else if (p < 65) {
+      amount = Math.random() * 3;
+    } else if (p < 85) {
+      amount = Math.random() * 2;
+    } else if (p < 99) {
+      amount = 0.6;
+    } else {
+      amount = 0;
     }
   }
 
-  target.appendChild(el);
-  globalNodes.push(el);
-  return el;
+  return (0,format/* between */.vX)(p + amount, 0, 100);
 }
-function removeGlobalNode(el) {
-  globalNodes.splice(globalNodes.indexOf(el), 1);
-  el.remove();
+
+function highjackAjax(start, stop) {
+  stackStart.push(start);
+  stackStop.push(stop);
+  highjackCount++;
+
+  if (highjackCount > 1) {
+    return;
+  }
+
+  function endHandler() {
+    stackStop.forEach(fn => {
+      fn();
+    });
+  }
+
+  xhr.prototype.send = function ()
+  /* ...args */
+  {
+    stackStart.forEach(fn => {
+      fn();
+    });
+    this.addEventListener('loadend', endHandler, false);
+    send.apply(this, arguments);
+  };
 }
-function changeGlobalNodesTarget(el) {
-  if (el !== target) {
-    target = el;
-    globalNodes.forEach(el => {
-      if (el.contains(target) === false) {
-        target.appendChild(el);
+
+function restoreAjax(start, stop) {
+  stackStart.splice(stackStart.indexOf(start), 1);
+  stackStop.splice(stackStop.indexOf(stop), 1);
+  highjackCount = Math.max(0, highjackCount - 1);
+
+  if (highjackCount === 0) {
+    xhr.prototype.send = send;
+  }
+}
+
+/* harmony default export */ const QAjaxBar = ((0,runtime_core_esm_bundler/* defineComponent */.aZ)({
+  name: 'QAjaxBar',
+  props: {
+    position: {
+      type: String,
+      default: 'top',
+      validator: val => ['top', 'right', 'bottom', 'left'].includes(val)
+    },
+    size: {
+      type: String,
+      default: '2px'
+    },
+    color: String,
+    skipHijack: Boolean,
+    reverse: Boolean
+  },
+  emits: ['start', 'stop'],
+
+  setup(props, {
+    emit
+  }) {
+    const {
+      proxy
+    } = (0,runtime_core_esm_bundler/* getCurrentInstance */.FN)();
+    const progress = (0,reactivity_esm_bundler/* ref */.iH)(0);
+    const onScreen = (0,reactivity_esm_bundler/* ref */.iH)(false);
+    const animate = (0,reactivity_esm_bundler/* ref */.iH)(true);
+    let calls = 0,
+        timer,
+        speed;
+    const classes = (0,runtime_core_esm_bundler/* computed */.Fl)(() => `q-loading-bar q-loading-bar--${props.position}` + (props.color !== void 0 ? ` bg-${props.color}` : '') + (animate.value === true ? '' : ' no-transition'));
+    const horizontal = (0,runtime_core_esm_bundler/* computed */.Fl)(() => props.position === 'top' || props.position === 'bottom');
+    const sizeProp = (0,runtime_core_esm_bundler/* computed */.Fl)(() => horizontal.value === true ? 'height' : 'width');
+    const style = (0,runtime_core_esm_bundler/* computed */.Fl)(() => {
+      const active = onScreen.value;
+      const obj = translate({
+        p: progress.value,
+        pos: props.position,
+        active,
+        horiz: horizontal.value,
+        reverse: proxy.$q.lang.rtl === true && ['top', 'bottom'].includes(props.position) ? !props.reverse : props.reverse,
+        dir: proxy.$q.lang.rtl === true ? -1 : 1
+      });
+      obj[sizeProp.value] = props.size;
+      obj.opacity = active ? 1 : 0;
+      return obj;
+    });
+    const attributes = (0,runtime_core_esm_bundler/* computed */.Fl)(() => onScreen.value === true ? {
+      role: 'progressbar',
+      'aria-valuemin': 0,
+      'aria-valuemax': 100,
+      'aria-valuenow': progress.value
+    } : {
+      'aria-hidden': 'true'
+    });
+
+    function start(newSpeed = 300) {
+      const oldSpeed = speed;
+      speed = Math.max(0, newSpeed) || 0;
+      calls++;
+
+      if (calls > 1) {
+        if (oldSpeed === 0 && newSpeed > 0) {
+          planNextStep();
+        } else if (oldSpeed > 0 && newSpeed <= 0) {
+          clearTimeout(timer);
+        }
+
+        return;
+      }
+
+      clearTimeout(timer);
+      emit('start');
+      progress.value = 0;
+
+      if (onScreen.value === true) {
+        return;
+      }
+
+      onScreen.value = true;
+      animate.value = false;
+      timer = setTimeout(() => {
+        animate.value = true;
+        newSpeed > 0 && planNextStep();
+      }, 100);
+    }
+
+    function increment(amount) {
+      if (calls > 0) {
+        progress.value = inc(progress.value, amount);
+      }
+    }
+
+    function stop() {
+      calls = Math.max(0, calls - 1);
+
+      if (calls > 0) {
+        return;
+      }
+
+      clearTimeout(timer);
+      emit('stop');
+
+      const end = () => {
+        animate.value = true;
+        progress.value = 100;
+        timer = setTimeout(() => {
+          onScreen.value = false;
+        }, 1000);
+      };
+
+      if (progress.value === 0) {
+        timer = setTimeout(end, 1);
+      } else {
+        end();
+      }
+    }
+
+    function planNextStep() {
+      if (progress.value < 100) {
+        timer = setTimeout(() => {
+          increment();
+          planNextStep();
+        }, speed);
+      }
+    }
+
+    let hijacked;
+    (0,runtime_core_esm_bundler/* onMounted */.bv)(() => {
+      if (props.skipHijack !== true) {
+        hijacked = true;
+        highjackAjax(start, stop);
+      }
+    });
+    (0,runtime_core_esm_bundler/* onBeforeUnmount */.Jd)(() => {
+      clearTimeout(timer);
+      hijacked === true && restoreAjax(start, stop);
+    }); // expose public methods
+
+    Object.assign(proxy, {
+      start,
+      stop,
+      increment
+    });
+    return () => (0,runtime_core_esm_bundler.h)('div', objectSpread2_default()({
+      class: classes.value,
+      style: style.value
+    }, attributes.value));
+  }
+
+}));
+;// CONCATENATED MODULE: ./node_modules/quasar/src/plugins/LoadingBar.js
+
+
+
+
+
+
+
+const reqProps = {
+  ref: 'bar'
+};
+/* harmony default export */ const LoadingBar = ((0,define_reactive_plugin/* default */.Z)({
+  isActive: false
+}, {
+  start: utils_event/* noop */.ZT,
+  stop: utils_event/* noop */.ZT,
+  increment: utils_event/* noop */.ZT,
+  setDefaults: utils_event/* noop */.ZT,
+
+  install({
+    $q,
+    parentApp
+  }) {
+    $q.loadingBar = this;
+
+    if (false) {}
+
+    if (this.__installed === true) {
+      if ($q.config.loadingBar !== void 0) {
+        this.setDefaults($q.config.loadingBar);
+      }
+
+      return;
+    }
+
+    const props = (0,reactivity_esm_bundler/* ref */.iH)($q.config.loadingBar !== void 0 ? objectSpread2_default()(objectSpread2_default()({}, $q.config.loadingBar), reqProps) : objectSpread2_default()({}, reqProps));
+    const el = (0,global_nodes/* createGlobalNode */.q_)('q-loading-bar');
+    const vm = (0,install_quasar/* createChildApp */.$)({
+      name: 'LoadingBar',
+      setup: () => () => (0,runtime_core_esm_bundler.h)(QAjaxBar, props.value)
+    }, parentApp).mount(el);
+    Object.assign(this, {
+      start: speed => {
+        const bar = vm.$refs.bar;
+        bar.start(speed);
+        this.isActive = bar.calls > 0;
+      },
+      stop: () => {
+        const bar = vm.$refs.bar;
+        bar.stop();
+        this.isActive = bar.calls > 0;
+      },
+
+      increment() {
+        const bar = vm.$refs.bar;
+        bar.increment.apply(null, arguments);
+      },
+
+      setDefaults: opts => {
+        if (opts === Object(opts)) {
+          props.value = objectSpread2_default()(objectSpread2_default()(objectSpread2_default()({}, props.value), opts), reqProps);
+        }
       }
     });
   }
-}
-// EXTERNAL MODULE: ./node_modules/quasar/src/install-quasar.js + 6 modules
-var install_quasar = __webpack_require__(5251);
-;// CONCATENATED MODULE: ./node_modules/quasar/src/plugins/Notify.js
+
+}));
+
+/***/ }),
+
+/***/ 4434:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _home_th0tminik_VeleRi_App_VeleRi_App_client_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(515);
+/* harmony import */ var _home_th0tminik_VeleRi_App_VeleRi_App_client_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_home_th0tminik_VeleRi_App_VeleRi_App_client_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _home_th0tminik_VeleRi_App_VeleRi_App_client_node_modules_babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(9119);
+/* harmony import */ var _home_th0tminik_VeleRi_App_VeleRi_App_client_node_modules_babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_home_th0tminik_VeleRi_App_VeleRi_App_client_node_modules_babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(3673);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(1959);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(8880);
+/* harmony import */ var _components_avatar_QAvatar_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(5096);
+/* harmony import */ var _components_icon_QIcon_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(4554);
+/* harmony import */ var _components_btn_QBtn_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(8240);
+/* harmony import */ var _components_spinner_QSpinner_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(9754);
+/* harmony import */ var _utils_event_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(4716);
+/* harmony import */ var _utils_private_global_nodes_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(8144);
+/* harmony import */ var _install_quasar_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(5251);
 
 
 const _excluded = ["handler", "noDismiss"];
@@ -38977,14 +40192,14 @@ function logError(error, config) {
 }
 
 function getComponent($q) {
-  return (0,runtime_core_esm_bundler/* defineComponent */.aZ)({
+  return (0,vue__WEBPACK_IMPORTED_MODULE_9__/* .defineComponent */ .aZ)({
     name: 'QNotifications',
 
     setup() {
       const notificationsList = {};
       const notifRefs = [];
       positionList.forEach(pos => {
-        notificationsList[pos] = (0,reactivity_esm_bundler/* ref */.iH)([]);
+        notificationsList[pos] = (0,vue__WEBPACK_IMPORTED_MODULE_10__/* .ref */ .iH)([]);
         const vert = ['left', 'center', 'right'].includes(pos) === true ? 'center' : pos.indexOf('top') > -1 ? 'top' : 'bottom',
               align = pos.indexOf('left') > -1 ? 'start' : pos.indexOf('right') > -1 ? 'end' : 'center',
               classes = ['left', 'right'].includes(pos) ? `items-${pos === 'left' ? 'start' : 'end'} justify-center` : pos === 'center' ? 'flex-center' : `items-${align}`;
@@ -39025,10 +40240,10 @@ function getComponent($q) {
           notif.spinner = false;
         } else {
           if (notif.spinner === true) {
-            notif.spinner = QSpinner/* default */.Z;
+            notif.spinner = _components_spinner_QSpinner_js__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z;
           }
 
-          notif.spinner = (0,reactivity_esm_bundler/* markRaw */.Xl)(notif.spinner);
+          notif.spinner = (0,vue__WEBPACK_IMPORTED_MODULE_10__/* .markRaw */ .Xl)(notif.spinner);
         }
 
         notif.meta = {
@@ -39073,9 +40288,9 @@ function getComponent($q) {
             handler,
             noDismiss
           } = _ref,
-              item = objectWithoutProperties_default()(_ref, _excluded);
+              item = _home_th0tminik_VeleRi_App_VeleRi_App_client_node_modules_babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1___default()(_ref, _excluded);
 
-          return objectSpread2_default()(objectSpread2_default()({
+          return _home_th0tminik_VeleRi_App_VeleRi_App_client_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0___default()(_home_th0tminik_VeleRi_App_VeleRi_App_client_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0___default()({
             flat: true
           }, item), {}, {
             onClick: typeof handler === 'function' ? () => {
@@ -39095,7 +40310,7 @@ function getComponent($q) {
           class: 'q-notification row items-stretch' + ` q-notification--${notif.multiLine === true ? 'multi-line' : 'standard'}` + (notif.color !== void 0 ? ` bg-${notif.color}` : '') + (notif.textColor !== void 0 ? ` text-${notif.textColor}` : '') + (notif.classes !== void 0 ? ` ${notif.classes}` : ''),
           wrapperClass: 'q-notification__wrapper col relative-position border-radius-inherit ' + (notif.multiLine === true ? 'column no-wrap justify-center' : 'row items-center'),
           contentClass: 'q-notification__content row items-center' + (notif.multiLine === true ? '' : ' col'),
-          attrs: objectSpread2_default()({
+          attrs: _home_th0tminik_VeleRi_App_VeleRi_App_client_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0___default()({
             role: 'alert'
           }, notif.attrs)
         });
@@ -39246,10 +40461,10 @@ function getComponent($q) {
         }
       }
 
-      return () => (0,runtime_core_esm_bundler.h)('div', {
+      return () => (0,vue__WEBPACK_IMPORTED_MODULE_9__.h)('div', {
         class: 'q-notifications'
       }, positionList.map(pos => {
-        return (0,runtime_core_esm_bundler.h)(runtime_dom_esm_bundler/* TransitionGroup */.W3, {
+        return (0,vue__WEBPACK_IMPORTED_MODULE_9__.h)(vue__WEBPACK_IMPORTED_MODULE_11__/* .TransitionGroup */ .W3, {
           key: pos,
           class: positionClass[pos],
           tag: 'div',
@@ -39265,7 +40480,7 @@ function getComponent($q) {
             msgData.innerHTML = notif.caption ? `<div>${notif.message}</div><div class="q-notification__caption">${notif.caption}</div>` : notif.message;
           } else {
             const msgNode = [notif.message];
-            msgChild = notif.caption ? [(0,runtime_core_esm_bundler.h)('div', msgNode), (0,runtime_core_esm_bundler.h)('div', {
+            msgChild = notif.caption ? [(0,vue__WEBPACK_IMPORTED_MODULE_9__.h)('div', msgNode), (0,vue__WEBPACK_IMPORTED_MODULE_9__.h)('div', {
               class: 'q-notification__caption'
             }, [notif.caption])] : msgNode;
           }
@@ -39274,49 +40489,49 @@ function getComponent($q) {
 
           if (meta.hasMedia === true) {
             if (notif.spinner !== false) {
-              mainChild.push((0,runtime_core_esm_bundler.h)(notif.spinner, {
+              mainChild.push((0,vue__WEBPACK_IMPORTED_MODULE_9__.h)(notif.spinner, {
                 class: 'q-notification__spinner'
               }));
             } else if (notif.icon) {
-              mainChild.push((0,runtime_core_esm_bundler.h)(QIcon/* default */.Z, {
+              mainChild.push((0,vue__WEBPACK_IMPORTED_MODULE_9__.h)(_components_icon_QIcon_js__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z, {
                 class: 'q-notification__icon',
                 name: notif.icon,
                 role: 'img'
               }));
             } else if (notif.avatar) {
-              mainChild.push((0,runtime_core_esm_bundler.h)(QAvatar/* default */.Z, {
+              mainChild.push((0,vue__WEBPACK_IMPORTED_MODULE_9__.h)(_components_avatar_QAvatar_js__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z, {
                 class: 'q-notification__avatar'
-              }, () => (0,runtime_core_esm_bundler.h)('img', {
+              }, () => (0,vue__WEBPACK_IMPORTED_MODULE_9__.h)('img', {
                 src: notif.avatar,
                 'aria-hidden': 'true'
               })));
             }
           }
 
-          mainChild.push((0,runtime_core_esm_bundler.h)('div', msgData, msgChild));
-          const child = [(0,runtime_core_esm_bundler.h)('div', {
+          mainChild.push((0,vue__WEBPACK_IMPORTED_MODULE_9__.h)('div', msgData, msgChild));
+          const child = [(0,vue__WEBPACK_IMPORTED_MODULE_9__.h)('div', {
             class: meta.contentClass
           }, mainChild)];
-          notif.progress === true && child.push((0,runtime_core_esm_bundler.h)('div', {
+          notif.progress === true && child.push((0,vue__WEBPACK_IMPORTED_MODULE_9__.h)('div', {
             key: `${meta.uid}|p|${meta.badge}`,
             class: meta.progressClass,
             style: meta.progressStyle
           }));
-          notif.actions !== void 0 && child.push((0,runtime_core_esm_bundler.h)('div', {
+          notif.actions !== void 0 && child.push((0,vue__WEBPACK_IMPORTED_MODULE_9__.h)('div', {
             class: meta.actionsClass
-          }, notif.actions.map(props => (0,runtime_core_esm_bundler.h)(QBtn/* default */.Z, props))));
-          meta.badge > 1 && child.push((0,runtime_core_esm_bundler.h)('div', {
+          }, notif.actions.map(props => (0,vue__WEBPACK_IMPORTED_MODULE_9__.h)(_components_btn_QBtn_js__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z, props))));
+          meta.badge > 1 && child.push((0,vue__WEBPACK_IMPORTED_MODULE_9__.h)('div', {
             key: `${meta.uid}|${meta.badge}`,
             class: notif.meta.badgeClass,
             style: notif.badgeStyle
           }, [meta.badge]));
-          return (0,runtime_core_esm_bundler.h)('div', objectSpread2_default()({
+          return (0,vue__WEBPACK_IMPORTED_MODULE_9__.h)('div', _home_th0tminik_VeleRi_App_VeleRi_App_client_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0___default()({
             ref: el => {
               notifRefs['' + meta.uid] = el;
             },
             key: meta.uid,
             class: meta.class
-          }, meta.attrs), [(0,runtime_core_esm_bundler.h)('div', {
+          }, meta.attrs), [(0,vue__WEBPACK_IMPORTED_MODULE_9__.h)('div', {
             class: meta.wrapperClass
           }, child)]);
         }));
@@ -39326,7 +40541,7 @@ function getComponent($q) {
   });
 }
 
-/* harmony default export */ const Notify = ({
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   create(opts) {
     return  false ? 0 : addNotification(opts);
   },
@@ -39356,8 +40571,8 @@ function getComponent($q) {
     }
 
     if ( true && this.__installed !== true) {
-      const el = createGlobalNode('q-notify');
-      (0,install_quasar/* createChildApp */.$)(getComponent($q), parentApp).mount(el);
+      const el = (0,_utils_private_global_nodes_js__WEBPACK_IMPORTED_MODULE_7__/* .createGlobalNode */ .q_)('q-notify');
+      (0,_install_quasar_js__WEBPACK_IMPORTED_MODULE_8__/* .createChildApp */ .$)(getComponent($q), parentApp).mount(el);
     }
   }
 
@@ -39925,6 +41140,64 @@ function cleanEvt(ctx, targetName) {
 
 /***/ }),
 
+/***/ 2130:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "rB": () => (/* binding */ humanStorageSize),
+/* harmony export */   "vX": () => (/* binding */ between)
+/* harmony export */ });
+/* unused harmony exports capitalize, normalizeToInterval, pad */
+const units = ['B', 'KB', 'MB', 'GB', 'TB', 'PB'];
+function humanStorageSize(bytes) {
+  let u = 0;
+
+  while (parseInt(bytes, 10) >= 1024 && u < units.length - 1) {
+    bytes /= 1024;
+    ++u;
+  }
+
+  return `${bytes.toFixed(1)}${units[u]}`;
+}
+function capitalize(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+function between(v, min, max) {
+  return max <= min ? min : Math.min(max, Math.max(min, v));
+}
+function normalizeToInterval(v, min, max) {
+  if (max <= min) {
+    return min;
+  }
+
+  const size = max - min + 1;
+  let index = min + (v - min) % size;
+
+  if (index < min) {
+    index = size + index;
+  }
+
+  return index === 0 ? 0 : index; // fix for (-a % a) => -0
+}
+function pad(v, length = 2, char = '0') {
+  if (v === void 0 || v === null) {
+    return v;
+  }
+
+  const val = '' + v;
+  return val.length >= length ? val : new Array(length - val.length + 1).join(char) + val;
+}
+/* unused harmony default export */ var __WEBPACK_DEFAULT_EXPORT__ = ({
+  humanStorageSize,
+  capitalize,
+  between,
+  normalizeToInterval,
+  pad
+});
+
+/***/ }),
+
 /***/ 2002:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -40009,6 +41282,54 @@ const globalConfig = {};
 let globalConfigIsFrozen = false;
 function freezeGlobalConfig() {
   globalConfigIsFrozen = true;
+}
+
+/***/ }),
+
+/***/ 8144:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "q_": () => (/* binding */ createGlobalNode)
+/* harmony export */ });
+/* unused harmony exports removeGlobalNode, changeGlobalNodesTarget */
+/* harmony import */ var _global_config_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5578);
+
+const globalNodes = [];
+let target =  false ? 0 : document.body;
+function createGlobalNode(id) {
+  const el = document.createElement('div');
+
+  if (id !== void 0) {
+    el.id = id;
+  }
+
+  if (_global_config_js__WEBPACK_IMPORTED_MODULE_0__/* .globalConfig.globalNodes */ .w6.globalNodes !== void 0) {
+    const cls = _global_config_js__WEBPACK_IMPORTED_MODULE_0__/* .globalConfig.globalNodes.class */ .w6.globalNodes.class;
+
+    if (cls !== void 0) {
+      el.className = cls;
+    }
+  }
+
+  target.appendChild(el);
+  globalNodes.push(el);
+  return el;
+}
+function removeGlobalNode(el) {
+  globalNodes.splice(globalNodes.indexOf(el), 1);
+  el.remove();
+}
+function changeGlobalNodesTarget(el) {
+  if (el !== target) {
+    target = el;
+    globalNodes.forEach(el => {
+      if (el.contains(target) === false) {
+        target.appendChild(el);
+      }
+    });
+  }
 }
 
 /***/ }),
@@ -40107,6 +41428,83 @@ const fabKey = '_q_f_';
 const formKey = '_q_fo_';
 const tabsKey = '_q_tabs_';
 const uploaderKey = '_q_u_';
+
+/***/ }),
+
+/***/ 1185:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": () => (/* export default binding */ __WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var core_js_modules_es_array_buffer_slice_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(979);
+/* harmony import */ var core_js_modules_es_array_buffer_slice_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_buffer_slice_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var core_js_modules_es_typed_array_uint8_array_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6105);
+/* harmony import */ var core_js_modules_es_typed_array_uint8_array_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_typed_array_uint8_array_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var core_js_modules_es_typed_array_sort_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(2396);
+/* harmony import */ var core_js_modules_es_typed_array_sort_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_typed_array_sort_js__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+
+/**
+ * Based on the work of https://github.com/jchook/uuid-random
+ */
+let buf,
+    bufIdx = 0;
+const hexBytes = new Array(256); // Pre-calculate toString(16) for speed
+
+for (let i = 0; i < 256; i++) {
+  hexBytes[i] = (i + 0x100).toString(16).substr(1);
+} // Use best available PRNG
+
+
+const randomBytes = (() => {
+  // Node & Browser support
+  const lib = typeof crypto !== 'undefined' ? crypto : typeof window !== 'undefined' ? window.crypto || window.msCrypto : void 0;
+
+  if (lib !== void 0) {
+    if (lib.randomBytes !== void 0) {
+      return lib.randomBytes;
+    }
+
+    if (lib.getRandomValues !== void 0) {
+      return n => {
+        const bytes = new Uint8Array(n);
+        lib.getRandomValues(bytes);
+        return bytes;
+      };
+    }
+  }
+
+  return n => {
+    const r = [];
+
+    for (let i = n; i > 0; i--) {
+      r.push(Math.floor(Math.random() * 256));
+    }
+
+    return r;
+  };
+})(); // Buffer random numbers for speed
+// Reduce memory usage by decreasing this number (min 16)
+// or improve speed by increasing this number (try 16384)
+
+
+const BUFFER_SIZE = 4096;
+/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__() {
+  // Buffer some random bytes for speed
+  if (buf === void 0 || bufIdx + 16 > BUFFER_SIZE) {
+    bufIdx = 0;
+    buf = randomBytes(BUFFER_SIZE);
+  }
+
+  const b = Array.prototype.slice.call(buf, bufIdx, bufIdx += 16);
+  b[6] = b[6] & 0x0f | 0x40;
+  b[8] = b[8] & 0x3f | 0x80;
+  return hexBytes[b[0]] + hexBytes[b[1]] + hexBytes[b[2]] + hexBytes[b[3]] + '-' + hexBytes[b[4]] + hexBytes[b[5]] + '-' + hexBytes[b[6]] + hexBytes[b[7]] + '-' + hexBytes[b[8]] + hexBytes[b[9]] + '-' + hexBytes[b[10]] + hexBytes[b[11]] + hexBytes[b[12]] + hexBytes[b[13]] + hexBytes[b[14]] + hexBytes[b[15]];
+}
 
 /***/ }),
 
@@ -40827,6 +42225,71 @@ module.exports = {
 
 /***/ }),
 
+/***/ 2828:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var fails = __webpack_require__(6400);
+
+module.exports = function (METHOD_NAME, argument) {
+  var method = [][METHOD_NAME];
+  return !!method && fails(function () {
+    // eslint-disable-next-line no-useless-call,no-throw-literal -- required for testing
+    method.call(null, argument || function () { throw 1; }, 1);
+  });
+};
+
+
+/***/ }),
+
+/***/ 412:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+var aFunction = __webpack_require__(8231);
+var toObject = __webpack_require__(7475);
+var IndexedObject = __webpack_require__(2985);
+var toLength = __webpack_require__(4068);
+
+// `Array.prototype.{ reduce, reduceRight }` methods implementation
+var createMethod = function (IS_RIGHT) {
+  return function (that, callbackfn, argumentsLength, memo) {
+    aFunction(callbackfn);
+    var O = toObject(that);
+    var self = IndexedObject(O);
+    var length = toLength(O.length);
+    var index = IS_RIGHT ? length - 1 : 0;
+    var i = IS_RIGHT ? -1 : 1;
+    if (argumentsLength < 2) while (true) {
+      if (index in self) {
+        memo = self[index];
+        index += i;
+        break;
+      }
+      index += i;
+      if (IS_RIGHT ? index < 0 : length <= index) {
+        throw TypeError('Reduce of empty array with no initial value');
+      }
+    }
+    for (;IS_RIGHT ? index >= 0 : length > index; index += i) if (index in self) {
+      memo = callbackfn(memo, self[index], index, O);
+    }
+    return memo;
+  };
+};
+
+module.exports = {
+  // `Array.prototype.reduce` method
+  // https://tc39.es/ecma262/#sec-array.prototype.reduce
+  left: createMethod(false),
+  // `Array.prototype.reduceRight` method
+  // https://tc39.es/ecma262/#sec-array.prototype.reduceright
+  right: createMethod(true)
+};
+
+
+/***/ }),
+
 /***/ 6534:
 /***/ ((module) => {
 
@@ -41277,6 +42740,17 @@ module.exports = !!firefox && +firefox[1];
 var UA = __webpack_require__(9173);
 
 module.exports = /MSIE|Trident/.test(UA);
+
+
+/***/ }),
+
+/***/ 6123:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+var classof = __webpack_require__(5173);
+var global = __webpack_require__(7358);
+
+module.exports = classof(global.process) == 'process';
 
 
 /***/ }),
@@ -42952,6 +44426,60 @@ module.exports = {
 
 /***/ }),
 
+/***/ 7894:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+var fails = __webpack_require__(6400);
+var whitespaces = __webpack_require__(4454);
+
+var non = '\u200B\u0085\u180E';
+
+// check that a method works with the correct list
+// of whitespaces and has a correct name
+module.exports = function (METHOD_NAME) {
+  return fails(function () {
+    return !!whitespaces[METHOD_NAME]() || non[METHOD_NAME]() != non || whitespaces[METHOD_NAME].name !== METHOD_NAME;
+  });
+};
+
+
+/***/ }),
+
+/***/ 6304:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+var requireObjectCoercible = __webpack_require__(7933);
+var whitespaces = __webpack_require__(4454);
+
+var whitespace = '[' + whitespaces + ']';
+var ltrim = RegExp('^' + whitespace + whitespace + '*');
+var rtrim = RegExp(whitespace + whitespace + '*$');
+
+// `String.prototype.{ trim, trimStart, trimEnd, trimLeft, trimRight }` methods implementation
+var createMethod = function (TYPE) {
+  return function ($this) {
+    var string = String(requireObjectCoercible($this));
+    if (TYPE & 1) string = string.replace(ltrim, '');
+    if (TYPE & 2) string = string.replace(rtrim, '');
+    return string;
+  };
+};
+
+module.exports = {
+  // `String.prototype.{ trimLeft, trimStart }` methods
+  // https://tc39.es/ecma262/#sec-string.prototype.trimstart
+  start: createMethod(1),
+  // `String.prototype.{ trimRight, trimEnd }` methods
+  // https://tc39.es/ecma262/#sec-string.prototype.trimend
+  end: createMethod(2),
+  // `String.prototype.trim` method
+  // https://tc39.es/ecma262/#sec-string.prototype.trim
+  trim: createMethod(3)
+};
+
+
+/***/ }),
+
 /***/ 1801:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
@@ -43472,6 +45000,16 @@ module.exports = function (name) {
 
 /***/ }),
 
+/***/ 4454:
+/***/ ((module) => {
+
+// a string of all valid unicode whitespaces
+module.exports = '\u0009\u000A\u000B\u000C\u000D\u0020\u00A0\u1680\u2000\u2001\u2002' +
+  '\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028\u2029\uFEFF';
+
+
+/***/ }),
+
 /***/ 979:
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
@@ -43601,6 +45139,59 @@ Iterators.Arguments = Iterators.Array;
 addToUnscopables('keys');
 addToUnscopables('values');
 addToUnscopables('entries');
+
+
+/***/ }),
+
+/***/ 107:
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var $ = __webpack_require__(8934);
+var $reduce = __webpack_require__(412).left;
+var arrayMethodIsStrict = __webpack_require__(2828);
+var CHROME_VERSION = __webpack_require__(5068);
+var IS_NODE = __webpack_require__(6123);
+
+var STRICT_METHOD = arrayMethodIsStrict('reduce');
+// Chrome 80-82 has a critical bug
+// https://bugs.chromium.org/p/chromium/issues/detail?id=1049982
+var CHROME_BUG = !IS_NODE && CHROME_VERSION > 79 && CHROME_VERSION < 83;
+
+// `Array.prototype.reduce` method
+// https://tc39.es/ecma262/#sec-array.prototype.reduce
+$({ target: 'Array', proto: true, forced: !STRICT_METHOD || CHROME_BUG }, {
+  reduce: function reduce(callbackfn /* , initialValue */) {
+    return $reduce(this, callbackfn, arguments.length, arguments.length > 1 ? arguments[1] : undefined);
+  }
+});
+
+
+/***/ }),
+
+/***/ 7070:
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var $ = __webpack_require__(8934);
+var isArray = __webpack_require__(6894);
+
+var nativeReverse = [].reverse;
+var test = [1, 2];
+
+// `Array.prototype.reverse` method
+// https://tc39.es/ecma262/#sec-array.prototype.reverse
+// fix for Safari 12.0 bug
+// https://bugs.webkit.org/show_bug.cgi?id=188794
+$({ target: 'Array', proto: true, forced: String(test) === String(test.reverse()) }, {
+  reverse: function reverse() {
+    // eslint-disable-next-line no-self-assign -- dirty hack
+    if (isArray(this)) this.length = this.length;
+    return nativeReverse.call(this);
+  }
+});
 
 
 /***/ }),
@@ -43951,6 +45542,26 @@ fixRegExpWellKnownSymbolLogic('replace', function (_, nativeReplace, maybeCallNa
     }
   ];
 }, !REPLACE_SUPPORTS_NAMED_GROUPS || !REPLACE_KEEPS_$0 || REGEXP_REPLACE_SUBSTITUTES_UNDEFINED_CAPTURE);
+
+
+/***/ }),
+
+/***/ 6801:
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var $ = __webpack_require__(8934);
+var $trim = __webpack_require__(6304).trim;
+var forcedStringTrimMethod = __webpack_require__(7894);
+
+// `String.prototype.trim` method
+// https://tc39.es/ecma262/#sec-string.prototype.trim
+$({ target: 'String', proto: true, forced: forcedStringTrimMethod('trim') }, {
+  trim: function trim() {
+    return $trim(this);
+  }
+});
 
 
 /***/ }),
