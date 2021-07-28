@@ -53,7 +53,7 @@ const routes = [{
     component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(179)]).then(__webpack_require__.bind(__webpack_require__, 2179))
   }, {
     path: '/Registration',
-    component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(713)]).then(__webpack_require__.bind(__webpack_require__, 6713))
+    component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(186)]).then(__webpack_require__.bind(__webpack_require__, 2186))
   }]
 }, {
   path: '/',
@@ -63,7 +63,7 @@ const routes = [{
     component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(540)]).then(__webpack_require__.bind(__webpack_require__, 1540))
   }, {
     path: 'Professor/:id',
-    component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(296)]).then(__webpack_require__.bind(__webpack_require__, 6296))
+    component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(959)]).then(__webpack_require__.bind(__webpack_require__, 8959))
   }, {
     path: '/',
     component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(609)]).then(__webpack_require__.bind(__webpack_require__, 7609))
@@ -72,7 +72,7 @@ const routes = [{
     component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(351)]).then(__webpack_require__.bind(__webpack_require__, 3351))
   }, {
     path: '/Administration',
-    component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(175)]).then(__webpack_require__.bind(__webpack_require__, 6175))
+    component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(859)]).then(__webpack_require__.bind(__webpack_require__, 5859))
   }]
 }, // Always leave this as last one,
 // but you can also remove it
@@ -622,7 +622,7 @@ const api = axios__WEBPACK_IMPORTED_MODULE_1___default().create({
 /******/ 		};
 /******/ 		
 /******/ 		__webpack_require__.f.miniCss = (chunkId, promises) => {
-/******/ 			var cssChunks = {"175":1,"179":1,"296":1,"351":1,"540":1,"609":1,"713":1};
+/******/ 			var cssChunks = {"179":1,"186":1,"351":1,"540":1,"609":1,"859":1,"959":1};
 /******/ 			if(installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
 /******/ 			else if(installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
 /******/ 				promises.push(installedCssChunks[chunkId] = loadStylesheet(chunkId).then(() => {

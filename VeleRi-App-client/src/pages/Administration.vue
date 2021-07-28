@@ -6,9 +6,8 @@
         <div class="text-h5">Dobrodošli nazad, {{ name }} {{ lastName }}!</div>
       </q-banner>
     </div>
-    <!-- TODO: Moram dodati konzultacije -->
     <!-- Konfiguriranje podataka -->
-    <div class="row justify-center items-center content-center q-pa-md">
+    <div class="row justify-center q-pa-md">
       <div class="col-12" style="max-width: 400px">
         <q-card style="max-width: 400px" class="bg-grey-2">
           <q-card-section>
@@ -31,6 +30,13 @@
             <q-input
               class="q-mt-sm"
               outlined
+              v-model="consultations"
+              label="Unesite vrijeme konzultacija"
+              :disable="disabledInput"
+            />
+            <q-input
+              class="q-mt-sm"
+              outlined
               v-model="cabinet"
               label="Unesite pripadni kabinet"
               :disable="disabledInput"
@@ -47,7 +53,7 @@
               class="q-mt-md"
               bottom-slots
               v-model="pictureUpload"
-              label="Odaberite ili izmijenite sliku profila"
+              label="Odaberite ili izmijenite sliku"
               counter
               :disable="disabledInput"
             >
@@ -76,6 +82,13 @@
             <q-card-section>
               <div class="text-h5 q-mt-md">Odredite vidljivost podataka:</div>
             </q-card-section>
+            <div>
+              <q-checkbox
+                v-model="imageCB"
+                label="Vidljiva slika profila"
+                @click="submitCheckboxes"
+              />
+            </div>
             <div>
               <q-checkbox
                 v-model="emailCB"
@@ -116,12 +129,12 @@
       </div>
       <!-- FIXME: Moram popraviti sliku ovdje -->
       <!-- Slika qr koda: -->
-      <div class="col-12 q-mt-md" style="max-width: 400px">
+      <div class="col-12 q-mt-md">
         <q-card style="max-width: 400px" class="bg-grey-2">
           <q-card-section>
-            <div class="text-h5 q-mt-md col-12">Pripadni QR kod:</div>
+            <div class="text-h5 q-mt-md">Pripadni QR kod:</div>
           </q-card-section>
-          <q-img width="50%" height="50%" alt="" :src="url" class="col-12 self-center"/>
+          <q-img width="50%" height="50%" alt="" :src="url" />
         </q-card>
       </div>
 
@@ -148,6 +161,7 @@ export default {
       cabinetCB: ref(false),
       consultationsCB: ref(false),
       carrierCB: ref(false),
+      imageCB: ref(false),
       email: '',
       telephone: '',
       cabinet: '',
@@ -209,8 +223,8 @@ export default {
         uploadTask.on(
           'state_changed',
           (snapshot) => {
-          // Observe state change events such as progress, pause, and resume
-          // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+            // Observe state change events such as progress, pause, and resume
+            // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
             const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
             console.log('Upload is ' + progress + '% done')
             switch (snapshot.state) {
@@ -223,12 +237,12 @@ export default {
             }
           },
           (error) => {
-          // Handle unsuccessful uploads
+            // Handle unsuccessful uploads
             console.log(error)
           },
           () => {
-          // Handle successful uploads on complete
-          // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+            // Handle successful uploads on complete
+            // For instance, get the download URL: https://firebasestorage.googleapis.com/...
             uploadTask.snapshot.ref
               .getDownloadURL()
               .then((downloadURL) => {
@@ -284,7 +298,8 @@ export default {
           isTelephone: this.telephoneCB,
           isCabinet: this.cabinetCB,
           isConsultations: this.consultationsCB,
-          isCarrier: this.carrierCB
+          isCarrier: this.carrierCB,
+          isImage: this.imageCB
         })
         .then(() => {
           this.$q.notify({
@@ -321,6 +336,7 @@ export default {
           this.cabinetCB = !!data.isCabinet
           this.consultationsCB = !!data.isConsultations
           this.carrierCB = !!data.isCarrier
+          this.imageCB = !!data.isImage
         })
       })
       .catch((error) => {

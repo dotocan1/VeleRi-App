@@ -108,6 +108,7 @@ export default {
                   isCabinet: true,
                   isConsultations: true,
                   isCarrier: true,
+                  isImage: true,
                   UserId: this.$auth.currentUser.uid
                 })
                 .then(() => {
