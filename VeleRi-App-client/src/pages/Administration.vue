@@ -134,7 +134,9 @@
           <q-card-section>
             <div class="text-h5 q-mt-md">Pripadni QR kod:</div>
           </q-card-section>
-          <q-img width="50%" height="50%" alt="" :src="url" />
+          <a id="ahrefImage">
+            <q-img width="50%" height="50%" alt="" :src="url" />
+</a>
         </q-card>
       </div>
 
@@ -364,6 +366,10 @@ export default {
     // qr code picture
 
     this.url = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${userId}`
+
+    // download image
+    const ahrefImage = document.getElementById('ahrefImage')
+    ahrefImage.href = this.url
   }
 }
 </script>
