@@ -145,6 +145,11 @@
         label="Odjava"
         class="background-color-white q-mt-md q-ml-sm"
       />
+      <q-btn
+        @click="downloadImage"
+        label="Preuzmi sliku"
+        class="background-color-white q-mt-md q-ml-sm"
+      />
     </div>
   </q-page>
 </template>
@@ -179,6 +184,9 @@ export default {
     }
   },
   methods: {
+    downloadImage () {
+
+    },
     logout () {
       this.$auth.signOut().then(this.$router.push('/'))
     },
