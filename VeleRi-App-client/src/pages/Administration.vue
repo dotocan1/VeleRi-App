@@ -127,7 +127,6 @@
           </q-card>
         </div>
       </div>
-      <!-- FIXME: Moram popraviti sliku ovdje -->
       <!-- Slika qr koda: -->
       <div class="col-12 q-mt-md" style="text-align:center">
         <q-card style="max-width: 400px" class="bg-grey-2">
@@ -153,7 +152,7 @@
 
 <script>
 import { ref } from 'vue'
-import { useQuasar, uid } from 'quasar'
+import { useQuasar, uid, exportFile } from 'quasar'
 
 export default {
   data () {
@@ -181,6 +180,13 @@ export default {
     }
   },
   methods: {
+    imageDownload () {
+      fetch(this.url)
+        .then((response) => response.blob())
+        .then((image) => {
+          exportFile('qr-code', image)
+        })
+    },
     logout () {
       this.$auth.signOut().then(this.$router.push('/'))
     },
@@ -368,10 +374,6 @@ export default {
     // qr code picture
 
     this.url = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${userId}`
-
-    // download image
-    const ahrefImage = document.getElementById('ahrefImage')
-    ahrefImage.href = this.url
   }
 }
 </script>
