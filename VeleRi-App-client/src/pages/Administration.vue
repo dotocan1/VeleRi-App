@@ -129,13 +129,13 @@
       </div>
       <!-- FIXME: Moram popraviti sliku ovdje -->
       <!-- Slika qr koda: -->
-      <div class="col-12 q-mt-md">
+      <div class="col-12 q-mt-md" style="text-align:center">
         <q-card style="max-width: 400px" class="bg-grey-2">
           <q-card-section>
             <div class="text-h5 q-mt-md">Pripadni QR kod:</div>
           </q-card-section>
           <a id="ahrefImage">
-            <q-img width="50%" height="50%" alt="" :src="url" />
+            <q-img width="50%" height="50%" alt="" :src="url" class="q-mb-md" />
 </a>
         </q-card>
       </div>
@@ -143,13 +143,10 @@
       <q-btn
         @click="logout"
         label="Odjava"
-        class="background-color-white q-mt-md q-ml-sm"
+        class="background-color-white q-mt-md"
+        style="width: 400px"
       />
-      <q-btn
-        @click="downloadImage"
-        label="Preuzmi sliku"
-        class="background-color-white q-mt-md q-ml-sm"
-      />
+
     </div>
   </q-page>
 </template>
@@ -184,9 +181,6 @@ export default {
     }
   },
   methods: {
-    downloadImage () {
-
-    },
     logout () {
       this.$auth.signOut().then(this.$router.push('/'))
     },
