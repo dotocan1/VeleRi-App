@@ -133,12 +133,17 @@
           <q-card-section>
             <div class="text-h5 q-mt-md">Pripadni QR kod:</div>
           </q-card-section>
-          <a id="ahrefImage">
             <q-img width="50%" height="50%" alt="" :src="url" class="q-mb-md" />
-</a>
+
         </q-card>
       </div>
-
+<a id="aQrDownload" :href="url">
+  <q-btn
+        label="Preuzmi sliku QR koda"
+        class="background-color-white q-mt-md"
+        style="width: 400px"
+      />
+      </a>
       <q-btn
         @click="logout"
         label="Odjava"
@@ -383,4 +388,7 @@ export default {
   background: linear-gradient(to top, #373b44, #4286f4)
 .background-color-white
   background: white
+a
+  color: black
+  text-decoration: none
 </style>
