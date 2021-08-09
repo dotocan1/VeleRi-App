@@ -137,13 +137,14 @@
 
         </q-card>
       </div>
-<a id="aQrDownload" :href="url">
+
   <q-btn
         label="Preuzmi sliku QR koda"
         class="background-color-white q-mt-md"
         style="width: 400px"
+        @click="imageDownload"
       />
-      </a>
+
       <q-btn
         @click="logout"
         label="Odjava"
@@ -157,7 +158,7 @@
 
 <script>
 import { ref } from 'vue'
-import { useQuasar, uid, exportFile } from 'quasar'
+import { useQuasar, uid } from 'quasar'
 
 export default {
   data () {
@@ -185,12 +186,41 @@ export default {
     }
   },
   methods: {
-    imageDownload () {
-      fetch(this.url)
-        .then((response) => response.blob())
-        .then((image) => {
-          exportFile('qr-code', image)
+    DownloadToDevice (fileurl) {
+      this.$q.notify({
+        type: 'positive',
+        message: 'Slika uspješno spremljena!'
+      })
+      let blob = null
+      const xhr = new XMLHttpRequest()
+      xhr.open('GET', fileurl)
+      xhr.responseType = 'blob'// force the HTTP response, response-type header to be blob
+      xhr.onload = function () {
+        blob = xhr.response// xhr.response is now a blob object
+        console.log(blob)
+        const storageLocation = 'file:///storage/emulated/0/'
+
+        const folderpath = storageLocation + 'Download'
+        console.log(folderpath)
+        const filename = 'myimg.png'
+        const DataBlob = blob
+
+        window.resolveLocalFileSystemURL(folderpath, function (dir) {
+          dir.getFile(filename, { create: true }, function (file) {
+            file.createWriter(function (fileWriter) {
+              fileWriter.write(DataBlob)
+              // Download was succesfull
+            }, function (err) {
+              // failed
+              console.log(err)
+            })
+          })
         })
+      }
+      xhr.send()
+    },
+    imageDownload () {
+      this.DownloadToDevice(this.url)
     },
     logout () {
       this.$auth.signOut().then(this.$router.push('/'))

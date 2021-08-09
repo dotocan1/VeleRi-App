@@ -1,16 +1,16 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /home/th0tminik/VeleRi-App/VeleRi-App-client/src-cordova/platforms/android/app/src/main/AndroidManifest.xml:2:1-16:12
-INJECTED from /home/th0tminik/VeleRi-App/VeleRi-App-client/src-cordova/platforms/android/app/src/main/AndroidManifest.xml:2:1-16:12
-INJECTED from /home/th0tminik/VeleRi-App/VeleRi-App-client/src-cordova/platforms/android/app/src/main/AndroidManifest.xml:2:1-16:12
-INJECTED from /home/th0tminik/VeleRi-App/VeleRi-App-client/src-cordova/platforms/android/app/src/main/AndroidManifest.xml:2:1-16:12
+ADDED from /home/th0tminik/VeleRi-App/VeleRi-App-client/src-cordova/platforms/android/app/src/main/AndroidManifest.xml:2:1-22:12
+INJECTED from /home/th0tminik/VeleRi-App/VeleRi-App-client/src-cordova/platforms/android/app/src/main/AndroidManifest.xml:2:1-22:12
+INJECTED from /home/th0tminik/VeleRi-App/VeleRi-App-client/src-cordova/platforms/android/app/src/main/AndroidManifest.xml:2:1-22:12
+INJECTED from /home/th0tminik/VeleRi-App/VeleRi-App-client/src-cordova/platforms/android/app/src/main/AndroidManifest.xml:2:1-22:12
 MERGED from [com.journeyapps:zxing-android-embedded:3.3.0] /home/th0tminik/.gradle/caches/transforms-2/files-2.1/2a408ac06d0d14d964eff06a45248eb0/zxing-android-embedded-3.3.0/AndroidManifest.xml:17:1-55:12
 MERGED from [com.android.support:appcompat-v7:23.1.0] /home/th0tminik/.gradle/caches/transforms-2/files-2.1/dc5825d95fa3d3debc2d145d66d6f14d/appcompat-v7-23.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [:CordovaLib] /home/th0tminik/VeleRi-App/VeleRi-App-client/src-cordova/platforms/android/CordovaLib/build/intermediates/library_manifest/debug/AndroidManifest.xml:20:1-27:12
 MERGED from [com.android.support:support-v4:23.1.0] /home/th0tminik/.gradle/caches/transforms-2/files-2.1/f875506b27e3a54e7109edb5d71cc9c4/support-v4-23.1.0/AndroidManifest.xml:17:1-24:12
-INJECTED from /home/th0tminik/VeleRi-App/VeleRi-App-client/src-cordova/platforms/android/app/src/main/AndroidManifest.xml:2:1-16:12
-INJECTED from /home/th0tminik/VeleRi-App/VeleRi-App-client/src-cordova/platforms/android/app/src/main/AndroidManifest.xml:2:1-16:12
-INJECTED from /home/th0tminik/VeleRi-App/VeleRi-App-client/src-cordova/platforms/android/app/src/main/AndroidManifest.xml:2:1-16:12
+INJECTED from /home/th0tminik/VeleRi-App/VeleRi-App-client/src-cordova/platforms/android/app/src/main/AndroidManifest.xml:2:1-22:12
+INJECTED from /home/th0tminik/VeleRi-App/VeleRi-App-client/src-cordova/platforms/android/app/src/main/AndroidManifest.xml:2:1-22:12
+INJECTED from /home/th0tminik/VeleRi-App/VeleRi-App-client/src-cordova/platforms/android/app/src/main/AndroidManifest.xml:2:1-22:12
 	package
 		ADDED from /home/th0tminik/VeleRi-App/VeleRi-App-client/src-cordova/platforms/android/app/src/main/AndroidManifest.xml:2:98-130
 		INJECTED from /home/th0tminik/VeleRi-App/VeleRi-App-client/src-cordova/platforms/android/app/src/main/AndroidManifest.xml
@@ -113,6 +113,30 @@ MERGED from [com.journeyapps:zxing-android-embedded:3.3.0] /home/th0tminik/.grad
 		ADDED from /home/th0tminik/VeleRi-App/VeleRi-App-client/src-cordova/platforms/android/app/src/main/AndroidManifest.xml:15:64-88
 	android:name
 		ADDED from /home/th0tminik/VeleRi-App/VeleRi-App-client/src-cordova/platforms/android/app/src/main/AndroidManifest.xml:15:19-63
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from /home/th0tminik/VeleRi-App/VeleRi-App-client/src-cordova/platforms/android/app/src/main/AndroidManifest.xml:16:5-80
+	android:name
+		ADDED from /home/th0tminik/VeleRi-App/VeleRi-App-client/src-cordova/platforms/android/app/src/main/AndroidManifest.xml:16:22-77
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /home/th0tminik/VeleRi-App/VeleRi-App-client/src-cordova/platforms/android/app/src/main/AndroidManifest.xml:17:5-81
+	android:name
+		ADDED from /home/th0tminik/VeleRi-App/VeleRi-App-client/src-cordova/platforms/android/app/src/main/AndroidManifest.xml:17:22-78
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from /home/th0tminik/VeleRi-App/VeleRi-App-client/src-cordova/platforms/android/app/src/main/AndroidManifest.xml:18:5-79
+	android:name
+		ADDED from /home/th0tminik/VeleRi-App/VeleRi-App-client/src-cordova/platforms/android/app/src/main/AndroidManifest.xml:18:22-76
+uses-permission#android.permission.CHANGE_NETWORK_STATE
+ADDED from /home/th0tminik/VeleRi-App/VeleRi-App-client/src-cordova/platforms/android/app/src/main/AndroidManifest.xml:19:5-79
+	android:name
+		ADDED from /home/th0tminik/VeleRi-App/VeleRi-App-client/src-cordova/platforms/android/app/src/main/AndroidManifest.xml:19:22-76
+uses-permission#android.permission.READ_PHONE_STATE
+ADDED from /home/th0tminik/VeleRi-App/VeleRi-App-client/src-cordova/platforms/android/app/src/main/AndroidManifest.xml:20:5-75
+	android:name
+		ADDED from /home/th0tminik/VeleRi-App/VeleRi-App-client/src-cordova/platforms/android/app/src/main/AndroidManifest.xml:20:22-72
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from /home/th0tminik/VeleRi-App/VeleRi-App-client/src-cordova/platforms/android/app/src/main/AndroidManifest.xml:21:5-76
+	android:name
+		ADDED from /home/th0tminik/VeleRi-App/VeleRi-App-client/src-cordova/platforms/android/app/src/main/AndroidManifest.xml:21:22-73
 uses-sdk
 INJECTED from /home/th0tminik/VeleRi-App/VeleRi-App-client/src-cordova/platforms/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /home/th0tminik/VeleRi-App/VeleRi-App-client/src-cordova/platforms/android/app/src/main/AndroidManifest.xml
