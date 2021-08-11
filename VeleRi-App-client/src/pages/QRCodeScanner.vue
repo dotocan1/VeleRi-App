@@ -14,6 +14,7 @@ import { useRouter } from 'vue-router'
 
 export default {
   mounted () {
+    // pocetno destroyanje qr da se sacuvaju resursi
     const destroyQR = async function () {
       window.QRScanner.destroy()
     }

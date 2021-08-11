@@ -57,6 +57,7 @@
               counter
               :disable="disabledInput"
             >
+            <!-- Upload slike -->
               <template v-slot:prepend>
                 <q-icon name="cloud_upload" @click.stop />
               </template>
@@ -186,6 +187,8 @@ export default {
     }
   },
   methods: {
+
+    // funkcija koja pokrece preuzimanje slike
     DownloadToDevice (fileurl) {
       let blob = null
       const xhr = new XMLHttpRequest()
@@ -193,11 +196,8 @@ export default {
       xhr.responseType = 'blob'// force the HTTP response, response-type header to be blob
       xhr.onload = function () {
         blob = xhr.response// xhr.response is now a blob object
-        console.log(blob)
         const storageLocation = 'file:///storage/emulated/0/'
         const folderpath = storageLocation + 'Download'
-        console.log('Ovo je folderpath')
-        console.log(folderpath)
         const filename = `${uid()}.png`
         const DataBlob = blob
 
@@ -205,10 +205,10 @@ export default {
           dir.getFile(filename, { create: true }, function (file) {
             file.createWriter(function (fileWriter) {
               fileWriter.write(DataBlob)
-              // Download was succesfull
+              // Download je bio uspjesan
               alert('Slika uspješno skinuta!')
             }, function (err) {
-              // failed
+              // Download nije bio uspjesan
               alert(err)
             })
           })
@@ -216,6 +216,8 @@ export default {
       }
       xhr.send()
     },
+
+    // click event koji pokrece preuzimanje slike
     imageDownload () {
       this.DownloadToDevice(this.url)
     },
@@ -223,15 +225,18 @@ export default {
       this.$auth.signOut().then(this.$router.push('/'))
     },
     // FIXME: Fix this callback hell
+
+    // postavljanje podataka u bazu podataka
     submit () {
       this.$q.loadingBar.start()
 
-      // uploading image here
+      // postavljanje slike u firebase storage
       const storageRef = this.$storage.ref()
 
       const professorsRef = storageRef.child(`professors/${uid()}`)
+
+      // pokrece se ako nije uploadana niti jedna slika pa se time ne azurira postojeci link na sliku
       if (this.pictureUpload === null) {
-        console.log('Its null')
         this.disabledInput = true
         const docRef = this.$db.collection('UsersData').doc(this.usersDataId)
         return docRef
@@ -258,7 +263,7 @@ export default {
               message: 'Podaci nisu uspješno spremljeni'
             })
           })
-      } else {
+      } else { // pokrece se ako je uploadana slika u aplikaciji te se time i azurira link koji vodi na sliku
         const uploadTask = professorsRef.put(this.pictureUpload)
 
         // upload task
@@ -415,7 +420,4 @@ export default {
   background: linear-gradient(to top, #373b44, #4286f4)
 .background-color-white
   background: white
-a
-  color: black
-  text-decoration: none
 </style>

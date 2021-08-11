@@ -53,7 +53,7 @@ const routes = [{
     component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(179)]).then(__webpack_require__.bind(__webpack_require__, 2179))
   }, {
     path: '/Registration',
-    component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(186)]).then(__webpack_require__.bind(__webpack_require__, 2186))
+    component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(329)]).then(__webpack_require__.bind(__webpack_require__, 3329))
   }]
 }, {
   path: '/',
@@ -63,16 +63,16 @@ const routes = [{
     component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(540)]).then(__webpack_require__.bind(__webpack_require__, 1540))
   }, {
     path: 'Professor/:id',
-    component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(959)]).then(__webpack_require__.bind(__webpack_require__, 8959))
+    component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(292)]).then(__webpack_require__.bind(__webpack_require__, 8292))
   }, {
     path: '/',
     component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(609)]).then(__webpack_require__.bind(__webpack_require__, 7609))
   }, {
     path: '/QRCodeScanner',
-    component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(351)]).then(__webpack_require__.bind(__webpack_require__, 3351))
+    component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(685)]).then(__webpack_require__.bind(__webpack_require__, 8685))
   }, {
     path: '/Administration',
-    component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(641)]).then(__webpack_require__.bind(__webpack_require__, 641))
+    component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(54)]).then(__webpack_require__.bind(__webpack_require__, 9685))
   }]
 }, // Always leave this as last one,
 // but you can also remove it
@@ -622,7 +622,7 @@ const api = axios__WEBPACK_IMPORTED_MODULE_1___default().create({
 /******/ 		};
 /******/ 		
 /******/ 		__webpack_require__.f.miniCss = (chunkId, promises) => {
-/******/ 			var cssChunks = {"179":1,"186":1,"351":1,"540":1,"609":1,"641":1,"959":1};
+/******/ 			var cssChunks = {"54":1,"179":1,"292":1,"329":1,"540":1,"609":1,"685":1};
 /******/ 			if(installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
 /******/ 			else if(installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
 /******/ 				promises.push(installedCssChunks[chunkId] = loadStylesheet(chunkId).then(() => {

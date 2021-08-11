@@ -80,10 +80,13 @@ export default {
 
       this.$auth.signOut()
 
+      // kreiranje racuna
       this.$auth
         .createUserWithEmailAndPassword(this.email, this.password)
         .then((userCredential) => {
           // Signed in
+
+          // postavljanje pocetnih podataka u dokument UsersData
           this.$db
             .collection('UsersData')
             .doc(uid())
@@ -98,6 +101,8 @@ export default {
               UserId: this.$auth.currentUser.uid,
               DownloadURL: ''
             })
+
+            // postavljanje pocetnih podataka u dokument Menu
             .then(() => {
               this.$db
                 .collection('Menu')
@@ -110,7 +115,7 @@ export default {
                   isCarrier: true,
                   isImage: true,
                   UserId: this.$auth.currentUser.uid
-                })
+                }) // navigiranje do administracijske strane
                 .then(() => {
                   this.$q.loadingBar.stop()
                   this.$router.push('/Administration')

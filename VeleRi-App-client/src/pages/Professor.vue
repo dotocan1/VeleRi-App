@@ -9,6 +9,7 @@
               <div class="text-h5 q-md-lg">
                 Ime i prezime profesora: {{ name }} {{ lastName }}
               </div>
+              <!-- v-if provjerava je li isVarijabla true ili false te ovisno o tome rendera podatke -->
               <div class="text-h6" v-if="isEmail">E-mail: {{ email }}</div>
               <div class="text-h6" v-if="isTelephone">Broj telefona: {{ telephone }}</div>
               <div class="text-h6" v-if="isCabinet">Broj kabineta: {{ cabinet }}</div>
@@ -45,11 +46,9 @@ export default {
     }
   },
   mounted () {
-    // I need the id data here
-    // alert(this.$route.params.id)
+    // id je ovdje prethodno iscitan iz qr koda
     const id = this.$route.params.id
 
-    // reading data from user db
     const userRef = this.$db.collection('UsersData').where('UserId', '==', id)
     userRef
       .get()
@@ -70,7 +69,6 @@ export default {
         console.log('Error getting documents: ', error)
       })
 
-    // reading data from menu db
     const menuRef = this.$db.collection('Menu').where('UserId', '==', id)
     menuRef
       .get()
