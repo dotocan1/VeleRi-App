@@ -187,10 +187,6 @@ export default {
   },
   methods: {
     DownloadToDevice (fileurl) {
-      this.$q.notify({
-        type: 'positive',
-        message: 'Slika uspješno spremljena!'
-      })
       let blob = null
       const xhr = new XMLHttpRequest()
       xhr.open('GET', fileurl)
@@ -199,10 +195,10 @@ export default {
         blob = xhr.response// xhr.response is now a blob object
         console.log(blob)
         const storageLocation = 'file:///storage/emulated/0/'
-
         const folderpath = storageLocation + 'Download'
+        console.log('Ovo je folderpath')
         console.log(folderpath)
-        const filename = 'myimg.png'
+        const filename = `${uid()}.png`
         const DataBlob = blob
 
         window.resolveLocalFileSystemURL(folderpath, function (dir) {
@@ -210,9 +206,10 @@ export default {
             file.createWriter(function (fileWriter) {
               fileWriter.write(DataBlob)
               // Download was succesfull
+              alert('Slika uspješno skinuta!')
             }, function (err) {
               // failed
-              console.log(err)
+              alert(err)
             })
           })
         })

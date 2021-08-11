@@ -1,6 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="org.cordova.quasar.app" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>VeleriApp</name>
+    <icon density="mdpi" height="57" platform="android" src="../src/assets/veleuciliste-u-rijeci.jpg" width="57" />
     <description>Projekt za zavrsni rad</description>
     <author email="dev@cordova.apache.org" href="http://cordova.io">
         Apache Cordova Team

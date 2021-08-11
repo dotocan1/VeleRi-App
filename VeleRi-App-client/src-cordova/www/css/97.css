@@ -1,5 +1,12 @@
-.q-page[data-v-30f13a96] {
+.q-page[data-v-ccee96cc] {
+  background: linear-gradient(to top, #373b44, #4286f4);
+}
+.background-color-white[data-v-ccee96cc] {
   background: white;
+}
+a[data-v-ccee96cc] {
+  color: black;
+  text-decoration: none;
 }
 
 /*# sourceMappingURL=97.css.map*/
