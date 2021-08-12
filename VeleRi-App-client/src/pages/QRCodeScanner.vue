@@ -27,7 +27,7 @@ export default {
     const callback = function (err, contents) {
       if (err) {
         alert(err._message)
-      } else {
+      } else { // FIXME: Add an option to route to error404.vue if the ID isn't found
         destroyQR().then(function () {
           $router.push(`/Professor/${contents}`)
         })
