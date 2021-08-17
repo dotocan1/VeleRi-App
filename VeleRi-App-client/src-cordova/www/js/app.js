@@ -60,7 +60,7 @@ const routes = [{
   component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(369)]).then(__webpack_require__.bind(__webpack_require__, 1369)),
   children: [{
     path: '/Home',
-    component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(540)]).then(__webpack_require__.bind(__webpack_require__, 1540))
+    component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(992)]).then(__webpack_require__.bind(__webpack_require__, 8992))
   }, {
     path: 'Professor/:id',
     component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(292)]).then(__webpack_require__.bind(__webpack_require__, 8292))
@@ -69,10 +69,10 @@ const routes = [{
     component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(609)]).then(__webpack_require__.bind(__webpack_require__, 7609))
   }, {
     path: '/QRCodeScanner',
-    component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(685)]).then(__webpack_require__.bind(__webpack_require__, 8685))
+    component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(767)]).then(__webpack_require__.bind(__webpack_require__, 2767))
   }, {
     path: '/Administration',
-    component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(54)]).then(__webpack_require__.bind(__webpack_require__, 9685))
+    component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(685)]).then(__webpack_require__.bind(__webpack_require__, 9685))
   }]
 }, // Always leave this as last one,
 // but you can also remove it
@@ -622,7 +622,7 @@ const api = axios__WEBPACK_IMPORTED_MODULE_1___default().create({
 /******/ 		};
 /******/ 		
 /******/ 		__webpack_require__.f.miniCss = (chunkId, promises) => {
-/******/ 			var cssChunks = {"54":1,"179":1,"292":1,"329":1,"540":1,"609":1,"685":1};
+/******/ 			var cssChunks = {"179":1,"292":1,"329":1,"609":1,"685":1,"767":1,"992":1};
 /******/ 			if(installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
 /******/ 			else if(installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
 /******/ 				promises.push(installedCssChunks[chunkId] = loadStylesheet(chunkId).then(() => {

@@ -37301,6 +37301,77 @@ const resizeProps = hasObserver === true ? {} : {
 
 /***/ }),
 
+/***/ 5869:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* unused harmony export margins */
+/* harmony import */ var _home_th0tminik_VeleRi_App_VeleRi_App_client_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(515);
+/* harmony import */ var _home_th0tminik_VeleRi_App_VeleRi_App_client_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_home_th0tminik_VeleRi_App_VeleRi_App_client_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(3673);
+/* harmony import */ var _composables_private_use_dark_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2236);
+
+
+
+const insetMap = {
+  true: 'inset',
+  item: 'item-inset',
+  'item-thumbnail': 'item-thumbnail-inset'
+};
+const margins = {
+  xs: 2,
+  sm: 4,
+  md: 8,
+  lg: 16,
+  xl: 24
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,vue__WEBPACK_IMPORTED_MODULE_2__/* .defineComponent */ .aZ)({
+  name: 'QSeparator',
+  props: _home_th0tminik_VeleRi_App_VeleRi_App_client_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0___default()(_home_th0tminik_VeleRi_App_VeleRi_App_client_node_modules_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0___default()({}, _composables_private_use_dark_js__WEBPACK_IMPORTED_MODULE_1__/* .useDarkProps */ .S), {}, {
+    spaced: [Boolean, String],
+    inset: [Boolean, String],
+    vertical: Boolean,
+    color: String,
+    size: String
+  }),
+
+  setup(props) {
+    const vm = (0,vue__WEBPACK_IMPORTED_MODULE_2__/* .getCurrentInstance */ .FN)();
+    const isDark = (0,_composables_private_use_dark_js__WEBPACK_IMPORTED_MODULE_1__/* .default */ .Z)(props, vm.proxy.$q);
+    const orientation = (0,vue__WEBPACK_IMPORTED_MODULE_2__/* .computed */ .Fl)(() => props.vertical === true ? 'vertical' : 'horizontal');
+    const orientClass = (0,vue__WEBPACK_IMPORTED_MODULE_2__/* .computed */ .Fl)(() => ` q-separator--${orientation.value}`);
+    const insetClass = (0,vue__WEBPACK_IMPORTED_MODULE_2__/* .computed */ .Fl)(() => props.inset !== false ? `${orientClass.value}-${insetMap[props.inset]}` : '');
+    const classes = (0,vue__WEBPACK_IMPORTED_MODULE_2__/* .computed */ .Fl)(() => `q-separator${orientClass.value}${insetClass.value}` + (props.color !== void 0 ? ` bg-${props.color}` : '') + (isDark.value === true ? ' q-separator--dark' : ''));
+    const style = (0,vue__WEBPACK_IMPORTED_MODULE_2__/* .computed */ .Fl)(() => {
+      const acc = {};
+
+      if (props.size !== void 0) {
+        acc[props.vertical === true ? 'width' : 'height'] = props.size;
+      }
+
+      if (props.spaced !== false) {
+        const size = props.spaced === true ? `${margins.md}px` : props.spaced in margins ? `${margins[props.spaced]}px` : props.spaced;
+        const dir = props.vertical === true ? ['Left', 'Right'] : ['Top', 'Bottom'];
+        acc[`margin${dir[0]}`] = acc[`margin${dir[1]}`] = size;
+      }
+
+      return acc;
+    });
+    return () => (0,vue__WEBPACK_IMPORTED_MODULE_2__.h)('hr', {
+      class: classes.value,
+      style: style.value,
+      role: 'separator',
+      'aria-orientation': orientation.value
+    });
+  }
+
+}));
+
+/***/ }),
+
 /***/ 2025:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
