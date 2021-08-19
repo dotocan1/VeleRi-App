@@ -9,12 +9,12 @@
           <q-card-section>
             <div class="text-h6">Pritisni na simbol QR koda:</div>
             <q-separator spaced />
-            <q-img src="/qr-kod-pritisak.png" />
+            <img src="../assets/qr-kod-pritisak.png">
           </q-card-section>
           <q-card-section>
             <div class="text-h6">Skeniraj kod:</div>
             <q-separator spaced />
-            <q-img src="/skenirani-kod.png" />
+            <img style="max-width: 350px; max-height: 300px " src="../assets/skenirani-kod.png">
           </q-card-section>
           <q-card-section>
             <q-separator inset class="q-mb-md q-mt-sm"/>
