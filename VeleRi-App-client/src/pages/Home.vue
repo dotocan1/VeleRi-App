@@ -9,17 +9,27 @@
           <q-card-section>
             <div class="text-h6">Pritisni na simbol QR koda:</div>
             <q-separator spaced />
-            <img src="../assets/qr-kod-pritisak.png">
+            <img src="../assets/qr-kod-pritisak.png" />
           </q-card-section>
           <q-card-section>
             <div class="text-h6">Skeniraj kod:</div>
             <q-separator spaced />
-            <img style="max-width: 350px; max-height: 300px " src="../assets/skenirani-kod.png">
+            <img
+              style="max-width: 350px; max-height: 300px"
+              src="../assets/skenirani-kod.png"
+            />
           </q-card-section>
           <q-card-section>
-            <q-separator inset class="q-mb-md q-mt-sm"/>
+            <q-separator inset class="q-mb-md q-mt-sm" />
             <div class="text-h4">
               Težak dio je gotov! Sad samo pričekaj da se učitaju podaci o profesoru!
+            </div>
+          </q-card-section>
+          <q-card-section>
+            <q-separator inset class="q-mb-md q-mt-sm" />
+            <div class="text-h7">
+              Nisi student ali i dalje želiš isprobati aplikaciju? Nema problema samo
+              Pritisni na gumb za registraciju profesora i registririraj se!
             </div>
           </q-card-section>
         </q-card>

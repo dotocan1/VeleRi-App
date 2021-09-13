@@ -60,7 +60,7 @@ const routes = [{
   component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(369)]).then(__webpack_require__.bind(__webpack_require__, 1369)),
   children: [{
     path: '/Home',
-    component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(282)]).then(__webpack_require__.bind(__webpack_require__, 7282))
+    component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(403)]).then(__webpack_require__.bind(__webpack_require__, 7403))
   }, {
     path: 'Professor/:id',
     component: () => Promise.all(/* import() */[__webpack_require__.e(736), __webpack_require__.e(292)]).then(__webpack_require__.bind(__webpack_require__, 8292))
@@ -622,7 +622,7 @@ const api = axios__WEBPACK_IMPORTED_MODULE_1___default().create({
 /******/ 		};
 /******/ 		
 /******/ 		__webpack_require__.f.miniCss = (chunkId, promises) => {
-/******/ 			var cssChunks = {"179":1,"282":1,"292":1,"329":1,"609":1,"685":1,"767":1};
+/******/ 			var cssChunks = {"179":1,"292":1,"329":1,"403":1,"609":1,"685":1,"767":1};
 /******/ 			if(installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
 /******/ 			else if(installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
 /******/ 				promises.push(installedCssChunks[chunkId] = loadStylesheet(chunkId).then(() => {
